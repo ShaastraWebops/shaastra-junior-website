@@ -29,8 +29,7 @@ const Header = (props: Props) => {
         <HeaderLogo height={height} width="88" />
       </Link>
       <Box>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <HamburgerIcon w={{base: 6, lg: 8}} h={{base: 6, lg: 8}} m={3} onClick={drawerOpenHandler} />
+       
       </Box>
     </Flex>
   );
