@@ -3,7 +3,7 @@ import { mode, whiten, darken } from "@chakra-ui/theme-tools";
 export const buttonStyles = {
     sizes: {},
     variants: {
-        primary: (props) => ({
+        primary: (props: any) => ({
           bg: "highlight", // Notice the use of color directly here
           color: "white",
           _hover: {

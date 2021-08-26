@@ -6,8 +6,8 @@ import { buttonStyles as Button } from "./components/buttonStyles";
 export const theme = extendTheme(
   {
     config: {
-      initialColorMode: "dark",
-      useSystemColorMode: false,
+      // initialColorMode: "dark",
+      // useSystemColorMode: false,
     },
     colors: {
       primary: {

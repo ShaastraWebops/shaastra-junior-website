@@ -27,8 +27,8 @@ const GlobalStyles = css`
 export const App = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <ChakraProvider theme={theme}>
-        <Global styles={GlobalStyles} />
+      <ChakraProvider >
+        {/* <Global styles={GlobalStyles} /> */}
         <AppRoutes />
       </ChakraProvider>
     </React.Suspense>

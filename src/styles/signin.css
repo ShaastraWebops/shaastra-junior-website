@@ -1,0 +1,17 @@
+.sign label
+{
+    font-size: 1.5vw;
+}
+.sign form 
+{
+    display: flex;
+    flex-direction: column;
+}
+.sign button
+{
+    align-self: flex-end;
+}
+.sign h1 
+{
+    font-size: 4vw;
+}
