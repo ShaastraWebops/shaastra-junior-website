@@ -10,19 +10,19 @@ const Card = () => {
                 <VStack>
                     <Box className="card1" height="240px" width="359px">
                         <VStack>
-                            <Flex flexDirection="column" color="#C4C4C4" marginTop="120px" marginRight="100px">
-                                <Text>DATE : 27/11/2018</Text>
-                                <Text>TIME : 11:00 AM to 12:09 PM</Text>
-                                <Text>AUDIENCE : CLASS 8-12</Text>
+                            <Flex flexDirection="column" color="#F2F2F2" marginTop="120px" marginRight="100px">
+                                <Text fontSize="17px">DATE : 27/11/2018</Text>
+                                <Text fontSize="17px">TIME : 11:00 AM to 12:09 PM</Text>
+                                <Text fontSize="17px">AUDIENCE : CLASS 8-12</Text>
                             </Flex>
                         </VStack>
                     </Box>
                     <Box bg="#C4C4C4" width="359px" borderRadius="5px" height="252px" position="relative" top="-21px">
-                        <Flex width="80%" margin="0px auto" paddingTop="20px" fontWeight="550">
+                        <Flex width="80%" margin="0px auto" paddingTop="23px" fontWeight="550">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex omnis saepe quas ducimus et illo, quibusdam reprehenderit reiciendis molestias cum in asperiores possimus unde. Optio magni cumque deleniti consequatur quibusdam.
                         </Flex>
-                        <Flex flexDirection="row" justifyContent="flex-end">
-                            <Button marginRight="40px" bg="#296EB4" width="160px" className="btn" marginTop="8px" color="#FFFFFF">Register Now</Button>
+                        <Flex marginTop="15px"  flexDirection="row" justifyContent="center">
+                            <Button bg="#296EB4" width="160px" className="btn" marginTop="8px" color="#FFFFFF"  _hover={{ bg: "#132638" }}>Register Now</Button>
                         </Flex>
                     </Box>
                 </VStack>
