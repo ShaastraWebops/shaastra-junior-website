@@ -1,8 +1,9 @@
 import {  Flex, Text } from "@chakra-ui/layout";
-import { Button,Heading, Image, Spacer, Tag, TagLabel } from "@chakra-ui/react";
+import { Button,FormControl,FormLabel,Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure } from "@chakra-ui/react";
 import {useHistory } from "react-router-dom";
 import * as React from "react";
 import { workshop } from "./data";
+import RegisterNow from "../Events/RegisterNow";
 interface props {
     data : workshop,
     type : string
@@ -10,6 +11,7 @@ interface props {
 const Card = ({data, type} : props) =>{
     const history = useHistory();
     const today = new Date();
+    const { isOpen, onOpen, onClose } = useDisclosure();
     console.log(type)
     return(
             <Flex
@@ -64,15 +66,44 @@ const Card = ({data, type} : props) =>{
                      }} >
                         View Details
                     </Button>
-                    <Button
+                    {/* <Button onClick={onOpen}
                     colorScheme="#6a6a85b6" variant="outline" border="2px solid"
-                    borderColor = "#6a6a85b6"
+                    borderColor = "#222244d2"
                     isDisabled = { (data.deadline.getFullYear() === today.getFullYear())&&(
                         data.deadline.getMonth() === today.getMonth()
                     )&&(data.deadline.getDate()-today.getDate()) < 1 ? true : false }
                      size="sm" p={2} m={2}>
                         Register Now
                     </Button>
+                    <Modal
+                        isOpen={isOpen}
+                        onClose={onClose}
+                    >
+                        <ModalOverlay />
+                        <ModalContent>
+                        <ModalHeader>Create your account</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody pb={6}>
+                            <FormControl>
+                            <FormLabel>First name</FormLabel>
+                            <Input  placeholder="First name" />
+                            </FormControl>
+
+                            <FormControl mt={4}>
+                            <FormLabel>Last name</FormLabel>
+                            <Input placeholder="Last name" />
+                            </FormControl>
+                        </ModalBody>
+
+                        <ModalFooter>
+                            <Button colorScheme="blue" mr={3}>
+                            Save
+                            </Button>
+                            <Button onClick={onClose}>Cancel</Button>
+                        </ModalFooter>
+                        </ModalContent>
+                    </Modal> */}
+                    <RegisterNow  data={data}  />
                     </Flex>
                 </Flex>
                 

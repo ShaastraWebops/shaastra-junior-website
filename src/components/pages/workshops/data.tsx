@@ -102,7 +102,7 @@ export const workshops : workshop[] = [
       id :"1",
       name :"Competition1",
       imageUrl : Img,
-      deadline :new Date(2021,7,24),
+      deadline :new Date(2021,8,24),
       description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit repellat mollitia...
       magnam sapiente eos delectus. Corporis magnam ratione aliquid ducimus nulla aspernatur, exercitationem 
       harum quos dolor in! Molestias, cum nulla!`,
@@ -126,7 +126,7 @@ export const workshops : workshop[] = [
       id :"2",
       name :"Competition2",
       imageUrl : Img,
-      deadline : new Date(2021,7,25),
+      deadline : new Date(2021,8,1),
       description : `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit repellat mollitia...
       magnam sapiente eos delectus. Corporis magnam ratione aliquid ducimus nulla aspernatur, exercitationem 
       harum quos dolor in! Molestias, cum nulla!`,

@@ -3,6 +3,7 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import CustomBox from "../../shared/CustomBox";
 import { competitions,workshops } from "../workshops/data";
+import RegisterNow from "./RegisterNow";
 
 const EventPage = ({type} : any)=>{
     const data = (type === "competitions" ? competitions : workshops) ;
@@ -22,8 +23,9 @@ const EventPage = ({type} : any)=>{
              <Container maxWidth="6xl" alignItems="center" justifyContent='center'>
              <Flex flexDirection={['column','column','row']}>
              <Image
-                h={['5%','2%',"auto"]}
-                objectFit ={'cover'}
+                h={['2%',"300px","auto"]}
+                width={'auto'}
+                objectFit ={'contain'}
                 src={event[0].imageUrl}
                 p={4}
                 rounded={["3xl","3xl"]}
@@ -54,13 +56,7 @@ const EventPage = ({type} : any)=>{
                     </Flex >
                     <Spacer />
                     <Flex float = "right">
-                    <Button colorScheme="#6a6a85b6" variant="outline" border="2px solid"
-                    isDisabled = { (event[0].deadline.getFullYear() === today.getFullYear())&&(
-                        event[0].deadline.getMonth() === today.getMonth()
-                    )&&(event[0].deadline.getDate()-today.getDate()) < 1 ? true : false }
-                       size="sm" p={2} m={2}>
-                        Register Now
-                    </Button>
+                    <RegisterNow data={event[0]}/>
                     </Flex>
                  </Flex>
                 </Flex>
