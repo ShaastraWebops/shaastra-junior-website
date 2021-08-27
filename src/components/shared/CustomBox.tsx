@@ -12,7 +12,7 @@ const CustomBox = (props: Props) => {
     const bg = useColorModeValue("highlight.200", "primary.default")
 
     return (
-        <Box bg={bg}>
+        <Box bg={bg} mb={10}>
             <Header />
             {props.children}
         </Box>
