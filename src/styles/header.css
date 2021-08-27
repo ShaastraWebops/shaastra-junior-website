@@ -12,6 +12,7 @@
 {
     position: relative;
     background-color: #222244d8;
+    z-index: 100;
 }
 .chakra-modal__body a:hover, .chakra-modal__body svg:hover
 {

@@ -16,7 +16,7 @@ const Profile = () => {
         <CustomBox>
         <Box width="100vw" height="fit-content" backgroundColor="white" paddingBottom="5vh">
         <div className="profile">
-        <h1>PROFILE</h1>
+        <h1>MY PROFILE</h1>
             <div className="profile-div">
                 <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="18vh">
                     <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"

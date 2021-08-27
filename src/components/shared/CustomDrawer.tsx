@@ -58,6 +58,7 @@ const CustomDrawer = (props: Props) => {
             <a href="/profile">My Profile</a>
             <a href="">Help Desk</a>
             <a href="/contactus">Contact Us</a>
+            <a href="/">Sign Out</a>
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
             <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram}  color="white" /></a>
@@ -65,7 +66,7 @@ const CustomDrawer = (props: Props) => {
             <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}  color="white"></FontAwesomeIcon></a>
           </Flex>
           <Box alignSelf="center" justifySelf="flex-end" className="credit"
-          fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Srinivas, Mitesh, Krithikaa <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>
+          fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Srinivas, Mitesh, Krithikaa, Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>
         </Flex>
         </DrawerBody>
       </DrawerContent>

@@ -7,7 +7,7 @@
     padding: 0%;
     position: relative;
     overflow: hidden;
-    /* background-image: url("../images/contact/contactBg.svg"); */
+    color: #222244;
 }
 .contact-bg
 {
@@ -24,10 +24,15 @@
  svg.shapediv13 {
     position: absolute;
     bottom: 0;
-    /* transform: translateX(-50%) scale(1, -1); */
     height: 250px;
     width: 100vw;
     fill: #FF5252;
+}
+.contact span 
+{
+    color: #bcdfec;
+    text-shadow: 0 2px #2b3336;
+    margin: 0 1vw;
 }
 /* .contact::after
 {
@@ -104,33 +109,67 @@
 
 @media screen and (max-width: 1200px)
 {
-    .contact .chakra-image
+    .contact-side-img
     {
-        width: 50%;
+       width: 50% !important;
     }
     .contact h1 
     {
-        font-size: 6vw;
-    }
-    .contact-div 
-    {
-        /* align-self: center !important; */
-        width: 80vw !important;
+        font-size: 4vw;
     }
     .contact-info
     {
-        font-size: 5vw !important;
+        font-size: 3vw !important;
     }
     .contact-img
     {
-        left: 0;
-        top: -40%;
+        left: 0%;
+        top: -30%;
+    }
+}
+@media screen and (max-width: 700px)
+{
+    .contact-side-img
+    {
+        top: 10% !important;
+        right: unset !important;
+        width: 60% !important;
+    }
+    .main-contact-div h1, .contact-div, .contact-info
+    {
+        align-self: center !important;
+        text-align: center;
+        width: fit-content !important;
+    }
+    .main-contact-div h1 
+    {
+        font-size: 8vw;
+    }
+    .contact-info
+    {
+        font-size: 4vw !important;
+    }
+    .contact a 
+    {
+        font-size: 1.3vw;
     }
 }
 @media screen and (max-width: 400px)
 {
-    .contact-img
+    .contact-side-img
     {
-        top: -40%;
+        width: 100% !important;
+    }
+    .main-contact-div h1 
+    {
+        font-size: 12vw;
+    }
+    .contact-info
+    {
+        font-size: 7vw !important;
+    }
+    .contact a 
+    {
+        font-size: 2vw;
     }
 }

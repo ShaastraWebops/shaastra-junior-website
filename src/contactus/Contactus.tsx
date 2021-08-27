@@ -6,8 +6,9 @@ import contact from "../images/contact/contact.png"
 
 const Contactus = () => {
     return (
-        <Box idth="100vw" height="100vh" >
-            <CustomBox>
+        <CustomBox>
+            hey
+        <Box idth="100vw" height="100vh" zIndex="1">
            
                 <div className="contact">
             {/* <div className="custom-shape-divider-bottom-1629357574">
@@ -45,8 +46,8 @@ const Contactus = () => {
             </Flex>
             </Flex>
         </div>
-            </CustomBox>
         </Box>
+        </CustomBox>
     )
 }
 
