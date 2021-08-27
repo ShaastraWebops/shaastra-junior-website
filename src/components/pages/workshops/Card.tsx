@@ -19,8 +19,7 @@ const Card = ({data, type} : props) =>{
             alignItems={'center'}
             flexDirection={['column','column','row']}
             justifyContent={'space-between'}
-            _hover={{boxShadow : 'lg',}}
-            backgroundColor={'#6a6a85b6'}>
+            _hover={{boxShadow : 'lg',}}>
             <Image
                 h={['20%','25%']}
                 objectFit ={'fill'}
