@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rosario:wght@300&display=swap');
+*{
+    font-family: 'Rosario', sans-serif;
+}
+.card{
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+.pixel{
+    border-radius: 10px;
+}
+.card1{
+    background-image: url('../../../images/pixel.jpg');
+    background-size: cover;
+    border-radius: 13px;
+    -webkit-filter: grayscale(35%);
+}
+.btn{
+    font-family: 'Rosario', sans-serif;
+}

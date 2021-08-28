@@ -1,5 +1,6 @@
 import * as React from "react"
 import {BrowserRouter as Router, Route} from "react-router-dom"
+import ChampionShip from "../championship/ChampionShip"
 import Home from "./pages/Home"
 import Competitions from "./pages/competitions/Competitions"
 import WorkshopPage from "./pages/workshops/WorkshopPage"
@@ -32,6 +33,7 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/competitions/:id">
                          <EventPage type= "competitions"/>
             </Route>
+            <Route exact path="/championships" component={ChampionShip}/>
         </Router>
     )
 }
