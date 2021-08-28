@@ -72,7 +72,7 @@ const Home = (props: Props) => {
             </h2>
           </div>
 
-          <Box bg="#F4F7C5" width="100%">
+          <Box bg="#b1d4d2" width="100%">
             <div className="flx1">
               <h2 className="text1">
                 TODAY’S HIGHLIGHTS
@@ -95,7 +95,7 @@ const Home = (props: Props) => {
             <Box width="70%" marginBottom="20px" borderRadius="50px" justifyContent="center" height="10px" bg="#FBC687" />
           </Flex> */}
 
-          <Box bg="#F4F7C5" width="100%">
+          <Box bg="#b1d4d2" width="100%">
             <Flex justifyContent="center">
               <Text p={10} fontSize="50px" color="#474768" fontWeight="650">PREVIOUS YEAR</Text>
             </Flex>
@@ -110,7 +110,7 @@ const Home = (props: Props) => {
             <SwiperSlide><Slider2 /></SwiperSlide>
           </Swiper>
           <Flex justifyContent="center">
-            <Box width="70%" marginBottom="20px" borderRadius="50px" justifyContent="center" height="10px" bg="#FBC687" />
+            <Box width="70%" marginBottom="20px" borderRadius="50px" justifyContent="center" height="10px" bg="#b1d4d2" />
           </Flex>
           <Box>
             <Flex justifyContent="center">
@@ -126,10 +126,10 @@ const Home = (props: Props) => {
               <Image src={ppl5} width="30%" alt=""></Image>
             </Flex>
 
-            <Box width="100%" height="150px" className="spons">
-              <Text className="sponstxt" color="#474768">SPONSORS</Text>
+            <Box width="100%" height="150px" className="spons" bg="#222244d2">
+              <Text className="sponstxt">SPONSORS</Text>
             </Box>
-            <Flex width="100%" bg="#F4F7C5" flexWrap="wrap" justifyContent="center">
+            <Flex width="100%" bg="#222244d2" flexWrap="wrap" justifyContent="center">
               <Image src={ppl8} p={8} alt=""></Image>
               <Image src={ppl8} p={8} alt=""></Image>
               <Image src={ppl8} p={8} alt=""></Image>
