@@ -10,6 +10,10 @@ import {
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useBreakpointValue } from "@chakra-ui/media-query";
+import {Link, Box} from "@chakra-ui/react"
+import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import "../../styles/header.css"
 
 interface Props {
   isOpen: boolean;
@@ -17,7 +21,7 @@ interface Props {
 }
 
 const CustomDrawer = (props: Props) => {
-  const closeButtonSize = useBreakpointValue({ base: "lg", lg: "xl" });
+  const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
 
   return (
@@ -25,17 +29,18 @@ const CustomDrawer = (props: Props) => {
       placement="right"
       onClose={props.onClose}
       isOpen={isOpen}
-      size="full"
+      size="xs"
+      
     >
-      <DrawerOverlay />
-      <DrawerContent>
+      <DrawerOverlay  />
+      <DrawerContent backgroundColor="#222244dc" >
         <DrawerHeader
           as={Flex}
           justifyContent="space-between"
           alignItems="center"
           flexDirection="row"
         >
-          <Heading fontWeight="normal" p={3}>Our Menu</Heading>
+          {/* <Heading fontWeight="normal" width="100%" textAlign="center" p={3}>Our Menu</Heading> */}
           <DrawerCloseButton
             variant="unstyled"
             mt={3}
@@ -46,8 +51,23 @@ const CustomDrawer = (props: Props) => {
             size={closeButtonSize}
           />
         </DrawerHeader>
-        <DrawerBody>
-
+        <DrawerBody overflow="hidden">
+        <Flex flexDirection="column" height="100%" justifyContent="space-between" className="menu-links"
+        fontSize="2vw" p={3} width="center" alignItems="center">
+          <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
+            <a href="/profile">My Profile</a>
+            <a href="">Help Desk</a>
+            <a href="/contactus">Contact Us</a>
+            <a href="/">Sign Out</a>
+          </Flex>
+          <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
+            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram}  color="white" /></a>
+            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}  color="white"></FontAwesomeIcon></a>
+            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}  color="white"></FontAwesomeIcon></a>
+          </Flex>
+          <Box alignSelf="center" justifySelf="flex-end" className="credit"
+          fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Srinivas, Mitesh, Krithikaa, Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>
+        </Flex>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

@@ -8,6 +8,7 @@ import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_log
 import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Link } from "react-router-dom";
+import "../../styles/header.css"
 
 interface Props {}
 
@@ -19,23 +20,26 @@ const Header = (props: Props) => {
       onOpen();
     };
 
-    const HeaderLogo = useColorModeValue(LogoBlack, LogoWhite)
     const height = useBreakpointValue({ base: "33", lg: "40" })
   return (
-    <Flex w="100vw" position="absolute" p={2} flexDirection="row" justifyContent="space-between" alignItems="center" height="min">
+    <Flex w="100vw" overflow="hidden" position="absolute" p={3} flexDirection="row" className="header" 
+    justifyContent="space-between" alignItems="center" height="min">
       <CustomDrawer onClose={onClose} isOpen={isOpen} />
-      <Link to="/" >
-        <HeaderLogo height={height} width="88" />
-      </Link>
-      <Box>
-      <Link to="/workshops" >
-        Workshops
-      </Link>
-      <Link to="/competitions" >
-       Competitions
-      </Link>
+      
+      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links">
+        <Link to="/" >
+          <LogoBlack height={height} width="88" className="header-logo"/>
+        </Link>
+        <Link to="/">Home</Link>
+        <Link to="/competitions">Competitions</Link>
+        <Link to="/workshops">Workshops</Link>
+        <Link to="/championships">Championship</Link>
+      </Flex>
+      {/* <Box>
+        <ColorModeSwitcher justifySelf="flex-end" />
         <HamburgerIcon w={{base: 6, lg: 8}} h={{base: 6, lg: 8}} m={3} onClick={drawerOpenHandler} />
-      </Box>
+      </Box> */}
+      <HamburgerIcon w={{base: 6, lg: 8}} h={{base: 6, lg: 8}} m={3} onClick={drawerOpenHandler} className="hamburger" />
     </Flex>
   );
 };

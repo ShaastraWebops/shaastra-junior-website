@@ -1,0 +1,85 @@
+.header-links a:hover
+{
+    background-color: #67678394;
+}
+.header-links a
+{
+    margin: 0 0.5vw;
+    padding: 1vw;
+    border-radius: 25px;
+}
+.header
+{
+    position: relative;
+    background-color: #222244d8;
+    z-index: 100;
+}
+.chakra-modal__body a:hover, .chakra-modal__body svg:hover
+{
+    color: #b1d4e2 !important;
+}
+.chakra-modal__body
+{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.chakra-modal__body b 
+{
+    font-weight: 500;
+}
+@media screen and (max-width: 700px)
+{
+    .menu-links
+    {
+        font-size: 4vw !important;
+    }
+    .credit 
+    {
+        font-size: 3vw !important;
+    }
+}
+@media screen and (max-width: 500px)
+{
+    /* .header
+    {
+        height: 15% !important;
+        padding: 2px !important;
+    } */
+    /* .header svg 
+    {
+        height: 3vh !important;
+    } */
+
+    .header-logo, .header svg
+    {
+        width: 10vw !important;
+        height: 5vw !important;
+        margin: 0;
+    }
+    .header-links
+    {
+        /* position: absolute;
+        width: 100vw !important; */
+        font-size: 2.8vw !important;
+        /* top: 6%; */
+    }
+}
+@media screen and (max-width: 300px)
+{
+    .svg-inline--fa
+    {
+        width: 100% !important;
+    }
+    .menu-links
+    {
+        font-size: 6vw !important;
+    }
+    .css-17noa1f
+    {
+        height: 50% !important;
+    }
+    .credit
+    {
+        margin-top: 5vh;
+        font-size: 6vw !important;
+    }
+}

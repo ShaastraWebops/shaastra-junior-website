@@ -9,6 +9,10 @@ import CompetitionPage from "./pages/competitions/CompetitionsPage"
 import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
 
+import Profile from "./pages/profile/Profile"
+import Contactus from "./../contactus/Contact"
+import SignIn from "./../components/pages/signinUp/SignIn"
+import SignUp from "./../components/pages/signinUp/SignUp"
 interface Props {
     
 }
@@ -31,9 +35,13 @@ const AppRoutes = (props: Props) => {
             </Route>
 
             <Route exact path="/competitions/:id">
-                         <EventPage type= "competitions"/>
+                    <EventPage type= "competitions"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
+            <Route exact path="/profile" component={Profile}></Route>
+            <Route exact path="/contactus" component={Contactus}></Route>
+            <Route exact path="/signin" component={SignIn}></Route>
+            <Route exact path="/signup" component={SignUp}></Route>
         </Router>
     )
 }
