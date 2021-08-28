@@ -9,7 +9,7 @@ const Events = ({type}: any) => {
     const data = (type === "competitions" ? competitions : workshops) ;
     return (
         <CustomBox>
-         <Flex flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'60px'} minHeight={"100vh"}>
+         <Flex flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'100px'} minHeight={"100vh"}>
             <Heading >{type === "competitions" ? "COMPETITIONS" : "WORKSHOPS"}</Heading>
              <Flex flexDirection={"column"} justifyContent="center" alignItems="center" >
              {

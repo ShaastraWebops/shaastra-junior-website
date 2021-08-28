@@ -26,9 +26,9 @@ const Home = (props: Props) => {
 
   return (
     <CustomBox>
-      <Box className="mainn" color="#FFE5E5" width="100vw" height="100%">
+      <Box className="mainn" color="#FFE5E5" width="100vw" height="100%" paddingTop={'80px'}>
         <Stack>
-          <Box display="flex" justifyContent="flex-end" marginRight="40px" paddingTop="20px" className="boxxx" width="100%" height="100vh">
+          {/* <Box display="flex" justifyContent="flex-end" marginRight="40px" paddingTop="20px" className="boxxx" width="100%" height="100vh">
             <Menu>
               <MenuButton mr={10} as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
               <MenuList>
@@ -46,7 +46,7 @@ const Home = (props: Props) => {
                 </MenuItem>
               </MenuList>
             </Menu>
-          </Box>
+          </Box> */}
 
           <Text justifyContent="center" padding="10px" color="#fff" fontWeight="600" fontSize="50px" display="flex">SHAASTRA</Text>
 

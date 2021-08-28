@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const ChampionShip = () => {
     return (
         <CustomBox>
-            <Box width="100%" height="100%" bg="#AACDBE">
+            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'80px'}>
                 <Box className="imgClass">
                     <Flex justifyContent="center">
                         <Image src={ppl1} alt="ppl1" width="70vw" marginTop="40px"></Image>
