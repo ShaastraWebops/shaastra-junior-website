@@ -1,14 +1,14 @@
 import React from 'react'
-import CustomBox from "../../src/components/shared/Header";
+import CustomBox from "../../shared/Header";
 import "../styles/contact.css"
 import {Flex, Image, Box} from "@chakra-ui/react"
-import contact from "../images/contact/contact.png"
+import contact from "../../../images/contact/contact.png"
 
 const Contactus = () => {
     return (
         <CustomBox>
             hey
-        <Box idth="100vw" height="100vh" zIndex="1">
+        <Box width="100vw" height="100vh" zIndex="1">
            
                 <div className="contact">
             {/* <div className="custom-shape-divider-bottom-1629357574">

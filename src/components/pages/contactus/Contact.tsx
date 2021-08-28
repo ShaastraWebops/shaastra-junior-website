@@ -1,8 +1,8 @@
 import React from 'react'
-import CustomBox from "../../src/components/shared/CustomBox";
-import "../styles/contact.css"
+import CustomBox from "../../shared/CustomBox";
+import "../../../styles/contact.css"
 import {Flex, Image, Box} from "@chakra-ui/react"
-import contact from "../images/contact/contact.png"
+import contact from "../../../images/contact/contact.png"
 
 const Contactus = () => {
     return (

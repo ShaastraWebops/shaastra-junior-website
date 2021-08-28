@@ -1,6 +1,6 @@
 import * as React from "react"
 import {BrowserRouter as Router, Route} from "react-router-dom"
-import ChampionShip from "../championship/ChampionShip"
+import ChampionShip from "./pages/championship/ChampionShip"
 import Home from "./pages/Home"
 import Competitions from "./pages/competitions/Competitions"
 import WorkshopPage from "./pages/workshops/WorkshopPage"
@@ -10,7 +10,7 @@ import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
 
 import Profile from "./pages/profile/Profile"
-import Contactus from "./../contactus/Contact"
+import Contactus from "./pages/contactus/Contact"
 import SignIn from "./../components/pages/signinUp/SignIn"
 import SignUp from "./../components/pages/signinUp/SignUp"
 interface Props {

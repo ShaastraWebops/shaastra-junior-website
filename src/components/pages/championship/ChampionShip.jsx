@@ -1,10 +1,10 @@
 import React from 'react'
 import { Flex, Text, VStack, Stack, Center, Image, Heading, Avatar, Box, fromBox } from "@chakra-ui/react";
-import CustomBox from '../components/shared/CustomBox';
+import CustomBox from '../../shared/CustomBox';
 import ppl1 from './ppl1.svg';
 import './ChampionShip.module.css';
-import ppl10 from '../../src/images/ppl10.svg';
-import Slider3 from '../components/pages/Slider3';
+import ppl10 from '../../../images/ppl10.svg'
+import Slider3 from '../Slider3';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 
