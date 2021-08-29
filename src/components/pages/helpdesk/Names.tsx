@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import JSONdata from './data.json'
 import {IconContext} from 'react-icons'
-import {FiPlus,FiMinus} from 'react-icons/fi'
+
 import { Box, Text, Center, ChakraProvider, Container, Heading, HStack, Wrap, SlideFade, useDisclosure, Input, Collapse, Flex } from '@chakra-ui/react'
 
 
