@@ -66,7 +66,7 @@ function Names() {
                      p="40px"
                      color="white"
                      mt="4"
-                     bg="teal.500"
+                     backgroundColor={"#6a6a85b6"}
                      rounded="md"
                      shadow="md"
                      >
