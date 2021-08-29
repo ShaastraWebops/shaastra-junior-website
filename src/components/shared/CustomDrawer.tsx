@@ -56,7 +56,7 @@ const CustomDrawer = (props: Props) => {
         fontSize="2vw" p={3} width="center" alignItems="center">
           <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
             <a href="/profile">My Profile</a>
-            <a href="">Help Desk</a>
+            <a href="/helpdesk">Help Desk</a>
             <a href="/contactus">Contact Us</a>
             <a href="/">Sign Out</a>
           </Flex>

@@ -13,6 +13,7 @@ import Profile from "./pages/profile/Profile"
 import Contactus from "./pages/contactus/Contact"
 import SignIn from "./../components/pages/signinUp/SignIn"
 import SignUp from "./../components/pages/signinUp/SignUp"
+import HelpDesk from "./pages/helpdesk/HelpDesk"
 interface Props {
     
 }
@@ -39,6 +40,7 @@ const AppRoutes = (props: Props) => {
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
             <Route exact path="/profile" component={Profile}></Route>
+            <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
