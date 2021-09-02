@@ -2,12 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
 }
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .image{
     background-repeat: no-repeat;
 }
-.mainn{
+.navb{
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #97e26b, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
@@ -78,8 +81,10 @@
     
 }
 .boxxx{
-    background: url('../images/ppl.svg');
+    background: url('../images/bg.jpg');
     background-size: cover;
+    margin-top: 0px;
+    /* background-position-y: -1px; */
 }
 #x1{
     z-index: 99;
@@ -107,5 +112,32 @@
     }
     100% {
         background-position: 0% 50%;
+    }
+}
+
+.boxxx.css-7u9ot4 {
+    margin-top: 0px;
+}
+.chakra-stack css-nd8846{
+    padding-top: 10px;
+}
+.css-0{
+    padding: 10px;
+}
+
+.img22{
+    width: 40%;
+}
+
+@media only screen and (max-width:744px){
+    .img22{
+        width: 0px;
+    }
+}
+
+@media only screen and (max-width:610px){
+    .sldr2{
+        font-size: 15px;
+        font-weight: 600;
     }
 }

@@ -9,6 +9,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 
 const ChampionShip = () => {
+
+    const [data,setData] = React.useState({videos:[]});
+
+    React.useEffect(()=>{
+        
+    },[]);
+
     return (
         <CustomBox>
             <Box width="100%" height="100%" bg="#AACDBE">
@@ -23,28 +30,10 @@ const ChampionShip = () => {
                     </Flex>
 
                     <Flex justifyContent="center">
-                        <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-                            <Flex justifyContent="space-between">
-                                <Text fontSize="25px">Name</Text>
-                                <Text  fontSize="25px">10 pts</Text>
-                            </Flex>
-                        </Box>
-                    </Flex>
-
-                    <Flex justifyContent="center">
-                        <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-                            <Flex justifyContent="space-between">
-                                <Text  fontSize="25px">Name</Text>
-                                <Text  fontSize="25px"> 10 pts</Text>
-                            </Flex>
-                        </Box>
-                    </Flex>
-
-                    <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginBottom="20px" marginTop="20px">
                             <Flex justifyContent="space-between">
-                                <Text  fontSize="25px">Name</Text>
-                                <Text  fontSize="25px">10 pts</Text>
+                                <Text color="#000" fontSize="25px">Name</Text>
+                                <Text color="#000" fontSize="25px">10 pts</Text>
                             </Flex>
                         </Box>
                     </Flex>
