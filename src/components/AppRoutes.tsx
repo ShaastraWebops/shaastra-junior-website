@@ -14,6 +14,7 @@ import Contactus from "./pages/contactus/Contact"
 import SignIn from "./../components/pages/signinUp/SignIn"
 import SignUp from "./../components/pages/signinUp/SignUp"
 import HelpDesk from "./pages/helpdesk/HelpDesk"
+import Event from "./pages/Admin/Event"
 interface Props {
     
 }
@@ -44,6 +45,7 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/contactus" component={Contactus}></Route>
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
+            <Route exact path="/event" component={Event}/>
         </Router>
     )
 }
