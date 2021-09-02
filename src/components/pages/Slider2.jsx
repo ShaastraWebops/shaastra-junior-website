@@ -7,7 +7,6 @@ import {
     Text,
     VStack,
     Code,
-    useColorModeValue,
     Flex,
     Spacer,
     Button,
@@ -34,7 +33,7 @@ const Slider2 = () => {
                             <Text color={'green.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
                                 NAME
                             </Text>
-                            <Heading color={useColorModeValue('gray.700', 'white')} fontSize={'2xl'} fontFamily={'body'}>
+                            <Heading color={'white'} fontSize={'2xl'} fontFamily={'body'}>
                                 <Spacer />DATE/TIME
                             </Heading>
                             <Text color={'gray.500'} className="sldr2" color="white">
