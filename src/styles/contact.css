@@ -30,8 +30,8 @@
 }
 .contact span 
 {
-    color: #bcdfec;
-    text-shadow: 0 2px #2b3336;
+    color: #F1F2E1;
+    text-shadow: 3px 4px #2b3336;
     margin: 0 1vw;
 }
 /* .contact::after
@@ -103,8 +103,7 @@
 } */
 .contact h1
 {
-    align-self: flex-start;
-    font-size: 4vw;
+    font-size: 5vw;
 }
 
 @media screen and (max-width: 1200px)

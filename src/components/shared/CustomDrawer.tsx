@@ -33,7 +33,7 @@ const CustomDrawer = (props: Props) => {
       
     >
       <DrawerOverlay  />
-      <DrawerContent backgroundColor="#222244dc" >
+      <DrawerContent backgroundColor="rgba(176, 219, 190, 0.73)" color="black">
         <DrawerHeader
           as={Flex}
           justifyContent="space-between"
@@ -61,9 +61,9 @@ const CustomDrawer = (props: Props) => {
             <a href="/">Sign Out</a>
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
-            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram}  color="white" /></a>
-            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}  color="white"></FontAwesomeIcon></a>
-            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}  color="white"></FontAwesomeIcon></a>
+            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
+            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
           </Flex>
           <Box alignSelf="center" justifySelf="flex-end" className="credit"
           fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Srinivas, Mitesh, Krithikaa, Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>

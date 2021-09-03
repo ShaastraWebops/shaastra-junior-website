@@ -33,6 +33,7 @@ const Header = (props: Props) => {
         <Link to="/">Home</Link>
         <Link to="/competitions">Competitions</Link>
         <Link to="/workshops">Workshops</Link>
+        <Link to="/shows">Shows</Link>
         <Link to="/championships">Championship</Link>
       </Flex>
       {/* <Box>
