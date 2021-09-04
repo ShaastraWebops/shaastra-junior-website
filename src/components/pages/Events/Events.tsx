@@ -8,14 +8,18 @@ import { useGetEventQuery, useGetEventsQuery } from "../../../types/generated/ge
 
 
 const Events = ({type}: any) => {
-    const data = (type === "competitions" ? competitions : workshops) ;
+    // const data = (type === "competitions" ? competitions : workshops) ;
+    const {data,error,loading} = useGetEventsQuery();
+    const data1 = data?.getEvents.events.filter(event =>{
+      event.registrationType === type;
+    })
     return (
         <CustomBox>
          <Flex flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'100px'} minHeight={"100vh"}>
             <Heading >{type === "competitions" ? "COMPETITIONS" : "WORKSHOPS"}</Heading>
              <Flex flexDirection={"column"} justifyContent="center" alignItems="center" >
              {
-                data?.map( (event) =>(
+                data1?.map( (event) =>(
                       <Card key={event.id} data = {event} type= {type}/>
                 ))
               }

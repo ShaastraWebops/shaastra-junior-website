@@ -1,22 +1,16 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import React from 'react'
+import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
 
 const Event = () => {
     const audience = ["KIDS","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
-    const [initvalues , setInitvalues] = React.useState({
-        title: "",
-        type: "",
-        AudienceType: "",
-        rot: "",
-        rct: "",
-        est: "",
-        ect: "",
-        regtype: "",
-        teamsize: 0,
-        description: ""
-    });
+    const [addEvent] = useCreateEventMutation();
+    const {data,error,loading} = useGetEventsQuery();
+
+    console.log(data);
+
     return (
        <CustomBox>
            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
@@ -27,17 +21,33 @@ const Event = () => {
               <Formik 
                initialValues={{
                 "title": "",
-                "type": "",
-                "Audience Type": "",
+                "type": EventType.Competitions,
+                "Audience Type": [Standard.Twelfth,Standard.Third],
                 "rot": "",
                 "rct": "",
                 "est": "",
                 "ect": "",
-                "regtype": "",
+                "regtype": RegistraionType.None,
                 "teamsize": 0,
-               " description": ""
+                "description": ""
                }}
                onSubmit={(values, actions) => {
+                 addEvent({
+                   variables:{
+                    createEventData:{
+                          title : values.title,
+                          description : values.description,
+                          eventType : values.type,
+                          audience : values['Audience Type'],
+                          registrationOpenTime : values.rot,
+                          registrationCloseTime : values.rct,
+                          eventTimeFrom: values.est,
+                          eventTimeTo : values.ect,
+                          registrationType: values.regtype,
+                          teamSize : values.teamsize,
+                          pic : "ndcjkn"
+                   }}
+                 }).catch(err => console.log(err))
                  setTimeout(() => {
                    console.log(JSON.stringify(values, null, 2))
                    alert(JSON.stringify(values, null, 2))
@@ -64,8 +74,8 @@ const Event = () => {
               <FormControl m={2}>
               <FormLabel>Event Type</FormLabel>
               <Select {...field} id="type" borderColor={'#244f3b'} placeholder="EventType" color={"#244f3b"}>
-                  <option value="workshop">Workshop</option>
-                  <option value="competition">Competition</option>
+                  <option value={EventType.Workshops}>Workshop</option>
+                  <option value={EventType.Competitions}>Competition</option>
               </Select>
               </FormControl>
                )}
@@ -75,7 +85,7 @@ const Event = () => {
              {({ field }:{field: any}) => (
               <FormControl m={2}>
               <FormLabel >Audience Type</FormLabel>
-              <Select  {...field} id="Audience Type" borderColor={'#244f3b'} placeholder="Audience Type" color={"#244f3b"}>
+              <Select  {...field} multiple id="Audience Type" borderColor={'#244f3b'} placeholder="Audience Type" color={"#244f3b"}>
                  
                   {
                       audience.map((aud) =>(

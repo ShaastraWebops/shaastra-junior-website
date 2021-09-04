@@ -4,11 +4,8 @@ import {useHistory } from "react-router-dom";
 import * as React from "react";
 import { workshop } from "./data";
 import RegisterNow from "../Events/RegisterNow";
-interface props {
-    data : workshop,
-    type : string
-}
-const Card = ({data, type} : props) =>{
+
+const Card = ({data, type} : any) =>{
     const history = useHistory();
     const today = new Date();
     const { isOpen, onOpen, onClose } = useDisclosure();
