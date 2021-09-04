@@ -5,7 +5,6 @@ import { useDisclosure } from "@chakra-ui/hooks";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
 import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
-import { useColorModeValue } from "@chakra-ui/color-mode";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 import { Link } from "react-router-dom";
 import "../../styles/header.css"
@@ -23,18 +22,19 @@ const Header = (props: Props) => {
     const height = useBreakpointValue({ base: "33", lg: "40" })
   return (
     <Flex w="100vw" overflow="hidden" position="absolute" p={3} flexDirection="row" className="header" 
-    justifyContent="space-between" alignItems="center" height="min">
+    justifyContent="space-between" alignItems="center" height="70px">
       <CustomDrawer onClose={onClose} isOpen={isOpen} />
       
-      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links">
+      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links" color={'black'}>
         <Link to="/" >
-          <LogoBlack height={height} width="88" className="header-logo"/>
+          <LogoWhite height={height} width="88" className="header-logo"/>
         </Link>
         <Link to="/">Home</Link>
         <Link to="/competitions">Competitions</Link>
         <Link to="/workshops">Workshops</Link>
         <Link to="/shows">Shows</Link>
         <Link to="/championships">Championship</Link>
+        <Link to="/signin">Sign In / Register</Link>
       </Flex>
       {/* <Box>
         <ColorModeSwitcher justifySelf="flex-end" />

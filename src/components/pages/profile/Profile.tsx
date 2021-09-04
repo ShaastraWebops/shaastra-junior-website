@@ -24,16 +24,18 @@ import { workshops } from "../workshops/data";
 import { competitions } from "../workshops/data";
 import { useParams } from "react-router-dom";
 import { divide } from "lodash";
+import {useGetProfileQuery} from "../../../types/generated/generated"
 
 SwiperCore.use([Navigation, Pagination, Keyboard])
 
 const Profile = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     // backgroundColor="#4a4a75b6"
-
-    const {profId} = useParams<{profId: string}>();
-    const profile = profiles.filter(el => {if(el.id === profId) return true})
-    console.log(profile)
+    const {data,error,loading} = useGetProfileQuery()
+    const {profName} = useParams<{profName: string}>();
+    const profile = profiles.filter(el => {if(el.id === profName) return true})
+    if(data) console.log(`data: ${data}`)
+    if(error) console.log(`error: ${error}`)
     return (
         <CustomBox>
         <Box width="100vw" height="fit-content" backgroundColor="#AACDBE" paddingBottom="5vh">
@@ -62,7 +64,6 @@ const Profile = () => {
                         {
                             profile[0].workshopsAttend.map(el => {
                                 const workshop = workshops.filter(w => {if(w.id === el)return true})
-                                console.log(workshop[0])
                                 return(
                                     <SwiperSlide>
                                         <Flex flexDirection="column" justifyContent="center" alignItems="center" textAlign="center" 
@@ -96,7 +97,6 @@ const Profile = () => {
                         {
                             profile[0].competitionsRegister.map(el => {
                                 const comp = competitions.filter(c => {if(c.id === el) return true})
-                                console.log(comp[0].id)
                                 return(
                                     <Box key={el}>
                                         <SwiperSlide>

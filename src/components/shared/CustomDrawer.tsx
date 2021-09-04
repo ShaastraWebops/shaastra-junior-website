@@ -10,10 +10,13 @@ import {
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useBreakpointValue } from "@chakra-ui/media-query";
-import {Link, Box} from "@chakra-ui/react"
+import {Box} from "@chakra-ui/react"
 import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../styles/header.css"
+import { Link } from "react-router-dom";
+import { useLogoutMutation } from "../../types/generated/generated";
+import {Redirect} from "react-router"
 
 interface Props {
   isOpen: boolean;
@@ -23,6 +26,12 @@ interface Props {
 const CustomDrawer = (props: Props) => {
   const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
+
+  const [logoutMutation, {data,loading,error}] = useLogoutMutation()
+  const logOut = async () => {
+    const resp = await logoutMutation();
+    return (<Redirect to="/" />)
+  }
 
   return (
     <Drawer
@@ -48,17 +57,18 @@ const CustomDrawer = (props: Props) => {
             p={2}
             outline="none"
             borderRadius="50%"
+            color ={'white'}
             size={closeButtonSize}
           />
         </DrawerHeader>
         <DrawerBody overflow="hidden">
         <Flex flexDirection="column" height="100%" justifyContent="space-between" className="menu-links"
-        fontSize="2vw" p={3} width="center" alignItems="center">
+        fontSize="2vw" p={3} width="center" alignItems="center" color={'white'}>
           <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
-            <a href="/profile">My Profile</a>
-            <a href="">Help Desk</a>
-            <a href="/contactus">Contact Us</a>
-            <a href="/">Sign Out</a>
+            <Link to="/profile">My Profile</Link>
+            <Link to="/helpdesk">Help Desk</Link>
+            <Link to="/contactus">Contact Us</Link>
+            <Link to="/" onClick={logOut}>Sign Out</Link>
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
             <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>
@@ -66,7 +76,7 @@ const CustomDrawer = (props: Props) => {
             <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
           </Flex>
           <Box alignSelf="center" justifySelf="flex-end" className="credit"
-          fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Srinivas, Mitesh, Krithikaa, Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>
+          fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Krithikaa,Mitesh,Srinivas,Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>
         </Flex>
         </DrawerBody>
       </DrawerContent>

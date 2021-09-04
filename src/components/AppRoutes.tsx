@@ -13,8 +13,10 @@ import ShowPage from "./pages/shows/ShowsPage"
 
 import Profile from "./pages/profile/Profile"
 import Contactus from "./pages/contactus/Contact"
-import SignIn from "./../components/pages/signinUp/SignIn"
-import SignUp from "./../components/pages/signinUp/SignUp"
+import SignIn from "./pages/signinUp/SignIn"
+import SignUp from "./pages/signinUp/SignUp"
+import HelpDesk from "./pages/helpdesk/HelpDesk"
+import Event from "./pages/Admin/Event"
 interface Props {
     
 }
@@ -32,18 +34,22 @@ const AppRoutes = (props: Props) => {
                 <Events type= "competitions" />
             </Route>
             <Route exact path="/shows" component={Shows}></Route>
-            <Route exact path="/workshops/:id">
-                <EventPage type= "workshops"/>
+            <Route exact path="/shows/:showid" component={ShowPage}>
+                {/* <EventPage type="shows"></EventPage> */}
             </Route>
-            <Route exact path="/shows/:showid" component={ShowPage}></Route>
+            
             <Route exact path="/competitions/:id">
                     <EventPage type= "competitions"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            <Route exact path="/profile/:profId" component={Profile}></Route>
+            <Route exact path="/profile/:profName" component={Profile}></Route>
+
+
+            <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
+            <Route exact path="/event" component={Event}/>
         </Router>
     )
 }

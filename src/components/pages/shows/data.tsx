@@ -1,4 +1,5 @@
 import Img from "../../../images/Img.svg";
+import { useGetEventQuery } from "../../../types/generated/generated";
 
 export interface faq{
     id : string,
@@ -14,7 +15,7 @@ export interface shows {
     faqs : faq[]
   }
 
-
+// const show: shows[] = useGetEventQuery("SHOWS")
 export const shows : shows[] = [
     {
       id :"1",

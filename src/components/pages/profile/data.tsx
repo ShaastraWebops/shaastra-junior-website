@@ -1,4 +1,5 @@
 import img from "../../../images/profile/person.jpg"
+import { useGetProfileQuery } from "../../../types/generated/generated"
 
 export interface profile {
     id: string,
@@ -30,3 +31,4 @@ export const profiles : profile[] = [
         imgUrl: img
     }
 ]
+// export const {data,error,loading} = useGetProfileQuery()

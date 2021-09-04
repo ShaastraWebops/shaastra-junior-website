@@ -3,6 +3,8 @@ import * as React from "react";
 import CustomBox from "../../shared/CustomBox";
 import Card from "../workshops/Card";
 import { competitions,workshops} from "../workshops/data";
+import "../../../styles/events.css"
+import { useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
 
 
 const Events = ({type}: any) => {
@@ -13,7 +15,7 @@ const Events = ({type}: any) => {
             <Heading >{type === "competitions" ? "COMPETITIONS" : "WORKSHOPS"}</Heading>
              <Flex flexDirection={"column"} justifyContent="center" alignItems="center" >
              {
-                data.map( (event) =>(
+                data?.map( (event) =>(
                       <Card key={event.id} data = {event} type= {type}/>
                 ))
               }

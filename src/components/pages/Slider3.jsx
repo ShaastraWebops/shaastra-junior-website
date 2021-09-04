@@ -7,7 +7,6 @@ import {
     Text,
     VStack,
     Code,
-    useColorModeValue,
     Flex,
     Spacer,
     Button,
