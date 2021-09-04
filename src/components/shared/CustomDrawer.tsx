@@ -15,6 +15,8 @@ import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../styles/header.css"
 import { Link } from "react-router-dom";
+import { useLogoutMutation } from "../../types/generated/generated";
+import {Redirect} from "react-router"
 
 interface Props {
   isOpen: boolean;
@@ -25,6 +27,12 @@ const CustomDrawer = (props: Props) => {
   const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
 
+  const [logoutMutation, {data,loading,error}] = useLogoutMutation()
+  const logOut = async () => {
+    const resp = await logoutMutation();
+    return (<Redirect to="/" />)
+  }
+
   return (
     <Drawer
       placement="right"
@@ -34,7 +42,7 @@ const CustomDrawer = (props: Props) => {
       
     >
       <DrawerOverlay  />
-      <DrawerContent backgroundColor="#222244dc" >
+      <DrawerContent backgroundColor="rgba(176, 219, 190, 0.73)" color="black">
         <DrawerHeader
           as={Flex}
           justifyContent="space-between"
@@ -60,12 +68,12 @@ const CustomDrawer = (props: Props) => {
             <Link to="/profile">My Profile</Link>
             <Link to="/helpdesk">Help Desk</Link>
             <Link to="/contactus">Contact Us</Link>
-            <Link to="/">Sign Out</Link>
+            <Link to="/" onClick={logOut}>Sign Out</Link>
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
-            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram}  color="white" /></a>
-            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}  color="white"></FontAwesomeIcon></a>
-            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}  color="white"></FontAwesomeIcon></a>
+            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
+            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
           </Flex>
           <Box alignSelf="center" justifySelf="flex-end" className="credit"
           fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Krithikaa,Mitesh,Srinivas,Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>

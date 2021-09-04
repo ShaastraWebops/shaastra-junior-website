@@ -10,7 +10,8 @@ mutation Login($loginData: LoginInput!){
     login(data: $loginData) {
       name,
       email,
-      isVerified
+      isVerified,
+      role 
     }
   }`
   

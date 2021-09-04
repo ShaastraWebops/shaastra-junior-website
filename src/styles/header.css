@@ -1,6 +1,10 @@
 .header-links a:hover
 {
-    background-color: #67678394;
+    background-color: #F4F7C5
+}
+.header-links a:first-child:hover 
+{
+    background-color: transparent;
 }
 .header-links a
 {
@@ -11,12 +15,14 @@
 .header
 {
     position: relative;
-    background-color: #222244d8;
+    /* background-color: #222244d8; */
+    background-color: transparent;
     z-index: 100;
+    color: black;
 }
 .chakra-modal__body a:hover, .chakra-modal__body svg:hover
 {
-    color: #b1d4e2 !important;
+    color: #F4F7C5;
 }
 .chakra-modal__body
 {

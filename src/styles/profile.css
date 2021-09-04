@@ -28,7 +28,7 @@ html
 }
 .profile-div
 {
-    background: linear-gradient(to right, #222244d2 15%, white 20px); 
+    background: linear-gradient(to right, #b0dbbe 15%, #eff1d0c7 20px); 
     box-shadow: 0px 0px 15px 5px rgba(31, 33, 39, 0.24);
     color: black;
     margin: auto;
@@ -45,6 +45,18 @@ html
     /* margin-bottom: 5vh; */
     position: relative;
     width: fit-content;
+}
+.registered-swiper .swiper-slide
+{
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+}
+.registered-swiper .swiper-container, .registered-swiper .swiper-wrapper
+{
+    width: fit-content;
+    margin: auto;
+    display: flex;
 }
 .date-time
 {
@@ -67,6 +79,13 @@ html
     border-radius: 30%;
     border: 5px solid #0e101b;
 } */
+.registered-item button 
+{
+    background-color: #F1F2E1;
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 3vh;
+}
 .profile-info p 
 {
     font-size: 1.8vw;
@@ -81,12 +100,38 @@ html
     font-weight: 600;
     font-size: 3.5vw;
 }
-.profile h3
+.profile h3, .chakra-modal__header h2
 {
     font-size: 2vw;
     font-weight: 800 !important;
     font-family: 'IBM Plex Sans Thai', sans-serif;
 }
+.profile .chakra-modal__body b 
+{
+    margin-top: 4vh ;
+    font-size: 1.7vw;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.pop-up .chakra-button 
+{
+    align-self: flex-end;
+    font-size: 1vw;
+    font-weight: 500;
+    background-color: #F1F2E1;
+    padding: 10px;
+    border-radius: 12px;
+    color: black;
+}
+.chakra-modal__body p:first-child
+{
+    align-self: flex-end;
+    font-style: italic;
+    font-size: 1.2vw;
+}
+/* .profile .chakra-modal__body a:hover 
+{
+    color: black !important;
+} */
 .profile h2 
 {
     font-size: 3vw;
@@ -105,10 +150,12 @@ html
 .registered-info
 {
     padding: 4vh 0;
+   
 }
 .registered-item:hover
 {
-    background-color: #b1e2bd;
+    /* background-color: #b0dbbe; */
+    background-color: #F1F2E1;
 }
 .purchase-swiper
 {
@@ -119,6 +166,15 @@ html
 {
     padding: 0%;
     margin: 0%;
+}
+.registered-swiper
+{
+    width: 100%;
+    margin: auto;
+}
+.profile .swiper-container
+{
+    margin-bottom: 5vh;
 }
 
 @media screen and (max-width: 1200px)

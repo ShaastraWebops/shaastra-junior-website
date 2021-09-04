@@ -25,13 +25,14 @@ const Header = (props: Props) => {
     justifyContent="space-between" alignItems="center" height="70px">
       <CustomDrawer onClose={onClose} isOpen={isOpen} />
       
-      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links" color={'white'}>
+      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links" color={'black'}>
         <Link to="/" >
           <LogoWhite height={height} width="88" className="header-logo"/>
         </Link>
         <Link to="/">Home</Link>
         <Link to="/competitions">Competitions</Link>
         <Link to="/workshops">Workshops</Link>
+        <Link to="/shows">Shows</Link>
         <Link to="/championships">Championship</Link>
         <Link to="/signin">Sign In / Register</Link>
       </Flex>
