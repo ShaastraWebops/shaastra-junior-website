@@ -18,7 +18,7 @@ const EventPage = ({type} : any)=>{
 
     return(
         <CustomBox>
-            <Flex flexDirection={"column"} alignItems="center" paddingTop={'80px'} minHeight={"100vh"}>
+            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','100px']} minHeight={"100vh"}>
             <Heading mb={4}>{event[0].name}</Heading>
              <Container maxWidth="6xl" alignItems="center" justifyContent='center'>
              <Flex flexDirection={['column','column','row']}>
@@ -69,14 +69,14 @@ const EventPage = ({type} : any)=>{
                 {
                     event[0].faqs.map((faq)=>{
                         return(
-                            <Box mb={2} key={faq.id}>
+                            <Box mb={4} key={faq.id}>
                                 <Flex>
-                                    <Box p={'5'} width={"100%"} borderTopRadius={"lg"} backgroundColor={"#6a6a85b6"}>
+                                    <Box p={'5'} width={"100%"} borderTopRadius={"lg"} backgroundColor={"#467d63"}>
                                        <Heading size = "md">{faq.question}</Heading>
                                     </Box>
                                 </Flex>
                                 <Flex>
-                                    <Box p={'5'} backgroundColor={'#dbdbff'} borderBottomRadius={"lg"} >
+                                    <Box p={'5'} backgroundColor={'#f4f7c6'} borderBottomRadius={"lg"} >
                                     <Text fontWeight={"semibold"}>{faq.answer}</Text>
                                     </Box>
                                 </Flex>

@@ -25,8 +25,8 @@ const ChampionShip = () => {
                     <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
                             <Flex justifyContent="space-between">
-                                <Text fontSize="25px">Name</Text>
-                                <Text  fontSize="25px">10 pts</Text>
+                                <Text color="#000" fontSize="25px">Name</Text>
+                                <Text color="#000"  fontSize="25px">10 pts</Text>
                             </Flex>
                         </Box>
                     </Flex>
@@ -34,8 +34,8 @@ const ChampionShip = () => {
                     <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
                             <Flex justifyContent="space-between">
-                                <Text  fontSize="25px">Name</Text>
-                                <Text  fontSize="25px"> 10 pts</Text>
+                                <Text  color="#000" fontSize="25px">Name</Text>
+                                <Text  color="#000" fontSize="25px"> 10 pts</Text>
                             </Flex>
                         </Box>
                     </Flex>
@@ -43,8 +43,8 @@ const ChampionShip = () => {
                     <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginBottom="20px" marginTop="20px">
                             <Flex justifyContent="space-between">
-                                <Text  fontSize="25px">Name</Text>
-                                <Text  fontSize="25px">10 pts</Text>
+                                <Text  color="#000" fontSize="25px">Name</Text>
+                                <Text  color="#000" fontSize="25px">10 pts</Text>
                             </Flex>
                         </Box>
                     </Flex>
@@ -53,7 +53,7 @@ const ChampionShip = () => {
                         <Text fontSize="40px" className="txt2">PRIZES</Text>
                     </Flex>
 
-                    <Swiper slidesPerView={2} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
+                    <Swiper breakpoints={{678:{slidesPerView:2},1000:{slidesPerView:3}}} slidesPerView={1}  spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>

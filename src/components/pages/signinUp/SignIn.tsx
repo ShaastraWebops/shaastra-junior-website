@@ -29,7 +29,7 @@ const SignIn = () => {
                                 <input type="password" name="password" /> 
                             </Flex>
                         </Flex>
-                            <button>LOGIN IN</button>
+                            <button>LOGIN</button>
                     </form>
                 </Flex>
             </Box>

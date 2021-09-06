@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 overwrite: true
 schema: "http://localhost:8000"
 documents: "src/graphql/**/*.graphql"
@@ -18,3 +19,16 @@ generates:
       skipTypename: true
       flattenGeneratedTypes: true
       addDocBlocks: true
+=======
+overwrite: true
+schema: "http://localhost:8000/graphql"
+documents: "src/**/*.graphql.tsx"
+generates:
+  src/types/generated/generated.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+    withHooks : true
+>>>>>>> d80f3cad7cbeaedccc2e3e5b501d39f13612824e

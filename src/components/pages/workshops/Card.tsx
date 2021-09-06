@@ -16,17 +16,19 @@ const Card = ({data, type} : props) =>{
     return(
             <Flex
             rounded={'xl'}
-            p={3} m={3}
+            p={2} m={3}
             width={['auto','85%']}
             alignItems={'center'}
             flexDirection={['column','column','row']}
             justifyContent={'space-between'}
-            _hover={{boxShadow : 'lg',}}>
+            _hover={{boxShadow : 'lg',}}
+            backgroundColor={'#F1F2E1'}>
             <Image
                 h={['20%','25%']}
                 objectFit ={'fill'}
                 src={data.imageUrl}
-                rounded="3xl"
+                rounded="2xl"
+                m={3}
                 className="card-img"
             />
             <Flex
@@ -53,8 +55,8 @@ const Card = ({data, type} : props) =>{
                         </Tag>
                     </Text>
                     <Spacer />
-                    <Button colorScheme="#6a6a85b6" variant="outline" border="2px solid"
-                    borderColor = "#222244d2"
+                    <Button color={'#244f3b'} variant="outline" border="2px solid"
+                    borderColor = "#244f3b"
                     size="sm" p={2} m={2}
                      onClick={() => {
                          if(type === "workshops"){
@@ -66,44 +68,7 @@ const Card = ({data, type} : props) =>{
                      }} >
                         View Details
                     </Button>
-                    {/* <Button onClick={onOpen}
-                    colorScheme="#6a6a85b6" variant="outline" border="2px solid"
-                    borderColor = "#222244d2"
-                    isDisabled = { (data.deadline.getFullYear() === today.getFullYear())&&(
-                        data.deadline.getMonth() === today.getMonth()
-                    )&&(data.deadline.getDate()-today.getDate()) < 1 ? true : false }
-                     size="sm" p={2} m={2}>
-                        Register Now
-                    </Button>
-                    <Modal
-                        isOpen={isOpen}
-                        onClose={onClose}
-                    >
-                        <ModalOverlay />
-                        <ModalContent>
-                        <ModalHeader>Create your account</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody pb={6}>
-                            <FormControl>
-                            <FormLabel>First name</FormLabel>
-                            <Input  placeholder="First name" />
-                            </FormControl>
-
-                            <FormControl mt={4}>
-                            <FormLabel>Last name</FormLabel>
-                            <Input placeholder="Last name" />
-                            </FormControl>
-                        </ModalBody>
-
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3}>
-                            Save
-                            </Button>
-                            <Button onClick={onClose}>Cancel</Button>
-                        </ModalFooter>
-                        </ModalContent>
-                    </Modal> */}
-                    <RegisterNow  data={data}  />
+                    <RegisterNow  data={data} />
                     </Flex>
                 </Flex>
                 
