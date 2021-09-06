@@ -20,21 +20,40 @@ mutation Login($loginData: LoginInput!){
     verifyUser(token: $verifyUserToken)
   }`
   
-  
+  export const RESETPASSWORD = gql`
+    mutation resetPassword($data: ResetPasswordInput!){
+      resetPassword(data: $data)
+    }`
+
+  export const REQFORGOTPASSWORD = gql`
+    mutation  reqForgotPassVerification($email: RequestForgotPassInput!){
+      reqForgotPassVerification(data: $email)
+    }
+  `
+
   export const ME = gql`
   query getProfile{
     me {
       id,
       sjID,
       name,
+      school,
       registeredEvents {
+        title,
+        id,
+        eventType,
         audience,
         description,
         registrationType,
         isRegistered,
+        pic,
+        eventTimeFrom,
+        eventTimeTo,
+        teamSize,
         yourTeam {
           members {
             class,
+            name,
             email
           },
           name,

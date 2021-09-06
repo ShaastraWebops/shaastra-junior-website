@@ -6,9 +6,10 @@ import particlesConfig from "./particles.json"
 
 import {Flex, Image, Box, Button, Link} from "@chakra-ui/react"
 import { useLoginMutation, useGetProfileQuery, UserRole, useResetPasswordMutation } from '../../../types/generated/generated';
-import { useState } from 'react';
+import { useState } from 'react-router/node_modules/@types/react';
+import { getTsBuildInfoEmitOutputFilePath } from 'typescript';
 import { InfoIcon } from '@chakra-ui/icons';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router';
 import {getRole } from './Context';
 
 // const makeProvider = (role: UserRole) =>
@@ -21,7 +22,7 @@ import {getRole } from './Context';
 // }
 
 
-const SignIn = () => {
+const ForgotAfter = () => {
     const [login, setLoginData] = useState({email: "", password: ""})
     const [email,setEmail] = useState("");
     const [pw,setPw] = useState("");
@@ -39,19 +40,12 @@ const SignIn = () => {
 
     return(
         <CustomBox>
-            <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" 
-            display="flex" alignItems="center">
+            <Box width="100vw" height="100vh" className="sign" backgroundColor="#222244d2" display="flex" alignItems="center">
             <Particles id="particles-js" params={particlesConfig}></Particles>
-                <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
-                zIndex="2" className="sign-flex">
-                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="100%" className="sign-intro"
+                <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" zIndex="2" className="sign-flex">
+                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#aedbecc2" height="100%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <h1>Welcome to <span>SHAASTRA JUNIORS</span></h1>
-                        <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
-                        {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
-                                Forgot Pasword
-                        </Link> */}
-                       <span> <a href="/forgot">Forgot Password</a> </span>
                     </Box>
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
@@ -64,37 +58,21 @@ const SignIn = () => {
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
-                            history.push(``)
                         }
                     }}>
                         <Flex width="90%" justifyContent="space-between" className="sign-input"> 
                             <Flex flexDirection="column" height="15vh" justifyContent="space-between">
                                 <label htmlFor="username">Email ID</label>
-                                <label htmlFor="password">Password</label>
                             </Flex>
                             <Flex flexDirection="column" height="15vh" justifyContent="space-between" className="sign-input">
                                 <input type="text" name="username" onChange={emailHandler} />
-                                <input type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
                         </Flex>
-                        <button>LOGIN</button>
-                        {/* <Flex width="100%" justifySelf="flex-end" alignItems="center" justifyContent="center">
-                            <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
-                                Forgot Pasword
-                            </Link>
-                            <button>LOGIN</button>
-                        </Flex> */}
+                        <button>Send link to reset password</button>
                     </form>
                 </Flex>
             </Box>
         </CustomBox>
     )
 }
-
-// export function Provider(props:any)
-// {
-//     makeProvider()
-// }
-
-
-export default SignIn
+ export default ForgotAfter()

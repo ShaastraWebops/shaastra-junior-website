@@ -1,9 +1,15 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import React from 'react'
+import { useContext } from 'react-router/node_modules/@types/react'
+import { UserRole } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
+import { RoleContext } from '../signinUp/Context'
 
 const Event = () => {
+
+    const role = useContext(RoleContext)
+
     const audience = ["KIDS","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
     const [initvalues , setInitvalues] = React.useState({
         title: "",
@@ -17,6 +23,8 @@ const Event = () => {
         teamsize: 0,
         description: ""
     });
+
+    if(role === UserRole.Admin)
     return (
        <CustomBox>
            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
