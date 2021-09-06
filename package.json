@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.4.10",
     "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/menu": "^1.7.2",
     "@chakra-ui/react": "^1.0.0",
@@ -53,9 +54,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "main": "index.js",
-  "repository": "https://github.com/ShaastraWebops/shaastra-junior-website.git",
-  "author": "Tushar Balani <tusharbalani@gmail.com>",
-  "license": "MIT"
+  }
 }
