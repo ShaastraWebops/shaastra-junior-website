@@ -424,7 +424,7 @@ export type LoginMutation = (
   { __typename?: 'Mutation' }
   & { login?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'name' | 'email' | 'isVerified'>
+    & Pick<User, 'name' | 'email' | 'isVerified' | 'role'>
   )> }
 );
 
@@ -438,6 +438,26 @@ export type VerifyUserMutation = (
   & Pick<Mutation, 'verifyUser'>
 );
 
+export type ResetPasswordMutationVariables = Exact<{
+  data: ResetPasswordInput;
+}>;
+
+
+export type ResetPasswordMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'resetPassword'>
+);
+
+export type ReqForgotPassVerificationMutationVariables = Exact<{
+  email: RequestForgotPassInput;
+}>;
+
+
+export type ReqForgotPassVerificationMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'reqForgotPassVerification'>
+);
+
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -445,16 +465,16 @@ export type GetProfileQuery = (
   { __typename?: 'Query' }
   & { me?: Maybe<(
     { __typename?: 'User' }
-    & Pick<User, 'id' | 'sjID' | 'name'>
+    & Pick<User, 'id' | 'sjID' | 'name' | 'school'>
     & { registeredEvents: Array<(
       { __typename?: 'Event' }
-      & Pick<Event, 'audience' | 'description' | 'registrationType' | 'isRegistered'>
+      & Pick<Event, 'title' | 'id' | 'eventType' | 'audience' | 'description' | 'registrationType' | 'isRegistered' | 'pic' | 'eventTimeFrom' | 'eventTimeTo' | 'teamSize'>
       & { yourTeam?: Maybe<(
         { __typename?: 'Team' }
         & Pick<Team, 'name' | 'id'>
         & { members: Array<(
           { __typename?: 'User' }
-          & Pick<User, 'class' | 'email'>
+          & Pick<User, 'class' | 'name' | 'email'>
         )> }
       )> }
     )> }
@@ -688,6 +708,7 @@ export const LoginDocument = gql`
     name
     email
     isVerified
+    role
   }
 }
     `;
@@ -748,20 +769,91 @@ export function useVerifyUserMutation(baseOptions?: Apollo.MutationHookOptions<V
 export type VerifyUserMutationHookResult = ReturnType<typeof useVerifyUserMutation>;
 export type VerifyUserMutationResult = Apollo.MutationResult<VerifyUserMutation>;
 export type VerifyUserMutationOptions = Apollo.BaseMutationOptions<VerifyUserMutation, VerifyUserMutationVariables>;
+export const ResetPasswordDocument = gql`
+    mutation resetPassword($data: ResetPasswordInput!) {
+  resetPassword(data: $data)
+}
+    `;
+export type ResetPasswordMutationFn = Apollo.MutationFunction<ResetPasswordMutation, ResetPasswordMutationVariables>;
+
+/**
+ * __useResetPasswordMutation__
+ *
+ * To run a mutation, you first call `useResetPasswordMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useResetPasswordMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [resetPasswordMutation, { data, loading, error }] = useResetPasswordMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useResetPasswordMutation(baseOptions?: Apollo.MutationHookOptions<ResetPasswordMutation, ResetPasswordMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ResetPasswordMutation, ResetPasswordMutationVariables>(ResetPasswordDocument, options);
+      }
+export type ResetPasswordMutationHookResult = ReturnType<typeof useResetPasswordMutation>;
+export type ResetPasswordMutationResult = Apollo.MutationResult<ResetPasswordMutation>;
+export type ResetPasswordMutationOptions = Apollo.BaseMutationOptions<ResetPasswordMutation, ResetPasswordMutationVariables>;
+export const ReqForgotPassVerificationDocument = gql`
+    mutation reqForgotPassVerification($email: RequestForgotPassInput!) {
+  reqForgotPassVerification(data: $email)
+}
+    `;
+export type ReqForgotPassVerificationMutationFn = Apollo.MutationFunction<ReqForgotPassVerificationMutation, ReqForgotPassVerificationMutationVariables>;
+
+/**
+ * __useReqForgotPassVerificationMutation__
+ *
+ * To run a mutation, you first call `useReqForgotPassVerificationMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useReqForgotPassVerificationMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [reqForgotPassVerificationMutation, { data, loading, error }] = useReqForgotPassVerificationMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useReqForgotPassVerificationMutation(baseOptions?: Apollo.MutationHookOptions<ReqForgotPassVerificationMutation, ReqForgotPassVerificationMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<ReqForgotPassVerificationMutation, ReqForgotPassVerificationMutationVariables>(ReqForgotPassVerificationDocument, options);
+      }
+export type ReqForgotPassVerificationMutationHookResult = ReturnType<typeof useReqForgotPassVerificationMutation>;
+export type ReqForgotPassVerificationMutationResult = Apollo.MutationResult<ReqForgotPassVerificationMutation>;
+export type ReqForgotPassVerificationMutationOptions = Apollo.BaseMutationOptions<ReqForgotPassVerificationMutation, ReqForgotPassVerificationMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile {
   me {
     id
     sjID
     name
+    school
     registeredEvents {
+      title
+      id
+      eventType
       audience
       description
       registrationType
       isRegistered
+      pic
+      eventTimeFrom
+      eventTimeTo
+      teamSize
       yourTeam {
         members {
           class
+          name
           email
         }
         name

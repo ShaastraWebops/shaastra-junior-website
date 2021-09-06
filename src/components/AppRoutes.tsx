@@ -8,13 +8,17 @@ import Workshops from "./pages/workshops/Workshops"
 import CompetitionPage from "./pages/competitions/CompetitionsPage"
 import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
+import Shows from "./pages/shows/Shows"
+import ShowPage from "./pages/shows/ShowsPage"
 
 import Profile from "./pages/profile/Profile"
 import Contactus from "./pages/contactus/Contact"
-import SignIn from "./../components/pages/signinUp/SignIn"
-import SignUp from "./../components/pages/signinUp/SignUp"
+import SignIn from "./pages/signinUp/SignIn"
+import SignUp from "./pages/signinUp/SignUp"
 import HelpDesk from "./pages/helpdesk/HelpDesk"
 import Event from "./pages/Admin/Event"
+import Verify from "./pages/signinUp/Verify"
+import Forgot from "./pages/signinUp/Forgot"
 interface Props {
     
 }
@@ -27,25 +31,32 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/workshops">
                 <Events type= "workshops" />
             </Route>
-
+            {/* <Route exact path="/shows" component={ShowPage}></Route> */}
             <Route exact path="/competitions">
                 <Events type= "competitions" />
             </Route>
-
-            <Route exact path="/workshops/:id">
-                <EventPage type= "workshops"/>
+            <Route exact path="/shows" component={Shows}></Route>
+            <Route exact path="/shows/:showid" component={ShowPage}>
+                {/* <EventPage type="shows"></EventPage> */}
             </Route>
-
+            
             <Route exact path="/competitions/:id">
                     <EventPage type= "competitions"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            <Route exact path="/profile" component={Profile}></Route>
+            {/* <Route exact path="/User/:profName" component={Profile}></Route> */}
+
+
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
+
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
-            <Route exact path="/event" component={Event}/>
+            <Route  path="/verifyuser/:token" component={Verify}></Route>
+
+            <Route exact path="/forgot" component={Forgot}></Route>
+
+            {/* <Route exact path="/event" component={Event}/> */}
         </Router>
     )
 }
