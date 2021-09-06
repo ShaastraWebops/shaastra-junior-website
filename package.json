@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.10",
+<<<<<<< HEAD
+=======
     "@apollo/react-hooks": "^4.0.0",
+>>>>>>> d80f3cad7cbeaedccc2e3e5b501d39f13612824e
     "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/menu": "^1.7.2",
     "@chakra-ui/react": "^1.0.0",
@@ -62,6 +65,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
+=======
   },
   "main": "index.js",
   "repository": "https://github.com/ShaastraWebops/shaastra-junior-website.git",
@@ -72,5 +77,6 @@
     "@graphql-codegen/typescript": "^2.1.2",
     "@graphql-codegen/typescript-operations": "1.18.0",
     "@graphql-codegen/typescript-react-apollo": "2.2.5"
+>>>>>>> d80f3cad7cbeaedccc2e3e5b501d39f13612824e
   }
 }

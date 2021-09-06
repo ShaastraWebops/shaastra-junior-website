@@ -4,8 +4,14 @@ import { Flex, Heading } from '@chakra-ui/layout';
 import {  Input, Button, FormControl } from '@chakra-ui/react';
 import Names from './Names';
 
+
+
 function HelpDesk() {
+
+  
+
   return (
+    // <ApolloProvider client={client}>
     <CustomBox >
       <Flex  flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'100px'}>
             <Heading >Helpdesk</Heading>
@@ -25,6 +31,7 @@ function HelpDesk() {
       
          </Flex>
       </CustomBox>
+      // </ApolloProvider>
   )
 }
 

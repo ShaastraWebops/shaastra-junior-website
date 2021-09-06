@@ -109,3 +109,9 @@
         background-position: 0% 50%;
     }
 }
+
+@media only screen and (max-width:559px){
+    .pp{
+        width: 0%;
+    }
+}
