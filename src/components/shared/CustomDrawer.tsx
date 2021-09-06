@@ -6,17 +6,21 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
-  DrawerOverlay,
+  DrawerOverlay
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useBreakpointValue } from "@chakra-ui/media-query";
-import {Box} from "@chakra-ui/react"
+import {Box, Button} from "@chakra-ui/react"
 import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../styles/header.css"
 import { Link } from "react-router-dom";
-import { useLogoutMutation } from "../../types/generated/generated";
-import {Redirect} from "react-router"
+import { useGetProfileQuery, useLoginMutation, useLogoutMutation } from "../../types/generated/generated";
+import {Redirect, useHistory} from "react-router"
+import { useContext } from "react";
+import { RoleContext } from "../pages/signinUp/Context";
+import LogOut from "../pages/signinUp/LogOut";
+import {UserRole} from "../../types/generated/generated"
 
 interface Props {
   isOpen: boolean;
@@ -27,11 +31,14 @@ const CustomDrawer = (props: Props) => {
   const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
 
-  const [logoutMutation, {data,loading,error}] = useLogoutMutation()
-  const logOut = async () => {
-    const resp = await logoutMutation();
-    return (<Redirect to="/" />)
-  }
+  const role = useContext(RoleContext)
+  const {data,loading,error} = useGetProfileQuery()
+  const history = useHistory()
+  // const logOut = async () => {
+
+  //   const resp = await logOutMutation();
+  //   return (history.push('/'))
+  // }
 
   return (
     <Drawer
@@ -65,10 +72,10 @@ const CustomDrawer = (props: Props) => {
         <Flex flexDirection="column" height="100%" justifyContent="space-between" className="menu-links"
         fontSize="2vw" p={3} width="center" alignItems="center" color={'white'}>
           <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
-            <Link to="/profile">My Profile</Link>
+          < Link to={`/${role}/${data?.me?.name}`}>My Profile</Link>
             <Link to="/helpdesk">Help Desk</Link>
             <Link to="/contactus">Contact Us</Link>
-            <Link to="/" onClick={logOut}>Sign Out</Link>
+            {data?.me ? <Button onClick={LogOut}>Sign Out</Button> : <Button isDisabled>Sign Out</Button> }
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
             <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>

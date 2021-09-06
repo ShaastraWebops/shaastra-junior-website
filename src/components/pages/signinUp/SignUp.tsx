@@ -5,22 +5,23 @@ import Particles from 'react-tsparticles';
 import particlesConfig from "./particles.json"
 
 import {Flex, Image, Box} from "@chakra-ui/react"
-import { useCreateUserMutation } from '../../../types/generated/generated';
+import { useCreateUserMutation, useGetProfileQuery } from '../../../types/generated/generated';
 import { useState } from 'react';
 import { Standard } from '../../../types/generated/generated';
-import { Redirect} from 'react-router';
+import { useHistory,Redirect} from 'react-router-dom';
+
 
 const SignUp = () => {
 
     const {Kids, First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth} = Standard
     const [createUserMutation, {data,loading,error}] = useCreateUserMutation(); 
-    const [email,setEmail] = React.useState("")
-    const [pw,setPw] = React.useState("")
-    const [checkPw,setCheckPw] = React.useState("")
-    const [name,setName] = React.useState("")
-    const [school, setSchool] = React.useState("")
-    const [standard, setStandard] = React.useState<Standard>(Kids)
-
+    const [email,setEmail] = useState("")
+    const [pw,setPw] = useState("")
+    const [checkPw,setCheckPw] = useState("")
+    const [name,setName] = useState("")
+    const [school, setSchool] = useState("")
+    const [standard, setStandard] = useState<Standard>(Kids)
+    const history = useHistory()
 
     const emailHandler = (e:any) => { setEmail(e.target.value) }
     const pwHandler = (e:any) => { setPw(e.target.value) }
@@ -49,10 +50,11 @@ const SignUp = () => {
 
     return(
         <CustomBox>
-            <Box width="100vw" height="100vh" className="sign" backgroundColor="#222244d2" display="flex" alignItems="center">
+            <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" display="flex" alignItems="center">
             <Particles id="particles-js" params={particlesConfig}></Particles>
-                <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" zIndex="2" className="sign-flex">
-                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#aedbecc2" height="100%" className="sign-intro"
+                <Flex width="fit-content" margin="auto" height="60vh" boxShadow="0px 0px 15px 0px #1c1c2b80"
+                alignItems="center" zIndex="2" className="sign-flex">
+                    <Box width="40vw" padding="0 1.8vw"  height="100%" className="sign-intro" backgroundColor="#b0dbbe"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <h1>Welcome to <span>SHAASTRA JUNIORS</span></h1>
                         <p>Registered? <a href="/signin"><span>Sign In</span></a></p>
@@ -69,11 +71,11 @@ const SignUp = () => {
                                     class: standard
                                 }
                             }})
-                            return(<Redirect to="/"></Redirect>)
+                           history.push(`/`)
                         }
                     }}>
-                        <Flex width="90%" justifyContent="space-between"> 
-                            <Flex flexDirection="column" height="20vh" justifyContent="space-between" className="sign-input">
+                        <Flex width="100%" justifyContent="space-between" height="70%"> 
+                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input">
                                 <label htmlFor="name">Name</label>
                                 <label htmlFor="username">Username</label>
                                 <label htmlFor="password">Password</label>
@@ -81,7 +83,7 @@ const SignUp = () => {
                                 <label htmlFor="school">School</label>
                                 <label htmlFor="class">Class</label>
                             </Flex>
-                            <Flex flexDirection="column" height="20vh" justifyContent="space-between" className="sign-input">
+                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input">
                                 <input type="text" name="name" onChange={nameHandler}/>
                                 <input type="text" name="username" onChange={emailHandler}  />
                                 <input type="password" name="password" onChange={pwHandler} /> 
@@ -100,7 +102,7 @@ const SignUp = () => {
                                     <option value="NINTH">Ninth</option>
                                     <option value="TENTH">Tenth</option>
                                     <option value="ELEVENTH">Eleventh</option>
-                                    <option value="TWELTH">Twelth</option>
+                                    <option value="TWELTH">Twelfth</option>
                                 </select>
                             </Flex>
                         </Flex>

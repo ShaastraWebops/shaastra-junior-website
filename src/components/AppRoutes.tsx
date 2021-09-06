@@ -15,6 +15,8 @@ import HelpDesk from "./pages/helpdesk/HelpDesk"
 import AddEvent from "./pages/Admin/AddEvent"
 import EditEvent from "./pages/Admin/EditEvent"
 import { EventType } from "../types/generated/generated"
+import Verify from "./pages/signinUp/Verify"
+import Forgot from "./pages/signinUp/Forgot"
 interface Props {
     
 }
@@ -43,15 +45,21 @@ const AppRoutes = (props: Props) => {
                     <EventPage type= "workshops"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            <Route exact path="/profile/:profName" component={Profile}></Route>
+            {/* <Route exact path="/User/:profName" component={Profile}></Route> */}
 
 
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
+
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
+            <Route  path="/verifyuser/:token" component={Verify}></Route>
+
+            <Route exact path="/forgot" component={Forgot}></Route>
+
+            {/* <Route exact path="/event" component={Event}/> */}
         </Router>
     )
 }
