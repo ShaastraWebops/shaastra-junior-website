@@ -1,40 +1,70 @@
+import { CheckIcon } from '@chakra-ui/icons'
 import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
-import React from 'react'
-import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
+import React, { Fragment } from 'react'
+import { useParams } from 'react-router-dom'
+import { EventType, RegistraionType, Standard, useEditEventMutation, useGetEventQuery } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
+import Loader from '../../shared/Loader'
+import { competitions, workshops } from '../workshops/data'
 
-const Event = () => {
+const EditEvent = () =>{
+
     const audience = ["KIDS","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
-    const [addEvent] = useCreateEventMutation();
-    const {data,error,loading} = useGetEventsQuery();
+    const [EditEvent] = useEditEventMutation();
+    const [image, setImage ] = React.useState< any | null >();
+    const [ url, setUrl ] = React.useState<any | null>();
+    const { id } = useParams<{id : string}>();
+    const [uploaded , setUploaded ] = React.useState(false);
+ 
+    const {data , loading , error } = useGetEventQuery({variables : {
+      getEventEventId : id
+  }});
+  const event = data?.getEvent ;
 
-    console.log(data);
-
-    return (
-       <CustomBox>
-           <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
-               <Heading>Events</Heading>
-              <Box width={'100%'}>
-                  <Heading as="h3" size="lg" float={'left'}  m={2} p={3}>Add Event</Heading>
+  const uploadImage = () => {
+    const data = new FormData()
+    data.append("file", image)
+    data.append("upload_preset", "y3rgquaa")
+    data.append("cloud_name","dlpivzuff")
+    fetch(" https://api.cloudinary.com/v1_1/dlpivzuff/upload",{
+    method:"post",
+    body: data
+    })
+    .then(resp => resp.json())
+    .then(data => {
+    setUrl(data.url)
+    setUploaded(true)
+    })
+    .catch(err => console.log(err))
+    }
+   
+    if(loading) return(<Loader />)
+    return(
+         <CustomBox>
+            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
+            <Box width={'100%'}>
+            <Heading as="h3" size="lg" float={'left'}  m={2} p={3}>Edit Event</Heading>
               </Box>
               <Formik 
-               initialValues={{
-                "title": "",
-                "type": EventType.Competitions,
-                "Audience Type": [Standard.Twelfth,Standard.Third],
-                "rot": "",
-                "rct": "",
-                "est": "",
-                "ect": "",
-                "regtype": RegistraionType.None,
-                "teamsize": 0,
-                "description": ""
-               }}
+                  initialValues={
+                    {
+                      "title": event!.title,
+                      "type": event!.eventType,
+                      "Audience Type": event!.audience,
+                      "rot": event!.registrationOpenTime,
+                      "rct": event!.registrationCloseTime,
+                      "est": event!.eventTimeFrom,
+                      "ect": event!.eventTimeTo,
+                      "regtype": event!.registrationType,
+                      "teamsize": event!.teamSize,
+                      "description": event!.description,
+                   }}
                onSubmit={(values, actions) => {
-                 addEvent({
+                 EditEvent({
                    variables:{
-                    createEventData:{
+                    editEventEventId : id,
+                    editEventData:{
                           title : values.title,
                           description : values.description,
                           eventType : values.type,
@@ -45,14 +75,10 @@ const Event = () => {
                           eventTimeTo : values.ect,
                           registrationType: values.regtype,
                           teamSize : values.teamsize,
-                          pic : "ndcjkn"
+
+          
                    }}
                  }).catch(err => console.log(err))
-                 setTimeout(() => {
-                   console.log(JSON.stringify(values, null, 2))
-                   alert(JSON.stringify(values, null, 2))
-                   actions.setSubmitting(false)
-                 }, 1000)
                  actions.resetForm()
                }}>
               {(props)=>(
@@ -85,7 +111,7 @@ const Event = () => {
              {({ field }:{field: any}) => (
               <FormControl m={2}>
               <FormLabel >Audience Type</FormLabel>
-              <Select  {...field} multiple id="Audience Type" borderColor={'#244f3b'} placeholder="Audience Type" color={"#244f3b"}>
+              <Select  {...field} size={'lg'} multiple id="Audience Type" borderColor={'#244f3b'} placeholder="Audience Type" color={"#244f3b"}>
                  
                   {
                       audience.map((aud) =>(
@@ -140,9 +166,9 @@ const Event = () => {
               <FormControl m={2}>
               <FormLabel >Registration Type</FormLabel>
               <Select {...field} id="regtype" borderColor={'#244f3b'} placeholder="Registration Type" color={"#244f3b"}>
-                  <option value="workshop">None</option>
-                  <option value="Individual">Individual</option>
-                  <option value="Team">Team</option>
+                  <option value= {RegistraionType.None}>None</option>
+                  <option value={RegistraionType.Individual}>Individual</option>
+                  <option value={RegistraionType.Team}>Team</option>
               </Select>
               </FormControl>
              )}
@@ -166,20 +192,39 @@ const Event = () => {
              )}
              </Field>
             </Flex>
+            <Flex flexDirection={'row'} m={2} p={2} justifyContent={'center'} fontSize={'small'}>
+             <Box width={['80%','20%']}>
+             <Field  name="pic">
+              {({ field }:{field: any}) => (
+                <FormControl>
+                <Input {...field} type='file' id="pic" fontSize={'small'} onChange= {(e)=> setImage(e.target.files![0])}
+                p={2} borderColor={'#244f3b'}/>
+                </FormControl>
+              )}
+             </Field>
+             </Box>
+             <Button onClick={uploadImage} size={'xs'} m={2}>Upload Image</Button>
+             {
+               uploaded ? 
+               (<CheckIcon color={'green'} border={"2px solid"} p={1} borderRadius={'full'} w={6} h={6} m={2}/>)
+               :null
+             }
+              </Flex>
             <Flex flexDirection={'row'} width={'100%'} m={2} justifyContent={'center'}>
                 <Button
                 variant={'solid'}
                 borderColor = '#244f3b'
                 type="submit"
-                >Add Event</Button>
+                >Edit Event</Button>
                 </Flex>
             </Form>  )}
                
               </Formik>
-              
-           </Flex>
-       </CustomBox>
+            </Flex>
+              </CustomBox>
     )
+
+
 }
 
-export default Event
+export default EditEvent;

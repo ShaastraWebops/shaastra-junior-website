@@ -75,9 +75,19 @@ mutation Login($loginData: LoginInput!){
     getEvents(filter: $getEventsFilter) {
       count,
       events {
-        id,
-        title,
+        id
+        title
+        description
+        pic
+        audience
+        eventType
+        registrationOpenTime
+        eventTimeFrom
+        registrationCloseTime
+        eventTimeTo
+        updatedOn
         registrationType
+        teamSize
       }
     }
   }`
@@ -88,7 +98,18 @@ mutation Login($loginData: LoginInput!){
       id,
       eventTimeFrom,
       eventTimeTo,
+      title,
+      description,
+      pic,
       registrationType,
+      audience,
+      eventType,
+      registrationType,
+      registrationOpenTime,
+      eventTimeFrom,
+      registrationCloseTime,
+      eventTimeTo,
+      teamSize,
       faqs {
         answer,
         question,
@@ -116,6 +137,11 @@ mutation Login($loginData: LoginInput!){
   export const EDITEVENT = gql`
   mutation editEvent($editEventEventId: String!, $editEventData: EditEventInput!){
     editEvent(EventID: $editEventEventId, data: $editEventData)
+  }`
+
+  export const DELETEEVENT = gql`
+  mutation deleteEvent($deleteEventEventId: String!) {
+    deleteEvent(EventID: $deleteEventEventId)
   }`
   
   export const CREATEEVENTFAQ = gql`

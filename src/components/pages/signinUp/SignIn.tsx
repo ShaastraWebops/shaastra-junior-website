@@ -10,11 +10,14 @@ import { useState } from 'react-router/node_modules/@types/react';
 import { getTsBuildInfoEmitOutputFilePath } from 'typescript';
 import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 const SignIn = () => {
-    const [login, setLoginData] = useState({email: "", password: ""})
-    const [email,setEmail] = useState("");
-    const [pw,setPw] = useState("");
+
+    const history = useHistory();
+    const [login, setLoginData] = React.useState({email: "", password: ""})
+    const [email,setEmail] = React.useState("");
+    const [pw,setPw] = React.useState("");
     const [loginMutation, {data,error,loading}] = useLoginMutation()
 
     const emailHandler = (e : any) => {setEmail(e.target.value)}
@@ -36,15 +39,19 @@ const SignIn = () => {
                     </Box>
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
-                        setLoginData({email:email, password:pw});
-                        const resp = await loginMutation({variables: {loginData: login}});
-                        if(resp.data?.login?.isVerified)
-                        {
-                           
-                            // const {data,loading,error} = useGetProfileQuery()
-                            // data?.me
-                            return(<Redirect to={`/${resp.data.login.name}`} />)
-                        }
+                        setLoginData({email:'webops@shaastra.org', password:'test123'});
+                        
+                        loginMutation({variables: {loginData: login}})
+                        .then(res =>{
+                            if(res.data?.login?.isVerified)
+                            {
+                                   history.push("/profile")
+                               
+                                
+                                // return(<Redirect to={`/${res.data.login.name}`} />)
+                            }
+
+                        }).catch(err => console.log(err));
                     }}>
                         <Flex width="90%" justifyContent="space-between" className="sign-input"> 
                             <Flex flexDirection="column" height="15vh" justifyContent="space-between">

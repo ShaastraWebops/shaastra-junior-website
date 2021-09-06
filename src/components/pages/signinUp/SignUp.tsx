@@ -6,7 +6,7 @@ import particlesConfig from "./particles.json"
 
 import {Flex, Image, Box} from "@chakra-ui/react"
 import { useCreateUserMutation } from '../../../types/generated/generated';
-import { useState } from 'react-router/node_modules/@types/react';
+import { useState } from 'react';
 import { Standard } from '../../../types/generated/generated';
 import { Redirect} from 'react-router';
 
@@ -14,12 +14,12 @@ const SignUp = () => {
 
     const {Kids, First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth} = Standard
     const [createUserMutation, {data,loading,error}] = useCreateUserMutation(); 
-    const [email,setEmail] = useState("")
-    const [pw,setPw] = useState("")
-    const [checkPw,setCheckPw] = useState("")
-    const [name,setName] = useState("")
-    const [school, setSchool] = useState("")
-    const [standard, setStandard] = useState<Standard>(Kids)
+    const [email,setEmail] = React.useState("")
+    const [pw,setPw] = React.useState("")
+    const [checkPw,setCheckPw] = React.useState("")
+    const [name,setName] = React.useState("")
+    const [school, setSchool] = React.useState("")
+    const [standard, setStandard] = React.useState<Standard>(Kids)
 
 
     const emailHandler = (e:any) => { setEmail(e.target.value) }

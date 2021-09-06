@@ -1,32 +1,49 @@
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Box, Button, Center, Container, Flex, Heading ,Image, Spacer, Tag, TagLabel, Text } from "@chakra-ui/react";
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { useDeleteEventMutation, useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
 import CustomBox from "../../shared/CustomBox";
+import Loader from "../../shared/Loader";
 import { competitions,workshops } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 
 const EventPage = ({type} : any)=>{
-    const data = (type === "competitions" ? competitions : workshops) ;
-    console.log(data)
+
+    const history = useHistory();
     const { id } = useParams<{id : string}>();
     const today = new Date();
-    const event  = data.filter((e)=>{
-            if(e.id === id){
-                return true;
+    
+    const {data , loading , error } = useGetEventQuery({variables : {
+        getEventEventId : id
+    }});
+    const event = data?.getEvent ;
+
+    const [deleteEvent , {data : data1 ,loading : loading1,error : error1}] = useDeleteEventMutation();
+
+    const DeleteEvent = (id : string) =>{
+        deleteEvent(
+            {
+                variables :{
+                    deleteEventEventId : id
+                }
             }
-    });
+        ).then(()=> history.goBack() )
+    }
+
+    if(loading) return (<Loader />)
 
     return(
         <CustomBox>
             <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','100px']} minHeight={"100vh"}>
-            <Heading mb={4}>{event[0].name}</Heading>
-             <Container maxWidth="6xl" alignItems="center" justifyContent='center'>
+            <Heading mb={4}>{event?.title}</Heading>
+             <Container maxWidth="6xl" alignItems="center" >
              <Flex flexDirection={['column','column','row']}>
              <Image
-                h={['2%',"300px","auto"]}
+                h={['2%',"300px","200px"]}
                 width={'auto'}
                 objectFit ={'contain'}
-                src={event[0].imageUrl}
+                src={event?.pic}
                 p={4}
                 rounded={["3xl","3xl"]}
                 className="card-img"
@@ -38,25 +55,32 @@ const EventPage = ({type} : any)=>{
                 fontWeight={'medium'}
                 fontSize={'20px'}
                 p={4}>
-                {event[0].description}
+                {event?.description}
                 </Text>
                
-                 <Flex p={3} flexDirection={["column","row"]} alignItems={'center'}>
+                 <Flex p={3} flexDirection={["column","column","row"]} alignItems={'center'}>
                  <Flex p={3} flexDirection="row" alignItems={'center'}>
                   <Text
                     fontFamily={'Inter'}
                     fontWeight={'medium'}
                     >
-                    DeadLine : <Tag variant="solid" 
-                    colorScheme={(event[0].deadline.getFullYear() === today.getFullYear())&&(
-                        event[0].deadline.getMonth() === today.getMonth()
-                    )&&(event[0].deadline.getDate()-today.getDate()) <= 1 ? "red" : "teal"}
-                    > <TagLabel>{event[0].deadline.toDateString()}</TagLabel></Tag>
+                    DeadLine : <Tag variant="solid"
+                    > <TagLabel>{event?.registrationCloseTime?.toString()}</TagLabel></Tag>
                     </Text>
                     </Flex >
                     <Spacer />
-                    <Flex float = "right">
-                    <RegisterNow data={event[0]}/>
+                    <Flex float = "right"  p={3} flexDirection={["column","column","row"]}>
+                    <Button color={'#244f3b'} variant="outline" border="2px solid"
+                    borderColor = "#244f3b"
+                    size="sm" p={2} m={2}
+                    onClick={() => { history.push(`/editevent/${id}`)}}
+                    ><EditIcon m={2}/>Edit Event</Button>
+                    <Button color={'#244f3b'} variant="outline" border="2px solid"
+                    borderColor = "#244f3b"
+                    size="sm" p={2} m={2}
+                    onClick = {() => DeleteEvent(event?.id!)}
+                    ><DeleteIcon m={2}/>Delete Event</Button>
+                    <RegisterNow data={event}/>
                     </Flex>
                  </Flex>
                 </Flex>
@@ -67,7 +91,7 @@ const EventPage = ({type} : any)=>{
              <Heading size={'lg'} m={4}>FREQUENTLY ASKED QUESTIONS</Heading>
              </Center>
                 {
-                    event[0].faqs.map((faq)=>{
+                    event?.faqs.map((faq)=>{
                         return(
                             <Box mb={4} key={faq.id}>
                                 <Flex>

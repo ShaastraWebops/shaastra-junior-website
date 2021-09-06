@@ -14,9 +14,9 @@ const RegisterNow = ({data} : any) => {
                      width={["100%","100%","auto"]}
                      color='#244f3b' variant={'outline'} border="2px solid"
                      borderColor = '#244f3b'
-                    isDisabled = { (data.deadline.getFullYear() === today.getFullYear())&&(
-                        data.deadline.getMonth() === today.getMonth()
-                    )&&(data.deadline.getDate()-today.getDate()) < 1 ? true : false }
+                    // isDisabled = { (data.deadline.getFullYear() === today.getFullYear())&&(
+                    //     data.deadline.getMonth() === today.getMonth()
+                    // )&&(data.deadline.getDate()-today.getDate()) < 1 ? true : false }
                      size="sm" p={2} m={2}>
                         Register Now
                     </Button>
