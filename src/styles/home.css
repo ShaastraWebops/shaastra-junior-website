@@ -37,7 +37,7 @@
 }
 .flx1{
     /* height: 100px; */
-    line-height: 250px;
+    line-height: 150px;
     text-align: center;
 }
 .boxx{
@@ -114,4 +114,8 @@
     .pp{
         width: 0%;
     }
+}
+
+.pr{
+    background: url('../images/ppl2.svg');
 }

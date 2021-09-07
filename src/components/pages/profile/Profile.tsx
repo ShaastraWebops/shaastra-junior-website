@@ -26,7 +26,7 @@ import { useParams } from "react-router-dom";
 import { divide } from "lodash";
 import {EventType, RegistraionType, useGetProfileQuery, UserRole} from "../../../types/generated/generated"
 import {useHistory} from "react-router"
-import { useContext } from "react-router/node_modules/@types/react";
+import { useContext } from "react";
 import {RoleContext} from "../signinUp/Context"
  
 SwiperCore.use([Navigation, Pagination, Keyboard])

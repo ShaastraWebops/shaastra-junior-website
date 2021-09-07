@@ -4,7 +4,7 @@ import { Text, useColorModeValue, Flex, Stack, Image, Menu, MenuButton, MenuList
 import { ReactComponent as DiceOutlineDarkAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Dark_animated.svg";
 import { ReactComponent as DiceOutlineLightAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Light_animated.svg";
 import ppl2 from '../../images/ppl2.svg';
-import '../../styles/wave.css'
+// import '../../styles/wave.css'
 import ppl8 from '../../images/ppl8.svg';
 import CustomBox from "../shared/CustomBox";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -26,7 +26,7 @@ import foxmula from '../../images/foxmula.png'
 import innovaccer from '../../images/innovaccer.png'
 import kamal from '../../images/kamal_wears.png'
 import LT from '../../images/L&T.png'
-import mtx from '../../images/mtx.png'
+import mtx from '../../images/MTX.png'
 import subex from '../../images/subex.png'
 import surana from '../../images/surana.png'
 import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-icons"
@@ -78,7 +78,7 @@ const Home = (props: Props) => {
           </Box>
 
 
-          <Flex width="100%" overflow="hidden" display="flex" flexWrap="wrap" justifyContent="center">
+          <Flex width="100%" overflow="hidden" display="flex" height="80vh" flexWrap="wrap" justifyContent="center">
             <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} className="mySwiper">
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
@@ -88,9 +88,6 @@ const Home = (props: Props) => {
               <SwiperSlide><Slider2 /></SwiperSlide>
             </Swiper>
           </Flex>
-          {/* <Flex justifyContent="center">
-            <Box width="70%" marginBottom="20px" borderRadius="50px" justifyContent="center" height="10px" bg="#FBC687" />
-          </Flex> */}
 
           <Box bg="#b1d4d2" width="100%">
             <Flex justifyContent="center">
@@ -118,13 +115,23 @@ const Home = (props: Props) => {
             <Box width="100%" height="150px" className="spons" bg="#222244d2">
               <Text fontSize="30px" className="sponstxt">SPONSORS</Text>
             </Box>
-            <Flex width="100%" bg="#222244d2" flexWrap="wrap" justifyContent="center">
-              <Image src={Astra} width="25vw" p={8} alt=""></Image>
-              <Image src={ppl8} p={8} alt=""></Image>
-              <Image src={ppl8} p={8} alt=""></Image>
-              <Image src={ppl8} p={8} alt=""></Image>
-              <Image src={ppl8} p={8} alt=""></Image>
-              <Image src={ppl8} p={8} alt=""></Image>
+            <Flex width="100%" bg="#fff" flexWrap="wrap" justifyContent="center">
+              <Image src={Astra} width="400px" p={8} alt=""></Image>
+              <Image src={Atlasian}  width="400px" p={8} alt=""></Image>
+              <Image src={Boeing}  width="400px" p={8} alt=""></Image>
+              <Image src={CAT}  width="400px" p={8} alt=""></Image>
+              <Image src={KLA}  width="400px" p={8} alt=""></Image>
+              <Image src={Mahindra}  width="400px" p={8} alt=""></Image>
+              <Image src={Salesforces} width="400px" p={8} alt=""></Image>
+              <Image src={Wells} width="400px" p={8} alt=""></Image>
+              <Image src={foxmula} width="400px" p={8} alt=""></Image>
+              <Image src={innovaccer} width="400px" height="150px" p={8} alt=""></Image>
+              <Image src={kamal} width="400px" p={8} alt=""></Image>
+              <Image src={LT} width="400px" p={8} alt=""></Image>
+              <Image src={subex} height="150px" width="400px" p={8} alt=""></Image>
+              <Image src={mtx} height="170px" width="400px" p={8} alt=""></Image>
+              <Image src={surana} width="400px" p={8} alt=""></Image>
+
             </Flex>
           </Box>
 
