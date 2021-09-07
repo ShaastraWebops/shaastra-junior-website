@@ -33,7 +33,7 @@ const Card = ({data, type} : any) =>{
                 <Flex
             rounded={'xl'}
             p={2} m={3}
-            width={['auto','full']}
+            width={['auto','100%']}
             alignItems={'center'}
             flexDirection={['column','column','row']}
             justifyContent={'space-between'}

@@ -27,7 +27,7 @@ const Events = ({type}: any) => {
             <Box width={['90%','85%']}><Link to="/addevent"><Button float={'right'} color={'#244f3b'} variant="solid" border="2px solid"
               borderColor = "#244f3b"size="sm" p={2} m={2}
             ><AddIcon m={2} />Add Event</Button></Link></Box>
-             <Flex flexDirection={"column"} justifyContent="center" alignItems="center" >
+             <Flex flexDirection={"column"} justifyContent="center" alignItems="center" width={'100%'} >
              {
                 data1?.map( (event) =>(
                       <Card key={event.id} data = {event} type= {type}/>
