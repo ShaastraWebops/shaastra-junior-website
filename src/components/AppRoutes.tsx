@@ -19,6 +19,9 @@ import HelpDesk from "./pages/helpdesk/HelpDesk"
 import Event from "./pages/Admin/Event"
 import Verify from "./pages/signinUp/Verify"
 import Forgot from "./pages/signinUp/Forgot"
+import ForgotAfterLink from "./pages/signinUp/ForgotAfterLink"
+import LogOut from "./pages/signinUp/LogOut"
+import Edit from "./pages/profile/Edit"
 interface Props {
     
 }
@@ -44,19 +47,25 @@ const AppRoutes = (props: Props) => {
                     <EventPage type= "competitions"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            {/* <Route exact path="/User/:profName" component={Profile}></Route> */}
-
+            <Route exact path="/User" component={Profile}></Route>
+            <Route exact path="/editProfile" component={Edit}></Route>
+            {/* <Route exact path="/editProfile" component={Edit}></Route> */}
 
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
 
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
-            <Route  path="/verifyuser/:token" component={Verify}></Route>
+            <Route exact path="/verifyuser/:token" component={Verify}>
+                {/* <Redirect from=""></Redirect> */}
+            </Route>
 
             <Route exact path="/forgot" component={Forgot}></Route>
+            <Route exact path="/forgotpassword/:token" component={ForgotAfterLink}></Route>
 
-            {/* <Route exact path="/event" component={Event}/> */}
+            <Route exact path="/logout" component={LogOut}></Route>
+
+            <Route exact path="/event" component={Event}/>
         </Router>
     )
 }

@@ -15,12 +15,11 @@ import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../styles/header.css"
 import { Link } from "react-router-dom";
-import { useGetProfileQuery, useLoginMutation, useLogoutMutation } from "../../types/generated/generated";
+import { useGetProfileQuery} from "../../types/generated/generated";
 import {Redirect, useHistory} from "react-router"
 import { useContext } from "react";
-import { RoleContext } from "../pages/signinUp/Context";
+import { RoleContext } from "../pages/signinUp/Context"
 import LogOut from "../pages/signinUp/LogOut";
-import {UserRole} from "../../types/generated/generated"
 
 interface Props {
   isOpen: boolean;
@@ -30,7 +29,6 @@ interface Props {
 const CustomDrawer = (props: Props) => {
   const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
-
   const role = useContext(RoleContext)
   const {data,loading,error} = useGetProfileQuery()
   const history = useHistory()
@@ -39,6 +37,7 @@ const CustomDrawer = (props: Props) => {
   //   const resp = await logOutMutation();
   //   return (history.push('/'))
   // }
+  console.log(data)
 
   return (
     <Drawer
@@ -70,12 +69,12 @@ const CustomDrawer = (props: Props) => {
         </DrawerHeader>
         <DrawerBody overflow="hidden">
         <Flex flexDirection="column" height="100%" justifyContent="space-between" className="menu-links"
-        fontSize="2vw" p={3} width="center" alignItems="center" color={'white'}>
+        fontSize="2vw" p={3} width="center" alignItems="center" color={'black'}>
           <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
-          < Link to={`/${role}/${data?.me?.name}`}>My Profile</Link>
+          {data?.me ? < Link to={`/User`}>My Profile</Link> : null}
             <Link to="/helpdesk">Help Desk</Link>
             <Link to="/contactus">Contact Us</Link>
-            {data?.me ? <Button onClick={LogOut}>Sign Out</Button> : <Button isDisabled>Sign Out</Button> }
+            {data?.me ? <Link to="/logout">Sign Out</Link> : null }
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
             <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>

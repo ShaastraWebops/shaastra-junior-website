@@ -433,7 +433,7 @@ export type ReqForgotPassVerificationMutation = { reqForgotPassVerification: boo
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileQuery = { me?: Maybe<{ __typename: 'User', id: string, sjID: string, name: string, school: string, class: Standard, registeredEvents: Array<{ title: string, id: string, eventType: EventType, audience: Array<Standard>, description: string, registrationType: string, isRegistered: boolean, pic: string, eventTimeFrom: string, eventTimeTo: string, teamSize: number, yourTeam?: Maybe<{ name: string, id: string, members: Array<{ class: Standard, name: string, email: string }> }> }> }> };
+export type GetProfileQuery = { me?: Maybe<{ id: string, sjID: string, name: string, school: string, class: Standard, registeredEvents: Array<{ title: string, id: string, eventType: EventType, audience: Array<Standard>, description: string, registrationType: string, isRegistered: boolean, pic: string, eventTimeFrom: string, eventTimeTo: string, teamSize: number, yourTeam?: Maybe<{ name: string, id: string, members: Array<{ class: Standard, name: string, email: string }> }> }> }> };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -706,7 +706,6 @@ export type ReqForgotPassVerificationMutationOptions = ApolloReactCommon.BaseMut
 export const GetProfileDocument = gql`
     query getProfile {
   me {
-    __typename
     id
     sjID
     name

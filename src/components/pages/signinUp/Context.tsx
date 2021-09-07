@@ -9,12 +9,16 @@ var userName = ""
 
 export const getRole = (role:UserRole,name: string ) => {
     userRole = role
-    userName = name
+    if(role === UserRole.User) userRole = 'USER'
+    else userRole = 'ADMIN'
 } 
 
 export const Provider = (props: any) =>
 {
-    <RoleContext.Provider value={{userRole}}>
+    console.log(userRole)
+    return(
+        <RoleContext.Provider value={{userRole}}>
         {props.children}
     </RoleContext.Provider>
+    )
 }

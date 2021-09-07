@@ -8,7 +8,7 @@ import * as serviceWorker from "./serviceWorker"
 import { theme } from "./styles/themes/theme"
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:8000/graphql',
   cache: new InMemoryCache(),
   credentials:"include"
 });

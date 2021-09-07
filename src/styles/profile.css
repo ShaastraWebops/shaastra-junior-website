@@ -86,7 +86,7 @@ html
     border-radius: 12px;
     margin-bottom: 3vh;
 }
-.profile-info p 
+.profile-info p , .profile a
 {
     font-size: 1.8vw;
     font-family: 'IBM Plex Sans Thai', sans-serif;

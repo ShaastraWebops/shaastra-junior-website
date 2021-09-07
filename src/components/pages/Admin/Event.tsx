@@ -1,7 +1,7 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import React from 'react'
-import { useContext } from 'react-router/node_modules/@types/react'
+import { useContext } from 'react'
 import { UserRole } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
 import { RoleContext } from '../signinUp/Context'
@@ -178,6 +178,7 @@ const Event = () => {
            </Flex>
        </CustomBox>
     )
+  else return(null)
 }
 
 export default Event

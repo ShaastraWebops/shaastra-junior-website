@@ -7,8 +7,7 @@ import { Logo } from "./Logo"
 import { css, Global } from "@emotion/react";
 import Loader from "./components/shared/Loader";
 import { ApolloProvider } from '@apollo/client';
-import client from "./graphql";
-
+import { Provider } from "./components/pages/signinUp/Context";
 const AppRoutes = React.lazy(() => import("./components/AppRoutes"));
 
 const GlobalStyles = css`
@@ -21,12 +20,12 @@ const GlobalStyles = css`
 export const App = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <ApolloProvider client = {client}>
       <ChakraProvider >
         {/* <Global styles={GlobalStyles} /> */}
+        <Provider>
         <AppRoutes />
+        </Provider>
         </ChakraProvider>
-        </ApolloProvider>
     </React.Suspense>
   );
   }

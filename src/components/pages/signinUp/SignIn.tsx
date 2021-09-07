@@ -3,9 +3,9 @@ import CustomBox from "../../shared/CustomBox";
 import "../../../styles/signin.css"
 import Particles from 'react-tsparticles';
 import particlesConfig from "./particles.json"
-
+import {Modal, ModalOverlay, ModalHeader, ModalContent, ModalCloseButton, ModalBody, useDisclosure} from "@chakra-ui/react"
 import {Flex, Image, Box, Button, Link} from "@chakra-ui/react"
-import { useLoginMutation, useGetProfileQuery, UserRole, useResetPasswordMutation } from '../../../types/generated/generated';
+import { useLoginMutation, useGetProfileQuery, UserRole, useResetPasswordMutation, LoginInput } from '../../../types/generated/generated';
 import { useState } from 'react';
 import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect, useHistory } from 'react-router-dom';
@@ -22,21 +22,25 @@ import {getRole } from './Context';
 
 
 const SignIn = () => {
-    const [login, setLoginData] = useState({email: "", password: ""})
+    const [login, setLoginData] = useState<LoginInput>({email: "", password: ""})
     const [email,setEmail] = useState("");
     const [pw,setPw] = useState("");
     const [loginMutation, {data,error,loading}] = useLoginMutation()
+    const {isOpen, onOpen} = useDisclosure()
+    const [Error, setError] = useState(false)
 
     const history = useHistory()
 
-    const emailHandler = (e : any) => {setEmail(e.target.value)}
+    const emailHandler = (e : any) => {
+        setEmail(e.target.value) 
+        console.log(email)}
     const pwHandler = (e:any) => {setPw(e.target.value)} 
 
     // const forgotPw = async () => {
     //     const [resetPasswordMutation, {data,loading,error}] = useResetPasswordMutation()
     //     // const resp = await resetPasswordMutation({variables: {token: , newPassword: }})
     // }
-
+    const onClose = () => {history.push('/')}
     return(
         <CustomBox>
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" 
@@ -46,7 +50,7 @@ const SignIn = () => {
                 zIndex="2" className="sign-flex">
                     <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="100%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <span>SHAASTRA JUNIORS</span></h1>
+                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
@@ -56,18 +60,31 @@ const SignIn = () => {
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
                         setLoginData({email:email, password:pw});
-                        const resp = await loginMutation({variables: {loginData: login}});
+                        try
+                        {
+                            const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
+                            console.log(resp)
                         if(resp.data?.login?.isVerified)
                         {
                             // makeProvider(resp.data.login.role)
+                            console.log(data)
                             getRole( resp.data.login.role, resp.data.login.name)
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
-                            history.push(``)
+                            history.push('/')
                         }
+                        if(!resp.data?.login?.isVerified || resp.errors)
+                        {
+                            setError(true)
+                        }
+                        } catch(error)
+                        {
+                            setError(true)
+                        }
+                        
                     }}>
-                        <Flex width="90%" justifyContent="space-between" className="sign-input"> 
+                        <Flex width="75%" margin="0 auto" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
                             <Flex flexDirection="column" height="15vh" justifyContent="space-between">
                                 <label htmlFor="username">Email ID</label>
                                 <label htmlFor="password">Password</label>
@@ -77,7 +94,7 @@ const SignIn = () => {
                                 <input type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
                         </Flex>
-                        <button>LOGIN</button>
+                        <input type="submit" value="Log In" className="submit" />
                         {/* <Flex width="100%" justifySelf="flex-end" alignItems="center" justifyContent="center">
                             <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
@@ -85,6 +102,19 @@ const SignIn = () => {
                             <button>LOGIN</button>
                         </Flex> */}
                     </form>
+                    {
+                        Error === true ? <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" color="#222244">
+                            <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                            <h2>Some Error Occurred</h2></ModalHeader>
+                            <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                            <ModalBody>
+                                <p>Kindly check if the credentials are correct</p>
+                            </ModalBody>
+                        </ModalContent>
+                    </Modal> : null
+                    }
                 </Flex>
             </Box>
         </CustomBox>
