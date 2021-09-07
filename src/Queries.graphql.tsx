@@ -78,6 +78,7 @@ mutation Login($loginData: LoginInput!){
     getFAQs {
       count,
       faqs {
+        question,
         answer,
         createdOn
       }
@@ -86,7 +87,9 @@ mutation Login($loginData: LoginInput!){
   
   export const CREATEEVENT = gql`
   mutation createEvent($createEventData: CreateEventInput!){
-    createEvent(data: $createEventData)
+    createEvent(data: $createEventData){
+      id
+    }
   }`
   
   export const GETEVENTS = gql`
@@ -133,25 +136,8 @@ mutation Login($loginData: LoginInput!){
         answer,
         question,
         id
-      },
-      isRegistered,
-      registeredUser {
-        email,
-        name
-      },
-      registeredTeamCount,
-      registeredTeam {
-        name,
-        members {
-          sjID,
-          email,
-          name,
-          school,
-          class
-        }
-      }
-    }
-  }`
+      }}
+}`
 
   export const EDITEVENT = gql`
   mutation editEvent($editEventEventId: String!, $editEventData: EditEventInput!){
@@ -171,6 +157,11 @@ mutation Login($loginData: LoginInput!){
   export const EDITEVENTFAQ = gql`
   mutation editEventFAQ($editEventFaqEventFaqid: String!, $editEventFaqData: EditEventFAQInput!){
     editEventFAQ(EventFAQID: $editEventFaqEventFaqid, data: $editEventFaqData)
+  }`
+
+  export const DELETEEVENTFAQ = gql`
+  mutation deleteEventFAQ($deleteEventFaqEventFaqid: String!) {
+    deleteEventFAQ(EventFAQID: $deleteEventFaqEventFaqid)
   }`
   
   export const REGISTER = gql`

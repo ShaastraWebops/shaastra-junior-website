@@ -27,22 +27,24 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/" component={Home} />
 
             <Route exact path="/workshops">
-                <Events type= {EventType.Workshops} />
+                <Events type= "WORKSHOPS" />
             </Route>
-            {/* <Route exact path="/shows" component={ShowPage}></Route> */}
+            <Route exact path="/shows">
+            <Events type= "SHOWS" />
+            </Route>
             <Route exact path="/competitions">
                 <Events type= "COMPETITIONS" />
             </Route>
-            <Route exact path="/shows" component={Shows}></Route>
-            <Route exact path="/shows/:showid" component={ShowPage}>
-                {/* <EventPage type="shows"></EventPage> */}
+            {/* <Route exact path="/shows" component={Shows}></Route> */}
+            <Route exact path="/shows/:id" >
+                <EventPage  />
             </Route>
             
             <Route exact path="/competitions/:id">
-                    <EventPage type= "competitions"/>
+                    <EventPage />
             </Route>
             <Route exact path="/workshops/:id">
-                    <EventPage type= "workshops"/>
+                    <EventPage />
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
             {/* <Route exact path="/User/:profName" component={Profile}></Route> */}
@@ -59,7 +61,6 @@ const AppRoutes = (props: Props) => {
 
             <Route exact path="/forgot" component={Forgot}></Route>
 
-            {/* <Route exact path="/event" component={Event}/> */}
         </Router>
     )
 }

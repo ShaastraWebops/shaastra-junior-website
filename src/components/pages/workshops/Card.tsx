@@ -1,5 +1,5 @@
 import {  Flex, Text } from "@chakra-ui/layout";
-import { Button,FormControl,FormLabel,Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure } from "@chakra-ui/react";
+import { Box,Button,FormControl,FormLabel,Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure } from "@chakra-ui/react";
 import {Link, useHistory } from "react-router-dom";
 import * as React from "react";
 import { workshop } from "./data";
@@ -7,6 +7,8 @@ import RegisterNow from "../Events/RegisterNow";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useDeleteEventMutation, useGetEventsQuery } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
+import moment from 'moment';
+import { GETEVENTS } from "../../../Queries.graphql";
 
 const Card = ({data, type} : any) =>{
     const history = useHistory();
@@ -20,24 +22,27 @@ const Card = ({data, type} : any) =>{
             {
                 variables :{
                     deleteEventEventId : id
-                }
+                },
+                refetchQueries : [{query:GETEVENTS,variables:{ getEventsFilter: type}}]
             }
         )
     }
     if(loading) return (<Loader />)
     return(
-            <Flex
+            <Box width={'85%'}>
+                <Flex
             rounded={'xl'}
             p={2} m={3}
-            width={['auto','85%']}
+            width={['auto','full']}
             alignItems={'center'}
             flexDirection={['column','column','row']}
             justifyContent={'space-between'}
             _hover={{boxShadow : 'lg',}}
             backgroundColor={'#F1F2E1'}>
             <Image
-                h={['20%','200px']}
-                objectFit ={'fill'}
+                h={['15%','175px']}
+                width ={['250px']}
+                objectFit ={'cover'}
                 src={data.pic}
                 rounded="2xl"
                 m={3}
@@ -54,19 +59,22 @@ const Card = ({data, type} : any) =>{
                 p={3}>
                 {data.description}
                 </Text>
-                  <Flex p={3} flexDirection={["column","column","row"]}>
-                  {/* <Text fontWeight={'medium'}>
-                    DeadLine : 
+                <Flex p={3}>
+                <Text fontWeight={'medium'}>
+                    Registrations From :  
                     <Tag variant="solid" 
-                     p={2} mx={2}
-                    colorScheme={(data.deadline.getFullYear() === today.getFullYear())&&(
-                        data.deadline.getMonth() === today.getMonth()
-                    )&&(data.deadline.getDate()-today.getDate()) <= 1 ? "red" : "teal"}
-                    >
-                        <TagLabel>{data.deadline.toDateString()}</TagLabel>
-                        </Tag>
-                    </Text> */}
-                    <Spacer />
+                     p={2} mx={2} >
+                    <TagLabel>{moment(parseInt(data?.registrationOpenTime!)).format("MMMM Do YYYY, h:mm a")}</TagLabel>
+                    </Tag>
+                     to 
+                    <Tag variant="solid" 
+                     p={2} mx={2} >
+                    <TagLabel>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY, h:mm a")}</TagLabel>
+                    </Tag>
+                    </Text>
+                </Flex>
+                  <Flex p={3} flexDirection={["column","column","row"]}>
+                   
                     <Button color={'#244f3b'} variant="outline" border="2px solid"
                     borderColor = "#244f3b"
                     size="sm" p={2} m={2}
@@ -74,8 +82,9 @@ const Card = ({data, type} : any) =>{
                          if(type === "WORKSHOPS"){
                             history.push(`/workshops/${data.id}`)
                          }else if(type === "COMPETITIONS"){
-                           
                             history.push(`/competitions/${data.id}`)
+                         }else if(type === "SHOWS"){
+                            history.push(`/shows/${data.id}`)
                          }
                      }} >
                         View Details
@@ -96,6 +105,7 @@ const Card = ({data, type} : any) =>{
                 </Flex>
                 
       </Flex>
+            </Box>
     )
 
 

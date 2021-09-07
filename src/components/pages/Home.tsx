@@ -48,7 +48,7 @@ const Home = (props: Props) => {
             </Menu>
           </Box> */}
 
-          <Text justifyContent="center" padding="10px" color="#fff" fontWeight="600" fontSize="50px" display="flex">SHAASTRA</Text>
+          <Text justifyContent="center" padding="10px" color="#474768" fontWeight="600" fontSize="50px" display="flex">SHAASTRA</Text>
 
           <Flex justifyContent="center">
             <Swiper pagination={true} className="mySwiper">
@@ -96,8 +96,8 @@ const Home = (props: Props) => {
           </Flex> */}
 
           <Box bg="#b1d4d2" width="100%">
-            <Flex justifyContent="center">
-              <Text p={10} fontSize="50px" color="#474768" fontWeight="650">PREVIOUS YEAR</Text>
+            <Flex justifyContent="center" style={{ backgroundColor : "#474768"}} >
+              <Text p={10} fontSize="50px"  fontWeight="650">PREVIOUS YEAR</Text>
             </Flex>
           </Box>
 
@@ -114,7 +114,7 @@ const Home = (props: Props) => {
           </Flex>
           <Box>
             <Flex justifyContent="center">
-              <Text fontSize="40px" p={10} color="#fff" fontWeight="650">
+              <Text fontSize="40px" p={10} color="#474768" fontWeight="650">
                 TESTIMONIALS
               </Text>
             </Flex>

@@ -11,14 +11,14 @@ import Loader from "../../shared/Loader";
 
 
 const Events = ({type}: any) => {
-    // const data1 = (type === "competitions" ? competitions : workshops) ;
-     const {data,error,loading} = useGetEventsQuery();
-    const data1 = data?.getEvents.events.filter(event =>{
-     return(
-        event.eventType=== type
-     )
-    })
-    console.log(data1)
+   //  const data1 = (type === "competitions" ? competitions : workshops) ;
+     const {data,error,loading} = useGetEventsQuery({variables:  {
+       getEventsFilter: type
+      }});
+    const data1 =data?.getEvents.events
+   
+    console.log(data)
+    
     if(loading) return(<Loader />)
     return (
         <CustomBox>

@@ -23,8 +23,8 @@ const ChampionShip = () => {
                     </Flex>
 
                     <Flex justifyContent="center">
-                        <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-                            <Flex justifyContent="space-between">
+                        <Box width="80vw" height="8vh" bg="white" borderRadius="10px">
+                            <Flex justifyContent="space-between" p={2}>
                                 <Text fontSize="25px">Name</Text>
                                 <Text  fontSize="25px">10 pts</Text>
                             </Flex>
@@ -33,7 +33,7 @@ const ChampionShip = () => {
 
                     <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-                            <Flex justifyContent="space-between">
+                            <Flex justifyContent="space-between" p={3}>
                                 <Text  fontSize="25px">Name</Text>
                                 <Text  fontSize="25px"> 10 pts</Text>
                             </Flex>
@@ -42,7 +42,7 @@ const ChampionShip = () => {
 
                     <Flex justifyContent="center">
                         <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginBottom="20px" marginTop="20px">
-                            <Flex justifyContent="space-between">
+                            <Flex justifyContent="space-between" p={3}>
                                 <Text  fontSize="25px">Name</Text>
                                 <Text  fontSize="25px">10 pts</Text>
                             </Flex>

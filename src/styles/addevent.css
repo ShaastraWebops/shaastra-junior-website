@@ -1,0 +1,11 @@
+.shape-divider {
+    position : relative;
+}
+.custom-shape-divider-top-1631021857 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}

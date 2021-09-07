@@ -9,7 +9,7 @@ function HelpDesk() {
     <CustomBox >
       <Flex  flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'100px'}>
             <Heading >Helpdesk</Heading>
-        <Flex mb = "75px" w="max" flexDirection={"column"} justifyContent="center" alignItems="center" >
+        <Flex mb = "75px" w="max" flexDirection={"column"} justifyContent="center" alignItems="center" p={3} >
           
           <Names/>
              

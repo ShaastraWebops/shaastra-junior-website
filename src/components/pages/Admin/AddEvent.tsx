@@ -1,23 +1,42 @@
 import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import React, { Fragment } from 'react'
-import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
+import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventFaqMutation, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
 import { onError } from 'apollo-link-error';
 import moment from "moment";
-import { CheckIcon } from '@chakra-ui/icons'
+import { AddIcon, CheckIcon, MinusIcon } from '@chakra-ui/icons'
+import '../../../styles/addevent.css'
+import { GETEVENTS } from '../../../Queries.graphql'
 
 
 
 const AddEvent = () =>{
 
-    const audience = [Standard.Eigth,Standard.Eleventh,Standard.Twelfth];
-    const [addEvent] = useCreateEventMutation();
-    const {data,error,loading} = useGetEventsQuery();
+    const audience = [Standard.First,Standard.Eigth,Standard.Ninth,Standard.Eleventh,Standard.Twelfth];
+    const [filter , setFilter] = React.useState("")
+    const [addEvent , {data}] = useCreateEventMutation();
     const [image, setImage ] = React.useState< any | null >();
-    const [ url, setUrl ] = React.useState<any | null>();
+    const [ url, setUrl ] = React.useState<any | null>("");
     const [uploaded , setUploaded ] = React.useState(false);
+    const [id,setId] = React.useState<string>("");
 
+    const [faqs , setfaqs] = React.useState([{question : '',answer : ''}]);
+    const [addfaq] = useCreateEventFaqMutation();
+
+    const handleFqsInput = ({index,event} :{index: number ,event: React.ChangeEvent<HTMLInputElement>}) =>{
+      const values =[...faqs];
+      
+      if(event.target.name === 'question'){
+        values[index]['question'] = event.target.value
+      }else{
+        values[index]['answer'] = event.target.value
+      }
+      setfaqs(values)
+      console.log(values)
+      // values[index][event.target.name]= { question : event.target.value }
+    }
+  
     console.log(data);
     const errorLink = onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
@@ -48,7 +67,7 @@ const AddEvent = () =>{
     return(
          <CustomBox>
             <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
-            
+        
             <Heading as="h3" size="lg" m={1}>Add Event</Heading>
               
               <Formik 
@@ -64,29 +83,40 @@ const AddEvent = () =>{
                 "teamsize": 0,
                 "description": ""
                }}
-               onSubmit={(values, actions) => {
-                 addEvent({
+               onSubmit={async(values, actions) => {
+                 await addEvent({
                    variables:{
                     createEventData:{
                           title : values.title,
                           description : values.description,
                           eventType : values.type,
                           audience : values['Audience Type'],
-                          registrationOpenTime : values.rot,
-                          registrationCloseTime : values.rct,
-                          eventTimeFrom:values.est ,
-                          eventTimeTo : values.ect,
+                          registrationOpenTime : moment(values.rot).format("DD/MM/YYYY h:mm a"),
+                          registrationCloseTime : moment(values.rct).format("DD/MM/YYYY h:mm a"),
+                          eventTimeFrom: moment(values.est).format("DD/MM/YYYY h:mm a"),
+                          eventTimeTo : moment(values.ect ).format("DD/MM/YYYY h:mm a"),
                           registrationType: values.regtype,
                           teamSize : values.teamsize,
                           pic : url
-                   }}
-                 }).catch(err => console.log(JSON.stringify(err, null, 2)))
-                 setTimeout(() => {
-                  //  console.log(JSON.stringify(values, null, 2))
-                  //  alert(JSON.stringify(values, null, 2))
-                   actions.setSubmitting(false)
-                 }, 1000)
-                //  actions.resetForm()
+                   }},
+                    refetchQueries : [{query:GETEVENTS,variables:{ getEventsFilter: values.type}}]
+                 }).then(res => {
+                  console.log(res.data?.createEvent.id!)
+                  faqs.map(async (faq)=>{
+                    await addfaq({variables : {
+                     createEventFaqEventId: res.data?.createEvent.id!,
+                     createEventFaqData:{
+                       question : faq.question,
+                       answer : faq.answer
+                     } 
+                    }}).catch(err => console.log(err))
+                  })
+                 })
+                 
+                 .catch(err => console.log(JSON.stringify(err, null, 2)))
+
+                 
+                 actions.resetForm()
                }}>
               {(props)=>(
 
@@ -109,6 +139,7 @@ const AddEvent = () =>{
               <Select {...field} id="type" borderColor={'#244f3b'} placeholder="EventType" color={"#244f3b"}>
                   <option value={EventType.Workshops}>Workshop</option>
                   <option value={EventType.Competitions}>Competition</option>
+                  <option value={EventType.Shows}>Shows</option>
               </Select>
               </FormControl>
                )}
@@ -217,6 +248,53 @@ const AddEvent = () =>{
                :null
              }
               </Flex>
+              <Flex flexDirection={'column'}>
+                
+                <Flex p={2}>
+                  <Heading size={'md'} m={2}>Add Fqs </Heading>
+                  
+                  
+                </Flex>
+                {
+                  faqs.map((faq,index) => {
+                  return(
+                    <Fragment key={index}>
+                    <Flex p={2} >
+                    <FormControl m={2}>
+          
+                    <Input  name = "question"
+                    placeholder = {'Question'}
+                    id={"faqq"+ index} fontSize={'small'} p={2} borderColor={'#244f3b'} value={faq.question}
+                    onChange = {(event)=>handleFqsInput({index ,event})}/>
+                    </FormControl>
+                    <FormControl m={2}>
+                    <Input name = "answer"
+                    placeholder = {'Answer'}
+                     onChange = {(event)=>handleFqsInput({index ,event})}
+                     id={"faqa"+ index} fontSize={'small'} p={2} borderColor={'#244f3b'} value={faq.answer}/>
+                    </FormControl>
+                     <Flex p={[0,3]} width={'40px'} flexDirection ={['column','row']}>
+                     {
+                       index === 0 ? null : (
+                        <Button mx={2} my={1} size={'xs'}
+                        onClick = {() => {
+                       const values = [...faqs];
+                       values.splice(index,1)
+                       setfaqs(values)
+                      }}
+                      ><MinusIcon /></Button>
+                       )
+                     }
+                  <Button mx={2} my={1} size={'xs'}
+                   onClick={() => setfaqs([...faqs,{question : '',answer : ''}])}
+                  ><AddIcon  /></Button>
+                   </Flex>
+                    </Flex>
+                </Fragment>
+                  )
+                })
+                }
+              </Flex>
             <Flex flexDirection={'row'} m={2} justifyContent={'center'}>
                 <Button
                 variant={'solid'}
@@ -227,6 +305,7 @@ const AddEvent = () =>{
             </Form>  )}
                
               </Formik>
+              
             </Flex>
               </CustomBox>
     )

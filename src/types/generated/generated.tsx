@@ -69,7 +69,7 @@ export type EditEventInput = {
   registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom?: Maybe<Scalars['String']>;
   eventTimeTo?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<RegistraionType>;
+  registrationType?: Maybe<Scalars['String']>;
   teamSize?: Maybe<Scalars['Float']>;
 };
 
@@ -93,7 +93,7 @@ export type Event = {
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
   updatedOn: Scalars['String'];
-  registrationType: RegistraionType;
+  registrationType: Scalars['String'];
   teamSize: Scalars['Float'];
   user: User;
   registeredUser: Array<User>;
@@ -162,12 +162,13 @@ export type Mutation = {
   __typename?: 'Mutation';
   setChampionship: Scalars['Boolean'];
   clearChampionship: Scalars['Boolean'];
-  createEvent: Scalars['Boolean'];
+  createEvent: Event;
   editEvent: Scalars['Boolean'];
   deleteEvent: Scalars['Boolean'];
   register: Scalars['Boolean'];
   createEventFAQ: Scalars['Boolean'];
   editEventFAQ: Scalars['Boolean'];
+  deleteEventFAQ: Scalars['Boolean'];
   createFAQ: Scalars['Boolean'];
   answerFAQ: Scalars['Boolean'];
   deleteFAQs: Scalars['Boolean'];
@@ -218,6 +219,11 @@ export type MutationCreateEventFaqArgs = {
 export type MutationEditEventFaqArgs = {
   EventFAQID: Scalars['String'];
   data: EditEventFaqInput;
+};
+
+
+export type MutationDeleteEventFaqArgs = {
+  EventFAQID: Scalars['String'];
 };
 
 
@@ -279,9 +285,9 @@ export type MutationResetPasswordArgs = {
 export type Query = {
   __typename?: 'Query';
   championship: Array<Championship>;
+  getEvent: Event;
   exportCSV: Scalars['Boolean'];
   getEvents: GetEventsOutput;
-  getEvent: Event;
   getFAQs: GetFaQsOutput;
   getFAQ: FaQs;
   me?: Maybe<User>;
@@ -289,6 +295,11 @@ export type Query = {
   getUsersCount: Scalars['Float'];
   getUser?: Maybe<User>;
   searchUser?: Maybe<Array<User>>;
+};
+
+
+export type QueryGetEventArgs = {
+  EventID: Scalars['String'];
 };
 
 
@@ -301,11 +312,6 @@ export type QueryGetEventsArgs = {
   limit?: Maybe<Scalars['Float']>;
   skip?: Maybe<Scalars['Float']>;
   filter?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryGetEventArgs = {
-  EventID: Scalars['String'];
 };
 
 
@@ -509,7 +515,7 @@ export type GetFaQsQuery = (
     & Pick<GetFaQsOutput, 'count'>
     & { faqs: Array<(
       { __typename?: 'FAQs' }
-      & Pick<FaQs, 'answer' | 'createdOn'>
+      & Pick<FaQs, 'question' | 'answer' | 'createdOn'>
     )> }
   ) }
 );
@@ -521,7 +527,10 @@ export type CreateEventMutationVariables = Exact<{
 
 export type CreateEventMutation = (
   { __typename?: 'Mutation' }
-  & Pick<Mutation, 'createEvent'>
+  & { createEvent: (
+    { __typename?: 'Event' }
+    & Pick<Event, 'id'>
+  ) }
 );
 
 export type GetEventsQueryVariables = Exact<{
@@ -550,20 +559,10 @@ export type GetEventQuery = (
   { __typename?: 'Query' }
   & { getEvent: (
     { __typename?: 'Event' }
-    & Pick<Event, 'id' | 'eventTimeFrom' | 'eventTimeTo' | 'title' | 'description' | 'pic' | 'registrationType' | 'audience' | 'eventType' | 'registrationOpenTime' | 'registrationCloseTime' | 'teamSize' | 'isRegistered' | 'registeredTeamCount'>
+    & Pick<Event, 'id' | 'eventTimeFrom' | 'eventTimeTo' | 'title' | 'description' | 'pic' | 'registrationType' | 'audience' | 'eventType' | 'registrationOpenTime' | 'registrationCloseTime' | 'teamSize'>
     & { faqs: Array<(
       { __typename?: 'EventFAQ' }
       & Pick<EventFaq, 'answer' | 'question' | 'id'>
-    )>, registeredUser: Array<(
-      { __typename?: 'User' }
-      & Pick<User, 'email' | 'name'>
-    )>, registeredTeam: Array<(
-      { __typename?: 'Team' }
-      & Pick<Team, 'name'>
-      & { members: Array<(
-        { __typename?: 'User' }
-        & Pick<User, 'sjID' | 'email' | 'name' | 'school' | 'class'>
-      )> }
     )> }
   ) }
 );
@@ -609,6 +608,16 @@ export type EditEventFaqMutationVariables = Exact<{
 export type EditEventFaqMutation = (
   { __typename?: 'Mutation' }
   & Pick<Mutation, 'editEventFAQ'>
+);
+
+export type DeleteEventFaqMutationVariables = Exact<{
+  deleteEventFaqEventFaqid: Scalars['String'];
+}>;
+
+
+export type DeleteEventFaqMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Mutation, 'deleteEventFAQ'>
 );
 
 export type RegisterMutationVariables = Exact<{
@@ -966,6 +975,7 @@ export const GetFaQsDocument = gql`
   getFAQs {
     count
     faqs {
+      question
       answer
       createdOn
     }
@@ -1001,7 +1011,9 @@ export type GetFaQsLazyQueryHookResult = ReturnType<typeof useGetFaQsLazyQuery>;
 export type GetFaQsQueryResult = Apollo.QueryResult<GetFaQsQuery, GetFaQsQueryVariables>;
 export const CreateEventDocument = gql`
     mutation createEvent($createEventData: CreateEventInput!) {
-  createEvent(data: $createEventData)
+  createEvent(data: $createEventData) {
+    id
+  }
 }
     `;
 export type CreateEventMutationFn = Apollo.MutationFunction<CreateEventMutation, CreateEventMutationVariables>;
@@ -1102,22 +1114,6 @@ export const GetEventDocument = gql`
       answer
       question
       id
-    }
-    isRegistered
-    registeredUser {
-      email
-      name
-    }
-    registeredTeamCount
-    registeredTeam {
-      name
-      members {
-        sjID
-        email
-        name
-        school
-        class
-      }
     }
   }
 }
@@ -1277,6 +1273,37 @@ export function useEditEventFaqMutation(baseOptions?: Apollo.MutationHookOptions
 export type EditEventFaqMutationHookResult = ReturnType<typeof useEditEventFaqMutation>;
 export type EditEventFaqMutationResult = Apollo.MutationResult<EditEventFaqMutation>;
 export type EditEventFaqMutationOptions = Apollo.BaseMutationOptions<EditEventFaqMutation, EditEventFaqMutationVariables>;
+export const DeleteEventFaqDocument = gql`
+    mutation deleteEventFAQ($deleteEventFaqEventFaqid: String!) {
+  deleteEventFAQ(EventFAQID: $deleteEventFaqEventFaqid)
+}
+    `;
+export type DeleteEventFaqMutationFn = Apollo.MutationFunction<DeleteEventFaqMutation, DeleteEventFaqMutationVariables>;
+
+/**
+ * __useDeleteEventFaqMutation__
+ *
+ * To run a mutation, you first call `useDeleteEventFaqMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteEventFaqMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteEventFaqMutation, { data, loading, error }] = useDeleteEventFaqMutation({
+ *   variables: {
+ *      deleteEventFaqEventFaqid: // value for 'deleteEventFaqEventFaqid'
+ *   },
+ * });
+ */
+export function useDeleteEventFaqMutation(baseOptions?: Apollo.MutationHookOptions<DeleteEventFaqMutation, DeleteEventFaqMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteEventFaqMutation, DeleteEventFaqMutationVariables>(DeleteEventFaqDocument, options);
+      }
+export type DeleteEventFaqMutationHookResult = ReturnType<typeof useDeleteEventFaqMutation>;
+export type DeleteEventFaqMutationResult = Apollo.MutationResult<DeleteEventFaqMutation>;
+export type DeleteEventFaqMutationOptions = Apollo.BaseMutationOptions<DeleteEventFaqMutation, DeleteEventFaqMutationVariables>;
 export const RegisterDocument = gql`
     mutation register($registerEventId: String!) {
   register(EventID: $registerEventId)
