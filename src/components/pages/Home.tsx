@@ -46,7 +46,7 @@ const Home = (props: Props) => {
       <Box color="" width="100vw" height="100%" >
         <Stack>
           <Flex width="100%" height="87vh" className="xyz" flexDirection="column">
-            {/* <img src={bg} alt="" className="xyz"></img> */}
+            <img src={bg} alt="" className="xyz"></img> 
             <Flex flexDirection="column" paddingTop="4%" paddingLeft="4%">
 
               <Typist>
