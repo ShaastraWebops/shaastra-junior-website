@@ -32,8 +32,6 @@ export type CreateEventInput = {
   pic: Scalars['String'];
   eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
   registrationType: RegistraionType;
@@ -65,8 +63,6 @@ export type EditEventInput = {
   pic?: Maybe<Scalars['String']>;
   eventType?: Maybe<EventType>;
   audience?: Maybe<Array<Standard>>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom?: Maybe<Scalars['String']>;
   eventTimeTo?: Maybe<Scalars['String']>;
   registrationType?: Maybe<RegistraionType>;
@@ -88,8 +84,6 @@ export type Event = {
   pic: Scalars['String'];
   eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
   updatedOn: Scalars['String'];
@@ -97,9 +91,7 @@ export type Event = {
   teamSize: Scalars['Float'];
   user: User;
   registeredUser: Array<User>;
-  registeredUserCount: Scalars['Float'];
   registeredTeam: Array<Team>;
-  registeredTeamCount: Scalars['Float'];
   isRegistered: Scalars['Boolean'];
   yourTeam?: Maybe<Team>;
   faqs: Array<EventFaq>;
@@ -344,8 +336,7 @@ export type QuerySearchUserArgs = {
 
 export enum RegistraionType {
   Team = 'TEAM',
-  Individual = 'INDIVIDUAL',
-  None = 'NONE'
+  Individual = 'INDIVIDUAL'
 }
 
 export type RequestForgotPassInput = {
@@ -489,7 +480,7 @@ export type GetFaQsQuery = (
     & Pick<GetFaQsOutput, 'count'>
     & { faqs: Array<(
       { __typename?: 'FAQs' }
-      & Pick<FaQs, 'answer' | 'createdOn'>
+      & Pick<FaQs, 'question' | 'answer' | 'createdOn'>
     )> }
   ) }
 );
@@ -530,7 +521,7 @@ export type GetEventQuery = (
   { __typename?: 'Query' }
   & { getEvent: (
     { __typename?: 'Event' }
-    & Pick<Event, 'id' | 'eventTimeFrom' | 'eventTimeTo' | 'registrationType' | 'isRegistered' | 'registeredTeamCount'>
+    & Pick<Event, 'id' | 'eventTimeFrom' | 'eventTimeTo' | 'registrationType' | 'isRegistered'>
     & { faqs: Array<(
       { __typename?: 'EventFAQ' }
       & Pick<EventFaq, 'answer' | 'question' | 'id'>
@@ -864,6 +855,7 @@ export const GetFaQsDocument = gql`
   getFAQs {
     count
     faqs {
+      question
       answer
       createdOn
     }
@@ -985,7 +977,6 @@ export const GetEventDocument = gql`
       email
       name
     }
-    registeredTeamCount
     registeredTeam {
       name
       members {

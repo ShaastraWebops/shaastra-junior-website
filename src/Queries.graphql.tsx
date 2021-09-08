@@ -58,6 +58,7 @@ mutation Login($loginData: LoginInput!){
     getFAQs {
       count,
       faqs {
+        question,
         answer,
         createdOn
       }
@@ -98,7 +99,7 @@ mutation Login($loginData: LoginInput!){
         email,
         name
       },
-      registeredTeamCount,
+      
       registeredTeam {
         name,
         members {

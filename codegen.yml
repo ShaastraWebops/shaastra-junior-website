@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-overwrite: true
-schema: "http://localhost:8000"
-documents: "src/graphql/**/*.graphql"
-generates:
-  src/generated/index.tsx:
-    plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-react-apollo"
-    config:
-      withHOC: false
-      withComponent: false
-      withHooks: true
-      apolloReactCommonImportFrom: "@apollo/client"
-      apolloReactHooksImportFrom: "@apollo/client"
-      withRefetchFn: true
-      preResolveTypes: true
-      skipTypename: true
-      flattenGeneratedTypes: true
-      addDocBlocks: true
-=======
 overwrite: true
 schema: "http://localhost:8000/graphql"
 documents: "src/**/*.graphql.tsx"
@@ -30,5 +8,5 @@ generates:
       - "typescript-operations"
       - "typescript-react-apollo"
     config:
-    withHooks : true
->>>>>>> d80f3cad7cbeaedccc2e3e5b501d39f13612824e
+      withHooks: true
+      
