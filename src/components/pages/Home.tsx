@@ -105,7 +105,7 @@ const Home = (props: Props) => {
           </Box>
 
           <Flex width="100%" overflow="hidden" display="flex" height="80vh" flexWrap="wrap" justifyContent="center">
-            <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} className="mySwiper">
+            <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40}>
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
@@ -126,7 +126,7 @@ const Home = (props: Props) => {
               <Text width="50%" fontSize="20px" className="fsa" paddingRight="10px" paddingTop="20px" color="#000">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</Text>
             </Flex>
             <Box width="100%" height="8vh" />
-            <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
+            <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
               <SwiperSlide><Slider4 /></SwiperSlide>
               <SwiperSlide><Slider4 /></SwiperSlide>
               <SwiperSlide><Slider4 /></SwiperSlide>
