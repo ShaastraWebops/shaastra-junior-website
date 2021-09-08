@@ -15,6 +15,7 @@ import "swiper/components/pagination/pagination.min.css"
 import Slider2 from "./Slider2";
 import SwiperCore, { Pagination } from 'swiper/core';
 import Particles from 'react-particles-js';
+import { Usercontext } from "./signinUp/Context";
 interface Props { }
 
 SwiperCore.use([Pagination]);
@@ -23,7 +24,8 @@ const Home = (props: Props) => {
     DiceOutlineDarkAnimated,
     DiceOutlineLightAnimated
   );
-    console.log(document.cookie)
+  const role = React.useContext(Usercontext)
+  console.log(role)
   return (
     <CustomBox>
       <Box className="mainn" color="#FFE5E5" width="100vw" height="100%" paddingTop={'80px'}>

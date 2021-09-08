@@ -24,6 +24,7 @@ const LogOut = () => {
     call()
     onClose =  () => {
         history.push('/')
+        window.location.reload()
     }
     if(data?.logoutUser === true)
     {

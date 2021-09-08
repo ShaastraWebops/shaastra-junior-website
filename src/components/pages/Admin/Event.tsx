@@ -4,11 +4,11 @@ import React from 'react'
 import { useContext } from 'react'
 import { UserRole } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
-import { RoleContext } from '../signinUp/Context'
+import { Usercontext } from '../signinUp/Context'
 
 const Event = () => {
 
-    const role = useContext(RoleContext)
+    const role = useContext(Usercontext)
 
     const audience = ["KIDS","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
     const [initvalues , setInitvalues] = React.useState({
@@ -24,7 +24,7 @@ const Event = () => {
         description: ""
     });
 
-    if(role === UserRole.Admin)
+    if(role.role === "ADMIN")
     return (
        <CustomBox>
            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>

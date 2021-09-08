@@ -3,7 +3,7 @@ import CustomBox from '../../shared/CustomBox'
 import {Box, Flex,Image} from "@chakra-ui/react"
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Standard, useGetProfileQuery } from '../../../types/generated/generated'
+import { Standard } from '../../../types/generated/generated'
 import "../../../styles/signin.css"
 import "../../../styles/profile.css"
 import {name,school,standard} from "../signinUp/Cookie"
@@ -56,14 +56,14 @@ const Edit = () => {
                                         setError(true)
                                     }
                                 }}>
-                                    <Flex width="95%" margin="auto" justifyContent="space-between" height="70%"> 
-                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input">
+                                    <Flex width="95%" margin="0 auto" justifyContent="space-between" height="70%"> 
+                            <Flex flexDirection="column" justifyContent="center" alignItems="center"  height="15vh" className="edit">
                                 <label htmlFor="name">Name</label>
                                 <label htmlFor="school">School</label>
                             </Flex>
-                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input">
-                                <input type="text" name="name" onChange={nameHandler} placeholder={`${Name}`} />
-                                <input type="text" name="school" onChange={schoolHandler} placeholder={`${School}`} />
+                            <Flex flexDirection="column" justifyContent="center"  height="15vh" className="edit">
+                                <input type="text" name="name" onChange={nameHandler} placeholder={localStorage.getItem('name')!} />
+                                <input type="text" name="school" onChange={schoolHandler} placeholder={localStorage.getItem('school')!} />
                             </Flex>
                         </Flex>
                         <a href="/forgot">Reset Password</a>

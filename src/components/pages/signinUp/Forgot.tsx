@@ -8,7 +8,6 @@ import {Flex, Image, Box, Button, Link} from "@chakra-ui/react"
 import { useLoginMutation, useGetProfileQuery, UserRole, useResetPasswordMutation, ReqForgotPassVerificationMutation } from '../../../types/generated/generated';
 import { useState } from 'react';
 import {useHistory } from 'react-router-dom';
-import {getRole } from './Context';
 import { useReqForgotPassVerificationMutation, RequestForgotPassInput } from '../../../types/generated/generated';
 import {
     Modal,
