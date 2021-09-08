@@ -66,7 +66,7 @@ const Home = (props: Props) => {
 
             </Flex>
             <Flex justifyContent="flex-end" paddingRight="30px" width="100%">
-              <Text className="titleContent" color="#474768">A vision board to reflect our dreams,
+              <Text className="titleContent" color="#093319">A vision board to reflect our dreams,
                 Infinite innovation for you to redeem.
                 Put together ideas that rise from need,
                 Beware, creativity bends to no greed.

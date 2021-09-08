@@ -154,10 +154,10 @@
 }
 .this{
     font-size: 50px;
-    color: #474768;
+    color: #093319;
 }
 .xyz{
-    background: url('../images/bg.gif');
+    background: url('../images/theme.svg');
     background-size: cover;
     background-repeat: no-repeat;
 }

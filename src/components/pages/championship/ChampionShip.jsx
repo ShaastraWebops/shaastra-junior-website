@@ -50,7 +50,7 @@ const ChampionShip = () => {
                         <Flex width="50%" paddingTop="20px" justifyContent="center">
                             <Popover>
                                 <PopoverTrigger>
-                                    <Button bg="#000">Clear Data</Button>
+                                    <Button bg="#000" fontWeight="500">Clear Data</Button>
                                 </PopoverTrigger>
                                 <PopoverContent>
                                     <PopoverArrow />
@@ -66,7 +66,7 @@ const ChampionShip = () => {
                             <Spacer />
                             <Popover>
                                 <PopoverTrigger>
-                                    <Button bg="#000">Add Data</Button>
+                                    <Button bg="#000" fontWeight="500">Add Data</Button>
                                 </PopoverTrigger>
                                 <PopoverContent>
                                     <PopoverArrow />
