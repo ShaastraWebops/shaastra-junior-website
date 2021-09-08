@@ -19,12 +19,16 @@ const Verify = () => {
     // let Token = stringify(token)
     const history = useHistory();
     const onClose = () => {history.push('/')}
-    const resp = verifyCall(token, verifyUserMutation)
+    const verify = async () => {
+    const resp = await verifyCall(token, verifyUserMutation)
+    }
+    verify()
     if(data?.verifyUser)
     {
         // history.push('/signin')
         // return(<div>Verified {history.push('/signin')}</div>)
-        return(<Redirect to="/signin"></Redirect> )
+        history.push('/signin')
+        return null
     }
     else
     {
