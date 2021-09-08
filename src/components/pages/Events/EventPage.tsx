@@ -4,11 +4,13 @@ import moment from "moment";
 import * as React from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { GETEVENT, GETEVENTS } from "../../../Queries.graphql";
-import { useCreateEventFaqMutation, useDeleteEventFaqMutation, useDeleteEventMutation, useEditEventFaqMutation, useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
+import { useCreateEventFaqMutation, useDeleteEventFaqMutation, useDeleteEventMutation, useEditEventFaqMutation, useExportCsvQuery, useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
 import CustomBox from "../../shared/CustomBox";
 import Loader from "../../shared/Loader";
 import { competitions,workshops } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
+import { onError } from 'apollo-link-error';
+
 
 const EventPage = ()=>{
 
@@ -99,6 +101,25 @@ const EventPage = ()=>{
         setQuestion("")
         setAnswer("")
     }
+
+    const {data : data2,loading:loading2,error:error2} = useExportCsvQuery(
+        {
+            variables :{
+                exportCsvEventId : id
+            }
+        }
+    )
+        console.log(error2)
+        const errorLink = onError(({ graphQLErrors, networkError }) => {
+            if (graphQLErrors) {
+              console.log('graphQLErrors', graphQLErrors);
+            }
+            if (networkError) {
+              console.log('networkError', networkError);
+            }
+          });
+   
+  
     if(loading) return (<Loader />)
 
     return(
@@ -149,6 +170,11 @@ const EventPage = ()=>{
                     onClick = {() => DeleteEvent(event?.id!)}
                     ><DeleteIcon m={2}/>Delete Event</Button>
                     <RegisterNow data={event}/>
+                    <Button color={'#244f3b'} variant="outline" border="2px solid"
+                    borderColor = "#244f3b"
+                    size="sm" p={2} m={2}
+                    onClick={()=>{}}
+                    ><EditIcon m={2}/>Download participants csv</Button>
                     </Flex>
                  </Flex>
                 </Flex>
