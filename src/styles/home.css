@@ -2,16 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-
+    font-family: 'Bebas Neue', cursive;
 }
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .image{
     background-repeat: no-repeat;
 }
-.navb{
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #97e26b, #23d5ab);
+.mainn{
+    background: linear-gradient(-45deg, #c071afe8, #66eb45, #2997bebe, #f0a607);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
@@ -19,7 +19,7 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    color: #fff;
+    color:#222244d2;
 }
 .text{
     font-family: 'Rationale', sans-serif;
@@ -135,9 +135,60 @@
     }
 }
 
-@media only screen and (max-width:610px){
-    .sldr2{
-        font-size: 15px;
-        font-weight: 600;
+.pr{
+    background: url('../images/pencils.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -50px;
+}
+
+@media only screen and (max-width:529px){
+    .text{
+        font-size: 14px;
+    }
+}
+
+.w1{
+    background: url('../images/A1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.w2{
+    background: url('../images/A2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.w3{
+    background: url('../images/A3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.a42{
+    z-index: 1;
+}
+.this{
+    font-size: 50px;
+    color: #474768;
+}
+.xyz{
+    background: url('../images/bg.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.titleContent{
+    font-size: 25px;
+    padding-top:150px;
+    width:50%;
+}
+@media only screen and (max-width:580px){
+    .titleContent{
+        font-size: 21px;
+    }
+}
+@media only screen and (max-width:475px){
+    .titleContent{
+        font-size: 18px;
+        padding-top: 70px;
+        width: 100%;
     }
 }
