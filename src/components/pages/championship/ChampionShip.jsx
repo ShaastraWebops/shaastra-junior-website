@@ -124,7 +124,7 @@ const ChampionShip = () => {
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                     </Swiper>
-                    
+
                 </Box>
             </Box>
         </CustomBox>

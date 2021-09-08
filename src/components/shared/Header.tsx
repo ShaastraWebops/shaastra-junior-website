@@ -1,28 +1,43 @@
-import * as React from "react";
-import { Box, Flex } from "@chakra-ui/layout";
-import CustomDrawer from "./CustomDrawer";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { ColorModeSwitcher } from "../../styles/themes/ColorModeSwitcher";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
 import user from '../../images/user.png';
 import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
-import { useColorModeValue } from "@chakra-ui/color-mode";
-import { useBreakpointValue } from "@chakra-ui/media-query";
-import { Link } from "react-router-dom";
+const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
 
-interface Props {}
+const NavLink = ({ children }: { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={'#'}>
+    {children}
+  </Link>
+);
 
-const Header = (props: Props) => {
-    
-    const { onOpen, isOpen, onClose } = useDisclosure();
-    
-    const drawerOpenHandler = () => {
-      onOpen();
-    };
-
-    const HeaderLogo = useColorModeValue(LogoBlack, LogoWhite)
-    const height = useBreakpointValue({ base: "33", lg: "40" })
+export default function Simple() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
   <Box zIndex="-1">
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -81,6 +96,4 @@ const Header = (props: Props) => {
     </Box>
   </Box>
   );
-};
-
-export default Header;
+}

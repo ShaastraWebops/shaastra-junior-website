@@ -40,7 +40,7 @@
 }
 .flx1{
     /* height: 100px; */
-    line-height: 250px;
+    line-height: 150px;
     text-align: center;
 }
 .boxx{
@@ -115,23 +115,9 @@
     }
 }
 
-.boxxx.css-7u9ot4 {
-    margin-top: 0px;
-}
-.chakra-stack css-nd8846{
-    padding-top: 10px;
-}
-.css-0{
-    padding: 10px;
-}
-
-.img22{
-    width: 40%;
-}
-
-@media only screen and (max-width:744px){
-    .img22{
-        width: 0px;
+@media only screen and (max-width:559px){
+    .pp{
+        width: 0%;
     }
 }
 

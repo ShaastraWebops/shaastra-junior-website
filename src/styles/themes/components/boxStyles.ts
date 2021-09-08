@@ -1,6 +1,6 @@
 
 export const boxStyles = {
-    baseStyle: ({ colorMode }) => ({
+    baseStyle: ({ colorMode }: {colorMode: any}) => ({
       bg: colorMode === "dark" ? "green.300" : "green.500",
       color: colorMode === "dark" ? "gray.800" : "white",
       textTransform: "uppercase",
@@ -11,7 +11,7 @@ export const boxStyles = {
       fontSize: "12px",
     }),
     variants: {
-      primary: ({ colorMode }) => ({
+      primary: ({ colorMode }: {colorMode: any}) => ({
         bg: colorMode === "dark" ? "green.300" : "green.500",
         color: colorMode === "dark" ? "gray.800" : "white",
         textTransform: "uppercase",

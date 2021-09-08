@@ -1,0 +1,121 @@
+.sign label
+{
+    font-size: 1.5vw;
+}
+.sign form 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    padding: 2vw;
+    height: 100%;
+    width: 35vw;
+    color: #222244d2;
+}
+.sign input 
+{
+    background-color: #222244d2;
+    color: white;
+    border-radius: 25px;
+    height: 2.5vw;
+    width: 15vw;
+    padding: 0.4vw;
+}
+.sign button
+{
+    width: fit-content;
+    align-self: center;
+    padding: 0.8vw 1vw;
+    border-radius: 20px;
+    background-color: #b0dbbe;
+    box-shadow: 0px -2px 3px 0.5px #0c0c1885;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-top: 4vh;
+}
+.sign select
+{
+    text-align: center;
+}
+.sign button:hover 
+{
+    transform: scale(0.95);
+    transition: all 0.5s ease-in-out;
+}
+.sign h1 
+{
+    font-size: 4vw;
+    text-align: center;
+    line-height: 4.2vw;
+    margin-bottom: 5vh;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+.sign p 
+{
+    font-size: 1.3vw;
+}
+.sign span 
+{
+    color: #222244d2;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#particles-js
+{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    opacity: 5;
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    /* z-index: -1; */
+}
+
+@media screen and (max-width: 700px)
+{
+    .sign label, .sign p 
+    {
+        font-size: 2vw;
+    }
+    .sign input 
+    {
+        height: 4vw;
+        width: 25vw;
+    }
+    .sign-flex
+    {
+        flex-direction: column !important;
+    }
+    .sign form, .sign-intro
+    {
+       width: 60vw !important;
+       padding: 3vw !important;
+    }
+    .sign h1 
+    {
+        font-size: 5.5vw;
+        line-height: 5vw;
+    }
+}
+@media screen and (max-width: 400px)
+{
+    .sign input 
+    {
+        height: 3vh;
+    }
+    .sign-input
+    {
+        height: 15vh !important;
+    }
+    .sign label , .sign p
+    {
+        font-size: 3vw;
+    }
+    .sign h1 
+    {
+        font-size: 7.5vw;
+        line-height: 7.2vw;
+    }
+}

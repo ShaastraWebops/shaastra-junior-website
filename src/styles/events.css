@@ -1,0 +1,19 @@
+html{
+    margin: 0%;
+    overflow-x: hidden;
+    padding: 0%;
+}
+
+body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    background-color:  #AACDBE;
+    ;
+}
+
+/* h1,h2,h3,h4,h5{
+
+} */

@@ -6,7 +6,7 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
-  DrawerOverlay,
+  DrawerOverlay
 } from "@chakra-ui/modal";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { useBreakpointValue } from "@chakra-ui/media-query";
@@ -28,8 +28,17 @@ interface Props {
 }
 
 const CustomDrawer = (props: Props) => {
-  const closeButtonSize = useBreakpointValue({ base: "lg", lg: "xl" });
+  const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
+
+  const role = useContext(RoleContext)
+  const {data,loading,error} = useGetProfileQuery()
+  const history = useHistory()
+  // const logOut = async () => {
+
+  //   const resp = await logOutMutation();
+  //   return (history.push('/'))
+  // }
 
   return (
     <Drawer
@@ -38,15 +47,15 @@ const CustomDrawer = (props: Props) => {
       isOpen={isOpen}
       size="xs"
     >
-      <DrawerOverlay />
-      <DrawerContent>
+      <DrawerOverlay  />
+      <DrawerContent backgroundColor="rgba(176, 219, 190, 0.73)" color="black">
         <DrawerHeader
           as={Flex}
           justifyContent="space-between"
           alignItems="center"
           flexDirection="row"
         >
-          <Heading fontWeight="normal" p={3}>Our Menu</Heading>
+          {/* <Heading fontWeight="normal" width="100%" textAlign="center" p={3}>Our Menu</Heading> */}
           <DrawerCloseButton
             variant="unstyled"
             mt={3}
@@ -54,6 +63,7 @@ const CustomDrawer = (props: Props) => {
             p={2}
             outline="none"
             borderRadius="50%"
+            color ={'white'}
             size={closeButtonSize}
           />
         </DrawerHeader>

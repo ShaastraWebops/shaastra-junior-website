@@ -4,6 +4,8 @@ import { Text, useColorModeValue, Flex, Stack, Image, Box } from "@chakra-ui/rea
 import { ReactComponent as DiceOutlineDarkAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Dark_animated.svg";
 import { ReactComponent as DiceOutlineLightAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Light_animated.svg";
 import ppl2 from '../../images/ppl2.svg';
+// import '../../styles/wave.css'
+import ppl8 from '../../images/ppl8.svg';
 import CustomBox from "../shared/CustomBox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import '../../styles/home.css';
@@ -11,6 +13,12 @@ import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css"
 import Slider2 from "./Slider2";
 import Slider4 from "./Slider4";
+import "../../styles/ChampionShip.css";
+import "../../styles/events.css";
+import "../../styles/header.css";
+// import "../../styles/.css";
+import "../../styles/profile.css";
+import "../../styles/signin.css";
 import SwiperCore, { Pagination } from 'swiper/core';
 import Astra from '../../images/Astra.png'
 import Atlasian from '../../images/Atlasian.png'
@@ -46,7 +54,7 @@ const Home = (props: Props) => {
       <Box color="" width="100vw" height="100%" >
         <Stack>
           <Flex width="100%" height="87vh" className="xyz" flexDirection="column">
-            <img src={bg} alt="" className="xyz"></img> 
+            {/* <img src={bg} alt="" className="xyz"></img>  */}
             <Flex flexDirection="column" paddingTop="4%" paddingLeft="4%">
 
               <Typist>
@@ -58,7 +66,7 @@ const Home = (props: Props) => {
 
             </Flex>
             <Flex justifyContent="flex-end" paddingRight="30px" width="100%">
-              <Text className="titleContent" >A vision board to reflect our dreams,
+              <Text className="titleContent" color="#474768">A vision board to reflect our dreams,
                 Infinite innovation for you to redeem.
                 Put together ideas that rise from need,
                 Beware, creativity bends to no greed.
@@ -128,8 +136,7 @@ const Home = (props: Props) => {
             </Swiper>
           </Box>
 
-          <Box>
-
+          <Box width="100%">
             <Box width="100%" height="150px" className="spons" bg="#222244d2">
               <Text fontSize="30px" color="#F3F3F3" letterSpacing="1px" className="sponstxt">SPONSORS</Text>
             </Box>
@@ -149,7 +156,6 @@ const Home = (props: Props) => {
               <Image src={subex} height="150px" width="400px" p={8} alt=""></Image>
               <Image src={mtx} height="170px" width="400px" p={8} alt=""></Image>
               <Image src={surana} width="400px" p={8} alt=""></Image>
-
             </Flex>
           </Box>
           <Footer></Footer>

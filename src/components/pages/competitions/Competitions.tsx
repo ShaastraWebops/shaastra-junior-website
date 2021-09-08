@@ -1,29 +1,25 @@
-import { Flex, Text, VStack, Stack, Center, Image, Heading, Avatar, Box, fromBox } from "@chakra-ui/react";
+import { Flex, Heading} from "@chakra-ui/react";
 import * as React from "react";
 import CustomBox from "../../shared/CustomBox";
-import Card from "./card";
+import Card from "../workshops/Card";
+import { competitions} from "../workshops/data";
 
 const Competitions = () => {
-
-  return (
-    <CustomBox>
-      <Box width="100%" height="100%" bg="#3F5B78">
-        <Box paddingTop="40px">
-          <Flex flexWrap="wrap" width="100%" justifyContent="center">
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-          </Flex>
-        </Box>
-      </Box>
-    </CustomBox>
-  );
-};
+    return (
+        <CustomBox>
+         <Flex flexDirection={"column"} justifyContent="center" alignItems="center" paddingTop={'60px'} minHeight={"100vh"}>
+            <Heading >COMPETITIONS</Heading>
+             <Flex flexDirection={"column"} justifyContent="center" alignItems="center" >
+             {
+                competitions.map( (cs) =>(
+                      <Card key={cs.id} data = {cs} type="competitions"/>
+                ))
+              }
+             </Flex>
+            
+         </Flex>
+      </CustomBox>
+    )
+}
 
 export default Competitions;
