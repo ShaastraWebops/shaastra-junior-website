@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomBox from "../../shared/CustomBox";
 import "../../../styles/signin.css"
 import Particles from 'react-tsparticles';
@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect, useHistory } from 'react-router-dom';
 import {onError} from "@apollo/client/link/error"
+import { Usercontext } from './Context';
 
 // const makeProvider = (role: UserRole) =>
 // {
@@ -28,6 +29,7 @@ const SignIn = () => {
     const [loginMutation, {data,error,loading}] = useLoginMutation()
     const {isOpen, onOpen} = useDisclosure()
     const [Error, setError] = useState(false)
+    const {setRole} = useContext(Usercontext);
 
     const history =useHistory();
     const emailHandler = (e : any) => {
@@ -83,6 +85,7 @@ const SignIn = () => {
                             // getRole( resp.data.login.role, resp.data.login.name)
                             // document.cookie += ";role=" + resp.data.login.role + ";path=/";
                             // console.log(document.cookie)
+                            setRole(resp.data.login.role)
                             localStorage.setItem('role', resp.data.login.role)
                             localStorage.setItem('name', resp.data.login.name)
                             localStorage.setItem('school', resp.data.login.school)

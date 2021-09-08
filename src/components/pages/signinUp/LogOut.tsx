@@ -18,6 +18,7 @@ const LogOut = () => {
     console.log("exec")
     const call = async () => {
         await logOutMutation();
+        localStorage.removeItem('role')
         document.cookie += ";max-age=0"
         console.log(data)
     }

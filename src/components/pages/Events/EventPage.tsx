@@ -11,6 +11,7 @@ import { competitions,workshops } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 import { onError } from 'apollo-link-error';
 import  fileDownload  from 'js-file-download';
+import { Usercontext } from "../signinUp/Context";
 
 
 const EventPage = ()=>{
@@ -18,7 +19,7 @@ const EventPage = ()=>{
     const history = useHistory();
     const { id } = useParams<{id : string}>();
     const today = new Date();
-   
+    const {role} = React.useContext(Usercontext);
     
     const {data , loading , error } = useGetEventQuery({variables : {
         getEventEventId : id
@@ -110,16 +111,6 @@ const EventPage = ()=>{
             }
         }
     )
-        console.log("data2" , data2?.exportCSV)
-        const errorLink = onError(({ graphQLErrors, networkError }) => {
-            if (graphQLErrors) {
-              console.log('graphQLErrors', graphQLErrors);
-            }
-            if (networkError) {
-              console.log('networkError', networkError);
-            }
-          });
-    
           
   
     if(loading) return (<Loader />)
@@ -161,22 +152,31 @@ const EventPage = ()=>{
                     </Flex >
                     <Spacer />
                     <Flex float = "right"  p={3} flexDirection={["column","column","row"]}>
+                    {
+                     role === "ADMIN" ? (<React.Fragment>
                     <Button color={'#244f3b'} variant="outline" border="2px solid"
-                    borderColor = "#244f3b"
-                    size="sm" p={2} m={2}
-                    onClick={() => { history.push(`/editevent/${id}`)}}
-                    ><EditIcon m={2}/>Edit Event</Button>
-                    <Button color={'#244f3b'} variant="outline" border="2px solid"
-                    borderColor = "#244f3b"
-                    size="sm" p={2} m={2}
-                    onClick = {() => DeleteEvent(event?.id!)}
-                    ><DeleteIcon m={2}/>Delete Event</Button>
-                    <RegisterNow data={event}/>
-                    <Button color={'#244f3b'} variant="outline" border="2px solid"
-                    borderColor = "#244f3b"
-                    size="sm" p={2} m={2}
-                    onClick={()=>{fileDownload(data2?.exportCSV!, `${event?.title}_participants.csv`);}}
-                    ><EditIcon m={2}/>Download participants csv</Button>
+                     borderColor = "#244f3b"
+                     size="sm" p={2} m={2}
+                     onClick={() => { history.push(`/editevent/${id}`)}}
+                     ><EditIcon m={2}/>Edit Event</Button>
+ 
+                     <Button color={'#244f3b'} variant="outline" border="2px solid"
+                     borderColor = "#244f3b"
+                     size="sm" p={2} m={2}
+                     onClick = {() => DeleteEvent(event?.id!)}
+                     ><DeleteIcon m={2}/>Delete Event</Button>
+ 
+                     
+                     <Button color={'#244f3b'} variant="outline" border="2px solid"
+                     borderColor = "#244f3b"
+                     size="sm" p={2} m={2}
+                     onClick={()=>{fileDownload(data2?.exportCSV!, `${event?.title}_participants.csv`);}}
+                     ><EditIcon m={2}/>Download participants csv</Button>
+                     </React.Fragment>) : null
+                    }
+                    {
+                        role === "USER" ? (<RegisterNow data={event}/>) : null
+                    }
                     </Flex>
                  </Flex>
                 </Flex>
@@ -210,27 +210,33 @@ const EventPage = ()=>{
              <Center textAlign={"center"}>
              <Heading size={'lg'} m={4}>FREQUENTLY ASKED QUESTIONS</Heading>
              </Center>
-            <Flex >
-            <FormControl m={2} width={"45%"}>
-                    <Input  name = "aquestion"
-                    placeholder = {'Question'}
-                    value={aquestion}
-                    onChange = {(event)=>handleAddFaq(event)}
-                    fontSize={'small'} p={2} borderColor={'#244f3b'}
-                   />
-                    </FormControl>
-                    <FormControl m={2} width={"45%"}>
-                    <Input name = "aanswer"
-                    placeholder = {'Answer'}
-                    value={aanswer}
-                    onChange = {(event)=>handleAddFaq(event)}
-                    fontSize={'small'} p={2} borderColor={'#244f3b'} />
-                    </FormControl>
-                    <Button color={'#244f3b'} variant="solid" border="2px solid"
-                        borderColor = "#244f3b"size="sm" p={2} m={3}
-                        onClick = {()=> handleAdd()}
-                    >Add FAQ</Button>
-            </Flex>
+                {
+                    role === 'ADMIN' ? (
+                        <Flex >
+
+                        <FormControl m={2} width={"45%"}>
+                                <Input  name = "aquestion"
+                                placeholder = {'Question'}
+                                value={aquestion}
+                                onChange = {(event)=>handleAddFaq(event)}
+                                fontSize={'small'} p={2} borderColor={'#244f3b'}
+                               />
+                                </FormControl>
+                                <FormControl m={2} width={"45%"}>
+                                <Input name = "aanswer"
+                                placeholder = {'Answer'}
+                                value={aanswer}
+                                onChange = {(event)=>handleAddFaq(event)}
+                                fontSize={'small'} p={2} borderColor={'#244f3b'} />
+                                </FormControl>
+                                <Button color={'#244f3b'} variant="solid" border="2px solid"
+                                    borderColor = "#244f3b"size="sm" p={2} m={3}
+                                    onClick = {()=> handleAdd()}
+                                >Add FAQ</Button>
+                        </Flex>
+                    ) : null
+                    
+                }
             
              <Flex flexDirection={'column'} p={2}>
                 {
@@ -278,26 +284,27 @@ const EventPage = ()=>{
                                           )
                                          :
                                          (
-                                            <Box>
-                                            <Button color={'#244f3b'} variant="outline" border="2px solid"
-                                            borderColor = "#244f3b"
-                                            size="sm" p={2} m={2}
-                                            onClick={()=>{setFaqId(faq.id)}}
-                                            float = {'right'}
-                                            ><EditIcon m={2}/>Edit FAQ</Button>
-                                            <Button color={'#244f3b'} variant="outline" border="2px solid"
-                                            borderColor = "#244f3b"
-                                            size="sm" p={2} m={2}
-                                            onClick = {() =>{
-                                                deleteFaq({variables :{
-                                                    deleteEventFaqEventFaqid : faq.id
-                                                },
-                                                refetchQueries : [{query:GETEVENT,variables:{ getEventEventId: id }}]
-                                            })
-                                            }}
-                                            float = {'right'}
-                                            ><DeleteIcon m={2}/>Delete FAQ</Button>
-                                            </Box>
+                                            role === "ADMIN" ?(<Box>
+                                                <Button color={'#244f3b'} variant="outline" border="2px solid"
+                                                borderColor = "#244f3b"
+                                                size="sm" p={2} m={2}
+                                                onClick={()=>{setFaqId(faq.id)}}
+                                                float = {'right'}
+                                                ><EditIcon m={2}/>Edit FAQ</Button>
+                                                <Button color={'#244f3b'} variant="outline" border="2px solid"
+                                                borderColor = "#244f3b"
+                                                size="sm" p={2} m={2}
+                                                onClick = {() =>{
+                                                    deleteFaq({variables :{
+                                                        deleteEventFaqEventFaqid : faq.id
+                                                    },
+                                                    refetchQueries : [{query:GETEVENT,variables:{ getEventEventId: id }}]
+                                                })
+                                                }}
+                                                float = {'right'}
+                                                ><DeleteIcon m={2}/>Delete FAQ</Button>
+                                                </Box>) : null
+                                            
                                          )
                                      }
                                     

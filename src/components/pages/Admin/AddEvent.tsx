@@ -13,13 +13,18 @@ import { GETEVENTS } from '../../../Queries.graphql'
 
 const AddEvent = () =>{
 
-    const audience = [Standard.First,Standard.Eigth,Standard.Ninth,Standard.Eleventh,Standard.Twelfth];
+    const audience = [
+      Standard.Sixth , Standard.Seventh, Standard.Eigth , Standard.Ninth, 
+      Standard.Tenth, Standard.Eleventh,Standard.Twelfth
+    ];
     const [filter , setFilter] = React.useState("")
     const [addEvent , {data}] = useCreateEventMutation();
     const [image, setImage ] = React.useState< any | null >();
     const [ url, setUrl ] = React.useState<any | null>("");
     const [uploaded , setUploaded ] = React.useState(false);
     const [id,setId] = React.useState<string>("");
+
+    const [inputs , setInputs] = React.useState({});
 
     const [faqs , setfaqs] = React.useState([{question : '',answer : ''}]);
     const [addfaq] = useCreateEventFaqMutation();
@@ -33,19 +38,13 @@ const AddEvent = () =>{
         values[index]['answer'] = event.target.value
       }
       setfaqs(values)
-      console.log(values)
-      // values[index][event.target.name]= { question : event.target.value }
     }
-  
-    console.log(data);
-    const errorLink = onError(({ graphQLErrors, networkError }) => {
-      if (graphQLErrors) {
-        console.log('graphQLErrors', graphQLErrors);
-      }
-      if (networkError) {
-        console.log('networkError', networkError);
-      }
-    });
+    const handleInput = (event :{index: number ,event: React.ChangeEvent<HTMLInputElement>}) =>{
+      const values = inputs;
+      
+     
+      setInputs(values)
+    }
 
     const uploadImage = () => {
       const data = new FormData()

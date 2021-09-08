@@ -9,13 +9,14 @@ import { useDeleteEventMutation, useGetEventsQuery } from "../../../types/genera
 import Loader from "../../shared/Loader";
 import moment from 'moment';
 import { GETEVENTS } from "../../../Queries.graphql";
+import { Usercontext } from "../signinUp/Context";
 
 const Card = ({data, type} : any) =>{
     const history = useHistory();
     const today = new Date();
     console.log(type)
     const [deleteEvent , {data : data1,loading,error}] = useDeleteEventMutation();
-
+    const {role} =React.useContext(Usercontext);
      
     const DeleteEvent = (id : string) =>{
         deleteEvent(
@@ -89,18 +90,28 @@ const Card = ({data, type} : any) =>{
                      }} >
                         View Details
                     </Button>
-                    <Button color={'#244f3b'} variant="outline" border="2px solid"
-                    borderColor = "#244f3b"
-                    size="sm" p={2} m={2}
-                    onClick={() => { history.push(`/editevent/${data.id}`)}}
-                    ><EditIcon m={2}/>Edit Event</Button>
-                    <Button color={'#244f3b'} variant="outline" border="2px solid"
-                    borderColor = "#244f3b"
-                    size="sm" p={2} m={2}
-                    onClick = {() => DeleteEvent(data?.id!)}
-                    ><DeleteIcon m={2}/>Delete Event</Button>
+                    {
+                         role === "ADMIN" ?(
+                             <React.Fragment>
+                                 <Button color={'#244f3b'} variant="outline" border="2px solid"
+                                    borderColor = "#244f3b"
+                                    size="sm" p={2} m={2}
+                                    onClick={() => { history.push(`/editevent/${data.id}`)}}
+                                    ><EditIcon m={2}/>Edit Event</Button>
+                                    <Button color={'#244f3b'} variant="outline" border="2px solid"
+                                    borderColor = "#244f3b"
+                                    size="sm" p={2} m={2}
+                                    onClick = {() => DeleteEvent(data?.id!)}
+                                    ><DeleteIcon m={2}/>Delete Event</Button>
+                             </React.Fragment>
+                         ) : null
+                    }
+                    
+                    {
+                        role === "USER"? ( <RegisterNow  data={data} />) : null
+                    }
         
-                    <RegisterNow  data={data} />
+                   
                     </Flex>
                 </Flex>
                 
