@@ -286,7 +286,7 @@ export type Query = {
   __typename?: 'Query';
   championship: Array<Championship>;
   getEvent: Event;
-  exportCSV: Scalars['Boolean'];
+  exportCSV: Scalars['String'];
   getEvents: GetEventsOutput;
   getFAQs: GetFaQsOutput;
   getFAQ: FaQs;

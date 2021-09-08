@@ -10,6 +10,7 @@ import Loader from "../../shared/Loader";
 import { competitions,workshops } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 import { onError } from 'apollo-link-error';
+import  fileDownload  from 'js-file-download';
 
 
 const EventPage = ()=>{
@@ -109,7 +110,7 @@ const EventPage = ()=>{
             }
         }
     )
-        console.log(error2)
+        console.log("data2" , data2?.exportCSV)
         const errorLink = onError(({ graphQLErrors, networkError }) => {
             if (graphQLErrors) {
               console.log('graphQLErrors', graphQLErrors);
@@ -118,7 +119,8 @@ const EventPage = ()=>{
               console.log('networkError', networkError);
             }
           });
-   
+    
+          
   
     if(loading) return (<Loader />)
 
@@ -173,7 +175,7 @@ const EventPage = ()=>{
                     <Button color={'#244f3b'} variant="outline" border="2px solid"
                     borderColor = "#244f3b"
                     size="sm" p={2} m={2}
-                    onClick={()=>{}}
+                    onClick={()=>{fileDownload(data2?.exportCSV!, `${event?.title}_participants.csv`);}}
                     ><EditIcon m={2}/>Download participants csv</Button>
                     </Flex>
                  </Flex>
