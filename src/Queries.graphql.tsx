@@ -9,9 +9,13 @@ export const LOGIN = gql`
 mutation Login($loginData: LoginInput!){
     login(data: $loginData) {
       name,
+      id,
+      sjID,
       email,
       isVerified,
-      role 
+      role,
+      school,
+      class
     }
   }`
   
@@ -67,7 +71,7 @@ mutation Login($loginData: LoginInput!){
   
  export const EDITPROFILE = gql`
   mutation editProfile($data : EditProfileInput!){
-    
+    editProfile(data: $data)
   }`
 
   export const LOGOUT = gql`

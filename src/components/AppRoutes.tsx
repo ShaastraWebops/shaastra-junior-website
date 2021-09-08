@@ -47,7 +47,7 @@ const AppRoutes = (props: Props) => {
                     <EventPage type= "competitions"/>
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            <Route exact path="/User" component={Profile}></Route>
+            <Route exact path="/profile" component={Profile}></Route>
             <Route exact path="/editProfile" component={Edit}></Route>
             {/* <Route exact path="/editProfile" component={Edit}></Route> */}
 

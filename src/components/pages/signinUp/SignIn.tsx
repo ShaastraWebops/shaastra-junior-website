@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect, useHistory } from 'react-router-dom';
 import {getRole } from './Context';
+import {onError} from "@apollo/client/link/error"
 
 // const makeProvider = (role: UserRole) =>
 // {
@@ -35,6 +36,17 @@ const SignIn = () => {
         setEmail(e.target.value) 
         console.log(email)}
     const pwHandler = (e:any) => {setPw(e.target.value)} 
+
+    const errorLink = onError(({ graphQLErrors, networkError }) => {
+        if (graphQLErrors)
+          graphQLErrors.forEach(({ message, locations, path }) =>
+            console.log(
+              `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+            ),
+          );
+      
+        if (networkError) console.log(`[Network error]: ${networkError}`);
+      });
 
     // const forgotPw = async () => {
     //     const [resetPasswordMutation, {data,loading,error}] = useResetPasswordMutation()
@@ -62,13 +74,18 @@ const SignIn = () => {
                         setLoginData({email:email, password:pw});
                         try
                         {
+                            
                             const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
                             console.log(resp)
+                           
+                              console.log(resp.errors)
                         if(resp.data?.login?.isVerified)
                         {
                             // makeProvider(resp.data.login.role)
                             console.log(data)
                             getRole( resp.data.login.role, resp.data.login.name)
+                            document.cookie = ";role=" + resp.data.login.role + ";path=/";
+                            console.log(document.cookie)
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)

@@ -56,16 +56,19 @@ const SignUp = () => {
                     <form action="" onSubmit={async () => {
                         if(pw === checkPw)
                         {
-                            const resp = await createUserMutation({variables: {
-                                createUserData: {
-                                    name: name,
-                                    email: email,
-                                    password: pw,
-                                    school: school,
-                                    class: standard
-                                }
+                            try{
+                                const resp = await createUserMutation({variables: {
+                                    createUserData: {
+                                        name: name,
+                                        email: email,
+                                        password: pw,
+                                        school: school,
+                                        class: standard
+                                    }
                             }})
                             console.log(resp)
+                        }
+                        catch(err) {console.log(err)}
                            history.push('/')
                        }
                     }}>

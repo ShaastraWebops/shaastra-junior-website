@@ -23,7 +23,7 @@ const Home = (props: Props) => {
     DiceOutlineDarkAnimated,
     DiceOutlineLightAnimated
   );
-
+    console.log(document.cookie)
   return (
     <CustomBox>
       <Box className="mainn" color="#FFE5E5" width="100vw" height="100%" paddingTop={'80px'}>
