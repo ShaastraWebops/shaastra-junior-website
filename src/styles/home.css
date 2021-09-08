@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Patrick Hand', cursive;
+/* font-family: 'Shadows Into Light', cursive; */
+    /* font-family: 'Bebas Neue', cursive; */
 }
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap');
 .image{
     background-repeat: no-repeat;
 }
@@ -97,7 +101,7 @@
 .sponstxt{
     font-size: xx-large;
     vertical-align: middle;
-    padding-top: 5%;
+    padding-top: 3%;
     font-weight: 650;
     display: flex;
     justify-content: center;
@@ -154,7 +158,7 @@
 }
 .this{
     font-size: 50px;
-    color: #093319;
+    color: #1b329bdc;
 }
 .xyz{
     background: url('../images/theme.svg');
