@@ -31,21 +31,21 @@ import { divide } from "lodash";
 import {EventType, RegistraionType, useGetProfileQuery, UserRole} from "../../../types/generated/generated"
 import {useHistory} from "react-router-dom"
 import { useContext } from "react";
-import {RoleContext} from "../signinUp/Context"
+import {Usercontext} from "../signinUp/Context"
  
 SwiperCore.use([Navigation, Pagination, Keyboard])
 
 
 const Profile = () => {
 
-    const role = useContext(RoleContext)
+    const role = useContext(Usercontext)
     const { isOpen, onOpen, onClose } = useDisclosure()
     // backgroundColor="#4a4a75b6"
     const history = useHistory()
     const {data,error,loading} = useGetProfileQuery()
-   console.log(document.cookie)
+   console.log(role.role)
 
-    if(data?.me?.__typename === "User")
+    if(role.role === "USER")
     {
         return (
             <CustomBox>
@@ -53,13 +53,14 @@ const Profile = () => {
             <div className="profile">
             <h1>MY PROFILE</h1>
                 <div className="profile-div">
-                    <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="18vh">
-                        <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"
-                        justifyContent="center" alignItems="flex-end" textAlign="center">
-                            <p>{name()}</p>
-                            <p>{school()}</p>
-                            <p>Class {standard()}</p>
-                            <p>{sjid()}</p>
+                    <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="10vh">
+                        <Flex flexDirection="column" className="profile-info" padding="8vh 8vw" width="fit-content" borderRadius="45px"
+                        justifyContent="center" alignItems="center" textAlign="center" backgroundColor="#b0dbbe"
+                        boxShadow= "0px 0px 15px 5px rgba(31, 33, 39, 0.24)">
+                            <p>{data?.me?.name}</p>
+                            <p>{data?.me?.school}</p>
+                            <p> <b>Class : </b> {data?.me?.class}</p>
+                            <p> <b>Shaastra Juniors ID :</b> {data?.me?.sjID}</p>
                             <a href="/editProfile">Edit <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon> </a>
                         </Flex>
                     </Flex>

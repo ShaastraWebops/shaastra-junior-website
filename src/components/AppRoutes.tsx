@@ -20,11 +20,14 @@ import Forgot from "./pages/signinUp/Forgot"
 import ForgotAfterLink from "./pages/signinUp/ForgotAfterLink"
 import LogOut from "./pages/signinUp/LogOut"
 import Edit from "./pages/profile/Edit"
+import {useState, useEffect} from "react"
+
 interface Props {
     
 }
 
 const AppRoutes = (props: Props) => {
+    
     return (
         <Router>
             <Route exact path="/" component={Home} />

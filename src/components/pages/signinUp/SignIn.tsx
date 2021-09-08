@@ -8,8 +8,7 @@ import {Flex, Image, Box, Button, Link} from "@chakra-ui/react"
 import { useLoginMutation, useGetProfileQuery, UserRole, useResetPasswordMutation, LoginInput } from '../../../types/generated/generated';
 import { useState } from 'react';
 import { InfoIcon } from '@chakra-ui/icons';
-import {  useHistory } from 'react-router-dom';
-import {getRole } from './Context';
+import { Redirect, useHistory } from 'react-router-dom';
 import {onError} from "@apollo/client/link/error"
 
 // const makeProvider = (role: UserRole) =>
@@ -81,10 +80,12 @@ const SignIn = () => {
                         if(resp.data?.login?.isVerified)
                         {
                             // makeProvider(resp.data.login.role)
-                            console.log(data)
-                            getRole( resp.data.login.role, resp.data.login.name)
-                            document.cookie = ";role=" + resp.data.login.role + ";path=/";
-                            console.log(document.cookie)
+                            // getRole( resp.data.login.role, resp.data.login.name)
+                            // document.cookie += ";role=" + resp.data.login.role + ";path=/";
+                            // console.log(document.cookie)
+                            localStorage.setItem('role', resp.data.login.role)
+                            localStorage.setItem('name', resp.data.login.name)
+                            localStorage.setItem('school', resp.data.login.school)
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)

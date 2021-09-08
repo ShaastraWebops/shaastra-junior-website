@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import { useGetProfileQuery} from "../../types/generated/generated";
 import {Redirect, useHistory} from "react-router"
 import { useContext } from "react";
-import { RoleContext } from "../pages/signinUp/Context"
+import { Usercontext } from "../pages/signinUp/Context"
 import LogOut from "../pages/signinUp/LogOut";
 
 interface Props {
@@ -29,7 +29,7 @@ interface Props {
 const CustomDrawer = (props: Props) => {
   const closeButtonSize = useBreakpointValue({ base: "xs", lg: "md" });
   const { isOpen } = useDisclosure({ isOpen: props.isOpen });
-  const role = useContext(RoleContext)
+  const role = useContext(Usercontext)
   const {data,loading,error} = useGetProfileQuery()
   const history = useHistory()
   // const logOut = async () => {
