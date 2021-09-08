@@ -1,6 +1,6 @@
 overwrite: true
 schema: "http://localhost:8000/graphql"
-documents: "src/**/*.graphql.tsx"
+documents: "src/*.graphql.tsx"
 generates:
   src/types/generated/generated.tsx:
     plugins:
@@ -8,4 +8,13 @@ generates:
       - "typescript-operations"
       - "typescript-react-apollo"
     config:
-    withHooks : true
+      withHOC: false
+      withComponent: false
+      withHooks: true
+      apolloReactCommonImportFrom: "@apollo/client"
+      apolloReactHooksImportFrom: "@apollo/client"
+      withRefetchFn: true
+      preResolveTypes: true
+      skipTypename: true
+      flattenGeneratedTypes: true
+      addDocBlocks: true

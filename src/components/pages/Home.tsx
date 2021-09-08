@@ -82,7 +82,7 @@ const Home = (props: Props) => {
 
 
           <Flex width="100%" overflow="hidden" display="flex" flexWrap="wrap" justifyContent="center">
-            <Swiper slidesPerView={2} spaceBetween={40} className="mySwiper">
+            <Swiper  breakpoints={{678:{slidesPerView:2}}} slidesPerView={1} spaceBetween={40} className="mySwiper">
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
@@ -101,7 +101,7 @@ const Home = (props: Props) => {
             </Flex>
           </Box>
 
-          <Swiper slidesPerView={2} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
+          <Swiper  breakpoints={{678:{slidesPerView:2}}} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
             <SwiperSlide><Slider2 /></SwiperSlide>
             <SwiperSlide><Slider2 /></SwiperSlide>
             <SwiperSlide><Slider2 /></SwiperSlide>
@@ -120,10 +120,10 @@ const Home = (props: Props) => {
             </Flex>
 
             <Flex flexDirection="row" justifyContent="flex-start">
-              <Swiper spaceBetween={30} pagination={{ "clickable": true }} className="mySwiper">
+              <Swiper breakpoints={{678:{slidesPerView:1}}} slidesPerView={1} spaceBetween={30} pagination={{ "clickable": true }} className="mySwiper">
                 <SwiperSlide><Slider2 /></SwiperSlide><SwiperSlide><Slider2 /></SwiperSlide><SwiperSlide><Slider2 /></SwiperSlide>
               </Swiper>
-              <Image src={ppl5} width="30%" alt=""></Image>
+              <Image className="pp" src={ppl5} width="30%" alt=""></Image>
             </Flex>
 
             <Box width="100%" height="150px" className="spons" bg="#222244d2">

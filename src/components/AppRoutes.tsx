@@ -17,6 +17,9 @@ import EditEvent from "./pages/Admin/EditEvent"
 import { EventType } from "../types/generated/generated"
 import Verify from "./pages/signinUp/Verify"
 import Forgot from "./pages/signinUp/Forgot"
+import ForgotAfterLink from "./pages/signinUp/ForgotAfterLink"
+import LogOut from "./pages/signinUp/LogOut"
+import Edit from "./pages/profile/Edit"
 interface Props {
     
 }
@@ -47,8 +50,9 @@ const AppRoutes = (props: Props) => {
                     <EventPage />
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
-            {/* <Route exact path="/User/:profName" component={Profile}></Route> */}
-
+            <Route exact path="/User" component={Profile}></Route>
+            <Route exact path="/editProfile" component={Edit}></Route>
+            {/* <Route exact path="/editProfile" component={Edit}></Route> */}
 
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
@@ -58,8 +62,14 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
             <Route  path="/verifyuser/:token" component={Verify}></Route>
+            <Route exact path="/verifyuser/:token" component={Verify}>
+                {/* <Redirect from=""></Redirect> */}
+            </Route>
 
             <Route exact path="/forgot" component={Forgot}></Route>
+            <Route exact path="/forgotpassword/:token" component={ForgotAfterLink}></Route>
+
+            <Route exact path="/logout" component={LogOut}></Route>
 
         </Router>
     )

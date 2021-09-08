@@ -34,10 +34,12 @@ mutation Login($loginData: LoginInput!){
   export const ME = gql`
   query getProfile{
     me {
+      __typename,
       id,
       sjID,
       name,
       school,
+      class,
       registeredEvents {
         title,
         id,
@@ -63,6 +65,11 @@ mutation Login($loginData: LoginInput!){
     }
   }`
   
+//  export const EDITPROFILE = gql`
+//   mutation editProfile($data : EditProfileInput!){
+    
+//   }`
+
   export const LOGOUT = gql`
    mutation Logout{
     logoutUser

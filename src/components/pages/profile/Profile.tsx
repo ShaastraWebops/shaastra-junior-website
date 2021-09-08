@@ -16,7 +16,10 @@ import {
     ModalBody,
     ModalCloseButton,
     Button,
+    Link,   
   } from "@chakra-ui/react"
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import { faEdit } from "@fortawesome/free-solid-svg-icons";
   import {useDisclosure} from "@chakra-ui/react"
 
 import {profiles} from "./data"
@@ -25,8 +28,8 @@ import { competitions } from "../workshops/data";
 import { useParams } from "react-router-dom";
 import { divide } from "lodash";
 import {EventType, RegistraionType, useGetProfileQuery, UserRole} from "../../../types/generated/generated"
-import {useHistory} from "react-router"
-import { useContext } from "react-router/node_modules/@types/react";
+import {useHistory} from "react-router-dom"
+import { useContext } from "react";
 import {RoleContext} from "../signinUp/Context"
  
 SwiperCore.use([Navigation, Pagination, Keyboard])
@@ -39,9 +42,11 @@ const Profile = () => {
     // backgroundColor="#4a4a75b6"
     const history = useHistory()
     const {data,error,loading} = useGetProfileQuery()
+    console.log(role)
+    console.log(UserRole.User)
+    console.log(data)
 
-
-    if(role === UserRole.User)
+    if(data?.me?.__typename === "User")
     {
         return (
             <CustomBox>
@@ -51,12 +56,12 @@ const Profile = () => {
                 <div className="profile-div">
                     <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="18vh">
                         <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"
-                        justifyContent="center" alignItems="flex-end" textAlign="right">
+                        justifyContent="center" alignItems="flex-end" textAlign="center">
                             <p>{data?.me?.name}</p>
                             <p>{data?.me?.school}</p>
                             <p>{data?.me?.sjID}</p>
+                            <a href="/editProfile">Edit <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon> </a>
                         </Flex>
-                        <Image  borderRadius="20%" boxShadow="0px 0px 15px 0px #1c1c2b80" width="18vw" height="18vw" objectFit="cover"></Image>
                     </Flex>
                     <Flex className="registered" width="100%" height="fit-content" justifyContent="center" flexDirection="column"
                     alignItems="center" marginBottom="15vh">
@@ -247,7 +252,8 @@ const Profile = () => {
    }
    else 
    {
-       return(<div></div>)
+       history.push('/event')
+       return null
    }
 }
 

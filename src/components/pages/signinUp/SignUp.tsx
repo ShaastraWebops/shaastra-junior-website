@@ -13,14 +13,14 @@ import { useHistory,Redirect} from 'react-router-dom';
 
 const SignUp = () => {
 
-    const {Kids, First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth} = Standard
+    const {Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth} = Standard
     const [createUserMutation, {data,loading,error}] = useCreateUserMutation(); 
     const [email,setEmail] = useState("")
     const [pw,setPw] = useState("")
     const [checkPw,setCheckPw] = useState("")
     const [name,setName] = useState("")
     const [school, setSchool] = useState("")
-    const [standard, setStandard] = useState<Standard>(Kids)
+    const [standard, setStandard] = useState<Standard>(Sixth)
     const history = useHistory()
 
     const emailHandler = (e:any) => { setEmail(e.target.value) }
@@ -31,12 +31,6 @@ const SignUp = () => {
     const classHandler = (e:any) => {
         switch(e.target.value)
         {
-            case 'KIDS': setStandard(Kids); break;
-            case 'FIRST': setStandard(First); break;
-            case 'SECOND': setStandard(Second); break;
-            case 'THIRD': setStandard(Third); break;
-            case 'FOURTH': setStandard(Fourth); break;
-            case 'FIFTH': setStandard(Fifth); break;
             case 'SIXTH': setStandard(Sixth); break;
             case 'SEVENTH': setStandard(Seventh); break;
             case 'EIGTH': setStandard(Eigth); break;
@@ -71,13 +65,14 @@ const SignUp = () => {
                                     class: standard
                                 }
                             }})
-                           history.push(`/`)
-                        }
+                            console.log(resp)
+                           history.push('/')
+                       }
                     }}>
-                        <Flex width="100%" justifyContent="space-between" height="70%"> 
+                        <Flex width="95%" margin="auto" justifyContent="space-between" height="70%"> 
                             <Flex flexDirection="column" justifyContent="space-between" className="sign-input">
                                 <label htmlFor="name">Name</label>
-                                <label htmlFor="username">Username</label>
+                                <label htmlFor="username">Email ID</label>
                                 <label htmlFor="password">Password</label>
                                 <label htmlFor="passwordR">Repeat password</label>
                                 <label htmlFor="school">School</label>
@@ -90,12 +85,6 @@ const SignUp = () => {
                                 <input type="password" name="passwordR" onChange={repeatPwHandler} />
                                 <input type="text" name="school" onChange={schoolHandler} />
                                 <select name="class" id="class" onSelect={classHandler}>
-                                    <option value="KIDS">Kids</option>
-                                    <option value="FIRST">First</option>
-                                    <option value="SECOND">Second</option>
-                                    <option value="THIRD">Third</option>
-                                    <option value="FOURTH">Fourth</option>
-                                    <option value="FIFTH">Fifth</option>
                                     <option value="SIXTH">Sixth</option>
                                     <option value="SEVENTH">Seventh</option>
                                     <option value="EIGTH">Eight</option>
@@ -106,7 +95,7 @@ const SignUp = () => {
                                 </select>
                             </Flex>
                         </Flex>
-                            <button>SIGN UP</button>
+                            <input type="submit" value="Sign Up" className="submit" />
                         {/* <Flex width="30vw" justifyContent="space-around">
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username"  />

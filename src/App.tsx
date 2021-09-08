@@ -6,7 +6,8 @@ import {
 import { Logo } from "./Logo"
 import { css, Global } from "@emotion/react";
 import Loader from "./components/shared/Loader";
-
+import { ApolloProvider } from '@apollo/client';
+import { Provider } from "./components/pages/signinUp/Context";
 const AppRoutes = React.lazy(() => import("./components/AppRoutes"));
 
 const GlobalStyles = css`
@@ -21,8 +22,10 @@ export const App = () => {
     <React.Suspense fallback={<Loader />}>
       <ChakraProvider >
         {/* <Global styles={GlobalStyles} /> */}
+        <Provider>
         <AppRoutes />
-      </ChakraProvider>
+        </Provider>
+        </ChakraProvider>
     </React.Suspense>
   );
   }
