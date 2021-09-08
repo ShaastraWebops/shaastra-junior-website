@@ -6,7 +6,6 @@ import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
 import Shows from "./pages/shows/Shows"
 import ShowPage from "./pages/shows/ShowsPage"
-
 import Profile from "./pages/profile/Profile"
 import Contactus from "./pages/contactus/Contact"
 import SignIn from "./pages/signinUp/SignIn"
@@ -59,7 +58,6 @@ const AppRoutes = (props: Props) => {
 
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
-
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
             <Route exact path="/addevent" component={AddEvent}/>
