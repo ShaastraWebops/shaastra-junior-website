@@ -21,6 +21,7 @@ import {
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
   import { faEdit } from "@fortawesome/free-solid-svg-icons";
   import {useDisclosure} from "@chakra-ui/react"
+import {name,school,standard, sjid} from "../signinUp/Cookie"
 
 import {profiles} from "./data"
 import { workshops } from "../workshops/data";
@@ -42,9 +43,7 @@ const Profile = () => {
     // backgroundColor="#4a4a75b6"
     const history = useHistory()
     const {data,error,loading} = useGetProfileQuery()
-    console.log(role)
-    console.log(UserRole.User)
-    console.log(data)
+   console.log(document.cookie)
 
     if(data?.me?.__typename === "User")
     {
@@ -57,9 +56,10 @@ const Profile = () => {
                     <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="18vh">
                         <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"
                         justifyContent="center" alignItems="flex-end" textAlign="center">
-                            <p>{data?.me?.name}</p>
-                            <p>{data?.me?.school}</p>
-                            <p>{data?.me?.sjID}</p>
+                            <p>{name()}</p>
+                            <p>{school()}</p>
+                            <p>Class {standard()}</p>
+                            <p>{sjid()}</p>
                             <a href="/editProfile">Edit <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon> </a>
                         </Flex>
                     </Flex>

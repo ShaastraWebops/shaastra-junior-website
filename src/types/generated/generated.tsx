@@ -413,7 +413,7 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { login?: Maybe<{ name: string, email: string, isVerified: boolean, role: UserRole }> };
+export type LoginMutation = { login?: Maybe<{ name: string, id: string, sjID: string, email: string, isVerified: boolean, role: UserRole, school: string, class: Standard }> };
 
 export type VerifyUserMutationVariables = Exact<{
   verifyUserToken: Scalars['String'];
@@ -440,6 +440,13 @@ export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetProfileQuery = { me?: Maybe<{ __typename: 'User', id: string, sjID: string, name: string, school: string, class: Standard, registeredEvents: Array<{ title: string, id: string, eventType: EventType, audience: Array<Standard>, description: string, registrationType: string, isRegistered: boolean, pic: string, eventTimeFrom: string, eventTimeTo: string, teamSize: number, yourTeam?: Maybe<{ name: string, id: string, members: Array<{ class: Standard, name: string, email: string }> }> }> }> };
+
+export type EditProfileMutationVariables = Exact<{
+  data: EditProfileInput;
+}>;
+
+
+export type EditProfileMutation = { editProfile?: Maybe<boolean> };
 
 export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
@@ -598,9 +605,13 @@ export const LoginDocument = gql`
     mutation Login($loginData: LoginInput!) {
   login(data: $loginData) {
     name
+    id
+    sjID
     email
     isVerified
     role
+    school
+    class
   }
 }
     `;
@@ -787,6 +798,37 @@ export type GetProfileQueryResult = ApolloReactCommon.QueryResult<GetProfileQuer
 export function refetchGetProfileQuery(variables?: GetProfileQueryVariables) {
       return { query: GetProfileDocument, variables: variables }
     }
+export const EditProfileDocument = gql`
+    mutation editProfile($data: EditProfileInput!) {
+  editProfile(data: $data)
+}
+    `;
+export type EditProfileMutationFn = ApolloReactCommon.MutationFunction<EditProfileMutation, EditProfileMutationVariables>;
+
+/**
+ * __useEditProfileMutation__
+ *
+ * To run a mutation, you first call `useEditProfileMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useEditProfileMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [editProfileMutation, { data, loading, error }] = useEditProfileMutation({
+ *   variables: {
+ *      data: // value for 'data'
+ *   },
+ * });
+ */
+export function useEditProfileMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<EditProfileMutation, EditProfileMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<EditProfileMutation, EditProfileMutationVariables>(EditProfileDocument, options);
+      }
+export type EditProfileMutationHookResult = ReturnType<typeof useEditProfileMutation>;
+export type EditProfileMutationResult = ApolloReactCommon.MutationResult<EditProfileMutation>;
+export type EditProfileMutationOptions = ApolloReactCommon.BaseMutationOptions<EditProfileMutation, EditProfileMutationVariables>;
 export const LogoutDocument = gql`
     mutation Logout {
   logoutUser

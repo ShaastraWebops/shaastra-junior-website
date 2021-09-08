@@ -18,6 +18,7 @@ const LogOut = () => {
     console.log("exec")
     const call = async () => {
         await logOutMutation();
+        document.cookie += ";max-age=0"
         console.log(data)
     }
     call()
