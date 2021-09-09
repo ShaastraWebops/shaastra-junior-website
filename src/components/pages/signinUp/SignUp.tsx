@@ -66,7 +66,7 @@ const SignUp = () => {
                                         school: school,
                                         class: standard
                                     }
-                            }})
+                            }});
                             console.log(resp)
                         }
                         catch(err) {console.log(err)}

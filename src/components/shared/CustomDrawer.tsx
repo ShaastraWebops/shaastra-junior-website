@@ -15,8 +15,8 @@ import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../../styles/header.css"
 import { Link } from "react-router-dom";
+import { useGetProfileQuery} from "../../types/generated/generated";
 import {Redirect, useHistory} from "react-router"
-import { useGetProfileQuery, useLoginMutation, useLogoutMutation } from "../../types/generated/generated";
 import { useContext } from "react";
 import { Usercontext } from "../pages/signinUp/Context"
 import LogOut from "../pages/signinUp/LogOut";

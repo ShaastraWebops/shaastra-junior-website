@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     /* font-family: 'Patrick Hand', cursive; */
+    /* font-family: 'Rationale', sans-serif; */
 /* font-family: 'Shadows Into Light', cursive; */
     /* font-family: 'Bebas Neue', cursive; */
 }
@@ -11,6 +12,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap'); */
 .image{
     background-repeat: no-repeat;
 }
@@ -56,7 +58,7 @@ span
     margin-bottom: 3vh;
 }
 .text1{
-    color: white;
+    color: #474768;
     font-size: 50px;  
     font-weight: 650;
     display: inline-block;
@@ -66,9 +68,8 @@ span
 }
 .flx1{
     /* height: 100px; */
-    line-height: 150px;
+    line-height: 100px;
     text-align: center;
-    background-color: #474768;
 }
 .boxx{
     display: flex;
@@ -127,8 +128,6 @@ span
 .sponstxt{
     font-size: xx-large;
     vertical-align: middle;
-    /* padding-top: 5%; */
-    padding-top: 3%;
     font-weight: 650;
     display: flex;
     justify-content: center;
@@ -151,9 +150,8 @@ span
         width: 0%;
     }
 }
-
 .pr{
-    background: url('../images/pencils.jpg');
+    /* background: url('../images/pencils.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: -50px;
@@ -166,18 +164,27 @@ span
 }
 
 .w1{
-    background: url('../images/A1.jpg');
+    background: url('../images/sldr1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-position-y: -250px; */
 }
 .w2{
-    background: url('../images/A2.jpg');
+    background: url('../images/sldr2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    /* background-position-y: -140px; */
 }
 .w3{
-    background: url('../images/A3.jpg');
+    background: url('../images/sldr3.jpg');
     background-size: cover;
+    /* background-position-y: -170px; */
+    background-repeat: no-repeat;
+}
+.w4{
+    background: url('../images/sldr4.jpg');
+    background-size: cover;
+    /* background-position-y: -170px; */
     background-repeat: no-repeat;
 }
 .a42{
@@ -185,32 +192,46 @@ span
 }
 .this{
     font-size: 50px;
-    color: #1b329bdc;
+    color: #094ca3b9;
 }
 .xyz{
-    background: url('../images/theme.svg');
+    background: url('../images/firstpage.svg');
+    background-position-y: 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
 .titleContent{
     font-size: 25px;
-    padding-top:150px;
-    width:50%;
+    width:60%;
 }
-@media only screen and (max-width:580px){
+.mainContainer{
+    margin-top: 15%;
+}
+@media only screen and (max-width:600px){
     .titleContent{
-        font-size: 21px;
+        font-size: 16px;
+        padding-left: 20px;
+        padding-top: 20px;
     }
 }
 @media only screen and (max-width:475px){
     .titleContent{
         font-size: 18px;
-        padding-top: 70px;
+        padding-top: 20px;
         width: 100%;
     }
 }
 .mySwiper{
-    width: 80%;
+    width: 100%;
     margin-top: 20px;
     border-radius: 15px;
+}
+.swiper-button-prev{
+    color: #000;
+}
+.swiper-container .swiper-button-next{
+    color: white;
+}
+.swiper-container .swiper-button-prev{
+    color: white;
 }

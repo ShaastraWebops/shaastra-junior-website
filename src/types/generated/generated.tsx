@@ -469,7 +469,17 @@ export type CreateFaqMutation = { createFAQ: boolean };
 export type GetFaQsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFaQsQuery = { getFAQs: { count: number, faqs: Array<{ question: string, answer?: Maybe<string>, createdOn: string }> } };
+export type GetFaQsQuery = (
+  { __typename?: 'Query' }
+  & { getFAQs: (
+    { __typename?: 'GetFAQsOutput' }
+    & Pick<GetFaQsOutput, 'count'>
+    & { faqs: Array<(
+      { __typename?: 'FAQs' }
+      & Pick<FaQs, 'question' | 'answer' | 'createdOn'>
+    )> }
+  ) }
+);
 
 export type CreateEventMutationVariables = Exact<{
   createEventData: CreateEventInput;
@@ -1048,6 +1058,21 @@ export const GetEventDocument = gql`
       answer
       question
       id
+    }
+    isRegistered
+    registeredUser {
+      email
+      name
+    }
+    registeredTeam {
+      name
+      members {
+        sjID
+        email
+        name
+        school
+        class
+      }
     }
   }
 }
