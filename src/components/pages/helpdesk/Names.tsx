@@ -35,8 +35,8 @@ function Names() {
     <IconContext.Provider value={{color:'#ffff',size:'25px'}}>
     <Flex mb ="75px"  flexDirection={"column"} justifyContent="center" alignItems="center" >
 
-        <Input  width = "840px"  placeholder = "Search in existing answers" onChange ={event =>{setSearchTerm(event.target.value)}}></Input>
-    {data?.getFAQs.faqs.filter((item)=>{
+        <Input  mb = "4" width = "840px"  placeholder = "Search in existing answers" onChange ={event =>{setSearchTerm(event.target.value)}}></Input>
+    {JSONdata.filter((item)=>{
         if(searchTerm  == ""){
             return item
         } else if(item.question.toLocaleLowerCase().includes(searchTerm)){
@@ -49,19 +49,19 @@ function Names() {
         return(
             <>
             
-            <div m= "5" spacing = "3" onClick = {()=>toggle(index)}  key = {index}>
+            <div  m= "5" spacing = "3" onClick = {()=>toggle(index)}  key = {index}>
 
-            <Box   p="3" mb={2} >
+            <Box   p="1"  >
                                 <Flex>
-                                    <Box p={'5'} width={"100%"} backgroundColor={"#6a6a85b6"}>
-                                       <Heading size = "md">Question</Heading>
+                                    <Box borderRadius = {"5px"} p={'5'} width ="850px" backgroundColor={"#6a6a85b6"}>
+                                       <Heading size = "md">{item.question}</Heading>
                                     </Box>
                                 </Flex>
-                                <Flex>
+                                {/* <Flex>
                                     <Box width ="850px" p={'5'} backgroundColor={'#dbdbff'} >
                                     <Text fontWeight={"semibold"}>{item.question}</Text>
                                     </Box>
-                                </Flex>
+                                </Flex> */}
                             </Box>
                 
              
@@ -72,10 +72,10 @@ function Names() {
                     <Box
                         
                      w = {"850px"}
-                     p="40px"
-                     color="white"
-                     mt="4"
-                     backgroundColor={"#6a6a85b6"}
+                     p={'5'}
+                     color="black"
+                     mb="5"
+                     backgroundColor={"#dbdbff"}
                      rounded="md"
                      shadow="md"
                      >
@@ -83,7 +83,7 @@ function Names() {
                  </Box>
                   </Collapse>
                
-             
+                  
             </>
         )
 
@@ -95,3 +95,5 @@ function Names() {
 }
 
 export default Names
+
+//data?.getFAQs.faqs
