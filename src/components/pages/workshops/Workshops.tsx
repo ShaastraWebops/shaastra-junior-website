@@ -2,7 +2,7 @@ import {Flex, Heading} from "@chakra-ui/react";
 import * as React from "react";
 import CustomBox from "../../shared/CustomBox";
 import "../../../styles/Competitions.css"
-import Card from "./Card";
+import Card from "../Events/Card";
 import { workshops } from "./data";
 
 const Workshops = () => {

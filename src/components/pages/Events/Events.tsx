@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading} from "@chakra-ui/react";
 import * as React from "react";
 import CustomBox from "../../shared/CustomBox";
-import Card from "../workshops/Card";
+import Card from "./Card";
 import { competitions,workshops} from "../workshops/data";
 import "../../../styles/events.css"
 import { useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
