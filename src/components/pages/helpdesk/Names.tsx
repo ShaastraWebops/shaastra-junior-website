@@ -3,9 +3,18 @@ import JSONdata from './data.json'
 import {IconContext} from 'react-icons'
 
 import { Box, Text, Center, ChakraProvider, Container, Heading, HStack, Wrap, SlideFade, useDisclosure, Input, Collapse, Flex } from '@chakra-ui/react'
+import { useGetFaQsQuery, CreateFaqMutation, useCreateFaqMutation } from '../../../types/generated/generated';
 
 
 function Names() {
+
+    const { data, loading, error } = useGetFaQsQuery()
+
+    
+
+
+    console.log(data)
+    
   const [click,setClick ] = useState(false)
   const [searchTerm,setSearchTerm] = useState("")
 
@@ -27,7 +36,7 @@ function Names() {
     <Flex mb ="75px"  flexDirection={"column"} justifyContent="center" alignItems="center" >
 
         <Input  width = "840px"  placeholder = "Search in existing answers" onChange ={event =>{setSearchTerm(event.target.value)}}></Input>
-    {JSONdata.filter((item)=>{
+    {data?.getFAQs.faqs.filter((item)=>{
         if(searchTerm  == ""){
             return item
         } else if(item.question.toLocaleLowerCase().includes(searchTerm)){

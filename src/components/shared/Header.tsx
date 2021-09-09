@@ -20,7 +20,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
 import user from '../../images/user.png';
 import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
-const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
+const Links = ['Home','Competitions', 'WorkShops', 'Championship','Shows', 'Signin/Register'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -54,6 +54,7 @@ export default function Simple() {
             <Link to="/competitions">Competitions</Link>
             <Link to="/workshops">WorkShops</Link>
             <Link to="/championships">ChampionShip</Link>
+            <Link to="/shows">Shows</Link>
             <Link to="/signin">Login/Register</Link>
           </HStack>
         </HStack>
@@ -80,9 +81,15 @@ export default function Simple() {
       {isOpen ? (
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
-            {Links.map((link) => (
+            {/* {Links.map((link) => (
               <NavLink key={link}>{link}</NavLink>
-            ))}
+            ))} */}
+            <NavLink key={1}><Link to="/">Home</Link></NavLink>
+            <NavLink key={1}><Link to="/workshops">WorkShops</Link></NavLink>
+            <NavLink key={1}><Link to="/competitions">Competitions</Link></NavLink>
+            <NavLink key={1}><Link to="/championships">Championship</Link></NavLink>
+            <NavLink key={1}><Link to="/shows">Shows</Link></NavLink>
+            <NavLink key={1}><Link to="/signin">Signin/Register</Link></NavLink>
           </Stack>
         </Box>
       ) : null}

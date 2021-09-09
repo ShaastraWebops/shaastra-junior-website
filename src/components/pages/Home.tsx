@@ -42,6 +42,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Typist from 'react-typist';
 import bg from '../../images/bg.gif';
 import Footer from "../shared/Footer";
+import sldr1 from "../../images/sldr1.jpg";
+import sldr2 from "../../images/sldr2.jpg";
+import sldr3 from "../../images/sldr3.jpg";
+import sldr4 from "../../images/sldr4.jpg";
+import firstpage from "../../images/firstpage.svg";
 interface Props { }
 
 SwiperCore.use([Pagination]);
@@ -60,49 +65,54 @@ const Home = (props: Props) => {
             {/* <img src={bg} alt="" className="xyz"></img>  */}
             <Flex flexDirection="column" paddingTop="4%" paddingLeft="4%">
 
-              <Typist cursor={{hideWhenDone:true,show:false}}>
+              <Typist cursor={{ hideWhenDone: true, show: false }}>
                 <span className="this">WELCOME TO</span>
                 <Typist.Backspace count={10} delay={2000} />
                 <span className="this">SHAASTRA JUNIOR PORTAL&nbsp;</span>
                 <span className="this">2021</span>
               </Typist>
-
             </Flex>
-            <Flex justifyContent="flex-end" paddingRight="30px" width="100%">
-              <Text className="titleContent" color="#000">A vision board to reflect our dreams,
+            <Flex className="mainContainer" justifyContent="flex-end" paddingRight="30px" paddingTop="17px" width="100%">
+              <Text className="titleContent" color="#000" fontWeight="600" fontSize="20px">A vision board to reflect our dreams,
                 Infinite innovation for you to redeem.
                 Put together ideas that rise from need,
                 Beware, creativity bends to no greed.
                 A sacred place with ample room to grow-
                 Behold one and all, it is yours to know!</Text>
-              </Flex>
+            </Flex>
           </Flex>
-          <Flex className="a42" justifyContent="center" height="60vh">
-            <Swiper pagination={true} className="mySwiper">
+          <Flex className="a42" paddingTop="50px" justifyContent="center" height="60vh">
+            <Swiper pagination={{"type": "fraction"}} navigation={true} className="mySwiper">
               <SwiperSlide>
-                <Flex justifyContent="center" className="w1" width="100vw" height="70vh"></Flex></SwiperSlide>
+                <Flex justifyContent="center" className="w1" width="100%" height="55vh"></Flex>
+              </SwiperSlide>
               <SwiperSlide>
-                <Flex justifyContent="center" className="w2" width="100vw" height="70vh"></Flex></SwiperSlide>
+                <Flex justifyContent="center" className="w2" width="100%" height="55vh"></Flex>
+              </SwiperSlide>
               <SwiperSlide>
-                <Flex justifyContent="center" className="w3" width="100vw" height="70vh"></Flex></SwiperSlide>
+                <Flex justifyContent="center" className="w3" width="100%" height="55vh"></Flex>
+              </SwiperSlide>
               <SwiperSlide>
-                <Flex justifyContent="center" className="w1" width="100vw" height="70vh"></Flex></SwiperSlide>
-              <SwiperSlide>
-                <Flex justifyContent="center" className="w2" width="100vw" height="70vh"></Flex></SwiperSlide>
-              <SwiperSlide>
-                <Flex justifyContent="center" className="w3" width="100vw" height="70vh"></Flex></SwiperSlide>
+                <Flex justifyContent="center" className="w4" width="100%" height="55vh"></Flex>
+              </SwiperSlide>
             </Swiper>
           </Flex>
-          <div className="flx">
-            <h2 className="text" color="black">
-              vero velit sapiente, odit exercitationem laborum atque. Fuga? adipisicing elit. Quod quasi minus, consequuntur dolores sed quam doloremque nisi fugit mollitia qui debitis magnam, maxime ipsum voluptates voluptatem aliquam, repellat quidem delectus.
-            </h2>
-          </div>
-
-          <Box className="mainn" width="100%">
+          <Flex justifyContent="center">
+            <Text width="90%" textAlign="center" color="#000" paddingTop="20px" paddingBottom="50px">
+              Shaastra Juniors, from Shaastra IIT Madras is the 1st ever completely
+              online two day Tech fest specially aimed at spreading technical
+              awareness among school students. A fun filled weekend filled with
+              events, shows, lectures and workshops is sure to have each and every
+              students yearning for more.<br />
+              Shaastra Juniors will be conducted online so each and every student
+              can participate from the comfort of their home. Junior Shaastra will
+              also have special trophies for the best school and excellent students.
+            </Text>
+          </Flex>
+          <Box className="mainn" marginTop="50px" width="100%">
             <div className="flx1">
               <h2 className="text1">
-                INFO ABOUT EVENTS
+                TODAYS HIGHLIGHTS
               </h2>
             </div>
           </Box>
@@ -118,16 +128,15 @@ const Home = (props: Props) => {
             </Swiper>
           </Flex>
 
-          <Box className="mainn" width="100%">
-            <Flex justifyContent="center">
-              <Text p={10} fontSize="50px" color="#474768" fontWeight="650">PREVIOUS YEAR</Text>
-            </Flex>
+          <Box className="mainn" marginTop="50px" width="100%">
+            <div className="flx1">
+              <h2 className="text1">
+                PREVIOUS YEAR
+              </h2>
+            </div>
           </Box>
 
-          <Box height="120vh">
-            <Flex marginTop="-10px" width="100%" paddingTop="25px" className="pr" height="50vh" justifyContent="flex-end">
-              <Text width="50%" fontSize="20px" className="fsa" paddingRight="10px" paddingTop="20px" color="#000">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</Text>
-            </Flex>
+          <Box height="70vh">
             <Box width="100%" height="8vh" />
             <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
               <SwiperSlide><Slider4 /></SwiperSlide>
@@ -140,9 +149,13 @@ const Home = (props: Props) => {
           </Box>
 
           <Box width="100%">
-            <Box width="100%" height="120px" className="mainn">
-              <Text fontSize="30px" color="#474768" letterSpacing="1px" className="sponstxt">SPONSORS</Text>
-            </Box>
+          <Box className="mainn" marginTop="50px" width="100%">
+            <div className="flx1">
+              <h2 className="text1">
+                SPONSORS
+              </h2>
+            </div>
+          </Box>
             <Flex width="100%" bg="#fff" flexWrap="wrap" justifyContent="center">
               <Image src={Astra} width="400px" p={8} alt=""></Image>
               <Image src={Atlasian} width="400px" p={8} alt=""></Image>

@@ -1,4 +1,4 @@
-import { InMemoryCache , ApolloClient, ApolloProvider, createHttpLink  } from "@apollo/client"
+import { InMemoryCache , ApolloClient, ApolloProvider, HttpLink  } from "@apollo/client"
 import { ColorModeScript } from "@chakra-ui/react"
 import * as React from "react"
 import ReactDOM from "react-dom"
@@ -6,16 +6,23 @@ import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
 import { theme } from "./styles/themes/theme"
-import { HttpLink } from "@apollo/client"
+
+
 
 const link = new HttpLink({
   uri: 'http://localhost:8000/graphql',
-  credentials:"include"
+  credentials: 'include'
 });
+
+
+
 const client = new ApolloClient({
-  link: link ,
-  cache: new InMemoryCache()
-});
+  cache: new InMemoryCache(),
+  link: link,
+  credentials : "include"
+})
+
+
 
 
 ReactDOM.render(

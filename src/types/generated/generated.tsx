@@ -32,8 +32,6 @@ export type CreateEventInput = {
   pic: Scalars['String'];
   eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
   registrationType: RegistraionType;
@@ -65,8 +63,6 @@ export type EditEventInput = {
   pic?: Maybe<Scalars['String']>;
   eventType?: Maybe<EventType>;
   audience?: Maybe<Array<Standard>>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom?: Maybe<Scalars['String']>;
   eventTimeTo?: Maybe<Scalars['String']>;
   registrationType?: Maybe<RegistraionType>;
@@ -87,8 +83,6 @@ export type Event = {
   pic: Scalars['String'];
   eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
   updatedOn: Scalars['String'];
@@ -96,9 +90,7 @@ export type Event = {
   teamSize: Scalars['Float'];
   user: User;
   registeredUser: Array<User>;
-  registeredUserCount: Scalars['Float'];
   registeredTeam: Array<Team>;
-  registeredTeamCount: Scalars['Float'];
   isRegistered: Scalars['Boolean'];
   yourTeam?: Maybe<Team>;
   faqs: Array<EventFaq>;
@@ -342,8 +334,7 @@ export type QuerySearchUserArgs = {
 
 export enum RegistraionType {
   Team = 'TEAM',
-  Individual = 'INDIVIDUAL',
-  None = 'NONE'
+  Individual = 'INDIVIDUAL'
 }
 
 export type RequestForgotPassInput = {
@@ -463,7 +454,17 @@ export type CreateFaqMutation = { createFAQ: boolean };
 export type GetFaQsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFaQsQuery = { getFAQs: { count: number, faqs: Array<{ question: string, answer?: Maybe<string>, createdOn: string }> } };
+export type GetFaQsQuery = (
+  { __typename?: 'Query' }
+  & { getFAQs: (
+    { __typename?: 'GetFAQsOutput' }
+    & Pick<GetFaQsOutput, 'count'>
+    & { faqs: Array<(
+      { __typename?: 'FAQs' }
+      & Pick<FaQs, 'question' | 'answer' | 'createdOn'>
+    )> }
+  ) }
+);
 
 export type CreateEventMutationVariables = Exact<{
   createEventData: CreateEventInput;
@@ -484,7 +485,27 @@ export type GetEventQueryVariables = Exact<{
 }>;
 
 
-export type GetEventQuery = { getEvent: { id: string, eventTimeFrom: string, eventTimeTo: string, title: string, description: string, pic: string, registrationType: string, audience: Array<Standard>, eventType: EventType, registrationOpenTime?: Maybe<string>, registrationCloseTime?: Maybe<string>, teamSize: number, faqs: Array<{ answer: string, question: string, id: string }> } };
+export type GetEventQuery = (
+  { __typename?: 'Query' }
+  & { getEvent: (
+    { __typename?: 'Event' }
+    & Pick<Event, 'id' | 'eventTimeFrom' | 'eventTimeTo' | 'registrationType' | 'isRegistered'>
+    & { faqs: Array<(
+      { __typename?: 'EventFAQ' }
+      & Pick<EventFaq, 'answer' | 'question' | 'id'>
+    )>, registeredUser: Array<(
+      { __typename?: 'User' }
+      & Pick<User, 'email' | 'name'>
+    )>, registeredTeam: Array<(
+      { __typename?: 'Team' }
+      & Pick<Team, 'name'>
+      & { members: Array<(
+        { __typename?: 'User' }
+        & Pick<User, 'sjID' | 'email' | 'name' | 'school' | 'class'>
+      )> }
+    )> }
+  ) }
+);
 
 export type EditEventMutationVariables = Exact<{
   editEventEventId: Scalars['String'];
@@ -1040,6 +1061,21 @@ export const GetEventDocument = gql`
       answer
       question
       id
+    }
+    isRegistered
+    registeredUser {
+      email
+      name
+    }
+    registeredTeam {
+      name
+      members {
+        sjID
+        email
+        name
+        school
+        class
+      }
     }
   }
 }
