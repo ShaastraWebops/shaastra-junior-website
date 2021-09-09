@@ -253,7 +253,7 @@ const Profile = () => {
    }
    else 
    {
-       history.push('/event')
+       history.push('/')
        return null
    }
 }

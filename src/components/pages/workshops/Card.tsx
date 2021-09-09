@@ -108,7 +108,7 @@ const Card = ({data, type} : any) =>{
                     }
                     
                     {
-                        role === "USER"? ( <RegisterNow  data={data} />) : null
+                        role !== "ADMIN"? ( <RegisterNow  data={data} />) : null
                     }
         
                    

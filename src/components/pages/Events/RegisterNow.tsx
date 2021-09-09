@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Flex,Button,FormControl,FormLabel,Heading,Center, Image,Text, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure, RadioGroup, HStack, Radio } from "@chakra-ui/react";
 import { useCreateTeamandRegisterMutation, useRegisterMutation } from '../../../types/generated/generated';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { Usercontext } from '../signinUp/Context';
 
 
 
@@ -12,6 +13,7 @@ const RegisterNow = ({data} : any) => {
     console.log(rvalue)
     const [registerMutation , {data : data1}] = useRegisterMutation();
     const [registerAsTeam] = useCreateTeamandRegisterMutation();
+    const {role} =useContext(Usercontext)
 
     const [members , setMembers] = React.useState(['']);
     const [teamname, setTeamname] = React.useState('');

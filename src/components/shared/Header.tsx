@@ -76,7 +76,7 @@ export default function Simple() {
               <MenuItem><Link to="/helpdesk">Help Desk</Link></MenuItem>
               <MenuDivider />
               <MenuItem><Link to="/contactus">Contact Us</Link></MenuItem>
-              <MenuItem><Link to="/">Sign Out</Link></MenuItem>
+              <MenuItem><Link to="/logout">Sign Out</Link></MenuItem>
             </MenuList>
           </Menu>
         </Flex>

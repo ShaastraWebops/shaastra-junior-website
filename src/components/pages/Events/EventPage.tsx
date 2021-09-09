@@ -120,16 +120,19 @@ const EventPage = ()=>{
             <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','100px']} minHeight={"100vh"}>
             <Heading mb={4}>{event?.title}</Heading>
              <Container maxWidth="6xl" alignItems="center" justifyItems={'center'}>
-             <Flex flexDirection={['column','column','row']}alignItems="center" justifyItems={'center'}>
+             <Center>
              <Image
                 h={['2%',"300px","200px"]}
-                width={'auto'}
+                // width={'auto'}
                 objectFit ={'contain'}
                 src={event?.pic}
                 p={4}
                 rounded={["3xl","3xl"]}
                 className="card-img"
             />
+             </Center>
+             <Flex flexDirection={['column','column','row']}alignItems="center" justifyItems={'center'}>
+             
              <Flex
                 direction={'column'}
                 justifyContent={'space-between'}>
