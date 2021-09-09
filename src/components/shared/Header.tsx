@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
+import user from '../../images/user.png';
 import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
 const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
 
@@ -32,7 +33,7 @@ export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
   <Box>
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+    <Box bg="transparent" px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}
@@ -56,7 +57,7 @@ export default function Simple() {
             <Link to="/signin">Login/Register</Link>
           </HStack>
         </HStack>
-        <Flex alignItems={'center'}>
+        <Flex alignItems={'center'} letterSpacing="1px">
           <Menu>
             <MenuButton
               as={Button}
@@ -64,12 +65,7 @@ export default function Simple() {
               variant={'link'}
               cursor={'pointer'}
               minW={0}>
-              <Avatar
-                size={'sm'}
-                src={
-                  'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                }
-              />
+              <Avatar size={'sm'} src={user}/>
             </MenuButton>
             <MenuList>
               <MenuItem><Link to="/profile">My Profile</Link></MenuItem>

@@ -53,7 +53,8 @@ const SignUp = () => {
                         <h1>Welcome to <span>SHAASTRA JUNIORS</span></h1>
                         <p>Registered? <a href="/signin"><span>Sign In</span></a></p>
                     </Box>
-                    <form action="" onSubmit={async () => {
+                    <form action="" onSubmit={async (e) => {
+                        e.preventDefault();
                         if(pw === checkPw)
                         {
                             try{

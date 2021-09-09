@@ -25,12 +25,12 @@ const Slider2 = () => {
         <div>
             <Center py={6} px={10}>
                 <div className="boxx">
-                    <Box maxW={'445px'} w={'full'} borderRadius="5px" bg="#222244d2" p={6} overflow={'hidden'}>
+                    <Box maxW={'445px'} w={'full'} borderRadius="5px" bg="#EA907A" p={6} overflow={'hidden'}>
                         <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
                             <Image src={ppl3} objectFit="cover" htmlHeight="210px" htmlWidth="100%" layout={'fill'} />
                         </Box>
                         <Stack>
-                            <Text color={'green.500'} textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
+                            <Text color="black" textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
                                 SOME INFO
                             </Text>
                         </Stack>

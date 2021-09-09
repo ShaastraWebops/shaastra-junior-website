@@ -1,43 +1,44 @@
 import React from 'react'
-import { Flex, Text, EditIcon,HStack, PopoverHeader, PopoverBody, useDisclosure, FormControl, FormLabel, Input, ButtonGroup, Popover, PopoverTrigger, IconButton, PopoverContent, FocusLock, PopoverArrow, PopoverCloseButton, VStack, Button, Stack, Spacer, Center, Image, Heading, Avatar, Box, fromBox } from "@chakra-ui/react";
+import { Flex, Text, EditIcon, HStack, PopoverHeader, PopoverBody, useDisclosure, FormControl, FormLabel, Input, ButtonGroup, Popover, PopoverTrigger, IconButton, PopoverContent, FocusLock, PopoverArrow, PopoverCloseButton, VStack, Button, Stack, Spacer, Center, Image, Heading, Avatar, Box, fromBox } from "@chakra-ui/react";
 import CustomBox from '../../shared/CustomBox';
 import ppl1 from './ppl1.svg';
 import './ChampionShip.module.css';
 import ppl10 from '../../../images/ppl10.svg'
 import Slider3 from '../Slider3';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useGetChampionshipQuery } from '../../../types/generated/generated';
+import { useGetChampionshipQuery, Championship, setChampionship, SetChampionshipDocument, useSetChampionshipMutation, useClearChampionshipMutation } from '../../../types/generated/generated';
 import Loader from '../../shared/Loader';
 import a1 from '../../../images/123.png';
-import { render } from '@testing-library/react';
+import { useQuery } from '@apollo/react-hooks';
 
 const ChampionShip = () => {
 
     const mitesh = {
         x: 1
     }
-
-    // 3. Create the Popover
-    // Ensure you set `closeOnBlur` prop to false so it doesn't close on outside click
-    const adding = () => {
-        <Popover>
-            <PopoverTrigger>
-                <Button>Trigger</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-                <PopoverArrow />
-                <PopoverCloseButton />
-                <PopoverHeader>Confirmation!</PopoverHeader>
-                <PopoverBody>Are you sure you want to have that milkshake?</PopoverBody>
-            </PopoverContent>
-        </Popover>
+    const [school, setSchool] = React.useState();
+    const [points, setPoints] = React.useState();
+    const [id, setId] = React.useState();
+    const seterE = (e) => {
+        setSchool(e.target.value);
+    }
+    const seterP = (e) => {
+        setPoints(e.target.value);
+    }
+    const ids = (e) => {
+        setId(e.target.value);
     }
 
-
+    const [setChampionshipMutation, { data1, loading1, error1 }] = useSetChampionshipMutation({
+        variables: {
+            setChampionshipData: { id: id, points: points, schoolName: school }
+        }
+    });
+    console.log(id,school,points);
     const { data, loading, error } = useGetChampionshipQuery({});
     if (error) console.log(error);
     if (loading) return <Loader />;
-    // console.log(data.championship[0].schoolName);
+    console.log(data.championship[0].schoolName);
     return (
         <CustomBox>
             <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'80px'}>
@@ -47,7 +48,7 @@ const ChampionShip = () => {
                     </Flex>
                     {mitesh.x ? <Flex justifyContent="center">
                         <Flex width="50%" paddingTop="20px" justifyContent="center">
-                        <Popover>
+                            <Popover>
                                 <PopoverTrigger>
                                     <Button bg="#000">Clear Data</Button>
                                 </PopoverTrigger>
@@ -56,9 +57,9 @@ const ChampionShip = () => {
                                     <PopoverCloseButton />
                                     <PopoverHeader>Are You sure ??!!</PopoverHeader>
                                     <HStack>
-                                    <Button width="50%">Yes</Button>
-                                    <Spacer/>
-                                    <Button width="50%">No</Button>
+                                        <Button width="50%">Yes</Button>
+                                        <Spacer />
+                                        <Button width="50%">No</Button>
                                     </HStack>
                                 </PopoverContent>
                             </Popover>
@@ -71,9 +72,21 @@ const ChampionShip = () => {
                                     <PopoverArrow />
                                     <PopoverCloseButton />
                                     <PopoverHeader>Confirmation!</PopoverHeader>
-                                    <Input type="text" bg="#333" color="gray" defaultValue="Enter School Name"/>
-                                    <Input type="text" bg="#333" color="gray" defaultValue="Enter Points"/>
-                                    <Button>Add Data</Button>
+                                    <form action="">
+                                        <Input type="text" bg="#333" color="#000" name="id" onChange={ids} defaultValue="EnterSchoolID" />
+                                        <Input type="text" bg="#333" color="#000" name="schoolName" onChange={seterE} defaultValue="EnterSchoolName" />
+                                        <Input type="text" bg="#333" color="#000" name="points" onChange={seterP} defaultValue="12" />
+                                        <Button type="submit" onClick={async (e) => {
+                                            e.preventDefault();
+                                            console.log("2");
+                                            try {
+                                                const x = await setChampionshipMutation({ variables: { id: JSON.stringify(id),schoolName:JSON.stringify(school), points: JSON.stringify(points) } })
+                                                console.log(x);
+                                            } catch (error) {
+                                                console.log(error);
+                                            }
+                                        }}>Add Data</Button>
+                                    </form>
                                 </PopoverContent>
                             </Popover>
                         </Flex>
@@ -103,7 +116,7 @@ const ChampionShip = () => {
                         <Text fontSize="40px" className="txt2">PRIZES</Text>
                     </Flex>
 
-                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
+                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
