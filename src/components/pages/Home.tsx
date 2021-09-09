@@ -99,7 +99,7 @@ const Home = (props: Props) => {
           <Box className="mainn" width="100%">
             <div className="flx1">
               <h2 className="text1">
-                TODAY’S HIGHLIGHTS
+                INFO ABOUT EVENTS
               </h2>
             </div>
           </Box>
@@ -137,7 +137,7 @@ const Home = (props: Props) => {
           </Box>
 
           <Box width="100%">
-            <Box width="100%" height="120px" className="mainn" bg="#222244d2">
+            <Box width="100%" height="120px" className="mainn">
               <Text fontSize="30px" color="#474768" letterSpacing="1px" className="sponstxt">SPONSORS</Text>
             </Box>
             <Flex width="100%" bg="#fff" flexWrap="wrap" justifyContent="center">

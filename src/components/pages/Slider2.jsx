@@ -31,10 +31,10 @@ const Slider2 = () => {
                         </Box>
                         <Stack>
                             <Text color="#5FEF30" textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
-                                NAME
+                                NAME : 
                             </Text>
                             <Heading color="#000"  fontSize={'2xl'} fontFamily={'body'}>
-                                <Spacer />DATE/TIME
+                                <Spacer />1st Event :
                             </Heading>
                             <Text color="#000" className="sldr2" color="#000">
                                 eirmod tempor invidunt ut labore et dolore magna aliquyam
