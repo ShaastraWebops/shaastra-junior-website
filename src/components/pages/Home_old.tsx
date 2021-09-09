@@ -47,7 +47,7 @@ import sldr1 from "../../images/sldr1.jpg";
 import sldr2 from "../../images/sldr2.jpg";
 import sldr3 from "../../images/sldr3.jpg";
 import sldr4 from "../../images/sldr4.jpg";
-import firstpage from "../../images/firstpage.svg";
+// import firstpage from "../../images/firstpage.svg";
 interface Props { }
 
 SwiperCore.use([Pagination, Autoplay]);

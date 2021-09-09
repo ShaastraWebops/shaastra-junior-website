@@ -2,10 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'Patrick Hand', cursive; */
-    /* font-family: 'Rationale', sans-serif; */
-/* font-family: 'Shadows Into Light', cursive; */
-    /* font-family: 'Bebas Neue', cursive; */
+
 }
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -235,3 +232,74 @@ span
 .swiper-container .swiper-button-prev{
     color: white;
 }
+
+
+
+/* ############################################################################################## */
+.home-landing-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/ppl.svg"),linear-gradient(#000000, #00000099);;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 64px);
+}
+
+.home-landing-head, .home-landing-subhead{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+    font-family: Nimbus-SansBold;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.home-landing-head {
+    font-size: 5em;
+}
+
+.home-landing-subhead {
+    font-size: 4em;
+}
+
+
+.home-heads {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    font-family: Nimbus-SansBold;
+    font-size: 37px;
+    font-weight: bold;
+}
+
+.home-heads::after{
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 80px;
+    /* left: 25%; */
+    border-bottom: 4px solid #0f659e;
+}
+
+@media only screen and (max-width: 600px) {
+    .home-landing-head {
+        font-size: 2.25em;
+    }
+    
+    .home-landing-subhead {
+        font-size: 1.8em;
+    }
+  }
