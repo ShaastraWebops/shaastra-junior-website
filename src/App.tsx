@@ -7,9 +7,11 @@ import { Logo } from "./Logo"
 import { css, Global } from "@emotion/react";
 import Loader from "./components/shared/Loader";
 import { ApolloProvider } from '@apollo/client';
-import client from "./graphql";
+import { Usercontext } from "./components/pages/signinUp/Context";
+import {useState, useEffect} from "react"
 
 const AppRoutes = React.lazy(() => import("./components/AppRoutes"));
+
 
 const GlobalStyles = css`
 .js-focus-visible :focus:not([data-focus-visible-added]) {
@@ -19,14 +21,19 @@ const GlobalStyles = css`
 `;
 
 export const App = () => {
+  const [role, setRole] = useState<any | null>("")
+    useEffect(() => {
+        setRole(localStorage.getItem("role"))
+        console.log(role)
+    }, [])
   return (
     <React.Suspense fallback={<Loader />}>
-      <ApolloProvider client = {client}>
       <ChakraProvider >
         {/* <Global styles={GlobalStyles} /> */}
+        <Usercontext.Provider value={{role,setRole}}>
         <AppRoutes />
+        </Usercontext.Provider>
         </ChakraProvider>
-        </ApolloProvider>
     </React.Suspense>
   );
   }

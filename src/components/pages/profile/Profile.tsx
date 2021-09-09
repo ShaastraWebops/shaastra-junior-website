@@ -16,8 +16,12 @@ import {
     ModalBody,
     ModalCloseButton,
     Button,
+    Link,   
   } from "@chakra-ui/react"
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import { faEdit } from "@fortawesome/free-solid-svg-icons";
   import {useDisclosure} from "@chakra-ui/react"
+import {name,school,standard, sjid} from "../signinUp/Cookie"
 
 import {profiles} from "./data"
 import { workshops } from "../workshops/data";
@@ -25,23 +29,23 @@ import { competitions } from "../workshops/data";
 import { useParams } from "react-router-dom";
 import { divide } from "lodash";
 import {EventType, RegistraionType, useGetProfileQuery, UserRole} from "../../../types/generated/generated"
-import {useHistory} from "react-router"
+import {useHistory} from "react-router-dom"
 import { useContext } from "react";
-import {RoleContext} from "../signinUp/Context"
+import {Usercontext} from "../signinUp/Context"
  
 SwiperCore.use([Navigation, Pagination, Keyboard])
 
 
 const Profile = () => {
 
-    const role = useContext(RoleContext)
+    const role = useContext(Usercontext)
     const { isOpen, onOpen, onClose } = useDisclosure()
     // backgroundColor="#4a4a75b6"
     const history = useHistory()
     const {data,error,loading} = useGetProfileQuery()
+   console.log(role.role)
 
-
-    if(role === UserRole.User)
+    if(role.role === "USER")
     {
         return (
             <CustomBox>
@@ -49,14 +53,16 @@ const Profile = () => {
             <div className="profile">
             <h1>MY PROFILE</h1>
                 <div className="profile-div">
-                    <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="18vh">
-                        <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"
-                        justifyContent="center" alignItems="flex-end" textAlign="right">
+                    <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center" marginBottom="10vh">
+                        <Flex flexDirection="column" className="profile-info" padding="8vh 8vw" width="fit-content" borderRadius="45px"
+                        justifyContent="center" alignItems="center" textAlign="center" backgroundColor="#b0dbbe"
+                        boxShadow= "0px 0px 15px 5px rgba(31, 33, 39, 0.24)">
                             <p>{data?.me?.name}</p>
                             <p>{data?.me?.school}</p>
-                            <p>{data?.me?.sjID}</p>
+                            <p> <b>Class : </b> {data?.me?.class}</p>
+                            <p> <b>Shaastra Juniors ID :</b> {data?.me?.sjID}</p>
+                            <a href="/editProfile">Edit <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon> </a>
                         </Flex>
-                        <Image  borderRadius="20%" boxShadow="0px 0px 15px 0px #1c1c2b80" width="18vw" height="18vw" objectFit="cover"></Image>
                     </Flex>
                     <Flex className="registered" width="100%" height="fit-content" justifyContent="center" flexDirection="column"
                     alignItems="center" marginBottom="15vh">
@@ -247,7 +253,8 @@ const Profile = () => {
    }
    else 
    {
-       return(<div></div>)
+       history.push('/event')
+       return null
    }
 }
 

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Box,
@@ -24,14 +24,7 @@ const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={'#'}>
+    to={'#'}>
     {children}
   </Link>
 );

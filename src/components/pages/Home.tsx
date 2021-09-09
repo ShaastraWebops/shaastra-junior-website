@@ -20,6 +20,8 @@ import "../../styles/header.css";
 import "../../styles/profile.css";
 import "../../styles/signin.css";
 import SwiperCore, { Pagination } from 'swiper/core';
+import Particles from 'react-particles-js';
+import { Usercontext } from "./signinUp/Context";
 import Astra from '../../images/Astra.png'
 import Atlasian from '../../images/Atlasian.png'
 import Boeing from '../../images/Boeing.png'
@@ -48,7 +50,8 @@ const Home = (props: Props) => {
     DiceOutlineDarkAnimated,
     DiceOutlineLightAnimated
   );
-
+  const role = React.useContext(Usercontext)
+  console.log(role)
   return (
     <CustomBox>
       <Box color="" width="100vw" height="100%" >

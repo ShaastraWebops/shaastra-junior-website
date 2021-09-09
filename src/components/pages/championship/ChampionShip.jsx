@@ -10,11 +10,18 @@ import { useGetChampionshipQuery, Championship, setChampionship, SetChampionship
 import Loader from '../../shared/Loader';
 import a1 from '../../../images/123.png';
 import { useQuery } from '@apollo/react-hooks';
+import { Usercontext } from '../signinUp/Context';
 
 const ChampionShip = () => {
 
+    const {role} = React.useContext(Usercontext)
     const mitesh = {
         x: 1
+    }
+    if(role !== 'ADMIN'){
+        mitesh.x = 1;
+    }else{
+        mitesh.x = 0;
     }
     const [school, setSchool] = React.useState();
     const [points, setPoints] = React.useState();
@@ -34,6 +41,7 @@ const ChampionShip = () => {
             setChampionshipData: { id: id, points: points, schoolName: school }
         }
     });
+    
     console.log(id,school,points);
     const { data, loading, error } = useGetChampionshipQuery({});
     if (error) console.log(error);

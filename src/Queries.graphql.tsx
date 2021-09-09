@@ -9,9 +9,13 @@ export const LOGIN = gql`
 mutation Login($loginData: LoginInput!){
     login(data: $loginData) {
       name,
+      id,
+      sjID,
       email,
       isVerified,
-      role 
+      role,
+      school,
+      class
     }
   }`
   
@@ -34,10 +38,12 @@ mutation Login($loginData: LoginInput!){
   export const ME = gql`
   query getProfile{
     me {
+      __typename,
       id,
       sjID,
       name,
       school,
+      class,
       registeredEvents {
         title,
         id,
@@ -63,6 +69,11 @@ mutation Login($loginData: LoginInput!){
     }
   }`
   
+ export const EDITPROFILE = gql`
+  mutation editProfile($data : EditProfileInput!){
+    editProfile(data: $data)
+  }`
+
   export const LOGOUT = gql`
    mutation Logout{
     logoutUser
@@ -78,6 +89,7 @@ mutation Login($loginData: LoginInput!){
     getFAQs {
       count,
       faqs {
+        question,
         answer,
         createdOn
       }
@@ -86,7 +98,9 @@ mutation Login($loginData: LoginInput!){
   
   export const CREATEEVENT = gql`
   mutation createEvent($createEventData: CreateEventInput!){
-    createEvent(data: $createEventData)
+    createEvent(data: $createEventData){
+      id
+    }
   }`
   
   export const GETEVENTS = gql`
@@ -94,9 +108,19 @@ mutation Login($loginData: LoginInput!){
     getEvents(filter: $getEventsFilter) {
       count,
       events {
-        id,
-        title,
+        id
+        title
+        description
+        pic
+        audience
+        eventType
+        registrationOpenTime
+        eventTimeFrom
+        registrationCloseTime
+        eventTimeTo
+        updatedOn
         registrationType
+        teamSize
       }
     }
   }`
@@ -107,34 +131,33 @@ mutation Login($loginData: LoginInput!){
       id,
       eventTimeFrom,
       eventTimeTo,
+      title,
+      description,
+      pic,
       registrationType,
+      audience,
+      eventType,
+      registrationType,
+      registrationOpenTime,
+      eventTimeFrom,
+      registrationCloseTime,
+      eventTimeTo,
+      teamSize,
       faqs {
         answer,
         question,
         id
-      },
-      isRegistered,
-      registeredUser {
-        email,
-        name
-      },
-      registeredTeamCount,
-      registeredTeam {
-        name,
-        members {
-          sjID,
-          email,
-          name,
-          school,
-          class
-        }
-      }
-    }
-  }`
+      }}
+}`
 
   export const EDITEVENT = gql`
   mutation editEvent($editEventEventId: String!, $editEventData: EditEventInput!){
     editEvent(EventID: $editEventEventId, data: $editEventData)
+  }`
+
+  export const DELETEEVENT = gql`
+  mutation deleteEvent($deleteEventEventId: String!) {
+    deleteEvent(EventID: $deleteEventEventId)
   }`
   
   export const CREATEEVENTFAQ = gql`
@@ -145,6 +168,11 @@ mutation Login($loginData: LoginInput!){
   export const EDITEVENTFAQ = gql`
   mutation editEventFAQ($editEventFaqEventFaqid: String!, $editEventFaqData: EditEventFAQInput!){
     editEventFAQ(EventFAQID: $editEventFaqEventFaqid, data: $editEventFaqData)
+  }`
+
+  export const DELETEEVENTFAQ = gql`
+  mutation deleteEventFAQ($deleteEventFaqEventFaqid: String!) {
+    deleteEventFAQ(EventFAQID: $deleteEventFaqEventFaqid)
   }`
   
   export const REGISTER = gql`

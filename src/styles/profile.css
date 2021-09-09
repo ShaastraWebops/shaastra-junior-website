@@ -86,19 +86,27 @@ html
     border-radius: 12px;
     margin-bottom: 3vh;
 }
-.profile-info p 
+.profile-info p , .profile a
 {
     font-size: 1.8vw;
     font-family: 'IBM Plex Sans Thai', sans-serif;
     font-weight: 200;
     /* margin: 2vh 0; */
     /* border-bottom: 2px solid #cc9fc6; */
-    width: 30vw;
+    /* width: 30vw; */
 }
 .profile-info > p:first-child, .purchases p
 {
     font-weight: 600;
-    font-size: 3.5vw;
+    font-size: 5vw;
+}
+.profile-info a 
+{
+    font-weight: bold;
+}
+.profile-info b 
+{
+    font-size: 2vw;
 }
 .profile h3, .chakra-modal__header h2
 {
@@ -176,6 +184,16 @@ html
 {
     margin-bottom: 5vh;
 }
+.edit input, .edit label 
+{
+    height: 5vh !important;
+    margin: 2vh 0 !important;
+}
+.edit label 
+{
+    font-size: 1.8vw !important;
+}
+
 
 @media screen and (max-width: 1200px)
 {
