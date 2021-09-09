@@ -19,7 +19,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
 import user from '../../images/user.png';
-import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
+import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_black.svg"
 const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
@@ -57,15 +57,15 @@ export default function Simple() {
             <Link to="/signin">Login/Register</Link>
           </HStack>
         </HStack>
-        <Flex alignItems={'center'} letterSpacing="1px">
+        <Flex alignItems={'center'} letterSpacing="1px" m={2} p={3}>
           <Menu>
             <MenuButton
               as={Button}
               rounded={'full'}
               variant={'link'}
               cursor={'pointer'}
-              minW={0}>
-              <Avatar size={'sm'} src={user}/>
+              minW={0} marginTop={[0,0,5]} p={[0,0,2]}>
+              <Avatar size={'md'} src={user}/>
             </MenuButton>
             <MenuList>
               <MenuItem><Link to="/profile">My Profile</Link></MenuItem>

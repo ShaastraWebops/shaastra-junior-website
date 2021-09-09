@@ -27,6 +27,21 @@ const EventPage = ()=>{
     const event = data?.getEvent ;
     const [deleteEvent , {data : data1 ,loading : loading1,error : error1}] = useDeleteEventMutation();
 
+    const STANDARD  = {
+        KIDS  : 0,
+        FIRST : 1,
+        SECOND : 2,
+        THIRD : 3,
+        FOURTH : 4,
+        FIFTH : 5 ,
+        "SIXTH" : 6,
+        SEVENTH : 7,
+        EIGTH : 8,
+        NINTH : 9,
+        TENTH : 10,
+        ELEVENTH: 11,
+        TWELFTH :12
+    }
     const DeleteEvent = (id : string) =>{
         deleteEvent(
             {
@@ -83,11 +98,12 @@ const EventPage = ()=>{
         setAAnswer("")
 
     }
-    let audience =" ";
-    event?.audience.map(a =>{
-        audience += a
-    } )
+     let audience : any = [];
 
+     event?.audience.map( (a) : any=> {
+         audience.push(STANDARD[a])
+     })
+     audience.sort();
     const handleedit = (faqid :string) =>{
         editFaq({
             variables :{
@@ -117,7 +133,7 @@ const EventPage = ()=>{
 
     return(
         <CustomBox>
-            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','100px']} minHeight={"100vh"}>
+            <Flex flexDirection={"column"} alignItems="center" paddingTop={['20px','20px']} minHeight={"100vh"}>
             <Heading mb={4}>{event?.title}</Heading>
              <Container maxWidth="6xl" alignItems="center" justifyItems={'center'}>
              <Center>
@@ -142,6 +158,30 @@ const EventPage = ()=>{
                 p={4}>
                 {event?.description}
                 </Text>
+                <Text
+                fontWeight={'medium'}
+                fontSize={'20px'}
+                p={4}>
+                 Target Audience : 
+                 <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    > <TagLabel fontSize={'md'}>{audience[0]} th - {audience[audience.length - 1]} th</TagLabel></Tag>
+                </Text>
+                <Text
+                fontWeight={'medium'}
+                fontSize={'20px'}
+                p={4}>
+                 Platform : 
+                 <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    > <TagLabel fontSize={'md'}>{event?.platform}</TagLabel></Tag>
+                </Text>
+                <Text
+                fontWeight={'medium'}
+                fontSize={'20px'}
+                p={3} >
+                Requirements: 
+                <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    > <TagLabel fontSize={'md'}>{event?.requirements}</TagLabel></Tag>
+                </Text>
                
                  <Flex p={3} flexDirection={["column","column","row"]} alignItems={'center'}>
                  <Flex p={3} flexDirection="row" alignItems={'center'}>
@@ -149,8 +189,8 @@ const EventPage = ()=>{
                     fontFamily={'Inter'}
                     fontWeight={'medium'}
                     >
-                    Registration Type : <Tag variant="solid"
-                    > <TagLabel>{event?.registrationType}</TagLabel></Tag>
+                    Registration Type : <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    > <TagLabel fontSize={'md'}>{event?.registrationType}</TagLabel></Tag>
                     </Text>
                     </Flex >
                     <Spacer />

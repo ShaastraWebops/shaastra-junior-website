@@ -17,134 +17,140 @@ export type Scalars = {
 
 export type Championship = {
   id: Scalars['ID'];
-  schoolName: Scalars['String'];
   points: Scalars['Float'];
+  schoolName: Scalars['String'];
 };
 
 export type CreateEventFaqInput = {
-  question: Scalars['String'];
   answer: Scalars['String'];
+  question: Scalars['String'];
 };
 
 export type CreateEventInput = {
-  title: Scalars['String'];
-  description: Scalars['String'];
-  pic: Scalars['String'];
-  eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
+  eventType: EventType;
+  pic: Scalars['String'];
+  platform: Scalars['String'];
+  registrationCloseTime?: Maybe<Scalars['String']>;
+  registrationOpenTime?: Maybe<Scalars['String']>;
   registrationType: RegistraionType;
+  requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
+  title: Scalars['String'];
 };
 
 export type CreateTeamInput = {
-  name: Scalars['String'];
-  members?: Maybe<Array<Scalars['String']>>;
   eventID: Scalars['String'];
+  members?: Maybe<Array<Scalars['String']>>;
+  name: Scalars['String'];
 };
 
 export type CreateUserInput = {
-  name: Scalars['String'];
+  class: Standard;
   email: Scalars['String'];
+  name: Scalars['String'];
   password: Scalars['String'];
   school: Scalars['String'];
-  class: Standard;
 };
 
 export type EditEventFaqInput = {
-  question?: Maybe<Scalars['String']>;
   answer?: Maybe<Scalars['String']>;
+  question?: Maybe<Scalars['String']>;
 };
 
 export type EditEventInput = {
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  pic?: Maybe<Scalars['String']>;
-  eventType?: Maybe<EventType>;
   audience?: Maybe<Array<Standard>>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
   eventTimeFrom?: Maybe<Scalars['String']>;
   eventTimeTo?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<RegistraionType>;
+  eventType?: Maybe<EventType>;
+  pic?: Maybe<Scalars['String']>;
+  platform: Scalars['String'];
+  registrationCloseTime?: Maybe<Scalars['String']>;
+  registrationOpenTime?: Maybe<Scalars['String']>;
+  registrationType?: Maybe<Scalars['String']>;
+  requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 export type EditProfileInput = {
+  city?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
   school?: Maybe<Scalars['String']>;
-  city?: Maybe<Scalars['String']>;
 };
 
 export type Event = {
-  id: Scalars['ID'];
-  title: Scalars['String'];
-  description: Scalars['String'];
-  pic: Scalars['String'];
-  eventType: EventType;
   audience: Array<Standard>;
-  registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationCloseTime?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
   eventTimeFrom: Scalars['String'];
   eventTimeTo: Scalars['String'];
-  updatedOn: Scalars['String'];
-  registrationType: Scalars['String'];
-  teamSize: Scalars['Float'];
-  user: User;
-  registeredUser: Array<User>;
-  registeredUserCount: Scalars['Float'];
+  eventType: EventType;
+  faqs: Array<EventFaq>;
+  id: Scalars['ID'];
+  isRegistered: Scalars['Boolean'];
+  pic: Scalars['String'];
+  platform?: Maybe<Scalars['String']>;
   registeredTeam: Array<Team>;
   registeredTeamCount: Scalars['Float'];
-  isRegistered: Scalars['Boolean'];
+  registeredUser: Array<User>;
+  registeredUserCount: Scalars['Float'];
+  registrationCloseTime?: Maybe<Scalars['String']>;
+  registrationOpenTime?: Maybe<Scalars['String']>;
+  registrationType: Scalars['String'];
+  requirements?: Maybe<Scalars['String']>;
+  teamSize: Scalars['Float'];
+  title: Scalars['String'];
+  updatedOn: Scalars['String'];
+  user: User;
   yourTeam?: Maybe<Team>;
-  faqs: Array<EventFaq>;
 };
 
 export type EventFaq = {
-  id: Scalars['ID'];
-  updatedOn: Scalars['String'];
-  question: Scalars['String'];
   answer: Scalars['String'];
+  id: Scalars['ID'];
+  question: Scalars['String'];
+  updatedOn: Scalars['String'];
 };
 
 export enum EventType {
-  Workshops = 'WORKSHOPS',
   Competitions = 'COMPETITIONS',
-  Shows = 'SHOWS'
+  Shows = 'SHOWS',
+  Workshops = 'WORKSHOPS'
 }
 
 export type FaQs = {
+  answer?: Maybe<Scalars['String']>;
+  createdOn: Scalars['String'];
   id: Scalars['ID'];
   question: Scalars['String'];
-  createdOn: Scalars['String'];
-  answer?: Maybe<Scalars['String']>;
   updatedOn: Scalars['String'];
 };
 
 export type GetEventsOutput = {
-  events: Array<Event>;
   count: Scalars['Float'];
+  events: Array<Event>;
 };
 
 export type GetFaQsOutput = {
-  faqs: Array<FaQs>;
   count: Scalars['Float'];
+  faqs: Array<FaQs>;
 };
 
 export type GetUsersFilter = {
   city?: Maybe<Scalars['String']>;
-  school?: Maybe<Scalars['String']>;
   class?: Maybe<Scalars['String']>;
   role?: Maybe<Scalars['String']>;
+  school?: Maybe<Scalars['String']>;
 };
 
 export type GetUsersOutput = {
-  users: Array<User>;
   count: Scalars['Float'];
+  users: Array<User>;
 };
 
 export type LoginInput = {
@@ -153,53 +159,38 @@ export type LoginInput = {
 };
 
 export type Mutation = {
-  setChampionship: Scalars['Boolean'];
+  answerFAQ: Scalars['Boolean'];
   clearChampionship: Scalars['Boolean'];
   createEvent: Event;
-  editEvent: Scalars['Boolean'];
-  deleteEvent: Scalars['Boolean'];
-  register: Scalars['Boolean'];
   createEventFAQ: Scalars['Boolean'];
-  editEventFAQ: Scalars['Boolean'];
-  deleteEventFAQ: Scalars['Boolean'];
   createFAQ: Scalars['Boolean'];
-  answerFAQ: Scalars['Boolean'];
-  deleteFAQs: Scalars['Boolean'];
   createTeamAndRegister: Scalars['Boolean'];
-  leaveTeam: Scalars['Boolean'];
   createUser: Scalars['Boolean'];
-  verifyUser: Scalars['Boolean'];
-  login?: Maybe<User>;
+  deleteEvent: Scalars['Boolean'];
+  deleteEventFAQ: Scalars['Boolean'];
+  deleteFAQs: Scalars['Boolean'];
+  editEvent: Scalars['Boolean'];
+  editEventFAQ: Scalars['Boolean'];
   editProfile?: Maybe<Scalars['Boolean']>;
+  leaveTeam: Scalars['Boolean'];
+  login?: Maybe<User>;
+  logoutUser: Scalars['Boolean'];
+  register: Scalars['Boolean'];
   reqForgotPassVerification: Scalars['Boolean'];
   resetPassword: Scalars['Boolean'];
-  logoutUser: Scalars['Boolean'];
+  setChampionship: Scalars['Boolean'];
+  verifyUser: Scalars['Boolean'];
 };
 
 
-export type MutationSetChampionshipArgs = {
-  data: SetChampionshipInput;
+export type MutationAnswerFaqArgs = {
+  FAQID: Scalars['String'];
+  answer: Scalars['String'];
 };
 
 
 export type MutationCreateEventArgs = {
   data: CreateEventInput;
-};
-
-
-export type MutationEditEventArgs = {
-  EventID: Scalars['String'];
-  data: EditEventInput;
-};
-
-
-export type MutationDeleteEventArgs = {
-  EventID: Scalars['String'];
-};
-
-
-export type MutationRegisterArgs = {
-  EventID: Scalars['String'];
 };
 
 
@@ -209,30 +200,8 @@ export type MutationCreateEventFaqArgs = {
 };
 
 
-export type MutationEditEventFaqArgs = {
-  EventFAQID: Scalars['String'];
-  data: EditEventFaqInput;
-};
-
-
-export type MutationDeleteEventFaqArgs = {
-  EventFAQID: Scalars['String'];
-};
-
-
 export type MutationCreateFaqArgs = {
   question: Scalars['String'];
-};
-
-
-export type MutationAnswerFaqArgs = {
-  answer: Scalars['String'];
-  FAQID: Scalars['String'];
-};
-
-
-export type MutationDeleteFaQsArgs = {
-  FAQID: Scalars['String'];
 };
 
 
@@ -241,18 +210,45 @@ export type MutationCreateTeamAndRegisterArgs = {
 };
 
 
-export type MutationLeaveTeamArgs = {
-  data: Scalars['String'];
-};
-
-
 export type MutationCreateUserArgs = {
   data: CreateUserInput;
 };
 
 
-export type MutationVerifyUserArgs = {
-  token: Scalars['String'];
+export type MutationDeleteEventArgs = {
+  EventID: Scalars['String'];
+};
+
+
+export type MutationDeleteEventFaqArgs = {
+  EventFAQID: Scalars['String'];
+};
+
+
+export type MutationDeleteFaQsArgs = {
+  FAQID: Scalars['String'];
+};
+
+
+export type MutationEditEventArgs = {
+  EventID: Scalars['String'];
+  data: EditEventInput;
+};
+
+
+export type MutationEditEventFaqArgs = {
+  EventFAQID: Scalars['String'];
+  data: EditEventFaqInput;
+};
+
+
+export type MutationEditProfileArgs = {
+  data: EditProfileInput;
+};
+
+
+export type MutationLeaveTeamArgs = {
+  data: Scalars['String'];
 };
 
 
@@ -261,8 +257,8 @@ export type MutationLoginArgs = {
 };
 
 
-export type MutationEditProfileArgs = {
-  data: EditProfileInput;
+export type MutationRegisterArgs = {
+  EventID: Scalars['String'];
 };
 
 
@@ -275,17 +271,27 @@ export type MutationResetPasswordArgs = {
   data: ResetPasswordInput;
 };
 
+
+export type MutationSetChampionshipArgs = {
+  data: SetChampionshipInput;
+};
+
+
+export type MutationVerifyUserArgs = {
+  token: Scalars['String'];
+};
+
 export type Query = {
   championship: Array<Championship>;
   exportCSV: Scalars['String'];
-  getEvents: GetEventsOutput;
   getEvent: Event;
-  getFAQs: GetFaQsOutput;
+  getEvents: GetEventsOutput;
   getFAQ: FaQs;
-  me?: Maybe<User>;
+  getFAQs: GetFaQsOutput;
+  getUser?: Maybe<User>;
   getUsers?: Maybe<GetUsersOutput>;
   getUsersCount: Scalars['Float'];
-  getUser?: Maybe<User>;
+  me?: Maybe<User>;
   searchUser?: Maybe<Array<User>>;
 };
 
@@ -295,22 +301,15 @@ export type QueryExportCsvArgs = {
 };
 
 
-export type QueryGetEventsArgs = {
-  limit?: Maybe<Scalars['Float']>;
-  skip?: Maybe<Scalars['Float']>;
-  filter?: Maybe<Scalars['String']>;
-};
-
-
 export type QueryGetEventArgs = {
   EventID: Scalars['String'];
 };
 
 
-export type QueryGetFaQsArgs = {
+export type QueryGetEventsArgs = {
+  filter?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Float']>;
   skip?: Maybe<Scalars['Float']>;
-  isAnswered?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -319,15 +318,10 @@ export type QueryGetFaqArgs = {
 };
 
 
-export type QueryGetUsersArgs = {
+export type QueryGetFaQsArgs = {
+  isAnswered?: Maybe<Scalars['Boolean']>;
   limit?: Maybe<Scalars['Float']>;
   skip?: Maybe<Scalars['Float']>;
-  filter?: Maybe<GetUsersFilter>;
-};
-
-
-export type QueryGetUsersCountArgs = {
-  filter: GetUsersFilter;
 };
 
 
@@ -336,14 +330,26 @@ export type QueryGetUserArgs = {
 };
 
 
+export type QueryGetUsersArgs = {
+  filter?: Maybe<GetUsersFilter>;
+  limit?: Maybe<Scalars['Float']>;
+  skip?: Maybe<Scalars['Float']>;
+};
+
+
+export type QueryGetUsersCountArgs = {
+  filter: GetUsersFilter;
+};
+
+
 export type QuerySearchUserArgs = {
   search: Scalars['String'];
 };
 
 export enum RegistraionType {
-  Team = 'TEAM',
   Individual = 'INDIVIDUAL',
-  None = 'NONE'
+  None = 'NONE',
+  Team = 'TEAM'
 }
 
 export type RequestForgotPassInput = {
@@ -351,54 +357,54 @@ export type RequestForgotPassInput = {
 };
 
 export type ResetPasswordInput = {
-  token: Scalars['String'];
   newPassword: Scalars['String'];
+  token: Scalars['String'];
 };
 
 export type SetChampionshipInput = {
-  schoolName: Scalars['String'];
   points: Scalars['Float'];
+  schoolName: Scalars['String'];
 };
 
 export enum Standard {
-  Kids = 'KIDS',
-  First = 'FIRST',
-  Second = 'SECOND',
-  Third = 'THIRD',
-  Fourth = 'FOURTH',
-  Fifth = 'FIFTH',
-  Sixth = 'SIXTH',
-  Seventh = 'SEVENTH',
   Eigth = 'EIGTH',
-  Ninth = 'NINTH',
-  Tenth = 'TENTH',
   Eleventh = 'ELEVENTH',
+  Fifth = 'FIFTH',
+  First = 'FIRST',
+  Fourth = 'FOURTH',
+  Kids = 'KIDS',
+  Ninth = 'NINTH',
+  Second = 'SECOND',
+  Seventh = 'SEVENTH',
+  Sixth = 'SIXTH',
+  Tenth = 'TENTH',
+  Third = 'THIRD',
   Twelfth = 'TWELFTH'
 }
 
 export type Team = {
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  members: Array<User>;
   event: Event;
+  id: Scalars['ID'];
+  members: Array<User>;
+  name: Scalars['String'];
 };
 
 export type User = {
-  id: Scalars['ID'];
-  sjID: Scalars['String'];
-  name: Scalars['String'];
-  email: Scalars['String'];
-  school: Scalars['String'];
   class: Standard;
-  isVerified: Scalars['Boolean'];
-  role: UserRole;
+  email: Scalars['String'];
   events: Array<Event>;
+  id: Scalars['ID'];
+  isVerified: Scalars['Boolean'];
+  name: Scalars['String'];
   registeredEvents: Array<Event>;
+  role: UserRole;
+  school: Scalars['String'];
+  sjID: Scalars['String'];
 };
 
 export enum UserRole {
-  User = 'USER',
-  Admin = 'ADMIN'
+  Admin = 'ADMIN',
+  User = 'USER'
 }
 
 export type CreateUserMutationVariables = Exact<{
@@ -484,7 +490,7 @@ export type GetEventQueryVariables = Exact<{
 }>;
 
 
-export type GetEventQuery = { getEvent: { id: string, eventTimeFrom: string, eventTimeTo: string, title: string, description: string, pic: string, registrationType: string, audience: Array<Standard>, eventType: EventType, registrationOpenTime?: Maybe<string>, registrationCloseTime?: Maybe<string>, teamSize: number, faqs: Array<{ answer: string, question: string, id: string }> } };
+export type GetEventQuery = { getEvent: { id: string, eventTimeFrom: string, eventTimeTo: string, title: string, description: string, pic: string, registrationType: string, platform?: Maybe<string>, requirements?: Maybe<string>, audience: Array<Standard>, eventType: EventType, registrationOpenTime?: Maybe<string>, registrationCloseTime?: Maybe<string>, teamSize: number, faqs: Array<{ answer: string, question: string, id: string }> } };
 
 export type EditEventMutationVariables = Exact<{
   editEventEventId: Scalars['String'];
@@ -1028,6 +1034,8 @@ export const GetEventDocument = gql`
     description
     pic
     registrationType
+    platform
+    requirements
     audience
     eventType
     registrationType

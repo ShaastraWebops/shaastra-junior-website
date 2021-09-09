@@ -57,8 +57,8 @@
 
     .header-logo, .header svg
     {
-        width: 10vw !important;
-        height: 5vw !important;
+        width: 20vw !important;
+        height: 20vw !important;
         margin: 0;
     }
     .header-links
@@ -71,6 +71,7 @@
 }
 @media screen and (max-width: 300px)
 {
+
     .svg-inline--fa
     {
         width: 100% !important;

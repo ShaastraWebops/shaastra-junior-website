@@ -1,22 +1,24 @@
-import React, { Fragment, useContext } from 'react'
-import { Flex,Button,FormControl,FormLabel,Heading,Center, Image,Text, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure, RadioGroup, HStack, Radio } from "@chakra-ui/react";
+import React, { Fragment, useContext, useState } from 'react'
+import { Alert ,AlertIcon , Flex,Button,FormControl,FormLabel,Heading,Center, Image,Text, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure, RadioGroup, HStack, Radio } from "@chakra-ui/react";
 import { useCreateTeamandRegisterMutation, useRegisterMutation } from '../../../types/generated/generated';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { Usercontext } from '../signinUp/Context';
-
+import moment  from 'moment';
+import Notification from './Notification';
 
 
 const RegisterNow = ({data} : any) => {
     const today = new Date();
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    let { isOpen, onOpen, onClose } = useDisclosure();
     const [rvalue, setRValue] = React.useState<string>("0")
-    console.log(rvalue)
-    const [registerMutation , {data : data1}] = useRegisterMutation();
+    const [registerMutation , {data : data1 , error }] = useRegisterMutation();
     const [registerAsTeam] = useCreateTeamandRegisterMutation();
     const {role} =useContext(Usercontext)
-
+    const [rerror , setError] = React.useState();
+    const [rsucessful,setRsucessful] = React.useState(false);
     const [members , setMembers] = React.useState(['']);
     const [teamname, setTeamname] = React.useState('');
+    
 
     const handleMembersInput = ({index,event} :{index: number ,event: React.ChangeEvent<HTMLInputElement>}) =>{
       const values =[...members];
@@ -24,8 +26,18 @@ const RegisterNow = ({data} : any) => {
       values[index] = event.target.value
       setMembers(values)
     }
-    const handleregisterasTeam = () =>{
 
+    const handleregister = () =>{
+        registerMutation({variables : {registerEventId : data?.id!}})
+        .then(
+            res => {
+                if(res.data?.register === true) setRsucessful(true)
+            }
+        )
+        .catch(err => setError(err.message))
+    }
+    const handleregisterasTeam = () =>{
+        console.log("hello")
         registerAsTeam({
             variables :{
                 
@@ -33,21 +45,50 @@ const RegisterNow = ({data} : any) => {
                     members , name : teamname,eventID : data.id
                 }
             }
-        })
+        }).then(
+            res => {
+                if(res.data?.createTeamAndRegister === true) setRsucessful(true)
+            }
+        )
+        .catch(err => setError(err.message))
 
+    }
+
+    
+    const regdate = parseInt((moment(parseInt(data?.registrationCloseTime!)).format("DD").toString()))
+    if(data.registrationType === "NONE")
+    {
+        return(<Text p={2}>Registration is Not required</Text>)
+    }
+    if(rsucessful)
+    {
+        onClose =  () => {
+            window.location.reload()
+        }
+        return( <Modal isOpen={true} onClose={onClose}>
+            <ModalOverlay></ModalOverlay>
+                <ModalContent backgroundColor="#AACDBE" color="#222244">
+                    <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                    <ModalBody>
+                        <p>Registration Succesfull</p>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
+             )
     }
     return (
         <Flex >
-            <Button onClick={onOpen}
-                     width={["100%","100%","auto"]}
-                     color='#244f3b' variant={'outline'} border="2px solid"
-                     borderColor = '#244f3b'
-                    // isDisabled = { (data.deadline.getFullYear() === today.getFullYear())&&(
-                    //     data.deadline.getMonth() === today.getMonth()
-                    // )&&(data.deadline.getDate()-today.getDate()) < 1 ? true : false }
-                     size="sm" p={2} m={2}>
-                        Register Now
-                    </Button>
+
+             {
+                 role !== "USER" ? null : (  <Button onClick={ onOpen}
+                    width={["100%","100%","auto"]}
+                    color='#244f3b' variant={'outline'} border="2px solid"
+                    borderColor = '#244f3b'
+                   isDisabled = {(regdate - today.getDate()) < 1 ? true : false }
+                    size="sm" p={2} m={2}>
+                       Register Now
+                   </Button>)
+             }
                     <Modal
                         size={"md"}
                         isOpen={isOpen}
@@ -56,20 +97,37 @@ const RegisterNow = ({data} : any) => {
                     >
                         <ModalOverlay />
                         <ModalContent >
+
                         <ModalHeader>Register Now</ModalHeader>
+
                         <ModalCloseButton />
+                        {
+                            rerror ? (
+                                <Center>
+                                <Alert status="error" width={'90%'}>
+                                    <AlertIcon />
+                                    {rerror}
+                                </Alert>
+                            </Center>
+                            ): null
+                        }
                         <ModalBody pb={6}>
                             <FormControl my={4}>
                             <FormLabel>Shaastra ID</FormLabel>
                             <Input borderColor={'#244f3b'} placeholder="Shaastra ID" color={"#244f3b"}/>
                             </FormControl>
                             <FormControl>
-                            <RadioGroup onChange={setRValue} value={rvalue} size={'sm'}>
+                            <RadioGroup onChange={setRValue} value={rvalue} size={'lg'}>
                                 <HStack spacing="10px">
-                                <Radio value="0">Individual Registration</Radio>
+                                
+                                <Radio value="0">
+                                <Text  as={'h6'}textColor={'black'} fontSize={'lg'}>
+                                    Individual Registration</Text></Radio>
                                 {
                                      data.teamSize > 0 ? (
-                                        <Radio value="1">Registration As Team</Radio>
+                                        <Radio value="1">
+                                            <Text as={'h6'}textColor={'black'} fontSize={'lg'}>Registration As Team</Text>
+                                            </Radio>
                                      ) : null
                                 }
                                 </HStack>
@@ -91,7 +149,7 @@ const RegisterNow = ({data} : any) => {
                                     <Fragment key={index}>
                                     <Flex   width={'100%'}  >
                                     <FormControl m={2}>
-                                    <Input  name = "sjdid"
+                                    <Input  name = "sjdid" required
                                     placeholder = {'Shaastra Juniors Id'}
                                     id={"member"+index} fontSize={'small'} p={2} borderColor={'#244f3b'} value={member}
                                     onChange = {(event)=>handleMembersInput({index ,event})}/>
@@ -136,17 +194,14 @@ const RegisterNow = ({data} : any) => {
                                     color='#244f3b' variant={'outline'} border="2px solid"
                                     borderColor = '#244f3b'
                                     mr={3}
-                                    onClick = {()=>{registerMutation({variables : {
-                                        registerEventId : data?.id!
-                                        }})}}
-                                        >
+                                    onClick = {handleregister}>
                                     Register
                                     </Button>) : 
                                     ( <Button 
                                         color='#244f3b' variant={'outline'} border="2px solid"
                                         borderColor = '#244f3b'
                                     mr={3}
-                                    onClick={()=>{handleregisterasTeam()}}
+                                    onClick={handleregisterasTeam}
                                     >
                                     Register as A Team
                                     </Button>)

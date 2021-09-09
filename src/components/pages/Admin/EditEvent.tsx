@@ -1,5 +1,5 @@
 import { CheckIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
+import { Alert , AlertIcon ,Spinner,Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import moment from 'moment'
 import React, { Fragment } from 'react'
@@ -18,14 +18,18 @@ const EditEvent = () =>{
     const [ url, setUrl ] = React.useState<any | null>();
     const { id } = useParams<{id : string}>();
     const [uploaded , setUploaded ] = React.useState(false);
+    const [spinner,setSpinner] = React.useState(false);
+    const [aerror,setError] = React.useState();
+
  
     const {data , loading , error } = useGetEventQuery({variables : {
       getEventEventId : id
   }});
   if(loading) return(<Loader />)
   const event = data?.getEvent ;
-  console.log(data)
+
   const uploadImage = () => {
+    setSpinner(true)
     const data = new FormData()
     data.append("file", image)
     data.append("upload_preset", "y3rgquaa")
@@ -37,7 +41,9 @@ const EditEvent = () =>{
     .then(resp => resp.json())
     .then(data => {
     setUrl(data.url)
+    setSpinner(false)
     setUploaded(true)
+
     })
     .catch(err => console.log(err))
     }
@@ -45,7 +51,7 @@ const EditEvent = () =>{
    
     return(
          <CustomBox>
-            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
+            <Flex flexDirection={"column"} alignItems="center" paddingTop={['20px','20px']} minHeight={"100vh"}>
             <Box width={'100%'}>
             <Heading as="h3" size="lg" float={'left'}  m={2} p={3}>Edit Event</Heading>
               </Box>
@@ -59,6 +65,8 @@ const EditEvent = () =>{
                       "rct": "",
                       "est": "",
                       "ect": "",
+                      "platform" : "",
+                      "requirements" : "",
                       "regtype": event!.registrationType,
                       "teamsize": event!.teamSize,
                       "description": event!.description,
@@ -72,6 +80,8 @@ const EditEvent = () =>{
                           description : values.description,
                           eventType : values.type,
                           audience : values['Audience Type'],
+                          platform : values.platform,
+                          requirements : values.requirements,
                           registrationOpenTime : moment(values.rot).format("DD/MM/YYYY h:mm a"),
                           registrationCloseTime : moment(values.rct).format("DD/MM/YYYY h:mm a"),
                           eventTimeFrom: moment(values.est).format("DD/MM/YYYY h:mm a"),
@@ -81,13 +91,25 @@ const EditEvent = () =>{
                           pic : url
                    }},
                    refetchQueries : [{query:GETEVENTS,variables:{ getEventsFilter: values.type}}]
-                 }).catch(err => console.log(err))
+                 }).catch(err => setError(err.message))
+
+                 setUrl('');
+                 setUploaded(false)
                  actions.resetForm()
                }}>
               {(props)=>(
                  <Form>
 
                  <Flex flexDirection={'column'} p={5}>
+                 {
+                    aerror ? (
+                      <Alert status="error">
+                      <AlertIcon />
+                      {aerror}
+                    </Alert>
+                    ) : null
+                  }
+             
              
                   <Field  name="title">
                   {({ field }:{field: any}) => (
@@ -143,6 +165,24 @@ const EditEvent = () =>{
                     )}
                     </Field>     
              </Flex>
+             <Flex flexDirection={['column','column','row']} px={5}>
+              <Field  name="platform">
+                  {({ field }:{field: any}) => (
+                      <FormControl m={2}>
+                      <FormLabel >Platform</FormLabel>
+                      <Input {...field} id="platform" borderColor={'#244f3b'} placeholder="Title" color={"#244f3b"} />
+                      </FormControl>
+                  )}
+                  </Field>
+                  <Field  name="requirements">
+                  {({ field }:{field: any}) => (
+                      <FormControl m={2}>
+                      <FormLabel >Requirements</FormLabel>
+                      <Input {...field} id="requirements" borderColor={'#244f3b'} placeholder="Title" color={"#244f3b"} />
+                      </FormControl>
+                  )}
+                  </Field>
+              </Flex>
              <Flex flexDirection={['column','column','row']} px={3} >
              <Field  name="est">
                   {({ field }:{field: any}) => (
@@ -206,6 +246,9 @@ const EditEvent = () =>{
                   </Field>
                   </Box>
                   <Button onClick={uploadImage} size={'xs'} m={2}>Upload Image</Button>
+                  {
+                    spinner ? (<Spinner color="blue" m={1}/>) : null
+                  }
                   {
                     uploaded ? 
                     (<CheckIcon color={'green'} border={"2px solid"} p={1} borderRadius={'full'} w={6} h={6} m={2}/>)

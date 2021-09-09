@@ -135,6 +135,8 @@ mutation Login($loginData: LoginInput!){
       description,
       pic,
       registrationType,
+      platform,
+      requirements,
       audience,
       eventType,
       registrationType,

@@ -12,6 +12,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import {onError} from "@apollo/client/link/error"
 import { Usercontext } from './Context';
 
+
 // const makeProvider = (role: UserRole) =>
 // {
 //     return(
@@ -84,7 +85,7 @@ const SignIn = () => {
                             // makeProvider(resp.data.login.role)
                             // getRole( resp.data.login.role, resp.data.login.name)
                             // document.cookie += ";role=" + resp.data.login.role + ";path=/";
-                            // console.log(document.cookie)
+                            // console.log(document.cookie
                             setRole(resp.data.login.role)
                             localStorage.setItem('role', resp.data.login.role)
                             localStorage.setItem('name', resp.data.login.name)

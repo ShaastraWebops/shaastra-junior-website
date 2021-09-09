@@ -38,7 +38,7 @@ const ChampionShip = () => {
     const { data, loading, error } = useGetChampionshipQuery({});
     if (error) console.log(error);
     if (loading) return <Loader />;
-    console.log(data.championship[0].schoolName);
+    // console.log(data.championship[0].schoolName);
     return (
         <CustomBox>
             <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'80px'}>
@@ -79,12 +79,12 @@ const ChampionShip = () => {
                                         <Button type="submit" onClick={async (e) => {
                                             e.preventDefault();
                                             console.log("2");
-                                            try {
-                                                const x = await setChampionshipMutation({ variables: { id: JSON.stringify(id),schoolName:JSON.stringify(school), points: JSON.stringify(points) } })
-                                                console.log(x);
-                                            } catch (error) {
-                                                console.log(error);
-                                            }
+                                            // try {
+                                            //     const x = await setChampionshipMutation({ variables: { id: JSON.stringify(id),schoolName:JSON.stringify(school), points: JSON.stringify(points) } })
+                                            //     console.log(x);
+                                            // } catch (error) {
+                                            //     console.log(error);
+                                            // }
                                         }}>Add Data</Button>
                                     </form>
                                 </PopoverContent>

@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
+import { Alert , AlertIcon , Box, Button, Spinner,Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea } from '@chakra-ui/react'
 import { Field, Form, Formik} from 'formik'
 import React, { Fragment } from 'react'
 import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventFaqMutation, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
@@ -22,9 +22,8 @@ const AddEvent = () =>{
     const [image, setImage ] = React.useState< any | null >();
     const [ url, setUrl ] = React.useState<any | null>("");
     const [uploaded , setUploaded ] = React.useState(false);
-    const [id,setId] = React.useState<string>("");
-
-    const [inputs , setInputs] = React.useState({});
+    const [spinner,setSpinner] = React.useState(false);
+    const [aerror,setError] = React.useState();
 
     const [faqs , setfaqs] = React.useState([{question : '',answer : ''}]);
     const [addfaq] = useCreateEventFaqMutation();
@@ -39,14 +38,8 @@ const AddEvent = () =>{
       }
       setfaqs(values)
     }
-    const handleInput = (event :{index: number ,event: React.ChangeEvent<HTMLInputElement>}) =>{
-      const values = inputs;
-      
-     
-      setInputs(values)
-    }
-
     const uploadImage = () => {
+      setSpinner(true)
       const data = new FormData()
       data.append("file", image)
       data.append("upload_preset", "y3rgquaa")
@@ -58,6 +51,7 @@ const AddEvent = () =>{
       .then(resp => resp.json())
       .then(data => {
       setUrl(data.url)
+      setSpinner(false)
       setUploaded(true)
       })
       .catch(err => console.log(err))
@@ -65,7 +59,7 @@ const AddEvent = () =>{
 
     return(
          <CustomBox>
-            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
+            <Flex flexDirection={"column"} alignItems="center" paddingTop={['20px','20px']} minHeight={"100vh"}>
         
             <Heading as="h3" size="lg" m={1}>Add Event</Heading>
               
@@ -78,6 +72,8 @@ const AddEvent = () =>{
                 "rct": "",
                 "est": "",
                 "ect": "",
+                "platform" : "",
+                "requirements" : "",
                 "regtype": RegistraionType.None,
                 "teamsize": 0,
                 "description": ""
@@ -90,6 +86,8 @@ const AddEvent = () =>{
                           description : values.description,
                           eventType : values.type,
                           audience : values['Audience Type'],
+                          platform : values.platform,
+                          requirements : values.requirements,
                           registrationOpenTime : moment(values.rot).format("DD/MM/YYYY h:mm a"),
                           registrationCloseTime : moment(values.rct).format("DD/MM/YYYY h:mm a"),
                           eventTimeFrom: moment(values.est).format("DD/MM/YYYY h:mm a"),
@@ -108,13 +106,13 @@ const AddEvent = () =>{
                        question : faq.question,
                        answer : faq.answer
                      } 
-                    }}).catch(err => console.log(err))
+                    }}).catch(err => setError(err.message))
                   })
                  })
-                 
-                 .catch(err => console.log(JSON.stringify(err, null, 2)))
+                 .catch(err => setError(err.message))
 
-                 
+                 setUrl('');
+                 setUploaded(false)
                  actions.resetForm()
                }}>
               {(props)=>(
@@ -122,6 +120,14 @@ const AddEvent = () =>{
             <Form>
 
             <Flex flexDirection={'column'} p={5}>
+           {
+             aerror ? (
+              <Alert status="error">
+              <AlertIcon />
+              {aerror}
+            </Alert>
+             ) : null
+           }
              
              <Field  name="title">
              {({ field }:{field: any}) => (
@@ -178,6 +184,26 @@ const AddEvent = () =>{
                )}
                </Field>     
         </Flex>
+        <Flex flexDirection={['column','column','row']} px={5}>
+        <Field  name="platform">
+             {({ field }:{field: any}) => (
+                <FormControl m={2}>
+                <FormLabel >Platform</FormLabel>
+                <Input {...field} id="platform" borderColor={'#244f3b'} placeholder="Title" color={"#244f3b"} />
+                </FormControl>
+            )}
+             </Field>
+             <Field  name="requirements">
+             {({ field }:{field: any}) => (
+                <FormControl m={2}>
+                <FormLabel >Requirements</FormLabel>
+                <Input {...field} id="requirements" borderColor={'#244f3b'} placeholder="Title" color={"#244f3b"} />
+                </FormControl>
+            )}
+             </Field>
+        </Flex>
+        
+       
         <Flex flexDirection={['column','column','row']} px={3} >
         <Field  name="est">
              {({ field }:{field: any}) => (
@@ -240,7 +266,11 @@ const AddEvent = () =>{
               )}
              </Field>
              </Box>
+             
              <Button onClick={uploadImage} size={'xs'} m={2}>Upload Image</Button>
+             {
+               spinner ? (<Spinner color="blue" m={1}/>) : null
+             }
              {
                uploaded ? 
                (<CheckIcon color={'green'} border={"2px solid"} p={1} borderRadius={'full'} w={6} h={6} m={2}/>)
