@@ -116,7 +116,7 @@
     content: "";
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: -1;
     /* z-index: -1; */
 }
 @media screen and (max-width: 850px)
@@ -215,17 +215,19 @@
     {
         text-align: center;
     }
-    .sign-hidden .sign-flex-up, .sign-hidden .sign-flex
+    .sign-h
     {
         display: none !important;
+        margin: auto !important;
     }
     .sign-hidden 
     {
         display: block !important;
         flex-direction: column;
         margin: auto;
-        width: 90vw;
-        z-index: 10;
+        width: 100vw;
+        margin: auto;
+        z-index: 2;
     }
     .sign-intro
     {
@@ -286,6 +288,10 @@
     .sign-input-up input 
     {
         height: 2.5vh !important;
+    }
+    .sign-hidden span, .sign-hidden a
+    {
+        font-size: 3vw;
     }
     .forgot 
     {

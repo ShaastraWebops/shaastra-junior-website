@@ -14,7 +14,7 @@ const CustomBox = (props: Props) => {
     const bg = useColorModeValue("highlight.200", "primary.default")
 
     return (
-        <Box zIndex="1">
+        <Box zIndex="-10">
             <Header />
             {props.children}
             {/* <Particles id="particles-js" params={particlesConfig2}></Particles> */}
