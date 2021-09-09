@@ -10,7 +10,6 @@ import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
 import Shows from "./pages/shows/Shows"
 import ShowPage from "./pages/shows/ShowsPage"
-
 import Profile from "./pages/profile/Profile"
 import Contactus from "./pages/contactus/Contact"
 import SignIn from "./pages/signinUp/SignIn"
@@ -33,22 +32,11 @@ const AppRoutes = (props: Props) => {
     return (
         <Router>
             <Route exact path="/" component={Home} />
-
-            <Route exact path="/workshops">
-                <Events type= "workshops" />
-            </Route>
-            {/* <Route exact path="/shows" component={ShowPage}></Route> */}
-            <Route exact path="/competitions">
-                <Events type= "competitions" />
-            </Route>
+            <Route exact path="/workshops"><Events type= "workshops" /></Route>
+            <Route exact path="/competitions"><Events type= "competitions" /></Route>
             <Route exact path="/shows" component={Shows}></Route>
-            <Route exact path="/shows/:showid" component={ShowPage}>
-                {/* <EventPage type="shows"></EventPage> */}
-            </Route>
-            
-            <Route exact path="/competitions/:id">
-                    <EventPage type= "competitions"/>
-            </Route>
+            <Route exact path="/shows/:showid" component={ShowPage}></Route>
+            <Route exact path="/competitions/:id"><EventPage type= "competitions"/></Route>
             <Route exact path="/championships" component={ChampionShip}/>
             <Route exact path="/profile" component={Profile}></Route>
             <Route exact path="/editProfile" component={Edit}></Route>
@@ -56,7 +44,6 @@ const AppRoutes = (props: Props) => {
 
             <Route exact path= "/helpdesk" component = {HelpDesk}></Route>
             <Route exact path="/contactus" component={Contactus}></Route>
-
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
             <Route exact path="/verifyuser/:token" component={Verify}>

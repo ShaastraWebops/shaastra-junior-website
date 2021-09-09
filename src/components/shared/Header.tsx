@@ -1,48 +1,99 @@
-import * as React from "react";
-import { Box, Flex } from "@chakra-ui/layout";
-import CustomDrawer from "./CustomDrawer";
-import { useDisclosure } from "@chakra-ui/hooks";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  IconButton,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
+import user from '../../images/user.png';
 import { ReactComponent as LogoWhite } from "./../../images/logo/static/Main_logo_white.svg"
-import { useBreakpointValue } from "@chakra-ui/media-query";
-import { Link } from "react-router-dom";
-import "../../styles/header.css"
+const Links = ['Competitions', 'WorkShops', 'Championship', 'Signin/Register'];
 
-interface Props {}
+const NavLink = ({ children }: { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={'#'}>
+    {children}
+  </Link>
+);
 
-const Header = (props: Props) => {
-    
-    const { onOpen, isOpen, onClose } = useDisclosure();
-    
-    const drawerOpenHandler = () => {
-      onOpen();
-    };
-
-    const height = useBreakpointValue({ base: "33", lg: "40" })
+export default function Simple() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Flex w="100vw" overflow="hidden" position="absolute" p={3} flexDirection="row" className="header" 
-    justifyContent="space-between" alignItems="center" height="70px">
-      <CustomDrawer onClose={onClose} isOpen={isOpen} />
-      
-      <Flex w="fit-content" justifyContent="space-between" alignItems="center" className="header-links" color={'black'}>
-        <Link to="/" >
-          <LogoWhite height={height} width="88" className="header-logo"/>
-        </Link>
-        <Link to="/">Home</Link>
-        <Link to="/competitions">Competitions</Link>
-        <Link to="/workshops">Workshops</Link>
-        <Link to="/shows">Shows</Link>
-        <Link to="/championships">Championship</Link>
-        <Link to="/signin">Sign In / Register</Link>
+  <Box>
+    <Box bg="transparent" px={4}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <IconButton
+          size={'md'}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          aria-label={'Open Menu'}
+          display={{ md: 'none' }}
+          onClick={isOpen ? onClose : onOpen}
+        />
+        <HStack spacing={8} alignItems={'center'}>
+          <Box>
+            <LogoWhite width="88" className="header-logo" />
+          </Box>
+          <HStack
+            as={'nav'}
+            spacing={4}
+            display={{ base: 'none', md: 'flex' }}>
+            <Link to="/">Home</Link>
+            <Link to="/competitions">Competitions</Link>
+            <Link to="/workshops">WorkShops</Link>
+            <Link to="/championships">ChampionShip</Link>
+            <Link to="/signin">Login/Register</Link>
+          </HStack>
+        </HStack>
+        <Flex alignItems={'center'} letterSpacing="1px">
+          <Menu>
+            <MenuButton
+              as={Button}
+              rounded={'full'}
+              variant={'link'}
+              cursor={'pointer'}
+              minW={0}>
+              <Avatar size={'sm'} src={user}/>
+            </MenuButton>
+            <MenuList>
+              <MenuItem><Link to="/profile">My Profile</Link></MenuItem>
+              <MenuItem><Link to="/helpdesk">Help Desk</Link></MenuItem>
+              <MenuDivider />
+              <MenuItem><Link to="/contactus">Contact Us</Link></MenuItem>
+              <MenuItem><Link to="/">Sign Out</Link></MenuItem>
+            </MenuList>
+          </Menu>
+        </Flex>
       </Flex>
-      {/* <Box>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <HamburgerIcon w={{base: 6, lg: 8}} h={{base: 6, lg: 8}} m={3} onClick={drawerOpenHandler} />
-      </Box> */}
-      <HamburgerIcon w={{base: 6, lg: 8}} h={{base: 6, lg: 8}} m={3} onClick={drawerOpenHandler} className="hamburger" />
-    </Flex>
+      {isOpen ? (
+        <Box pb={4} display={{ md: 'none' }}>
+          <Stack as={'nav'} spacing={4}>
+            {Links.map((link) => (
+              <NavLink key={link}>{link}</NavLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
+    </Box>
+  </Box>
   );
-};
-
-export default Header;
+}

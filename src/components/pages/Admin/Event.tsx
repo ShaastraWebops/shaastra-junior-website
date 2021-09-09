@@ -24,7 +24,7 @@ const Event = () => {
         description: ""
     });
 
-    if(role.role === "ADMIN")
+    if(role.role === UserRole.Admin)
     return (
        <CustomBox>
            <Flex flexDirection={"column"} alignItems="center" paddingTop={['60px','80px']} minHeight={"100vh"}>
@@ -178,7 +178,6 @@ const Event = () => {
            </Flex>
        </CustomBox>
     )
-  else return(null)
 }
 
 export default Event

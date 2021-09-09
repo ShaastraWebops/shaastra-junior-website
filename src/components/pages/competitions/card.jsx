@@ -11,9 +11,9 @@ const Card = () => {
                     <Box className="card1" height="240px" width="359px">
                         <VStack>
                             <Flex flexDirection="column" color="#F2F2F2" marginTop="120px" marginRight="100px">
-                                <Text fontSize="17px">DATE : 27/11/2018</Text>
-                                <Text fontSize="17px">TIME : 11:00 AM to 12:09 PM</Text>
-                                <Text fontSize="17px">AUDIENCE : CLASS 8-12</Text>
+                                <Text color="#000" fontSize="17px">DATE : 27/11/2018</Text>
+                                <Text color="#000" fontSize="17px">TIME : 11:00 AM to 12:09 PM</Text>
+                                <Text color="#000" fontSize="17px">AUDIENCE : CLASS 8-12</Text>
                             </Flex>
                         </VStack>
                     </Box>

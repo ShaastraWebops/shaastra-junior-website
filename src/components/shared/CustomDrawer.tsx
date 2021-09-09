@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Flex, Heading } from "@chakra-ui/layout";
+import { Flex } from "@chakra-ui/layout";
 import {
   Drawer,
   DrawerBody,
@@ -20,7 +20,6 @@ import {Redirect, useHistory} from "react-router"
 import { useContext } from "react";
 import { Usercontext } from "../pages/signinUp/Context"
 import LogOut from "../pages/signinUp/LogOut";
-
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -45,7 +44,6 @@ const CustomDrawer = (props: Props) => {
       onClose={props.onClose}
       isOpen={isOpen}
       size="xs"
-      
     >
       <DrawerOverlay  />
       <DrawerContent backgroundColor="rgba(176, 219, 190, 0.73)" color="black">
@@ -77,9 +75,9 @@ const CustomDrawer = (props: Props) => {
             {data?.me ? <Link to="/logout">Sign Out</Link> : null }
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">
-            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a>
-            <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
-            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
+            <a href="https://www.instagram.com/shaastra_iitm/?hl=en\"><FontAwesomeIcon icon={faInstagram} /></a>
+            <a href="https://www.facebook.com/Shaastra/"><FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon></a>
+            <a href="https://in.linkedin.com/company/shaastra-iit-madras"><FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon></a>
           </Flex>
           <Box alignSelf="center" justifySelf="flex-end" className="credit"
           fontSize="1vw" textAlign="center" padding="2vw 0 0 0">Designed by Krithikaa,Mitesh,Srinivas,Tushar <br /> Webops Team Shaastra <br /> <b>Copyright © 2022 Shaastra</b> </Box>

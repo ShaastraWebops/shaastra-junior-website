@@ -2,21 +2,40 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
 }
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .image{
     background-repeat: no-repeat;
 }
+span
+{
+    color: white;
+    font-size: 4vw;
+}
+.Typist 
+{
+    font-size: 4vw !important;
+}
 .mainn{
-    background: linear-gradient(-45deg, #222244e8, #b1d4e2, #86969cbe, #323257e8);
+    /* background: linear-gradient(-45deg, #F4F7C5, #AACDBE); */
+    background-color: #f4f7c5c0;
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    /* animation: gradient 15s ease infinite; */
+}
+.mainn h2, .mainn .chakra-text, .spons .chakra-text
+{
+    font-size: 4vw;
+    letter-spacing: 0.8vw;
+    word-spacing: 1vw;
 }
 .flx{
     display: flex;
     text-align: center;
     justify-content: center;
-    color: #fff;
+    color:#222244d2;
 }
 .text{
     font-family: 'Rationale', sans-serif;
@@ -24,8 +43,14 @@
     font-weight: 700;
     padding-top: 50px;
     padding-bottom: 50px;
-    width: 50%;
+    width: 80%;
     text-align: center;
+}
+.a42 h1 
+{
+    font-size: 6vw;
+    text-align: center;
+    margin-bottom: 3vh;
 }
 .text1{
     color: #474768;
@@ -37,7 +62,7 @@
 }
 .flx1{
     /* height: 100px; */
-    line-height: 250px;
+    line-height: 150px;
     text-align: center;
 }
 .boxx{
@@ -52,13 +77,16 @@
     font-weight: 400;
     color: #000;
 }
+@media only screen and (max-width:674px){
+    .sldr2{
+        font-size: 13px;
+    }
+}
 .txt2{
-    /* width: 50%; */
     padding: 20px;
     padding-top: 80px;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-bottom: 80px; */
     font-size: 20px;
     padding-right: 40px;
     font-family: 'Rationale', sans-serif;
@@ -68,8 +96,6 @@
     background: url('../images/ppl4.svg');
     display: flex;
     flex-wrap: wrap;
-    /* margin-bottom: 20px; */
-    /* padding-bottom: 50px; */
     background-repeat: no-repeat;
     justify-content: flex-end;
 }
@@ -78,21 +104,25 @@
     
 }
 .boxxx{
-    background: url('../images/ppl.svg');
+    background: url('../images/bg.jpg');
     background-size: cover;
+    margin-top: 0px;
+    /* background-position-y: -1px; */
 }
 #x1{
     z-index: 99;
 }
 .spons{
-    /* background: url('../images/ppl7.svg'); */
     background-color: #F4F7C5;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .sponstxt{
     font-size: xx-large;
     vertical-align: middle;
-    padding-top: 5%;
+    /* padding-top: 5%; */
     font-weight: 650;
     display: flex;
     justify-content: center;
@@ -114,4 +144,69 @@
     .pp{
         width: 0%;
     }
+}
+
+.pr{
+    background: url('../images/pencils.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -50px;
+}
+
+@media only screen and (max-width:529px){
+    .text{
+        font-size: 14px;
+    }
+}
+
+.w1{
+    background: url('../images/shaastra_1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.w2{
+    background: url('../images/shaastra_2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.w3{
+    background: url('../images/shaastra_3.2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.a42{
+    z-index: 1;
+}
+.this{
+    font-size: 50px;
+    color: #474768;
+}
+.xyz{
+    background: url('../images/bg.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.titleContent{
+    font-size: 25px;
+    padding-top:150px;
+    width:50%;
+}
+@media only screen and (max-width:580px){
+    .titleContent{
+        font-size: 21px;
+    }
+}
+@media only screen and (max-width:475px){
+    .titleContent{
+        font-size: 18px;
+        padding-top: 70px;
+        width: 100%;
+    }
+}
+.mySwiper{
+    width: 80%;
+    margin-top: 20px;
+    border-radius: 15px;
 }

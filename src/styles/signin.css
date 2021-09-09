@@ -78,10 +78,11 @@
 {
     font-size: 1.3vw;
 }
-.sign span 
+.sign span , .sign a
 {
     color: #222244d2;
     font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.3vw;
 }
 .sign h1 span 
 {
