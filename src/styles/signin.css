@@ -2,6 +2,10 @@
 {
     font-size: 1.5vw;
 }
+.sign-hidden
+{
+    display: none;
+}
 .sign form, .profile form
 {
     display: flex;
@@ -38,6 +42,10 @@
     padding: 0%;
     justify-self: flex-end !important;
 }
+.sign .submit 
+{
+    color: #041d13;
+}
 .sign .submit, .profile .submit
 {
     width: fit-content;
@@ -56,6 +64,14 @@
 .profile .submit 
 {
     border-radius: 0%;
+    /* padding: 0.4vw;
+    height: 100%; */
+    padding: auto;
+    color:"#566758";
+    margin: 0%;
+    font-family: monospace;
+    font-weight: 700;
+    font-size: 1.3vw;
 }
 .sign select
 {
@@ -69,6 +85,7 @@
 .sign h1 
 {
     font-size: 4vw;
+    color: #222157;
     text-align: center;
     line-height: 4.2vw;
     margin-bottom: 5vh;
@@ -77,6 +94,7 @@
 .sign p 
 {
     font-size: 1.3vw;
+    color: #041d13;
 }
 .sign span , .sign a
 {
@@ -88,6 +106,7 @@
 {
     font-size: 3vw;
 }
+
 #particles-js
 {
     position: fixed;
@@ -100,7 +119,40 @@
     z-index: 1;
     /* z-index: -1; */
 }
+@media screen and (max-width: 850px)
+{
+    .sign-input
+    {
+        height: 8vh !important;
+        width: 80% !important;
+    }
 
+    .sign input 
+    {
+        height: 2vw;
+    }
+    .sign h1 
+    {
+        font-size: 6vw;
+    }
+    .sign h1 span 
+    {
+        font-weight: 500;
+    }
+    .sign label, .sign input, .sign p
+    {
+        font-size: 1.8vw;
+    }
+    .sign-input-up 
+    {
+        margin: auto;
+        height: 80% !important;
+    }
+    .forgot
+    {
+        width: 25vw !important;
+    }
+}
 @media screen and (max-width: 700px)
 {
     .sign label, .sign p 
@@ -109,7 +161,7 @@
     }
     .sign input 
     {
-        height: 4vw;
+        height: 3vw;
         width: 25vw;
     }
     .sign-flex
@@ -123,27 +175,175 @@
     }
     .sign h1 
     {
-        font-size: 5.5vw;
+        font-size: 6vw;
         line-height: 5vw;
     }
-}
-@media screen and (max-width: 400px)
-{
-    .sign input 
+    /* .sign-input 
     {
-        height: 3vh;
+        height: 10vh !important;
+    } */
+    .sign-flex-up
+    {
+        height: 85vh !important;
+        margin-top: 8% !important;
+    }
+    .sign-input-up 
+    {
+        margin: auto;
+        height: 90% !important;
+    }
+    .sign-input-up input 
+    {
+        height: 3vh !important;
+    }
+    /* .sign-flex-up 
+    {
+        height: 70vh !important;
+    } */
+    .sign-input-up input 
+    {
+        height: 2vh;
+    }
+    .forgot
+    {
+        width: 40vw !important;
+    }
+}
+@media screen and (max-width: 540px)
+{
+    .sign-hidden span:last-child
+    {
+        text-align: center;
+    }
+    .sign-hidden .sign-flex-up, .sign-hidden .sign-flex
+    {
+        display: none !important;
+    }
+    .sign-hidden 
+    {
+        display: block !important;
+        flex-direction: column;
+        margin: auto;
+        width: 90vw;
+        z-index: 10;
+    }
+    .sign-intro
+    {
+        width: 90vw !important;
+    }
+    .sign form 
+    {
+        width: 90vw !important;
+    }
+    .sign input
+    {
+        height: 2.5vh;
+        width: 35vw;
+        margin: auto;
+    }
+    .sign select 
+    {
+        padding: 0 !important;
     }
     .sign-input
     {
-        height: 15vh !important;
+        height: 8vh !important;
     }
-    .sign label , .sign p
+    .sign label , .sign p, .sign .submit, .sign select, .sign option, .sign input
+    {
+        font-size: 4vw !important;
+    }
+    .sign h1 
+    {
+        font-size: 14vw;
+        line-height: 8vw;
+        margin-bottom: 0%;
+        padding: 0.5vh 0;
+    }
+    .sign .submit
+    {
+        justify-self: center !important;
+        margin: auto !important;
+    }
+    .link-sign
+    {
+        height: fit-content;
+    }
+    /* .sign .submit, .sign-input-up a
+    {
+        justify-self: center;
+        height: fit-content;
+    } */
+    .sign h1 span 
+    {
+        font-size: 7vw;
+    }
+    .sign-input-up
+    {
+        height: 90% !important;
+        width: 80% !important;
+    }
+    .sign-input-up input 
+    {
+        height: 2.5vh !important;
+    }
+    .forgot 
+    {
+        width: 80% !important;
+    }
+    .forgot .sign-input:first-child
+    {
+        height: fit-content !important;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 300px)
+{
+    .sign a 
     {
         font-size: 3vw;
     }
     .sign h1 
     {
-        font-size: 7.5vw;
-        line-height: 7.2vw;
+        font-size: 12vw;
+        line-height: 5vh;
+    }
+    .sign h1 span 
+    {
+        font-size: 10vw;
+    }
+    .sign-intro, .sign form
+    {
+        width: 80vw !important;
+    }
+    .sign-input{
+        height: 18vw !important;
+    }
+    .sign input 
+    {
+        height: 2.2vh;
+    }
+    .sign label, .sign input, .sign select 
+    {
+        font-size: 5vw;
+    }
+    .sign .submit
+    {
+        padding: 5px;
+    }
+    .sign-flex-up 
+    {
+        height: 80vh !important;
+        margin-top: 20% !important;
+    }
+    .sign-input-up 
+    {
+        width: 90% !important;
+        height: 90% !important;
+    }
+    .sign-input-up input 
+    {
+        height: 2vh !important;
+        width: 30vw;
     }
 }

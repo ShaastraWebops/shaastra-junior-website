@@ -14,7 +14,7 @@ html
 }
 .profile 
 {
-    padding-top: 15vh;
+    padding-top: 10vh;
     width: 75vw;
     margin: auto;
     font-family: 'Lato', sans-serif;
@@ -22,24 +22,22 @@ html
 }
 .profile h1 
 {
-    font-size: 5vw;
+    font-size: 3.5vw;
     margin-bottom: 5vh;
     color: black;
 }
 .profile-div
 {
-    background: linear-gradient(to right, #b0dbbe 15%, #eff1d0c7 20px); 
+    background: linear-gradient(to right, #b0dbbe 5%, #eff1d0c7 20px); 
     box-shadow: 0px 0px 15px 5px rgba(31, 33, 39, 0.24);
     color: black;
     margin: auto;
     position: relative;
     padding: 5vh 5vw;
+    padding-bottom: 0;
     border-radius: 45px;
 }
- .purchases .chakra-image
-{
-    border-radius: 15px;
-}
+
 .register-img
 {
     /* margin-bottom: 5vh; */
@@ -98,7 +96,7 @@ html
 .profile-info > p:first-child, .purchases p
 {
     font-weight: 600;
-    font-size: 5vw;
+    font-size: 3vw;
 }
 .profile-info a 
 {
@@ -144,7 +142,7 @@ html
 {
     font-size: 3vw;
     margin: 4vh 0;
-    text-shadow: 0 2px #bdbdddc9, 0 3px #1c1c2bc2;
+    /* text-shadow: 0 2px #bdbdddc9, 0 3px #1c1c2bc2; */
     margin-top: 8vh;
 }
 .purchase
@@ -201,11 +199,29 @@ html
     {
         top: -5%;
     }
-    .profile-info
+}
+@media screen and (max-width: 900px)
+{
+    .profile p, .not-reg
     {
-        padding: 1vh 0 !important;
-        padding-bottom: 0% !important;
+        font-size: 2vw !important;
     }
+    .profile .chakra-button
+    {
+        font-size: 1.5vw !important;
+        padding: 1.5vw !important;
+        height: fit-content;
+    }
+    .profile-info p 
+    {
+        font-size: 2.5vw !important;   
+    }
+    .profile-info p:first-child
+    {
+        font-size: 6vw !important;
+        
+    }
+   
 }
 @media screen and (max-width: 550px)
 {
@@ -226,6 +242,14 @@ html
         width: 30vw;
         height: 30vw;
         right: 0%;
+    }
+    .profile b , .profile a
+    {
+        font-size: 4vw;
+    }
+    .profile p, .not-reg, .profile .chakra-button
+    {
+        font-size: 4vw !important;
     }
     .profile-info p, .profile-info p:first-child, .purchases-item p, .profile h3
     {

@@ -6,7 +6,7 @@
     content: "";
     padding: 0%;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
     color: #222244;
 }
 .contact-bg
@@ -118,12 +118,16 @@
     }
     .contact-info
     {
-        font-size: 3vw !important;
+        font-size: 1.5vw !important;
     }
     .contact-img
     {
         left: 0%;
         top: -30%;
+    }
+    .contact-main
+    {
+        margin-top: 18vh !important;
     }
 }
 @media screen and (max-width: 800px)
@@ -141,21 +145,27 @@
 {
     .contact-side-img
     {
+        display: none;
         top: 5% !important;
         right: unset !important;
         width: 50% !important;
     }
-    .main-contact-div h1, .contact-div, .contact-info
+    .main-contact-div h1, .contact-info
     {
         margin-right: 0% !important;
         text-align: center;
         width: fit-content !important;
     }
-    .contact-div:first-child
+    /* .contact-div:first-child
     {
         margin-right: 0% !important;
         width: 100% !important;
         justify-content: "space-between" !important;
+    } */
+    .main-contact-div
+    {
+        margin: auto !important;
+        justify-self: flex-end;
     }
     .contact-info:nth-child(2), .contact-info:last-child
     {
@@ -170,6 +180,7 @@
     {
         margin-left: auto !important;
         margin-right: auto !important;
+        align-self: flex-end !important;
     }
     .contact span 
     {
@@ -187,20 +198,16 @@
     {
         font-size: 2vw;
     }
-    /* .main-contact-div h1 
+    .main-contact-div h1 
     {
         font-size: 8vw;
     }
     .contact-info
     {
-        font-size: 4vw !important;
+        font-size: 3vw !important;
     }
-    .contact a 
-    {
-        font-size: 1.3vw;
-    } */
 }
-@media screen and (max-width: 200px)
+@media screen and (max-width: 300px)
 {
     .contact-side-img
     {
@@ -212,10 +219,19 @@
     }
     .contact-info
     {
-        font-size: 7vw !important;
+        font-size: 6vw !important;
     }
-    .contact a 
+    .contact h1 
     {
-        font-size: 1vw;
+        margin-bottom: 4vh;
+    }
+    .contact-main
+    {
+        padding: 0% !important;
+        width: 100% !important;
+    }
+    .lang 
+    {
+        font-size: 6vw !important;
     }
 }

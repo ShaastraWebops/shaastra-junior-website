@@ -49,7 +49,7 @@ const Profile = () => {
     {
         return (
             <CustomBox>
-            <Box width="100vw" height="fit-content" backgroundColor="#AACDBE" paddingBottom="5vh">
+            <Box width="100vw" height="fit-content" backgroundColor="#AACDBE" paddingBottom="0vh">
             <div className="profile">
             <h1>MY PROFILE</h1>
                 <div className="profile-div">
@@ -75,7 +75,12 @@ const Profile = () => {
                         className="registered-swiper"
                         keyboard={true}>
                             {
-                                data?.me?.registeredEvents.map(el => {
+                                data?.me?.registeredEvents.length == 0 ?
+                                <Box width="80%" textAlign="center" className="not-reg"
+                                margin="auto" lineHeight="6vh" fontSize="1.5vw" color="#566758">
+                                    <p>You haven't registered for any workshops</p>
+                                    <Button color="black" backgroundColor="#b0dbbe" padding="0.5vw" onClick={() => {history.push('/workshops')}}>Click Here</Button> to register for workshops
+                                </Box>: data?.me?.registeredEvents.map(el => {
                                     if(el.eventType === EventType.Workshops)
                                     return(
                                         <SwiperSlide>
@@ -95,7 +100,15 @@ const Profile = () => {
                                             </Flex>
                                         </SwiperSlide>
                                     )
-                                })
+                                    else
+                                    return(
+                                        <Box width="80%" textAlign="center" className="not-reg"
+                                        margin="auto" lineHeight="6vh" fontSize="1.5vw" color="#566758">
+                                    <p>You haven't registered for any workshops</p>
+                                    <Button backgroundColor="#b0dbbe" color="black" padding="0.5vw" onClick={() => {history.push('/workshops')}}>Click Here</Button> to register for workshops
+                                </Box>
+                                    )
+                                }) 
                             }
                         </Swiper>
                             <h2>COMPETITIONS</h2>
@@ -107,6 +120,12 @@ const Profile = () => {
                         className="registered-swiper"
                         keyboard={true}>
                             {
+                                data?.me?.registeredEvents.length == 0 ?
+                                <Box width="80%" className="not-reg"
+                                textAlign="center" margin="auto" lineHeight="6vh" fontSize="1.5vw" color="#566758">
+                                    <p>You haven't registered for any competitions</p>
+                                    <Button backgroundColor="#b0dbbe" color="black" padding="0.5vw" onClick={() => {history.push('/competitions')}}>Click Here</Button> to register for competitions
+                                </Box>:
                                 data?.me?.registeredEvents.map(el => {
                                     if(el.eventType === EventType.Competitions && el.registrationType === RegistraionType.Individual)
                                     return(
@@ -128,6 +147,14 @@ const Profile = () => {
                                             </Flex>
                                         </SwiperSlide>
                                         </Box>
+                                    )
+                                    else
+                                    return(
+                                        <Box width="80%" textAlign="center" margin="auto" className="not-reg"
+                                        lineHeight="6vh" fontSize="1.5vw" color="#566758">
+                                    <p>You haven't registered for any competitions</p>
+                                    <Button backgroundColor="#b0dbbe" color="black" padding="0.5vw" onClick={() => {history.push('/competitions')}}>Click Here</Button> to register for competitions
+                                </Box>
                                     )
                                 })
                             }

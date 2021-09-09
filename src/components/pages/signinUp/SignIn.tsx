@@ -106,11 +106,11 @@ const SignIn = () => {
                         
                     }}>
                         <Flex width="75%" margin="0 auto" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
-                            <Flex flexDirection="column" height="15vh" justifyContent="space-between">
+                            <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
                                 <label htmlFor="username">Email ID</label>
                                 <label htmlFor="password">Password</label>
                             </Flex>
-                            <Flex flexDirection="column" height="15vh" justifyContent="space-between" className="sign-input">
+                            <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
                                 <input type="text" name="username" onChange={emailHandler} />
                                 <input type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
@@ -137,6 +137,89 @@ const SignIn = () => {
                     </Modal> : null
                     }
                 </Flex>
+
+                <div className="sign-hidden">
+                <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
+                zIndex="2" flexDirection="column">
+                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="70%" className="sign-intro"
+                    display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
+                        
+                        {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
+                                Forgot Pasword
+                        </Link> */}
+                    </Box>
+                    <form action="" onSubmit={async (e) => {
+                        e.preventDefault();
+                        setLoginData({email:email, password:pw});
+                        try
+                        {
+                            
+                            const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
+                            console.log(resp)
+                           
+                              console.log(resp.errors)
+                        if(resp.data?.login?.isVerified)
+                        {
+                            // makeProvider(resp.data.login.role)
+                            // getRole( resp.data.login.role, resp.data.login.name)
+                            // document.cookie += ";role=" + resp.data.login.role + ";path=/";
+                            // console.log(document.cookie)
+                            localStorage.setItem('role', resp.data.login.role)
+                            localStorage.setItem('name', resp.data.login.name)
+                            localStorage.setItem('school', resp.data.login.school)
+                            // if(resp.data.login.role === 'USER')
+                            // history.push(`/${resp.data.login.name}`)
+                            // else history.push(`/admin`)
+                            history.push('/')
+                        }
+                        if(!resp.data?.login?.isVerified || resp.errors)
+                        {
+                            setError(true)
+                        }
+                        } catch(error)
+                        {
+                            setError(true)
+                        }
+                        
+                    }}>
+                        <Flex width="75%" margin="0 auto" paddingTop="4vh" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
+                            <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
+                                <label htmlFor="username">Email ID</label>
+                                <label htmlFor="password">Password</label>
+                            </Flex>
+                            <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
+                                <input type="text" name="username" onChange={emailHandler} />
+                                <input type="password" name="password" onChange={pwHandler}/> 
+                            </Flex>
+                        </Flex>
+                        <Flex width="80%" margin="auto" alignItems="center" justifyContent="space-between">
+                        <input type="submit" value="Log In" className="submit" />
+                        <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
+                        </Flex>
+                        <span> <a href="/forgot">Forgot Password</a> </span>
+                        {/* <Flex width="100%" justifySelf="flex-end" alignItems="center" justifyContent="center">
+                            <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
+                                Forgot Pasword
+                            </Link>
+                            <button>LOGIN</button>
+                        </Flex> */}
+                    </form>
+                    {
+                        Error === true ? <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" color="#222244">
+                            <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                            <h2>Some Error Occurred</h2></ModalHeader>
+                            <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                            <ModalBody>
+                                <p>Kindly check if the credentials are correct</p>
+                            </ModalBody>
+                        </ModalContent>
+                    </Modal> : null
+                    }
+                </Flex>
+                    </div>
             </Box>
         </CustomBox>
     )

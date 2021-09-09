@@ -49,10 +49,10 @@ const Forgot = () => {
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE"  display="flex" alignItems="center">
             <Particles id="particles-js" params={particlesConfig}></Particles>
                 <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
-                zIndex="2" className="sign-flex">
+                zIndex="2" className="sign-flex forgot-main">
                     <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="100%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <span>SHAASTRA JUNIORS</span></h1>
+                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
                     </Box>
                     <form onSubmit={async (e) => {
                         e.preventDefault();
@@ -91,8 +91,8 @@ const Forgot = () => {
                             )
                         }
                     }}>
-                        <Flex width="75%" margin="0 auto" justifyContent="space-between" className="sign-input" height="fit-content"> 
-                            <Flex flexDirection="column" height="15vh" justifyContent="space-between">
+                        <Flex width="80%" margin="0 auto" justifyContent="center" alignItems="center" className="sign-input forgot" height="fit-content"> 
+                            <Flex flexDirection="column" height="15vh" margin="auto" justifyContent="space-between" className="sign-input">
                                 <label htmlFor="username">Email ID</label>
                             </Flex>
                             <Flex flexDirection="column" height="15vh" justifyContent="space-between" className="sign-input">

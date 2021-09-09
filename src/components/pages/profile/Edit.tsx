@@ -9,7 +9,7 @@ import "../../../styles/profile.css"
 import {name,school,standard} from "../signinUp/Cookie"
 import { useEditProfileMutation } from '../../../types/generated/generated'
 import { useHistory } from 'react-router-dom'
-import {Modal, ModalOverlay, ModalBody, ModalCloseButton, ModalHeader, ModalContent, useDisclosure} from "@chakra-ui/react"
+import {Modal, ModalOverlay, ModalBody, ModalCloseButton, ModalHeader, ModalContent, useDisclosure, Button} from "@chakra-ui/react"
 
 const Edit = () => {
     const history = useHistory()
@@ -36,9 +36,10 @@ const Edit = () => {
                     <Flex width="100%" height="fit-content" paddingTop="5vh"  justifyContent="space-evenly" alignItems="center">
                             <Flex flexDirection="column" className="profile-info" padding="8vh 0" width="50%"
                             justifyContent="center" alignItems="flex-end" textAlign="right" color="#919ca3">
-                                <form onSubmit={() => {
-                                    try {
-                                        const resp = editProfileMutation({
+                                <form onSubmit={async (e) => {
+                                        e.preventDefault()
+                                        try{
+                                        const resp = await editProfileMutation({
                                             variables: {
                                                 data: {
                                                     name: Name,
@@ -46,15 +47,13 @@ const Edit = () => {
                                                 }
                                             }
                                         })
+                                        
                                     }
+                                    
                                     catch(e){
                                         setError(true)
                                     }
-                                    if(data?.editProfile) history.push('/') 
-                                    if(!data?.editProfile)
-                                    {
-                                        setError(true)
-                                    }
+                                    history.push('/profile')
                                 }}>
                                     <Flex width="95%" margin="0 auto" justifyContent="space-between" height="70%"> 
                             <Flex flexDirection="column" justifyContent="center" alignItems="center"  height="15vh" className="edit">
@@ -66,7 +65,6 @@ const Edit = () => {
                                 <input type="text" name="school" onChange={schoolHandler} placeholder={localStorage.getItem('school')!} />
                             </Flex>
                         </Flex>
-                        <a href="/forgot">Reset Password</a>
                                     {/* <input type="text" name="name" placeholder={name()} onChange={nameHandler} />
                                     <input type="text" placeholder={school()} onChange={schoolHandler} />
                                     <select name="standard" id="" placeholder={standard()}>
@@ -78,7 +76,10 @@ const Edit = () => {
                                         <option value="ELEVENTH">Eleventh</option>
                                         <option value="TWELTH">Twelfth</option>
                                     </select> */}
+                                    <Flex width="50%" magin="0 auto" height="fit-content" justifyContent="space-between" alignSelf="center" alignItems="center" marginTop="4vh">
                                     <input type="submit" value="Done" className="submit" />
+                                    <Button backgroundColor="#b0dbbe" color="#566758" fontFamily="monospace" fontSize="1.3vw" borderRadius="0" padding="auto" onClick={() => {history.push('/competitions')}}>Reset Password</Button>
+                                    </Flex>
                                 </form>
                             </Flex>
                         </Flex>
