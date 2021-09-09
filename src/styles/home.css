@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Patrick Hand', cursive;
+/* font-family: 'Shadows Into Light', cursive; */
+    /* font-family: 'Bebas Neue', cursive; */
 }
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap');
 .image{
     background-repeat: no-repeat;
 }
@@ -20,8 +24,7 @@ span
     font-size: 4vw !important;
 }
 .mainn{
-    /* background: linear-gradient(-45deg, #F4F7C5, #AACDBE); */
-    background-color: #f4f7c5c0;
+    background: linear-gradient(-45deg, #c071afe8, #66eb45, #2997bebe, #f0a607);
     background-size: 400% 400%;
     /* animation: gradient 15s ease infinite; */
 }
@@ -125,6 +128,7 @@ span
     font-size: xx-large;
     vertical-align: middle;
     /* padding-top: 5%; */
+    padding-top: 3%;
     font-weight: 650;
     display: flex;
     justify-content: center;
@@ -162,19 +166,17 @@ span
 }
 
 .w1{
-    background: url('../images/shaastra_1.png');
+    background: url('../images/A1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
 }
 .w2{
-    background: url('../images/shaastra_2.png');
+    background: url('../images/A2.jpg');
     background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
 }
 .w3{
-    background: url('../images/shaastra_3.2.jpg');
+    background: url('../images/A3.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -183,10 +185,10 @@ span
 }
 .this{
     font-size: 50px;
-    color: #474768;
+    color: #1b329bdc;
 }
 .xyz{
-    background: url('../images/bg.gif');
+    background: url('../images/theme.svg');
     background-size: cover;
     background-repeat: no-repeat;
 }

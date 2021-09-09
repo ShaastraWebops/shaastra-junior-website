@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.4.10",
+    "@apollo/react-hooks": "^4.0.0",
     "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/menu": "^1.7.2",
     "@chakra-ui/react": "^1.0.0",
@@ -25,8 +26,8 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.8",
     "@types/react-typist": "^2.0.2",
-    "apollo": "^2.33.6",
     "axios": "^0.21.1",
+    "apollo": "^2.33.6",
     "formik": "^2.2.9",
     "framer-motion": "^4.0.0",
     "graphql": "^15.5.2",

@@ -37,7 +37,7 @@ import LT from '../../images/L&T.png'
 import mtx from '../../images/MTX.png'
 import subex from '../../images/subex.png'
 import surana from '../../images/surana.png'
-import {faInstagram, faLinkedin, faFacebook} from "@fortawesome/free-brands-svg-icons"
+import { faInstagram, faLinkedin, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Typist from 'react-typist';
 import bg from '../../images/bg.gif';
@@ -57,22 +57,22 @@ const Home = (props: Props) => {
   console.log(role)
   return (
     <CustomBox>
-      <Box color="" width="100vw" height="100%" position="relative">
+      <Box color="" width="100vw" height="100%" >
         <Stack>
-          <Flex width="100%" height="100vh" className="xyz" flexDirection="column" backgroundColor="black" backgroundImage={HomePic} >
+          <Flex width="100%" height="100vh" className="xyz" flexDirection="column">
             {/* <img src={bg} alt="" className="xyz"></img>  */}
             <Flex flexDirection="column" paddingTop="4%" paddingLeft="4%">
 
-              <Typist >
+              <Typist cursor={{hideWhenDone:true,show:false}}>
                 <span className="this">WELCOME TO</span>
-                <Typist.Backspace count={10} delay={200} />
+                <Typist.Backspace count={10} delay={2000} />
                 <span className="this">SHAASTRA JUNIOR PORTAL&nbsp;</span>
                 <span className="this">2021</span>
               </Typist>
 
             </Flex>
-            <Flex justifyContent="flex-end" paddingRight="5%" width="100%">
-              <Text className="titleContent" color="white" fontSize="2vw" textAlign="right">A vision board to reflect our dreams,
+            <Flex justifyContent="flex-end" paddingRight="30px" width="100%">
+              <Text className="titleContent" color="#000">A vision board to reflect our dreams,
                 Infinite innovation for you to redeem.
                 Put together ideas that rise from need,
                 Beware, creativity bends to no greed.
@@ -129,12 +129,12 @@ const Home = (props: Props) => {
           <Box className="mainn" width="100%">
             <div className="flx1">
               <h2 className="text1">
-                TODAY’S HIGHLIGHTS
+                INFO ABOUT EVENTS
               </h2>
             </div>
           </Box>
 
-          <Flex width="100%" overflow="hidden" display="flex" height="80vh" flexWrap="wrap" justifyContent="center" paddingTop="10vh">
+          <Flex width="100%" overflow="hidden" display="flex" height="80vh" flexWrap="wrap" justifyContent="center">
             <Swiper breakpoints={{ 660: { slidesPerView: 2 }, 907: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40}>
               <SwiperSlide><Slider2 /></SwiperSlide>
               <SwiperSlide><Slider2 /></SwiperSlide>
@@ -145,13 +145,13 @@ const Home = (props: Props) => {
             </Swiper>
           </Flex>
 
-          <Box className="mainn" width="100%" backgroundColor="#f4f7c5c0">
+          <Box className="mainn" width="100%">
             <Flex justifyContent="center">
               <Text p={10} fontSize="50px" color="#474768" fontWeight="650">PREVIOUS YEAR</Text>
             </Flex>
           </Box>
 
-          <Box height="120vh"  backgroundColor="#f4f7c5c0">
+          <Box height="120vh">
             <Flex marginTop="-10px" width="100%" paddingTop="25px" className="pr" height="50vh" justifyContent="flex-end">
               <Text width="50%" fontSize="20px" className="fsa" paddingRight="10px" paddingTop="20px" color="#000">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</Text>
             </Flex>

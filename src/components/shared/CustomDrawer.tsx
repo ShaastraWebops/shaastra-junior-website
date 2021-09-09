@@ -17,9 +17,13 @@ import "../../styles/header.css"
 import { Link } from "react-router-dom";
 import { useGetProfileQuery} from "../../types/generated/generated";
 import {Redirect, useHistory} from "react-router"
+import { useGetProfileQuery, useLoginMutation, useLogoutMutation } from "../../types/generated/generated";
+import {useHistory} from "react-router"
 import { useContext } from "react";
 import { Usercontext } from "../pages/signinUp/Context"
 import LogOut from "../pages/signinUp/LogOut";
+import {UserRole} from "../../types/generated/generated"
+import "./CustomDrawer.module.css"
 interface Props {
   isOpen: boolean;
   onClose: () => void;

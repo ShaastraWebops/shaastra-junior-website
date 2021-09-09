@@ -30,11 +30,11 @@ const Slider2 = () => {
                             <Image src={ppl3} objectFit="cover" htmlHeight="210px" htmlWidth="100%" layout={'fill'} />
                         </Box>
                         <Stack>
-                            <Text color="black" textTransform={'uppercase'} fontWeight={800} fontSize={'2xl'} letterSpacing={1.1}>
-                                NAME
+                            <Text color="#5FEF30" textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
+                                NAME : 
                             </Text>
-                            <Heading color="#000"  fontSize={'sm'} fontFamily={'body'}>
-                                <Spacer />DATE/TIME
+                            <Heading color="#000"  fontSize={'2xl'} fontFamily={'body'}>
+                                <Spacer />1st Event :
                             </Heading>
                             <Text color="#000" className="sldr2" color="#000">
                                 eirmod tempor invidunt ut labore et dolore magna aliquyam
