@@ -1,0 +1,40 @@
+{
+    "particles": {
+        "fpsLimit": 60,
+        "number": {
+            "value": 80,
+            "density": {
+                "enable": true,
+                "value_area": 1000
+            }
+        },
+        "color": {
+            "value": "white"
+        },
+        "shape": {
+            "type": "circle",
+            "polygon": {"nb_sides": 3}
+        },
+        "opacity": {
+            "value": 0.9,
+            "random": true
+        },
+        "size": {
+            "value": 8
+        },
+        "line_linked": {
+            "enable": true,
+            "distance": 160,
+            "color": "#7d748b",
+            "width": 2,
+            "opacity": 0.4
+        },
+        "move": {
+            "enable": true,
+            "speed": 2,
+            "random": false,
+            "straight": false,
+            "bounce": true
+        }
+    }
+}
