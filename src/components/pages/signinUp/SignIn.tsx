@@ -60,7 +60,7 @@ const SignIn = () => {
             display="flex" alignItems="center">
             <Particles id="particles-js" params={particlesConfig}></Particles>
                 <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
-                zIndex="2" className="sign-flex">
+                zIndex="0" className="sign-flex">
                     <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="100%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>

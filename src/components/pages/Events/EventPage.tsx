@@ -34,7 +34,7 @@ const EventPage = ()=>{
         THIRD : 3,
         FOURTH : 4,
         FIFTH : 5 ,
-        "SIXTH" : 6,
+        SIXTH : 6,
         SEVENTH : 7,
         EIGTH : 8,
         NINTH : 9,

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import * as React from "react";
-import { Text, useColorModeValue, Flex, Stack, Image, Box } from "@chakra-ui/react";
+import { Text, useColorModeValue, Flex, Stack, Image, Box ,Center } from "@chakra-ui/react";
 import { ReactComponent as DiceOutlineDarkAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Dark_animated.svg";
 import { ReactComponent as DiceOutlineLightAnimated } from "./../../images/logo/animated/non-looped/Text_Outline_Light_animated.svg";
 import ppl2 from '../../images/ppl2.svg';
@@ -82,7 +82,8 @@ const Home = (props: Props) => {
                 Behold one and all, it is yours to know!</Text>
             </Flex>
           </Flex>
-          <Flex className="a42" paddingTop="50px" justifyContent="center" height="60vh">
+         <Center>
+         <Flex className="a42" paddingTop="50px" justifyContent="center" width={"85%"}height="60vh">
             <Swiper pagination={{"type": "fraction"}} navigation={true} className="mySwiper">
               <SwiperSlide>
                 <Flex justifyContent="center" className="w1" width="100%" height="55vh"></Flex>
@@ -98,6 +99,7 @@ const Home = (props: Props) => {
               </SwiperSlide>
             </Swiper>
           </Flex>
+        </Center>
           <Flex justifyContent="center">
             <Text width="90%" textAlign="center" color="#000" paddingTop="20px" paddingBottom="50px">
               Shaastra Juniors, from Shaastra IIT Madras is the 1st ever completely

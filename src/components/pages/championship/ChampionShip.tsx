@@ -130,12 +130,12 @@ const ChampionShip = () => {
                     </Flex>
 
                     <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
+                        <SwiperSlide><Slider3  /></SwiperSlide>
+                        <SwiperSlide><Slider3  /></SwiperSlide>
+                        <SwiperSlide><Slider3  /></SwiperSlide>
+                        <SwiperSlide><Slider3 /></SwiperSlide>
+                        <SwiperSlide><Slider3  /></SwiperSlide>
+                        <SwiperSlide><Slider3  /></SwiperSlide>
                     </Swiper>
 
                 </Box>
