@@ -242,7 +242,7 @@ span
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../images/ppl8.svg"), linear-gradient(#000000, #000000);;
+    background-image: linear-gradient(#00000060, #00000060), url("../images/home/Crowd_people.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -473,6 +473,16 @@ span
     bottom: 0;
 }
 
+@media only screen and (max-width: 1024px) {
+    .who-are-we-image {
+        display: none;
+    }
+
+    .who-are-we-content {
+        flex: 0.8;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .home-landing-head {
         font-size: 2.25em;
@@ -481,4 +491,47 @@ span
     .home-landing-subhead {
         font-size: 1.8em;
     }
+
+    .home-heads {
+        text-align: center;
+        font-size: 2.25em;
+    }
+
+    .who-are-we-image {
+        display: flex;
+    }
+
+    .today-highlights-container .home-heads::after{
+        height: calc(3em);
+    }
+
+    .who-are-we {
+        flex-direction: column;
+        padding: 25px;
+    }
+
+    .prev-year-card-container {
+        padding: 0;
+    }
+
+
+    .prev-year-card{
+        height: 400px;
+    }
+
+    .prev-year-card-image img {
+        height: 400px;
+    }
+
+    .prev-year-card-content {
+        left: 450px;
+        bottom: 400px;
+        padding: 25px;
+        background-color: #aacdbe;
+        height: 400px;
+        max-height: 400px;
+        transition: 0.2s;
+        transition-delay: 0.2s;
+    }
+    
   }
