@@ -236,12 +236,13 @@ span
 
 
 /* ############################################################################################## */
+
 .home-landing-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../images/ppl.svg"),linear-gradient(#000000, #00000099);;
+    background-image: url("../images/ppl8.svg"), linear-gradient(#000000, #000000);;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -281,7 +282,7 @@ span
     background-color: #ffffff;
     text-transform: uppercase;
     font-family: Nimbus-SansBold;
-    font-size: 37px;
+    font-size: 3em;
     font-weight: bold;
 }
 
@@ -289,9 +290,187 @@ span
     content: "";
     position: absolute;
     width: 55px;
-    height: 80px;
+    height: calc(2em);
     /* left: 25%; */
-    border-bottom: 4px solid #0f659e;
+    border-bottom: 4px solid #1344e2;
+}
+
+.who-are-we-container .home-heads {
+    background-color: #ffffff;
+}
+
+.who-are-we {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 35px;
+    background-color: #ffffff;
+}
+
+.who-are-we-image, .who-are-we-content{
+    flex: 0.5;
+    padding: 15px;
+}
+
+.who-are-we-image {
+    object-fit: cover;
+    object-position: center;
+}
+
+.who-are-we-image img {
+    border-radius: 8px;
+}
+
+.who-are-we-content {
+    font-size: 22px;
+    font-family: "NimbusSans";
+    font-weight: 300;
+}
+
+.who-are-we-content blockquote {
+    padding: 30px 20px;
+    font-size: 20px;
+    background: #dedede;
+    border-radius: 5px;
+    margin-top: 25px;
+    border-left: 8px solid #1344e2;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px #0000ff33;
+    transition: 0.3s;
+}
+
+.who-are-we-content blockquote:hover {
+    box-shadow: 12px 12px 7px #01014933;
+}
+
+.who-are-we-content blockquote::before {
+    content: '\201C';
+}
+
+.who-are-we-content blockquote::after {
+    content: '\201D';
+}
+
+.today-highlights-container {
+    padding-bottom: 35px;
+    background-color: #2996be9d;
+}
+
+.today-highlights-container .home-heads {
+    background-color: transparent;
+}
+
+.highlight-cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    padding: 35px;
+    gap: 1.5em
+}
+
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    overflow: hidden;
+    max-height: 450px;
+}
+
+.highlight-card-image img {
+    max-height: 225px !important;
+    min-height: 225px !important;
+    object-fit: cover;
+}
+
+.highlight-card-content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    min-height: 225px;
+}
+
+.prev-year-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    background-image: linear-gradient(#000000ce, #000000aa), url("../images/A2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 35px;
+}
+
+.prev-year-container .home-heads {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+.prev-year-card-container{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    padding: 35px;
+}
+
+.prev-year-card{
+    position: relative;
+    width: 425px;
+    max-width: 450px;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.prev-year-card-image, .prev-year-card-content {
+    position: absolute;
+}
+
+.prev-year-card-image img {
+    object-fit: cover;
+    object-position: center;
+    height: 300px;
+}
+
+.prev-year-card-content {
+    left: 425px;
+    bottom: 300px;
+    padding: 25px;
+    background-color: #aacdbe;
+    height: 300px;
+    max-height: 300px;
+    transition: 0.2s;
+    transition-delay: 0.2s;
+}
+
+.prev-year-card-content h5 {
+    font-size: 23px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.prev-year-card:hover .prev-year-card-content{
+    left: 0;
+    bottom: 0;
 }
 
 @media only screen and (max-width: 600px) {

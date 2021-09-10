@@ -58,15 +58,16 @@ export default function Simple() {
             <Link to="/signin">Login/Register</Link>
           </HStack>
         </HStack>
-        <Flex alignItems={'center'} letterSpacing="1px" m={2} p={3}>
+        <Flex alignItems={'center'} letterSpacing="1px">
           <Menu>
             <MenuButton
               as={Button}
               rounded={'full'}
               variant={'link'}
               cursor={'pointer'}
-              minW={0} marginTop={[0,0,5]} p={[0,0,2]}>
-              <Avatar size={'md'} src={user}/>
+              minW={0}
+              >
+              <Avatar size={'sm'} style={{display: "flex", justifyContent: "center", alignItems: "center"}} src={user}/>
             </MenuButton>
             <MenuList>
               <MenuItem><Link to="/profile">My Profile</Link></MenuItem>

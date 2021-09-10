@@ -13,7 +13,12 @@ import LT from '../../../images/L&T.png'
 import mtx from '../../../images/MTX.png'
 import subex from '../../../images/subex.png'
 import surana from '../../../images/surana.png'
-
+import A1 from '../../../images/A1.jpg'
+import A2 from '../../../images/A2.jpg'
+import A3 from '../../../images/A3.jpg'
+import sldr1 from '../../../images/sldr1.jpg'
+import sldr2 from '../../../images/sldr2.jpg'
+import sldr3 from '../../../images/sldr3.jpg'
 
 export {
 Astra, 
@@ -30,5 +35,11 @@ kamal,
 LT, 
 mtx, 
 subex, 
-surana, 
+surana,
+A1, 
+A2,
+A3,
+sldr1,
+sldr2,
+sldr3
 }
