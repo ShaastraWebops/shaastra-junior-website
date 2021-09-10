@@ -10,11 +10,11 @@ interface Props {
 const Footer = (props: Props) => {
     return (
 
-        <Box color="#000" width="100%" height="30vh">
+        <Box color="#000" width="100%" height="30vh" paddingTop="6vh">
         <Flex height="30%" width="25%" margin="auto" justifyContent="space-between" alignItems="flex-end">
-          <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon size="2x" icon={faInstagram} color="#000" /></a>
-          <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook} size="2x" color="#000"></FontAwesomeIcon></a>
-          <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon size="2x" icon={faLinkedin} color="#000"></FontAwesomeIcon></a>
+          <a href="https://www.instagram.com/shaastra_iitm/?hl=en\" target="_blank"><FontAwesomeIcon size="4x" icon={faInstagram} color="#000" /></a>
+          <a href="https://www.facebook.com/Shaastra/" target="_blank"><FontAwesomeIcon icon={faFacebook} size="4x" color="#000"></FontAwesomeIcon></a>
+          <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank"><FontAwesomeIcon size="4x" icon={faLinkedin} color="#000"></FontAwesomeIcon></a>
         </Flex>
         <Box height="10%"></Box>
         <Flex justifyContent="center">

@@ -1,7 +1,7 @@
 import * as React from "react"
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import ChampionShip from "./pages/championship/ChampionShip"
-import Home from "./pages/Home"
+import Home from "./pages/Home/Home"
 import Events from "./pages/Events/Events"
 import EventPage from "./pages/Events/EventPage"
 import Shows from "./pages/shows/Shows"

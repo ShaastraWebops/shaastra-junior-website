@@ -47,7 +47,7 @@ const SignUp = () => {
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" display="flex" alignItems="center">
             <Particles id="particles-js" params={particlesConfig}></Particles>
                 <Flex width="fit-content" margin="auto" height="60vh" boxShadow="0px 0px 15px 0px #1c1c2b80"
-                alignItems="center" zIndex="2" className="sign-flex sign-flex-up">
+                alignItems="center" zIndex="2" className="sign-flex sign-flex-up sign-h">
                     <Box width="40vw" padding="0 1.8vw"  height="100%" className="sign-intro" backgroundColor="#b0dbbe"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
@@ -118,7 +118,7 @@ const SignUp = () => {
 
 
                     <div className="sign-hidden">
-                    <Flex width="90vw" margin="auto" height="60vh" boxShadow="0px 0px 15px 0px #1c1c2b80"
+                    <Flex width="90vw" margin="auto" height="60vh" boxShadow="0px 0px 15px 0px #1c1c2b80" className="sign-flex sign-flex-up"
                 alignItems="center" zIndex="2" flexDirection="column">
                     <Box width="90vw" padding="0 1.8vw"  height="50%" className="sign-intro" backgroundColor="#b0dbbe"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">

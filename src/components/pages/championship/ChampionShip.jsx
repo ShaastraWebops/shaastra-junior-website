@@ -26,7 +26,7 @@ const ChampionShip = () => {
     //-------------------------clearing data
     const [clearChampionshipMutation] = useClearChampionshipMutation({});
 
-    const clearHandler = (e : any) => {
+    const clearHandler = (e ) => {
         e.preventDefault();
         clearChampionshipMutation().then(()=>{
             console.log("Removed!!");
@@ -37,18 +37,18 @@ const ChampionShip = () => {
     //-------------------------posting data
     const [school, setSchool] = React.useState();
     const [points, setPoints] = React.useState();
-    const seterE = (e : any) => {
+    const seterE = (e) => {
         setSchool(e.target.value);
     }
-    const seterP = (e : any) => {
+    const seterP = (e ) => {
         setPoints(e.target.value);
     }
     console.log(typeof(points));
     console.log(typeof(school));
-    let x = parseInt(points!);
+    let x = parseInt(points);
     const [setChampionshipMutation, { data:data1, loading:loading1, error:error1 }] = useSetChampionshipMutation({
         variables: {
-            setChampionshipData: { points:x, schoolName: school! }
+            setChampionshipData: { points:x, schoolName: school }
         }
     });
     const handleSubmit = () => {
