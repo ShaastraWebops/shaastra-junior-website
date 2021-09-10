@@ -8,15 +8,15 @@ import Slider3 from '../Slider3';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useGetChampionshipQuery, Championship, useClearChampionshipMutation, SetChampionshipDocument, useSetChampionshipMutation, } from '../../../types/generated/generated';
 import Loader from '../../shared/Loader';
-import a1 from '../../../images/123.png';
 import { useQuery } from '@apollo/react-hooks';
 import { Usercontext } from '../signinUp/Context';
 
 const ChampionShip = () => {
 
     const {role} = React.useContext(Usercontext)
+
     const data4 = {
-        x: 1
+        x: 0
     }
     if(role !== 'ADMIN'){
         data4.x = 1;
@@ -66,12 +66,28 @@ const ChampionShip = () => {
     if (loading) return <Loader />;
     return (
         <CustomBox>
-            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'80px'}>
-                <Box className="imgClass">
-                    <Flex justifyContent="center" marginLeft="0px" marginTop="0px" width="100vw">
-                        <img src={ppl1} className="img1" alt="ppl1"></img>
+            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'}>
+            <Flex justifyContent="center" width="100%" >
+                <Text fontSize="4xl" fontWeight="650" paddingTop="0px" color="#000">
+                    RESULT
+                </Text>
+            </Flex>
+
+            <Box className="imgClass">
+
+                    <Flex justifyContent="center" flexWrap="wrap" overflow="visible">
+                        <Image src={ppl10} alt="ppl" borderRadius="20px" width="15%" marginTop="6vh" marginLeft="20px"></Image>
+                        <Image src={ppl10} alt="ppl" borderRadius="10px" marginLeft="20px" width="20%" marginTop="6vh"></Image>
+                        <Image src={ppl10} alt="ppl" borderRadius="10px" marginLeft="20px" width="15%" marginTop="6vh"></Image>
                     </Flex>
-                    {data4.x ? <Flex justifyContent="center">
+                    
+                
+                    {/* <Flex justifyContent="center" marginLeft="0px" marginTop="0px" width="100vw">
+                        
+                        <img src={ppl1} className="img1" alt="ppl1"></img>
+                    </Flex> */}
+                    
+                    {/* {data4.x ? <Flex justifyContent="center">
                         <Flex width="50%" paddingTop="20px" justifyContent="center">
                             <Popover>
                                 <PopoverTrigger>
@@ -105,15 +121,34 @@ const ChampionShip = () => {
                                 </PopoverContent>
                             </Popover>
                         </Flex>
-                    </Flex> : <Box />}
-                    <Flex justifyContent="center" flexWrap="wrap">
-                        {/* <Image src={a1} alt="" /> */}
+                    </Flex> : <Box />} */}
+
+
+                    <Flex justifyContent="center">
+                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="6vh">
+                                <Flex justifyContent="space-between" height="100%">
+                                    <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{"IIT Madras"}</Text>
+                                    <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{200}</Text>
+                                </Flex>
+                            </Box>
                     </Flex>
-                    <Flex justifyContent="center" width="100%" >
-                        <Text fontSize="4xl" fontWeight="650" paddingTop="20px" color="#000">
-                            RESULT
-                        </Text>
+                    <Flex justifyContent="center">
+                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="2vh">
+                                <Flex justifyContent="space-between" height="100%">
+                                    <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{"IIT Bombay"}</Text>
+                                    <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{100}</Text>
+                                </Flex>
+                            </Box>
                     </Flex>
+                    <Flex justifyContent="center">
+                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="2vh">
+                                <Flex justifyContent="space-between" height="100%">
+                                    <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{"IIT Delhi"}</Text>
+                                    <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{20}</Text>
+                                </Flex>
+                            </Box>
+                    </Flex>
+                    
                     {data?.championship.map((datas) => (
                         <Flex justifyContent="center">
                             <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
@@ -126,7 +161,7 @@ const ChampionShip = () => {
                     ))}
 
                     <Flex justifyContent="center">
-                        <Text fontSize="40px" className="txt2" color="#000">PRIZES</Text>
+                        <Text fontSize="40px" fontWeight="650" className="txt2" color="#000">PRIZES</Text>
                     </Flex>
 
                     <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
@@ -144,64 +179,5 @@ const ChampionShip = () => {
     )
 }
 
-// const ChampionShipAdmin = () => {
-
-//     const { data, loading, error } = useGetChampionshipQuery({});
-//     if (error) console.log(error);
-//     if (loading) return <Loader />;
-//     // console.log(data.championship[0].schoolName);
-//     return (
-//         <CustomBox>
-//             <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'80px'}>
-//                 <Box className="imgClass">
-//                     <Flex justifyContent="center" marginLeft="4px" marginTop="-10px" width="100%">
-//                         <img src={ppl1} className="img1" alt="ppl1"></img>
-//                     </Flex>
-//                     <Flex justifyContent="center">
-//                         <Flex width="50%" paddingTop="20px" justifyContent="center">
-//                             <Button bg="#000">Clear Data</Button>
-//                             <Spacer />
-//                             <Button bg="#000">Add Data</Button>
-//                         </Flex>
-//                     </Flex>
-//                     <Flex justifyContent="center" flexWrap="wrap">
-//                         <Image src={a1} alt="" />
-//                     </Flex>
-//                     <Flex justifyContent="space-around" width="100%" >
-//                         <Flex justifyContent="center">
-//                             <Text color="#000" fontSize="25px" fontWeight="650">2nd</Text>
-//                         </Flex>
-//                         <Text color="#000" fontSize="25px" fontWeight="650">1st</Text>
-//                         <Text color="#000" fontSize="25px" fontWeight="650">3rd</Text>
-//                     </Flex>
-//                     {data.championship.map((datas) => (
-//                         <Flex justifyContent="center">
-//                             <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-//                                 <Flex justifyContent="space-between">
-//                                     <Text color="#000" fontSize="25px" paddingTop="6px" paddingLeft="20px">{datas.schoolName}</Text>
-//                                     <Text color="#000" fontSize="25px" paddingTop="6px" paddingRight="20px">{datas.points}</Text>
-//                                 </Flex>
-//                             </Box>
-//                         </Flex>
-//                     ))}
-
-//                     <Flex justifyContent="center">
-//                         <Text fontSize="40px" className="txt2">PRIZES</Text>
-//                     </Flex>
-
-//                     <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }} className="mySwiper">
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-//                     </Swiper>
-
-//                 </Box>
-//             </Box>
-//         </CustomBox>
-//     )
-// }
 
 export default ChampionShip
