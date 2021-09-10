@@ -6,34 +6,30 @@ import './ChampionShip.module.css';
 import ppl10 from '../../../images/ppl10.svg'
 import Slider3 from '../Slider3';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useGetChampionshipQuery, Championship, useClearChampionshipMutation, SetChampionshipDocument, useSetChampionshipMutation, } from '../../../types/generated/generated';
+import { useGetChampionshipQuery, refetchGetChampionshipQuery, useClearChampionshipMutation, SetChampionshipDocument, useSetChampionshipMutation, UserRole, } from '../../../types/generated/generated';
 import Loader from '../../shared/Loader';
 import { useQuery } from '@apollo/react-hooks';
 import { Usercontext } from '../signinUp/Context';
 
 const ChampionShip = () => {
 
-    const {role} = React.useContext(Usercontext)
+    const {role} = React.useContext(Usercontext);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen: isOpenA, onOpen: onOpenA, onClose: onCloseA } = useDisclosure();
 
-    const data4 = {
-        x: 0
-    }
-    if(role !== 'ADMIN'){
-        data4.x = 1;
-    }else{
-        data4.x = 0;
-    }
     //-------------------------clearing data
-    const [clearChampionshipMutation] = useClearChampionshipMutation({});
+    const [clearChampionshipMutation] = useClearChampionshipMutation({refetchQueries: [refetchGetChampionshipQuery()]});
 
     const clearHandler = (e ) => {
         e.preventDefault();
         clearChampionshipMutation().then(()=>{
-            console.log("Removed!!");
+            window.alert("Removed!!");
+            onClose();
         }).catch(err=>{
             console.log(err);
         });
     }
+
     //-------------------------posting data
     const [school, setSchool] = React.useState();
     const [points, setPoints] = React.useState();
@@ -43,18 +39,21 @@ const ChampionShip = () => {
     const seterP = (e ) => {
         setPoints(e.target.value);
     }
-    console.log(typeof(points));
-    console.log(typeof(school));
+
     let x = parseInt(points);
+
     const [setChampionshipMutation, { data:data1, loading:loading1, error:error1 }] = useSetChampionshipMutation({
         variables: {
             setChampionshipData: { points:x, schoolName: school }
-        }
+        },
+        refetchQueries: [refetchGetChampionshipQuery()]
     });
+
     const handleSubmit = () => {
         console.log(school,points);
         setChampionshipMutation().then(()=>{
-            console.log("Submitted");
+            window.alert("Submitted");
+            onCloseA();
         }).catch(e=>{
             console.log(e);
         });
@@ -62,8 +61,11 @@ const ChampionShip = () => {
 
     //-------------------Getting data
     const { data, loading, error } = useGetChampionshipQuery({});
+
     if (error) console.log(error);
+
     if (loading) return <Loader />;
+    
     return (
         <CustomBox>
             <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'}>
@@ -87,31 +89,31 @@ const ChampionShip = () => {
                         <img src={ppl1} className="img1" alt="ppl1"></img>
                     </Flex> */}
                     
-                    {/* {data4.x ? <Flex justifyContent="center">
+                    {role === UserRole.Admin && <Flex justifyContent="center">
                         <Flex width="50%" paddingTop="20px" justifyContent="center">
-                            <Popover>
+                            <Popover isOpen={isOpen}>
                                 <PopoverTrigger>
-                                    <Button bg="#000" fontWeight="500">Clear Data</Button>
+                                    <Button bg="#fff" fontWeight="500" onClick={onOpen}>Clear Data</Button>
                                 </PopoverTrigger>
                                 <PopoverContent>
                                     <PopoverArrow />
-                                    <PopoverCloseButton />
+                                    <PopoverCloseButton onClick={onClose}/>
                                     <PopoverHeader>Are You sure ??!!</PopoverHeader>
                                     <HStack>
                                         <Button width="50%" onClick={clearHandler}>Yes</Button>
                                         <Spacer />
-                                        <Button width="50%">No</Button>
+                                        <Button width="50%" onClick={onClose}>No</Button>
                                     </HStack>
                                 </PopoverContent>
                             </Popover>
                             <Spacer />
-                            <Popover>
+                            <Popover isOpen={isOpenA}>
                                 <PopoverTrigger>
-                                    <Button bg="#000" fontWeight="500">Add Data</Button>
+                                    <Button bg="#fff" fontWeight="500" onClick={onOpenA}>Add Data</Button>
                                 </PopoverTrigger>
                                 <PopoverContent>
                                     <PopoverArrow />
-                                    <PopoverCloseButton />
+                                    <PopoverCloseButton onClick={onCloseA}/>
                                     <PopoverHeader>Confirmation!</PopoverHeader>
                                     <FormControl action="">
                                         <Input type="text" bg="#333" color="#fff" name="schoolName" onChange={seterE} placeholder="EnterSchoolName" />
@@ -121,10 +123,22 @@ const ChampionShip = () => {
                                 </PopoverContent>
                             </Popover>
                         </Flex>
-                    </Flex> : <Box />} */}
+                    </Flex>}
 
 
-                    <Flex justifyContent="center">
+                    {/* {data.championship.map((champion) => {
+                        return (
+                            <Flex justifyContent="center">
+                                <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="6vh">
+                                    <Flex justifyContent="space-between" height="100%">
+                                        <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{champion.schoolName}</Text>
+                                        <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{champion.points}</Text>
+                                    </Flex>
+                                </Box>
+                            </Flex>
+                        );
+                    })} */}
+                    {/* <Flex justifyContent="center">
                             <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="6vh">
                                 <Flex justifyContent="space-between" height="100%">
                                     <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{"IIT Madras"}</Text>
@@ -147,14 +161,19 @@ const ChampionShip = () => {
                                     <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{20}</Text>
                                 </Flex>
                             </Box>
-                    </Flex>
+                    </Flex> */}
+                    {data?.championship.length === 0 && <Flex justifyContent="center">
+                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="2vh">
+                                <Text color="#000" fontSize="3vh" align="center" paddingTop="2vh">{"RESULTS WILL BE RELEASED SOON..."}</Text>
+                            </Box>
+                    </Flex>}
                     
-                    {data?.championship.map((datas) => (
+                    {data?.championship.map((champion) => (
                         <Flex justifyContent="center">
-                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="20px">
-                                <Flex justifyContent="space-between">
-                                    <Text color="#000" fontSize="25px" paddingTop="6px" paddingLeft="20px">{datas.schoolName}</Text>
-                                    <Text color="#000" fontSize="25px" paddingTop="6px" paddingRight="20px">{datas.points}</Text>
+                            <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="3vh">
+                                <Flex justifyContent="space-between" height="100%">
+                                    <Text color="#000" fontSize="3vh" paddingLeft="4vh" align="center" paddingTop="2vh">{champion.schoolName}</Text>
+                                    <Text color="#000" fontSize="3vh" paddingRight="6vh" paddingTop="2vh" >{champion.points}</Text>
                                 </Flex>
                             </Box>
                         </Flex>
