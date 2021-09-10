@@ -237,6 +237,8 @@ span
 
 /* ############################################################################################## */
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
 .home-landing-section {
     display: flex;
     flex-direction: column;
@@ -257,7 +259,7 @@ span
     width: 100%;
     padding: 10px;
     text-transform: uppercase;
-    font-family: Nimbus-SansBold;
+    font-family: 'Open Sans';
     font-weight: bold;
     color: #ffffff;
 }
@@ -281,7 +283,7 @@ span
     padding-bottom: 40px;
     background-color: #ffffff;
     text-transform: uppercase;
-    font-family: Nimbus-SansBold;
+    font-family: 'Open Sans';
     font-size: 3em;
     font-weight: bold;
 }
@@ -325,7 +327,7 @@ span
 
 .who-are-we-content {
     font-size: 22px;
-    font-family: "NimbusSans";
+    font-family: 'Open Sans';
     font-weight: 300;
 }
 
