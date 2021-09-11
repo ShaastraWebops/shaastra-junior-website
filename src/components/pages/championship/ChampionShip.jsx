@@ -71,7 +71,7 @@ const ChampionShip = () => {
             <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'}>
             <Flex justifyContent="center" width="100%" >
                 <Text fontSize="4xl" fontWeight="650" paddingTop="0px" color="#000">
-                    RESULT
+                    Leaderboard
                 </Text>
             </Flex>
 

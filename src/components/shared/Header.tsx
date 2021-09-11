@@ -52,8 +52,8 @@ export default function Simple() {
             display={{ base: 'none', md: 'flex' }}>
             <Link to="/">Home</Link>
             <Link to="/competitions">Competitions</Link>
-            <Link to="/workshops">WorkShops</Link>
-            <Link to="/championships">ChampionShip</Link>
+            <Link to="/workshops">Workshops</Link>
+            <Link to="/championships">Championship</Link>
             <Link to="/shows">Shows</Link>
             <Link to="/signin">Login/Register</Link>
           </HStack>
