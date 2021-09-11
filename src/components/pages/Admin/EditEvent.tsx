@@ -8,7 +8,6 @@ import { GETEVENTS } from '../../../Queries.graphql'
 import { EventType, RegistraionType, Standard, useEditEventMutation, useGetEventQuery } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
 import Loader from '../../shared/Loader'
-import { competitions, workshops } from '../workshops/data'
 
 const EditEvent = () =>{
 

@@ -24,7 +24,7 @@ const decrypt = async ()=>{
 
   if(localStorage.getItem("role")){
     var decrypt = await  bcrypt.compare("ADMIN",localStorage.getItem("role")!);
-    console.log(decrypt)
+    console.log("decrypt",decrypt)
     if(decrypt) return "ADMIN";
     return "USER";
   }

@@ -7,7 +7,6 @@ import { GETEVENT, GETEVENTS } from "../../../Queries.graphql";
 import { useCreateEventFaqMutation, useDeleteEventFaqMutation, useDeleteEventMutation, useEditEventFaqMutation, useExportCsvQuery, useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
 import CustomBox from "../../shared/CustomBox";
 import Loader from "../../shared/Loader";
-import { competitions,workshops } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 import { onError } from 'apollo-link-error';
 import  fileDownload  from 'js-file-download';

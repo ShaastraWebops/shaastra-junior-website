@@ -2,7 +2,6 @@ import {   Flex, Text } from "@chakra-ui/layout";
 import { Center,Box,Button,FormControl,FormLabel,Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure } from "@chakra-ui/react";
 import {Link, useHistory } from "react-router-dom";
 import * as React from "react";
-import { workshop } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useDeleteEventMutation, useGetEventsQuery } from "../../../types/generated/generated";
@@ -28,6 +27,7 @@ const Card = ({data, type} : any) =>{
             }
         )
     }
+    console.log(role)
     if(loading) return (<Loader />)
     return(
             <Box width={'85%'}>

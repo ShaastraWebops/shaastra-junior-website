@@ -5,7 +5,6 @@ import { Box, Button, Flex, Heading ,Center ,  Alert,
 import * as React from "react";
 import CustomBox from "../../shared/CustomBox";
 import Card from "./Card";
-import { competitions,workshops} from "../workshops/data";
 import "../../../styles/events.css"
 import { useGetEventQuery, useGetEventsQuery } from "../../../types/generated/generated";
 import { AddIcon } from "@chakra-ui/icons";
@@ -55,8 +54,8 @@ const Events = ({type}: any) => {
                      <Center>
                      <AlertIcon boxSize="40px" m={2}/>
                       <Box flex="1">
-                        <AlertDescription display="block">
-                        <Heading as={"h2"}textColor={'#244f3b'}> No {type} are scheduled yet</Heading>
+                        <AlertDescription display="flex">
+                        <Heading as={"h2"} size={"lg"} textColor={'#244f3b'}> No {type} are scheduled yet</Heading>
                         </AlertDescription>
                       </Box>
                      </Center>

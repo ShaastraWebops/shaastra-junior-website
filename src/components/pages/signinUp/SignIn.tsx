@@ -91,8 +91,6 @@ const SignIn = () => {
                             const role = await bcrypt.hash(resp.data.login.role,10)
                             console.log(role)
                             localStorage.setItem('role', role)
-                            localStorage.setItem('name', resp.data.login.name)
-                            localStorage.setItem('school', resp.data.login.school)
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)

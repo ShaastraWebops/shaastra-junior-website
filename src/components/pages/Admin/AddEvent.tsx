@@ -77,7 +77,6 @@ const AddEvent = () =>{
                 "regtype": RegistraionType.None,
                 "teamsize": 0,
                 "description": "",
-                 "pic" : ""
                }}
                onSubmit={async(values, actions) => {
                  await addEvent({
