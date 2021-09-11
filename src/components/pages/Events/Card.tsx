@@ -63,7 +63,7 @@ const Card = ({data, type} : any) =>{
                 }
                 </Text>
                 
-                <Flex p={3}>
+                <Flex p={2}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
                     <Flex p={3} flexDirection={['column','row']}>
@@ -74,7 +74,7 @@ const Card = ({data, type} : any) =>{
                     "teal" :  "red" 
                     }
                      p={2} m={[2,0]} mx={[0,1]} >
-                    <TagLabel fontSize={'md'}>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY, h:mm a")}</TagLabel>
+                    <TagLabel fontSize={'md'}>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY")}</TagLabel>
                     </Tag>
                     </Flex>
                     </Center>

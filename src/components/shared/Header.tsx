@@ -13,7 +13,6 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
@@ -32,8 +31,8 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-  <Box zIndex="1000">
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+  <Box zIndex="1">
+    <Box bg={'gray.100'} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}

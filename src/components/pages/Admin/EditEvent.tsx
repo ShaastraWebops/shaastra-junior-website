@@ -61,12 +61,12 @@ const EditEvent = () =>{
                       "title": event!.title,
                       "type": event!.eventType,
                       "Audience Type": event!.audience,
-                      "rot":"",
-                      "rct": "",
-                      "est": "",
-                      "ect": "",
-                      "platform" : "",
-                      "requirements" : "",
+                      "rot":moment(parseInt(event?.registrationOpenTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+                      "rct": moment(parseInt(event?.registrationCloseTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+                      "est": moment(parseInt(event?.eventTimeFrom!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+                      "ect": moment(parseInt(event?.eventTimeTo!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+                      "platform" : event?.platform!,
+                      "requirements" : event?.requirements!,
                       "regtype": event!.registrationType,
                       "teamsize": event!.teamSize,
                       "description": event!.description,
@@ -160,7 +160,8 @@ const EditEvent = () =>{
                   {({ field }:{field: any}) => (
                    <FormControl m={2}>
                    <FormLabel>Registration Close Time</FormLabel>
-                   <Input {...field} id="rct" borderColor={'#244f3b'} type="datetime-local" color={"#244f3b"}/>
+                   <Input {...field}
+                    id="rct" borderColor={'#244f3b'} type="datetime-local" color={"#244f3b"}/>
                    </FormControl>       
                     )}
                     </Field>     

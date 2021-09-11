@@ -147,52 +147,98 @@ const EventPage = ()=>{
                 className="card-img"
             />
              </Center>
-             <Flex flexDirection={['column','column','row']}alignItems="center" justifyItems={'center'}>
-             
-             <Flex
-                direction={'column'}
-                justifyContent={'space-between'}>
+                <Center>
                 <Text
                 fontWeight={'medium'}
                 fontSize={'20px'}
                 p={4}>
                 {event?.description}
                 </Text>
+                </Center>
+             </Container>
+             <Container maxWidth="6xl">
+             <Center>
+                <Flex flexDirection={['column','column','row']}>
                 <Text
                 fontWeight={'medium'}
                 fontSize={'20px'}
-                p={4}>
-                 Target Audience : 
+                p={2} m={2}>
+                 <Center>
+                Audience : 
                  <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
-                    > <TagLabel fontSize={'md'}>{audience[0]} th - {audience[audience.length - 1]} th</TagLabel></Tag>
+                    > <TagLabel fontSize={'md'}>
+                        {
+                            audience.length > 1 ? (audience[0] + " th - " + audience[(audience.length - 1)] + " th ") : 
+                            audience[0] + " th"
+                        }
+                        </TagLabel></Tag>
+                 </Center>
                 </Text>
-                <Text
-                fontWeight={'medium'}
-                fontSize={'20px'}
-                p={4}>
-                 Platform : 
-                 <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
-                    > <TagLabel fontSize={'md'}>{event?.platform}</TagLabel></Tag>
-                </Text>
-                <Text
-                fontWeight={'medium'}
-                fontSize={'20px'}
-                p={3} >
-                Requirements: 
-                <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
-                    > <TagLabel fontSize={'md'}>{event?.requirements}</TagLabel></Tag>
-                </Text>
-               
-                 <Flex p={3} flexDirection={["column","column","row"]} alignItems={'center'}>
-                 <Flex p={3} flexDirection="row" alignItems={'center'}>
-                  <Text
-                    fontFamily={'Inter'}
+               {
+                    event?.platform  ?
+                    <Text
                     fontWeight={'medium'}
+                    fontSize={'20px'}
+                    p={2} m={2}>
+                    <Center>
+                       
+                     Platform : 
+                     <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                        > <TagLabel fontSize={'md'}>{event?.platform }</TagLabel></Tag>
+                    </Center>
+                    </Text> 
+                    : null
+               }
+                </Flex>
+                </Center>
+                <Center>
+                {
+                    event?.requirements ? (<Text
+                        fontWeight={'medium'}
+                        fontSize={'20px'}
+                        p={4} >
+                        <Center>
+                        Requirements : 
+                        <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                            > <TagLabel fontSize={'md'}>{event?.requirements}</TagLabel></Tag>
+                        </Center>
+                        </Text>) : null
+                }
+                </Center>
+                <Center>
+                <Flex flexDirection={['column','column','row']}>
+                    
+                {
+                   
+                        <Text
+                    fontWeight={'medium'}
+                        fontSize={'20px'}
+                        p={4}
                     >
-                    Registration Type : <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    <Center>
+                    Registration : <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
                     > <TagLabel fontSize={'md'}>{event?.registrationType}</TagLabel></Tag>
+                      </Center>
                     </Text>
-                    </Flex >
+                  
+                }{ event?.registrationType === "TEAM" ?
+                    <Text
+                    fontWeight={'medium'}
+                        fontSize={'20px'}
+                        p={4}
+                    >
+                    <Center>
+                    Maximum Team Size : <Tag variant="solid" colorScheme={'orange'} p={2} m={1}
+                    > <TagLabel fontSize={'md'}>{event?.teamSize}</TagLabel></Tag>
+                      </Center>
+                    </Text> : null
+
+                }
+               
+                    </Flex>
+                </Center>
+                 <Flex p={3} flexDirection={["column","column","row"]} alignItems={'center'}>
+
                     <Spacer />
                     <Flex float = "right"  p={3} flexDirection={["column","column","row"]}>
                     {
@@ -222,8 +268,6 @@ const EventPage = ()=>{
                     }
                     </Flex>
                  </Flex>
-                </Flex>
-             </Flex>
              </Container>
              <Center m={2} p={3} width={['250px','70%']}>
              <Table variant="simple" colorScheme={'#244f3b'} size={'md'}>
@@ -257,9 +301,9 @@ const EventPage = ()=>{
                     </Center>
                        {
                            role === 'ADMIN' ? (
-                               <Flex >
+                               <Flex p={2} flexDirection={['column','column','row']} >
        
-                               <FormControl m={2} width={"45%"}>
+                               <FormControl m={2} width={["100%","100%","45%"]}>
                                        <Input  name = "aquestion"
                                        placeholder = {'Question'}
                                        value={aquestion}
@@ -267,7 +311,7 @@ const EventPage = ()=>{
                                        fontSize={'small'} p={2} borderColor={'#244f3b'}
                                       />
                                        </FormControl>
-                                       <FormControl m={2} width={"45%"}>
+                                       <FormControl m={2} width={["100%","100%","45%"]}>
                                        <Input name = "aanswer"
                                        placeholder = {'Answer'}
                                        value={aanswer}
@@ -275,7 +319,7 @@ const EventPage = ()=>{
                                        fontSize={'small'} p={2} borderColor={'#244f3b'} />
                                        </FormControl>
                                        <Button color={'#244f3b'} variant="solid" border="2px solid"
-                                           borderColor = "#244f3b"size="sm" p={2} m={3}
+                                           borderColor = "#244f3b"size="sm" p={3} m={3}
                                            onClick = {()=> handleAdd()}
                                        >Add FAQ</Button>
                                </Flex>
@@ -368,28 +412,33 @@ const EventPage = ()=>{
                     <React.Fragment>
                          {
                            role === 'ADMIN' ? (
-                               <Flex >
-       
-                               <FormControl m={2} width={"45%"}>
-                                       <Input  name = "aquestion"
-                                       placeholder = {'Question'}
-                                       value={aquestion}
-                                       onChange = {(event)=>handleAddFaq(event)}
-                                       fontSize={'small'} p={2} borderColor={'#244f3b'}
-                                      />
-                                       </FormControl>
-                                       <FormControl m={2} width={"45%"}>
-                                       <Input name = "aanswer"
-                                       placeholder = {'Answer'}
-                                       value={aanswer}
-                                       onChange = {(event)=>handleAddFaq(event)}
-                                       fontSize={'small'} p={2} borderColor={'#244f3b'} />
-                                       </FormControl>
-                                       <Button color={'#244f3b'} variant="solid" border="2px solid"
-                                           borderColor = "#244f3b"size="sm" p={2} m={3}
-                                           onClick = {()=> handleAdd()}
-                                       >Add FAQ</Button>
-                               </Flex>
+                              <Container maxWidth={'5xl'}>
+                                <Center m={2} p={2}>
+                                <Heading>Add FAQs</Heading>
+                                </Center>
+                              <Flex >
+                                
+                                <FormControl m={2} width={"45%"}>
+                                        <Input  name = "aquestion"
+                                        placeholder = {'Question'}
+                                        value={aquestion}
+                                        onChange = {(event)=>handleAddFaq(event)}
+                                        fontSize={'small'} p={2} borderColor={'#244f3b'}
+                                        />
+                                        </FormControl>
+                                        <FormControl m={2} width={"45%"}>
+                                        <Input name = "aanswer"
+                                        placeholder = {'Answer'}
+                                        value={aanswer}
+                                        onChange = {(event)=>handleAddFaq(event)}
+                                        fontSize={'small'} p={2} borderColor={'#244f3b'} />
+                                        </FormControl>
+                                        <Button color={'#244f3b'} variant="solid" border="2px solid"
+                                            borderColor = "#244f3b"size="sm" p={2} m={3}
+                                            onClick = {()=> handleAdd()}
+                                        >Add FAQ</Button>
+                                </Flex>
+                                    </Container>
                            ) : null
                            
                        }

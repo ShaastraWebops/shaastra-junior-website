@@ -11,7 +11,7 @@ import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect, useHistory } from 'react-router-dom';
 import {onError} from "@apollo/client/link/error"
 import { Usercontext } from './Context';
-
+import bcrypt from 'bcryptjs'
 
 // const makeProvider = (role: UserRole) =>
 // {
@@ -87,7 +87,10 @@ const SignIn = () => {
                             // document.cookie += ";role=" + resp.data.login.role + ";path=/";
                             // console.log(document.cookie
                             setRole(resp.data.login.role)
-                            localStorage.setItem('role', resp.data.login.role)
+                            
+                            const role = await bcrypt.hash(resp.data.login.role,10)
+                            console.log(role)
+                            localStorage.setItem('role', role)
                             localStorage.setItem('name', resp.data.login.name)
                             localStorage.setItem('school', resp.data.login.school)
                             // if(resp.data.login.role === 'USER')
