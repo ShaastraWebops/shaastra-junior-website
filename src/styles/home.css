@@ -395,14 +395,20 @@ span
     object-fit: cover;
 }
 
+.highlight-card-title {
+    display: flex;
+    padding: 20px;
+    font-weight: bold;
+}
+
 .highlight-card-content {
     display: flex;
     flex: 1;
-    padding: 20px;
+    padding: 0 20px;
     overflow: hidden;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    min-height: 225px;
+    min-height: 90px;
 }
 
 .prev-year-container {
