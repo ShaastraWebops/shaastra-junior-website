@@ -386,7 +386,7 @@ span
     border-radius: 8px;
     background-color: #ffffff;
     overflow: hidden;
-    max-height: 450px;
+    max-height: 500px;
 }
 
 .highlight-card-image img {
@@ -399,6 +399,7 @@ span
     display: flex;
     padding: 20px;
     font-weight: bold;
+    font-size: 25px;
 }
 
 .highlight-card-content {
