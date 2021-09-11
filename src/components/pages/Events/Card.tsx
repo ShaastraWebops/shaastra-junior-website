@@ -2,7 +2,6 @@ import {   Flex, Text } from "@chakra-ui/layout";
 import { Center,Box,Button,FormControl,FormLabel,Heading, Image, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Tag, TagLabel, useDisclosure } from "@chakra-ui/react";
 import {Link, useHistory } from "react-router-dom";
 import * as React from "react";
-import { workshop } from "../workshops/data";
 import RegisterNow from "./RegisterNow";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useDeleteEventMutation, useGetEventsQuery } from "../../../types/generated/generated";
@@ -28,6 +27,7 @@ const Card = ({data, type} : any) =>{
             }
         )
     }
+    console.log(role)
     if(loading) return (<Loader />)
     return(
             <Box width={'85%'}>
@@ -63,7 +63,7 @@ const Card = ({data, type} : any) =>{
                 }
                 </Text>
                 
-                <Flex p={3}>
+                <Flex p={2}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
                     <Flex p={3} flexDirection={['column','row']}>
@@ -74,7 +74,7 @@ const Card = ({data, type} : any) =>{
                     "teal" :  "red" 
                     }
                      p={2} m={[2,0]} mx={[0,1]} >
-                    <TagLabel fontSize={'md'}>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY, h:mm a")}</TagLabel>
+                    <TagLabel fontSize={'md'}>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY")}</TagLabel>
                     </Tag>
                     </Flex>
                     </Center>

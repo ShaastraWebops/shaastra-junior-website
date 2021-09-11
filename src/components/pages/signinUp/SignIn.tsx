@@ -13,6 +13,7 @@ import {onError} from "@apollo/client/link/error"
 import { Usercontext } from './Context';
 import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 
+import bcrypt from 'bcryptjs'
 
 // const makeProvider = (role: UserRole) =>
 // {
@@ -88,9 +89,10 @@ const SignIn = () => {
                             // document.cookie += ";role=" + resp.data.login.role + ";path=/";
                             // console.log(document.cookie
                             setRole(resp.data.login.role)
-                            localStorage.setItem('role', resp.data.login.role)
-                            localStorage.setItem('name', resp.data.login.name)
-                            localStorage.setItem('school', resp.data.login.school)
+                            
+                            const role = await bcrypt.hash(resp.data.login.role,10)
+                            console.log(role)
+                            localStorage.setItem('role', role)
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)

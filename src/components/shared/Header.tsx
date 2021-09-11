@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Box,
@@ -13,12 +13,12 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg"
 import user from '../../images/user.png';
+import { Usercontext } from '../pages/signinUp/Context';
 
 const Links = ['Home','Competitions', 'WorkShops', 'Championship','Shows', 'Signin/Register'];
 
@@ -31,9 +31,10 @@ const NavLink = ({ children }: { children: ReactNode }) => (
 
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {role} = useContext(Usercontext);
   return (
-  <Box zIndex="1000">
-    <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+  <Box zIndex="1">
+    <Box bg={'gray.100'} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
           size={'md'}
@@ -53,9 +54,11 @@ export default function Simple() {
             <Link to="/">Home</Link>
             <Link to="/competitions">Competitions</Link>
             <Link to="/workshops">Workshops</Link>
-            <Link to="/championships">Championship</Link>
             <Link to="/shows">Shows</Link>
-            <Link to="/signin">Login/Register</Link>
+            <Link to="/championships">Championship</Link>
+            {
+              role === "USER" || role ==="ADMIN" ? null : <Link to="/signin">Login/Register</Link>
+            }
           </HStack>
         </HStack>
         <Flex alignItems={'center'} letterSpacing="1px">
@@ -69,12 +72,14 @@ export default function Simple() {
               >
               <Avatar size={'sm'} style={{display: "flex", justifyContent: "center", alignItems: "center"}} src={user}/>
             </MenuButton>
-            <MenuList>
+            <MenuList zIndex="10">
               <MenuItem><Link to="/profile">My Profile</Link></MenuItem>
               <MenuItem><Link to="/helpdesk">Help Desk</Link></MenuItem>
               <MenuDivider />
               <MenuItem><Link to="/contactus">Contact Us</Link></MenuItem>
-              <MenuItem><Link to="/logout">Sign Out</Link></MenuItem>
+              {
+                role === "ADMIN" || role === "USER" ? <MenuItem><Link to="/logout">Sign Out</Link></MenuItem> : null
+              }
             </MenuList>
           </Menu>
         </Flex>
@@ -86,11 +91,13 @@ export default function Simple() {
               <NavLink key={link}>{link}</NavLink>
             ))} */}
             <NavLink key={1}><Link to="/">Home</Link></NavLink>
-            <NavLink key={1}><Link to="/workshops">WorkShops</Link></NavLink>
+            <NavLink key={1}><Link to="/workshops">Workshops</Link></NavLink>
             <NavLink key={1}><Link to="/competitions">Competitions</Link></NavLink>
-            <NavLink key={1}><Link to="/championships">Championship</Link></NavLink>
             <NavLink key={1}><Link to="/shows">Shows</Link></NavLink>
-            <NavLink key={1}><Link to="/signin">Signin/Register</Link></NavLink>
+            <NavLink key={1}><Link to="/championships">Championship</Link></NavLink>
+            {
+              role === "USER" || role ==="ADMIN" ? null : <NavLink key={1}><Link to="/signin">Signin/Register</Link></NavLink>
+            }
           </Stack>
         </Box>
       ) : null}
