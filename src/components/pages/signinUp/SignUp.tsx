@@ -9,6 +9,7 @@ import { useCreateUserMutation, useGetProfileQuery } from '../../../types/genera
 import { useState } from 'react';
 import { Standard } from '../../../types/generated/generated';
 import { useHistory,Redirect} from 'react-router-dom';
+import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 
 
 const SignUp = () => {
@@ -45,12 +46,12 @@ const SignUp = () => {
     return(
         <CustomBox>
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" display="flex" alignItems="center">
-            <Particles id="particles-js" params={particlesConfig}></Particles>
+            {/* <Particles id="particles-js" params={particlesConfig}></Particles> */}
                 <Flex width="fit-content" margin="auto" height="60vh" boxShadow="0px 0px 15px 0px #1c1c2b80"
                 alignItems="center" zIndex="2" className="sign-flex sign-flex-up sign-h">
                     <Box width="40vw" padding="0 1.8vw"  height="100%" className="sign-intro" backgroundColor="#b0dbbe"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
+                        <Image src={sj_logo} width={"50%"}/>
                         <p>Registered? <a href="/signin"><span>Sign In</span></a></p>
                     </Box>
                     <form action="" onSubmit={async (e) => {
@@ -83,11 +84,11 @@ const SignUp = () => {
                                 <label htmlFor="class">Class</label>
                             </Flex>
                             <Flex flexDirection="column" justifyContent="space-between" className="sign-input sign-input-up">
-                                <input type="text" name="name" onChange={nameHandler}/>
-                                <input type="text" name="username" onChange={emailHandler}  />
-                                <input type="password" name="password" onChange={pwHandler} /> 
-                                <input type="password" name="passwordR" onChange={repeatPwHandler} />
-                                <input type="text" name="school" onChange={schoolHandler} />
+                                <input required type="text" name="name" onChange={nameHandler}/>
+                                <input required type="email" name="username" onChange={emailHandler}  />
+                                <input required type="password" name="password" onChange={pwHandler} /> 
+                                <input required type="password" name="passwordR" onChange={repeatPwHandler} />
+                                <input required type="text" name="school" onChange={schoolHandler} />
                                 <select name="class" id="class" onSelect={classHandler}>
                                     <option value="SIXTH">Sixth</option>
                                     <option value="SEVENTH">Seventh</option>
@@ -99,7 +100,7 @@ const SignUp = () => {
                                 </select>
                             </Flex>
                         </Flex>
-                            <input type="submit" value="Sign Up" className="submit" />
+                            <input required type="submit" value="Sign Up" className="submit" />
                         {/* <Flex width="30vw" justifyContent="space-around">
                         <label htmlFor="username">Username</label>
                         <input type="text" name="username"  />
@@ -122,7 +123,7 @@ const SignUp = () => {
                 alignItems="center" zIndex="2" flexDirection="column">
                     <Box width="90vw" padding="0 1.8vw"  height="50%" className="sign-intro" backgroundColor="#b0dbbe"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
+                        <Image src={sj_logo} width={"50%"}/>
                         {/* <p>Registered? <a href="/signin"><span>Sign In</span></a></p> */}
                     </Box>
                     <form action="" onSubmit={async () => {
@@ -154,11 +155,11 @@ const SignUp = () => {
                                 <label htmlFor="class">Class</label>
                             </Flex>
                             <Flex flexDirection="column" justifyContent="space-between" alignItems="center" className="sign-input sign-input-up">
-                                <input type="text" name="name" onChange={nameHandler}/>
-                                <input type="text" name="username" onChange={emailHandler}  />
-                                <input type="password" name="password" onChange={pwHandler} /> 
-                                <input type="password" name="passwordR" onChange={repeatPwHandler} />
-                                <input type="text" name="school" onChange={schoolHandler} />
+                                <input required type="text" name="name" onChange={nameHandler}/>
+                                <input required type="email" name="username" onChange={emailHandler}  />
+                                <input required type="password" name="password" onChange={pwHandler} /> 
+                                <input required type="password" name="passwordR" onChange={repeatPwHandler} />
+                                <input required type="text" name="school" onChange={schoolHandler} />
                                 <select name="class" id="class" onSelect={classHandler}>
                                     <option value="SIXTH">Sixth</option>
                                     <option value="SEVENTH">Seventh</option>

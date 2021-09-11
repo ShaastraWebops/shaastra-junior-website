@@ -11,6 +11,7 @@ import { InfoIcon } from '@chakra-ui/icons';
 import { Redirect, useHistory } from 'react-router-dom';
 import {onError} from "@apollo/client/link/error"
 import { Usercontext } from './Context';
+import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 
 
 // const makeProvider = (role: UserRole) =>
@@ -56,14 +57,14 @@ const SignIn = () => {
     const onClose = () => {history.push('/')}
     return(
         <CustomBox>
-            <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" zIndex="-2"
+            <Box width="100vw" height="calc(100vh - 92px)" className="sign" backgroundColor="#AACDBE" zIndex="-2"
             display="flex" alignItems="center">
-            <Particles id="particles-js" params={particlesConfig}></Particles>
+            {/* <Particles id="particles-js" params={particlesConfig}></Particles> */}
                 <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
                 zIndex="2" className="sign-flex sign-h">
                     <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="100%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
+                        <Image src={sj_logo} width={"60%"}/>
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
@@ -111,8 +112,8 @@ const SignIn = () => {
                                 <label htmlFor="password">Password</label>
                             </Flex>
                             <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
-                                <input type="text" name="username" onChange={emailHandler} />
-                                <input type="password" name="password" onChange={pwHandler}/> 
+                                <input required type="email" name="username" onChange={emailHandler} />
+                                <input required type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
                         </Flex>
                         <input type="submit" value="Log In" className="submit" />
@@ -141,9 +142,9 @@ const SignIn = () => {
                 <div className="sign-hidden">
                 <Flex width="fit-content" margin="auto" height="60vh" alignItems="center" boxShadow="0px 0px 15px 0px #1c1c2b80"
                 zIndex="2" flexDirection="column" className="sign-flex">
-                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="70%" className="sign-intro"
+                    <Box width="40vw" padding="0 1.8vw" backgroundColor="#b0dbbe" height="50%" className="sign-intro"
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-                        <h1>Welcome to <br /> <span>SHAASTRA JUNIORS</span></h1>
+                        <Image src={sj_logo} width={"50%"}/>
                         
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
@@ -189,8 +190,8 @@ const SignIn = () => {
                                 <label htmlFor="password">Password</label>
                             </Flex>
                             <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
-                                <input type="text" name="username" onChange={emailHandler} />
-                                <input type="password" name="password" onChange={pwHandler}/> 
+                                <input required type="email" name="username" onChange={emailHandler} />
+                                <input required type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
                         </Flex>
                         <Flex width="80%" margin="auto" alignItems="center" justifyContent="space-between">

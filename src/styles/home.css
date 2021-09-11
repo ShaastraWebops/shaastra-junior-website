@@ -245,14 +245,14 @@ span
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(#00000060, #00000060), url("../images/home/Crowd_people.svg");
+    background-image: linear-gradient(#00000077, #00000077), url("../images/home/Crowd_people.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: calc(100vh - 64px);
 }
 
-.home-landing-head, .home-landing-subhead{
+.home-landing-head, .home-landing-subhead, .home-landing-subhead-date, .home-landing-subhead-init{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -271,6 +271,16 @@ span
 
 .home-landing-subhead {
     font-size: 4em;
+}
+
+.home-landing-subhead-date {
+    font-size: 2em;
+    text-transform: unset;
+}
+
+.home-landing-subhead-init {
+    font-size: 2em;
+    text-transform: unset;
 }
 
 

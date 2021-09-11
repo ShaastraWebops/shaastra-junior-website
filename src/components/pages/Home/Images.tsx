@@ -18,7 +18,13 @@ import A2 from '../../../images/A2.jpg'
 import A3 from '../../../images/A3.jpg'
 import sldr1 from '../../../images/sldr1.jpg'
 import sldr2 from '../../../images/sldr2.jpg'
-import sldr3 from '../../../images/sldr3.jpg'
+import exhibi from '../../../images/home/exhibi.jpg'
+import jmt from '../../../images/home/jmt.jpg'
+import chess from '../../../images/home/chess.png'
+import spark1 from '../../../images/home/spark1.png'
+import spark from '../../../images/home/spark.jpg'
+import brain from '../../../images/home/brain.jpeg'
+import sj_logo from "../../../images/home/sj_logo_color_tr.png"
 
 export {
 Astra, 
@@ -41,5 +47,11 @@ A2,
 A3,
 sldr1,
 sldr2,
-sldr3
+exhibi,
+jmt,
+sj_logo,
+chess,
+spark1,
+spark,
+brain
 }

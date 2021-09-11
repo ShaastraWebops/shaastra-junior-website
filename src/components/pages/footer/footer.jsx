@@ -39,7 +39,7 @@ const Footer = () => {
                 <Text>&copy;&nbsp;shaastra Junior 2022 . All Rights Reserved</Text>
             </Flex>
             <Flex justifyContent="center">
-                <Text paddingBottom="20px" fontSize="12px">DESIGNED BY - JANITH, MITESH, KRITHIKA, SHRINIVAS, TUSHAR, WEBOPS TEAM-SHAASTRA </Text>
+                <Text paddingBottom="20px" fontSize="12px">DESIGNED BY - JANITH, MITESH, KRITHIKA, SHIRINIVAS, TUSHAR, WEBOPS TEAM-SHAASTRA </Text>
                 <br/>
             </Flex>
         </Box>

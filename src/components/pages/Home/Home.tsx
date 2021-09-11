@@ -20,7 +20,13 @@ import {
   A2,
   A3,
   A1,
-  sldr3,
+  exhibi,
+  sj_logo,
+  jmt,
+  chess,
+  spark1,
+  spark,
+  brain
 } from "./Images";
 import Footer from "../footer/footer";
 import { useTodaysHighlightsQuery } from "../../../types/generated/generated";
@@ -44,6 +50,8 @@ const Home = (props: Props) => {
       <div className="home-landing-section">
         <div className="home-landing-head">Shaastra Juniors</div>
         <div className="home-landing-subhead">2021</div>
+        <div className="home-landing-subhead-date">24th - 26th Sep | 1st - 3rd Oct</div>
+        {/* <div className="home-landing-subhead-init">An Initiative by Shaastra</div> */}
       </div>
 
       <div className="who-are-we-container">
@@ -52,7 +60,7 @@ const Home = (props: Props) => {
 
         <div className="who-are-we">
           <div className="who-are-we-image">
-            <img src={A2} width="100%" height="auto" alt="sideImage" />
+            <img src={sj_logo} width="100%" height="auto" alt="sideImage" />
           </div>
           <div className="who-are-we-content">
             Shaastra Juniors, from Shaastra IIT Madras is the 1st ever
@@ -140,7 +148,7 @@ const Home = (props: Props) => {
         <div className="prev-year-card-container">
           <div className="prev-year-card">
             <div className="prev-year-card-image">
-              <img src={sldr3} width="100%" alt="prev-year-pic" />
+              <img src={jmt} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
               <h5>JUNIOR MAKE-A-THON (JMT)</h5>
@@ -156,7 +164,7 @@ const Home = (props: Props) => {
 
           <div className="prev-year-card">
             <div className="prev-year-card-image">
-              <img src={sldr3} width="100%" alt="prev-year-pic" />
+              <img src={chess} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
               <h5>Shaastra Junior Chess Tournament</h5>
@@ -170,7 +178,7 @@ const Home = (props: Props) => {
 
           <div className="prev-year-card">
             <div className="prev-year-card-image">
-              <img src={sldr3} width="100%" alt="prev-year-pic" />
+              <img src={exhibi} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
               <h5>Virtual Tech Exhibition</h5>A Vir tual Tech Exhibition of
@@ -184,7 +192,7 @@ const Home = (props: Props) => {
 
           <div className="prev-year-card">
             <div className="prev-year-card-image">
-              <img src={sldr3} width="100%" alt="prev-year-pic" />
+              <img src={spark} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
               <h5>BrainSqueeze</h5>
@@ -200,7 +208,7 @@ const Home = (props: Props) => {
 
           <div className="prev-year-card">
             <div className="prev-year-card-image">
-              <img src={sldr3} width="100%" alt="prev-year-pic" />
+              <img src={brain} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
               <h5>Spark</h5>
@@ -332,7 +340,7 @@ const Home = (props: Props) => {
           </Flex>
         </Box>
       </div>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </CustomBox>
   );
 };
