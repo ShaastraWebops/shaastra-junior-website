@@ -14,6 +14,72 @@ body{
     ;
 }
 
-/* h1,h2,h3,h4,h5{
+.events-details-box-container {
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
 
+
+.events-details-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 100%;
+    min-width: 300px;
+    flex: 1;
+    /* margin-top: 12px; */
+}
+
+.datetime-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #ffffff;
+    gap: 16px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.datetime-head {
+    justify-content: center;
+    background-color: #137cdd;
+    padding: 16px;
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.datetime-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.datetime{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    padding: 16px;
+    padding-top: 0;
+}
+
+/* .datetime:first-child {
+    border-right: 0.5px solid black;
+}
+
+.datetime:last-child {
+    border-left: 0.5px solid black;
 } */
