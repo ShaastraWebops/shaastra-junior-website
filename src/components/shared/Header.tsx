@@ -33,7 +33,7 @@ export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {role} = useContext(Usercontext);
   return (
-  <Box zIndex="1">
+  <Box zIndex="5">
     <Box bg={'gray.100'} px={4}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
         <IconButton
@@ -73,12 +73,12 @@ export default function Simple() {
               <Avatar size={'sm'} style={{display: "flex", justifyContent: "center", alignItems: "center"}} src={user}/>
             </MenuButton>
             <MenuList zIndex="10">
-              <MenuItem><Link to="/profile">My Profile</Link></MenuItem>
-              <MenuItem><Link to="/helpdesk">Help Desk</Link></MenuItem>
+              <Link to="/profile"><MenuItem>My Profile</MenuItem></Link>
+              <Link to="/helpdesk"><MenuItem>Help Desk</MenuItem></Link>
               <MenuDivider />
-              <MenuItem><Link to="/contactus">Contact Us</Link></MenuItem>
+              <Link to="/contactus"><MenuItem>Contact Us</MenuItem></Link>
               {
-                role === "ADMIN" || role === "USER" ? <MenuItem><Link to="/logout">Sign Out</Link></MenuItem> : null
+                role === "ADMIN" || role === "USER" ? <Link to="/logout"><MenuItem>Sign Out</MenuItem></Link> : null
               }
             </MenuList>
           </Menu>

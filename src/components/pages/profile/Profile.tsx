@@ -24,8 +24,8 @@ import {
 import {name,school,standard, sjid} from "../signinUp/Cookie"
 
 import {profiles} from "./data"
-import { workshops } from "../workshops/data";
-import { competitions } from "../workshops/data";
+// import { workshops } from "../workshops/data";
+// import { competitions } from "../workshops/data";
 import { useParams } from "react-router-dom";
 import { divide } from "lodash";
 import {EventType, RegistraionType, useGetProfileQuery, UserRole} from "../../../types/generated/generated"
