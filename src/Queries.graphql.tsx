@@ -44,6 +44,8 @@ mutation Login($loginData: LoginInput!){
       name,
       school,
       class,
+      state,
+      city,
       registeredEvents {
         title,
         id,

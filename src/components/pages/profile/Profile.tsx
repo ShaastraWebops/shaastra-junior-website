@@ -45,8 +45,8 @@ const Profile = () => {
     const {data,error,loading} = useGetProfileQuery()
    console.log(role.role)
 
-    if(role.role === "USER")
-    {
+    // if(role.role === "USER")
+    // {
         return (
             <CustomBox>
             <Box width="100vw" height="fit-content" backgroundColor="#AACDBE" paddingBottom="0vh">
@@ -61,6 +61,8 @@ const Profile = () => {
                             <p>{data?.me?.school}</p>
                             <p> <b>Class : </b> {data?.me?.class}</p>
                             <p> <b>Shaastra Juniors ID :</b> {data?.me?.sjID}</p>
+                            <p> <b>State :</b> {data?.me?.state}</p>
+                            <p> <b>City :</b> {data?.me?.city}</p>
                             <a href="/editProfile">Edit <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon> </a>
                         </Flex>
                     </Flex>
@@ -277,12 +279,12 @@ const Profile = () => {
             </Box>
         </CustomBox>
      )
-   }
-   else 
-   {
-       history.push('/')
-       return null
-   }
+//    }
+//    else 
+//    {
+//        history.push('/')
+//        return null
+//    }
 }
 
 export default Profile

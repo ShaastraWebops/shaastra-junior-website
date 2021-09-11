@@ -49,11 +49,13 @@ export type CreateTeamInput = {
 };
 
 export type CreateUserInput = {
+  city: Scalars['String'];
   class: Standard;
   email: Scalars['String'];
   name: Scalars['String'];
   password: Scalars['String'];
   school: Scalars['String'];
+  state: Scalars['String'];
 };
 
 export type EditEventFaqInput = {
@@ -82,6 +84,7 @@ export type EditProfileInput = {
   name?: Maybe<Scalars['String']>;
   password?: Maybe<Scalars['String']>;
   school?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
 };
 
 export type Event = {
@@ -391,6 +394,7 @@ export type Team = {
 };
 
 export type User = {
+  city: Scalars['String'];
   class: Standard;
   email: Scalars['String'];
   events: Array<Event>;
@@ -401,6 +405,7 @@ export type User = {
   role: UserRole;
   school: Scalars['String'];
   sjID: Scalars['String'];
+  state: Scalars['String'];
 };
 
 export enum UserRole {
@@ -446,7 +451,7 @@ export type ReqForgotPassVerificationMutation = { reqForgotPassVerification: boo
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileQuery = { me?: Maybe<{ __typename: 'User', id: string, sjID: string, name: string, school: string, class: Standard, registeredEvents: Array<{ title: string, id: string, eventType: EventType, audience: Array<Standard>, description: string, registrationType: string, isRegistered: boolean, pic: string, eventTimeFrom: string, eventTimeTo: string, teamSize: number, yourTeam?: Maybe<{ name: string, id: string, members: Array<{ class: Standard, name: string, email: string }> }> }> }> };
+export type GetProfileQuery = { me?: Maybe<{ __typename: 'User', id: string, sjID: string, name: string, school: string, class: Standard, state: string, city: string, registeredEvents: Array<{ title: string, id: string, eventType: EventType, audience: Array<Standard>, description: string, registrationType: string, isRegistered: boolean, pic: string, eventTimeFrom: string, eventTimeTo: string, teamSize: number, yourTeam?: Maybe<{ name: string, id: string, members: Array<{ class: Standard, name: string, email: string }> }> }> }> };
 
 export type EditProfileMutationVariables = Exact<{
   data: EditProfileInput;
@@ -755,6 +760,8 @@ export const GetProfileDocument = gql`
     name
     school
     class
+    state
+    city
     registeredEvents {
       title
       id
