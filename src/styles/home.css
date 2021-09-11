@@ -428,6 +428,7 @@ span
     color: #ffffff;
 }
 
+
 .prev-year-card-container{
     display: flex;
     flex: 1;
@@ -510,7 +511,7 @@ span
     }
 
     .today-highlights-container .home-heads::after{
-        height: calc(3em);
+        height: calc(3.25em);
     }
 
     .who-are-we {
@@ -522,6 +523,9 @@ span
         padding: 0;
     }
 
+    .prev-year-container .home-heads::after {
+        height: calc(3.25em);
+    }
 
     .prev-year-card{
         height: 400px;
