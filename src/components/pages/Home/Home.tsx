@@ -78,7 +78,7 @@ const Home = (props: Props) => {
         </div>
       </div>
 
-      <div className="today-highlights-container">
+      {data?.todaysHighlights?.length !== 0 ? <div className="today-highlights-container">
         <div className="home-heads">Today's Highlights</div>
         <div className="underline"></div>
 
@@ -88,6 +88,9 @@ const Home = (props: Props) => {
               <div className="highlight-card">
                 <div className="highlight-card-image">
                   <img src={dat.pic} width="100%" height="auto" alt="highlight-pic" />
+                </div>
+                <div className="highlight-card-title">
+                  {dat.title}
                 </div>
                 <div className="highlight-card-content">
                   {dat.description.length > 100 ? dat.description.substring(0,400)+ "..." : dat.description}
@@ -113,7 +116,7 @@ const Home = (props: Props) => {
                   >
                        View Details
                   </Button>
-                  { role !== "ADMIN" ? ( <RegisterNow  data={dat} />) : null}
+                  { role && <RegisterNow  data={dat} />}
                 </Flex>
               </div>
             );
@@ -152,7 +155,7 @@ const Home = (props: Props) => {
           </div> */}
 
         </div>
-      </div>
+      </div> : <div/>}
 
       <div className="prev-year-container">
         <div className="home-heads">Previous Year</div>
