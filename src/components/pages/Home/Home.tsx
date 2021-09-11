@@ -28,7 +28,7 @@ import {
   spark,
   brain
 } from "./Images";
-import Footer from "../footer/footer";
+import Footer from "../../shared/Footer";
 import { useTodaysHighlightsQuery } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
 import { useHistory } from "react-router-dom";
