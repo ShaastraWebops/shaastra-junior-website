@@ -71,7 +71,7 @@ export type EditEventInput = {
   platform: Scalars['String'];
   registrationCloseTime?: Maybe<Scalars['String']>;
   registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<Scalars['String']>;
+  registrationType?: Maybe<RegistraionType>;
   requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
   title?: Maybe<Scalars['String']>;
@@ -293,6 +293,7 @@ export type Query = {
   getUsersCount: Scalars['Float'];
   me?: Maybe<User>;
   searchUser?: Maybe<Array<User>>;
+  todaysHighlights?: Maybe<Array<Event>>;
 };
 
 
@@ -484,6 +485,11 @@ export type GetEventsQueryVariables = Exact<{
 
 
 export type GetEventsQuery = { getEvents: { count: number, events: Array<{ id: string, title: string, description: string, pic: string, audience: Array<Standard>, eventType: EventType, registrationOpenTime?: Maybe<string>, eventTimeFrom: string, registrationCloseTime?: Maybe<string>, eventTimeTo: string, updatedOn: string, registrationType: string, teamSize: number }> } };
+
+export type TodaysHighlightsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TodaysHighlightsQuery = { todaysHighlights?: Maybe<Array<{ id: string, title: string, description: string, pic: string, audience: Array<Standard>, eventType: EventType, registrationOpenTime?: Maybe<string>, eventTimeFrom: string, registrationCloseTime?: Maybe<string>, eventTimeTo: string, updatedOn: string, registrationType: string, teamSize: number }>> };
 
 export type GetEventQueryVariables = Exact<{
   getEventEventId: Scalars['String'];
@@ -1023,6 +1029,55 @@ export type GetEventsLazyQueryHookResult = ReturnType<typeof useGetEventsLazyQue
 export type GetEventsQueryResult = ApolloReactCommon.QueryResult<GetEventsQuery, GetEventsQueryVariables>;
 export function refetchGetEventsQuery(variables?: GetEventsQueryVariables) {
       return { query: GetEventsDocument, variables: variables }
+    }
+export const TodaysHighlightsDocument = gql`
+    query todaysHighlights {
+  todaysHighlights {
+    id
+    title
+    description
+    pic
+    audience
+    eventType
+    registrationOpenTime
+    eventTimeFrom
+    registrationCloseTime
+    eventTimeTo
+    updatedOn
+    registrationType
+    teamSize
+  }
+}
+    `;
+
+/**
+ * __useTodaysHighlightsQuery__
+ *
+ * To run a query within a React component, call `useTodaysHighlightsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTodaysHighlightsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTodaysHighlightsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTodaysHighlightsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<TodaysHighlightsQuery, TodaysHighlightsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<TodaysHighlightsQuery, TodaysHighlightsQueryVariables>(TodaysHighlightsDocument, options);
+      }
+export function useTodaysHighlightsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<TodaysHighlightsQuery, TodaysHighlightsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<TodaysHighlightsQuery, TodaysHighlightsQueryVariables>(TodaysHighlightsDocument, options);
+        }
+export type TodaysHighlightsQueryHookResult = ReturnType<typeof useTodaysHighlightsQuery>;
+export type TodaysHighlightsLazyQueryHookResult = ReturnType<typeof useTodaysHighlightsLazyQuery>;
+export type TodaysHighlightsQueryResult = ApolloReactCommon.QueryResult<TodaysHighlightsQuery, TodaysHighlightsQueryVariables>;
+export function refetchTodaysHighlightsQuery(variables?: TodaysHighlightsQueryVariables) {
+      return { query: TodaysHighlightsDocument, variables: variables }
     }
 export const GetEventDocument = gql`
     query getEvent($getEventEventId: String!) {

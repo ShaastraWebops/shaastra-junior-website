@@ -124,6 +124,26 @@ mutation Login($loginData: LoginInput!){
       }
     }
   }`
+
+  export const GETTODAYSHIGHLIGHTS = gql`
+  query todaysHighlights{
+    todaysHighlights{
+      id
+      title
+      description
+      pic
+      audience
+      eventType
+      registrationOpenTime
+      eventTimeFrom
+      registrationCloseTime
+      eventTimeTo
+      updatedOn
+      registrationType
+      teamSize
+    }
+  }
+  `
   
   export const GETEVENT = gql`
   query getEvent($getEventEventId: String!){

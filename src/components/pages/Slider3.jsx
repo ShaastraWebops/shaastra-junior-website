@@ -31,7 +31,7 @@ const Slider2 = () => {
                         </Box>
                         <Stack>
                             <Text color={'gray.500'} className="sldr2" color="#000">
-                                eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                Amazing prizes for this competition is : 2K cash
                             </Text>
                         </Stack>
                     </Box>

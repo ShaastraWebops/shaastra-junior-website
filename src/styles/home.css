@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap'); */
 .image{
     background-repeat: no-repeat;
@@ -40,7 +41,7 @@ span
     color:#222244d2;
 }
 .text{
-    font-family: 'Rationale', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 25px;
     font-weight: 700;
     padding-top: 50px;
@@ -76,13 +77,13 @@ span
     display: none;
 }
 .sldr2{
-    font-family: 'Rationale', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: #000;
 }
 @media only screen and (max-width:674px){
     .sldr2{
-        font-size: 13px;
+        font-size: 2vh;
     }
 }
 .txt2{
@@ -90,10 +91,10 @@ span
     padding-top: 80px;
     background-size: cover;
     background-repeat: no-repeat;
-    font-size: 20px;
+    font-size: 5vh;
     padding-right: 40px;
-    font-family: 'Rationale', sans-serif;
-    font-weight: 670;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
 }
 .cont{
     background: url('../images/ppl4.svg');
@@ -385,7 +386,7 @@ span
     border-radius: 8px;
     background-color: #ffffff;
     overflow: hidden;
-    max-height: 450px;
+    max-height: 500px;
 }
 
 .highlight-card-image img {
@@ -394,14 +395,21 @@ span
     object-fit: cover;
 }
 
+.highlight-card-title {
+    display: flex;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 .highlight-card-content {
     display: flex;
     flex: 1;
-    padding: 20px;
+    padding: 0 20px;
     overflow: hidden;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    min-height: 225px;
+    min-height: 90px;
 }
 
 .prev-year-container {
@@ -421,6 +429,7 @@ span
     background-color: transparent;
     color: #ffffff;
 }
+
 
 .prev-year-card-container{
     display: flex;
@@ -504,7 +513,7 @@ span
     }
 
     .today-highlights-container .home-heads::after{
-        height: calc(3em);
+        height: calc(3.25em);
     }
 
     .who-are-we {
@@ -516,6 +525,9 @@ span
         padding: 0;
     }
 
+    .prev-year-container .home-heads::after {
+        height: calc(3.25em);
+    }
 
     .prev-year-card{
         height: 400px;
