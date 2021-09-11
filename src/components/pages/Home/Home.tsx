@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import CustomBox from "../../shared/CustomBox";
 import {
   Astra,
@@ -23,10 +23,22 @@ import {
   sldr3
 } from "./Images";
 import Footer from "../footer/footer";
+import { useTodaysHighlightsQuery } from "../../../types/generated/generated";
+import Loader from "../../shared/Loader";
+import { useHistory } from "react-router-dom";
+import { Usercontext } from "../signinUp/Context";
+import RegisterNow from "../Events/RegisterNow";
 
 interface Props { }
 
 const Home = (props: Props) => {
+
+  const history = useHistory();
+
+  const { data, loading, error } = useTodaysHighlightsQuery({});
+  const {role} =React.useContext(Usercontext);
+
+  if(loading) return (<Loader />)
 
   return (
     <CustomBox>
@@ -71,7 +83,42 @@ const Home = (props: Props) => {
         <div className="underline"></div>
 
         <div className="highlight-cards-container">
-          <div className="highlight-card">
+          {data?.todaysHighlights?.map((dat) => {
+            return (
+              <div className="highlight-card">
+                <div className="highlight-card-image">
+                  <img src={dat.pic} width="100%" height="auto" alt="highlight-pic" />
+                </div>
+                <div className="highlight-card-content">
+                  {dat.description.length > 100 ? dat.description.substring(0,400)+ "..." : dat.description}
+                </div>
+                <Flex p={3} flexDirection={["column","column","row"]} justifyContent={"space-evenly"}>
+                  <Button
+                    color={'#244f3b'}
+                    variant="outline"
+                    border="2px solid"
+                    borderColor = "#244f3b"
+                    size="sm"
+                    p={2}
+                    m={2}
+                    onClick={() => {
+                        if(dat.eventType === "WORKSHOPS"){
+                           history.push(`/workshops/${dat.id}`)
+                        }else if(dat.eventType === "COMPETITIONS"){
+                           history.push(`/competitions/${dat.id}`)
+                        }else if(dat.eventType === "SHOWS"){
+                           history.push(`/shows/${dat.id}`)
+                        }
+                    }}
+                  >
+                       View Details
+                  </Button>
+                  { role !== "ADMIN" ? ( <RegisterNow  data={dat} />) : null}
+                </Flex>
+              </div>
+            );
+          })}
+          {/* <div className="highlight-card">
             <div className="highlight-card-image">
               <img src={A1} width="100%" height="auto" alt="highlight-pic" />
             </div>
@@ -94,7 +141,7 @@ const Home = (props: Props) => {
             <div className="highlight-card-content">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Non exercitationem officia adipisci repellendus quisquam excepturi, ut ea laborum ipsa fugit nisi vel autem. Sit, quos ex voluptates eligendi, quis hic corporis fuga ratione consectetur quo ea optio maxime corrupti possimus!
             </div>
-          </div>
+          </div> */}
           {/* <div className="highlight-card">
             <div className="highlight-card-image">
               <img src={A2} width="100%" height="auto" alt="highlight-pic" />

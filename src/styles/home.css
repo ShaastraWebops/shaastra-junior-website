@@ -401,7 +401,7 @@ span
     overflow: hidden;
     /* white-space: nowrap; */
     text-overflow: ellipsis;
-    min-height: 225px;
+    min-height: 125px;
 }
 
 .prev-year-container {
