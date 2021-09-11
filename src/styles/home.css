@@ -328,12 +328,16 @@ span
 }
 
 .who-are-we-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     object-fit: cover;
     object-position: center;
 }
 
 .who-are-we-image img {
     border-radius: 8px;
+    max-width: 600px;
 }
 
 .who-are-we-content {

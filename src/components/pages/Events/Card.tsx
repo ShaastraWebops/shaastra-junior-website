@@ -66,7 +66,7 @@ const Card = ({data, type} : any) =>{
                 <Flex p={2}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
-                    <Flex p={3} flexDirection={['column','row']}>
+                    <Flex p={3} justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
                     Registration Deadline :  
                     <Tag variant="solid" 
                     colorScheme = {
