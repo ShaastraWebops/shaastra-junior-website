@@ -175,9 +175,10 @@ const SignUp = () => {
                             <Image src={sj_logo} width={"50%"} />
                             {/* <p>Registered? <a href="/signin"><span>Sign In</span></a></p> */}
                         </Box>
-                        <form action="" onSubmit={async () => {
+                        <form action="" onSubmit={async (e) => {
                             if (pw === checkPw) {
                                 try {
+                                    e.preventDefault()
                                     const resp = await createUserMutation({
                                         variables: {
                                             createUserData: {
