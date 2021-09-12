@@ -55,7 +55,9 @@ const RegisterNow = ({data} : any) => {
     }
 
     
-    const regdate = parseInt((moment(parseInt(data?.registrationCloseTime!)).format("DD").toString()))
+    const regdate = parseInt((moment(parseInt(data?.registrationCloseTime!)).format("DD").toString()));
+    const regmonth =  parseInt((moment(parseInt(data?.registrationCloseTime!)).format("MM").toString()));
+    console.log(today.getMonth())
     if(data.registrationType === "NONE")
     {
         return(<Text p={2}>Registration is Not required</Text>)
@@ -84,7 +86,7 @@ const RegisterNow = ({data} : any) => {
                     width={["100%","100%","auto"]}
                     color='#244f3b' variant={'outline'} border="2px solid"
                     borderColor = '#244f3b'
-                   isDisabled = {(regdate - today.getDate()) < 1 ? true : false }
+                   isDisabled = {(regmonth === today.getMonth() + 1)&&(regdate - today.getDate()) < 1 ? true : false }
                     size="sm" p={2} m={2}>
                        Register Now
                    </Button>)

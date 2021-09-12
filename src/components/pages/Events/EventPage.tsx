@@ -122,12 +122,13 @@ const EventPage = () => {
     setAQuestion("");
     setAAnswer("");
   };
-  let audience: any = [];
+  let audience: number[] = [];
 
   event?.audience.map((a): any => {
-    audience.push(STANDARD[a]);
+    audience.push(parseInt(STANDARD[a]));
   });
-  audience.sort();
+  audience.sort(function(a, b) {return a-b});
+  console.log(audience)
   const handleedit = (faqid: string) => {
     editFaq({
       variables: {
