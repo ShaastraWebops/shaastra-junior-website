@@ -31,8 +31,9 @@ const SignIn = () => {
     const [pw,setPw] = useState("");
     const [loginMutation, {data,error,loading}] = useLoginMutation()
     const {isOpen, onOpen} = useDisclosure()
-    const [Error, setError] = useState(false)
+    var [Error, setError] = useState("")
     const {setRole} = useContext(Usercontext);
+    const [logged, setLogged] = useState(false)
 
     const history =useHistory();
     const emailHandler = (e : any) => {
@@ -93,18 +94,22 @@ const SignIn = () => {
                             const role = await bcrypt.hash(resp.data.login.role,10)
                             console.log(role)
                             localStorage.setItem('role', role)
+                            localStorage.setItem('name', resp.data.login.name)
+                            localStorage.setItem('logged', 'logged')
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
+                            setLogged(true)
                             history.push('/')
                         }
-                        if(!resp.data?.login?.isVerified || resp.errors)
+                        if(!resp.data?.login?.isVerified)
                         {
-                            setError(true)
+                            setError("Not Verified")
                         }
-                        } catch(error)
+                        } catch(err:any)
                         {
-                            setError(true)
+                            console.log(err)
+                            setError("Please check link")
                         }
                         
                     }}>
@@ -127,14 +132,14 @@ const SignIn = () => {
                         </Flex> */}
                     </form>
                     {
-                        Error === true ? <Modal isOpen={true} onClose={onClose}>
+                        Error !== "" ? <Modal isOpen={true} onClose={onClose}>
                         <ModalOverlay></ModalOverlay>
                         <ModalContent backgroundColor="#AACDBE" color="#222244">
                             <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
                             <h2>Some Error Occurred</h2></ModalHeader>
                             <ModalCloseButton onClick={onClose}></ModalCloseButton>
                             <ModalBody>
-                                <p>Kindly check if the credentials are correct</p>
+                                <p>{error?.message}</p>
                             </ModalBody>
                         </ModalContent>
                     </Modal> : null
@@ -155,9 +160,8 @@ const SignIn = () => {
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
                         setLoginData({email:email, password:pw});
-                        try
+                        try 
                         {
-                            
                             const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
                             console.log(resp)
                            
@@ -174,16 +178,18 @@ const SignIn = () => {
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
-                            history.push('/')
+                            setLogged(true)
                         }
-                        if(!resp.data?.login?.isVerified || resp.errors)
+                        // if(!resp.data?.login?.isVerified)
+                        // {
+                        //     setError("Not verified")
+                        // }
+                        }catch(err:any)
                         {
-                            setError(true)
+                            setError("e")
                         }
-                        } catch(error)
-                        {
-                            setError(true)
-                        }
+                        
+                        
                         
                     }}>
                         <Flex width="75%" margin="0 auto" paddingTop="4vh" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
@@ -209,20 +215,32 @@ const SignIn = () => {
                         </Flex> */}
                     </form>
                     {
-                        Error === true ? <Modal isOpen={true} onClose={onClose}>
+                        Error !== "" ? <Modal isOpen={true} onClose={onClose}>
                         <ModalOverlay></ModalOverlay>
-                        <ModalContent backgroundColor="#AACDBE" color="#222244">
+                        <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
                             <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
                             <h2>Some Error Occurred</h2></ModalHeader>
                             <ModalCloseButton onClick={onClose}></ModalCloseButton>
-                            <ModalBody>
-                                <p>Kindly check if the credentials are correct</p>
+                            <ModalBody textAlign="center">
+                                <p>{error?.message}</p>
                             </ModalBody>
                         </ModalContent>
                     </Modal> : null
                     }
                 </Flex>
                     </div>
+                    {/* {
+                        logged===true ?
+                        <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
+                            <ModalBody paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                            <h2>Hello {localStorage.getItem("name")}</h2>
+                            </ModalBody>
+                            <ModalCloseButton></ModalCloseButton>
+                        </ModalContent>
+                    </Modal> : null
+                    } */}
             </Box>
         </CustomBox>
     )
