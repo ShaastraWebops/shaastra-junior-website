@@ -68,6 +68,7 @@ const SignIn = () => {
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <Image src={sj_logo} width={"60%"}/>
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
+                        <p>Didn't recieve verification email? <a href=""> <span>Click here</span> </a> </p>
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
                         </Link> */}

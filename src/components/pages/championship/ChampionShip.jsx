@@ -5,6 +5,8 @@ import ppl1 from '../../../images/ppl1.svg';
 import './championship.css';
 import ppl10 from '../../../images/ppl10.svg'
 import Slider3 from '../Slider3';
+import Slider2 from '../Slider2';
+import Slider4 from '../Slider4';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useGetChampionshipQuery, refetchGetChampionshipQuery, useClearChampionshipMutation, SetChampionshipDocument, useSetChampionshipMutation, UserRole, } from '../../../types/generated/generated';
 import Loader from '../../shared/Loader';
@@ -74,7 +76,7 @@ const ChampionShip = () => {
 
     return (
         <CustomBox>
-            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'}>
+            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'} paddingBottom={'7vh'}>
                 <Flex justifyContent="center" width="100%" >
                     <Text fontSize="4xl" fontWeight="650" paddingTop="0px" color="#000">
                         LEADERBOARD
@@ -131,11 +133,10 @@ const ChampionShip = () => {
                         </Flex>
                     </Flex>}
 
-                    {data?.championship.length === 0 && <Flex justifyContent="center">
-                        <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="2vh">
-                            <Text color="#000" fontSize="3vh" align="center" paddingTop="2vh">{"RESULTS WILL BE RELEASED SOON..."}</Text>
-                        </Box>
-                    </Flex>}
+                    {data?.championship.length === 0 &&
+
+                        <div className="results-soon">Results will be released soon...</div>
+                    }
 
                     {data?.championship.map((champion) => (
                         <Flex justifyContent="center">
@@ -151,13 +152,13 @@ const ChampionShip = () => {
                     <Flex justifyContent="center" alignItems={"center"} flexDirection={"column"}>
                         <Text fontSize="40px" textAlign={"center"} fontWeight="650" className="txt2" color="#000">ABOUT CHAMPIONSHIP</Text>
                         <blockquote className="about-championship">
-                                Shaastra Junior Championship, one of the biggest tournaments in the country ever, is
-                                set to happen throughout the weekends of October. This championship,
-                                being one-of-its-kind, targets to applaud the brightest minds of India
-                                through its most distinctive contests. May the best school win!
-                                Each school will compete against one another in order to win the
-                                Shaastra Juniors championship. The points will be awarded based on
-                                student participation and winnings.
+                            Shaastra Junior Championship, one of the biggest tournaments in the country ever, is
+                            set to happen throughout the weekends of October. This championship,
+                            being one-of-its-kind, targets to applaud the brightest minds of India
+                            through its most distinctive contests. May the best school win!
+                            Each school will compete against one another in order to win the
+                            Shaastra Juniors championship. The points will be awarded based on
+                            student participation and winnings.
                         </blockquote>
                     </Flex>
 
@@ -165,13 +166,13 @@ const ChampionShip = () => {
                     <Flex justifyContent="center">
                         <Text fontSize="40px" fontWeight="650" className="txt2" color="#000">PRIZES</Text>
                     </Flex>
-
-                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
+                    <div >
+                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={10} pagination={{ "clickable": true }}>
+                        <SwiperSlide><Slider2 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
+                        <SwiperSlide><Slider4 marginLeft="5px" /></SwiperSlide>
                     </Swiper>
-
+                    </div>
                 </Box>
             </Box>
         </CustomBox>
