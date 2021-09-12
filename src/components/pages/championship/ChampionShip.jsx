@@ -131,11 +131,10 @@ const ChampionShip = () => {
                         </Flex>
                     </Flex>}
 
-                    {data?.championship.length === 0 && <Flex justifyContent="center">
-                        <Box width="80vw" height="9vh" bg="white" borderRadius="10px" marginTop="2vh">
-                            <Text color="#000" fontSize="3vh" align="center" paddingTop="2vh">{"RESULTS WILL BE RELEASED SOON..."}</Text>
-                        </Box>
-                    </Flex>}
+                    {data?.championship.length === 0 &&
+
+                        <div className="results-soon">Results will be released soon...</div>
+                    }
 
                     {data?.championship.map((champion) => (
                         <Flex justifyContent="center">
@@ -151,13 +150,13 @@ const ChampionShip = () => {
                     <Flex justifyContent="center" alignItems={"center"} flexDirection={"column"}>
                         <Text fontSize="40px" textAlign={"center"} fontWeight="650" className="txt2" color="#000">ABOUT CHAMPIONSHIP</Text>
                         <blockquote className="about-championship">
-                                Shaastra Junior Championship, one of the biggest tournaments in the country ever, is
-                                set to happen throughout the weekends of October. This championship,
-                                being one-of-its-kind, targets to applaud the brightest minds of India
-                                through its most distinctive contests. May the best school win!
-                                Each school will compete against one another in order to win the
-                                Shaastra Juniors championship. The points will be awarded based on
-                                student participation and winnings.
+                            Shaastra Junior Championship, one of the biggest tournaments in the country ever, is
+                            set to happen throughout the weekends of October. This championship,
+                            being one-of-its-kind, targets to applaud the brightest minds of India
+                            through its most distinctive contests. May the best school win!
+                            Each school will compete against one another in order to win the
+                            Shaastra Juniors championship. The points will be awarded based on
+                            student participation and winnings.
                         </blockquote>
                     </Flex>
 

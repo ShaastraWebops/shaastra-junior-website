@@ -257,6 +257,7 @@ span
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
     padding: 10px;
     text-transform: uppercase;
@@ -288,6 +289,7 @@ span
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
     padding: 20px;
     padding-top: 40px;
@@ -517,8 +519,12 @@ span
         font-size: 1.8em;
     }
 
+    .home-landing-subhead-date {
+        font-size: 1.25em;
+        text-transform: unset;
+    }
+
     .home-heads {
-        text-align: center;
         font-size: 2.25em;
     }
 
@@ -544,20 +550,20 @@ span
     }
 
     .prev-year-card{
-        height: 400px;
+        height: 450px;
     }
 
     .prev-year-card-image img {
-        height: 400px;
+        height: 450px;
     }
 
     .prev-year-card-content {
         left: 450px;
-        bottom: 400px;
+        top: 0;
         padding: 25px;
         background-color: #aacdbe;
-        height: 400px;
-        max-height: 400px;
+        height: 450px;
+        max-height: 450px;
         transition: 0.2s;
         transition-delay: 0.2s;
     }
