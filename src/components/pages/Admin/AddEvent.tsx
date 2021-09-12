@@ -50,8 +50,7 @@ const AddEvent = () =>{
       })
       .then(resp => resp.json())
       .then(data => {
-      // setUrl(data.url)
-      setUrl("/mnt/LocalDisk2/Wallpapers/abstract/win11-img21.jpg")
+      setUrl(data.url)
       setSpinner(false)
       setUploaded(true)
       })

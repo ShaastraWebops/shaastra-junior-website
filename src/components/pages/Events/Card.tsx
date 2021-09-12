@@ -69,9 +69,9 @@ const Card = ({data, type} : any) =>{
                     <Flex p={3} justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
                     Registration Deadline :  
                     <Tag variant="solid" 
-                    colorScheme = {
-                    parseInt((moment(parseInt(data?.registrationCloseTime!)).format("DD").toString())) - today.getDate() > 1 ?
-                    "teal" :  "red" 
+                    colorScheme = {(parseInt((moment(parseInt(data?.registrationCloseTime!)).format("MM").toString())) === today.getMonth()+1) &&
+                    parseInt((moment(parseInt(data?.registrationCloseTime!)).format("DD").toString())) - today.getDate() < 1 ?
+                      "red" : "teal"
                     }
                      p={2} m={[2,0]} mx={[0,1]} >
                     <TagLabel fontSize={'md'}>{moment(parseInt(data?.registrationCloseTime!)).format("MMMM Do YYYY")}</TagLabel>
