@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     font-weight: 600;
+    padding: 30px;
   }
   
   .social-icon {
@@ -16,7 +17,7 @@
   
   .footer-text {
     margin-top: 0;
-    padding-bottom: 10px;
+    padding-top: 10px;
   }
   
   .sec-text {
@@ -28,7 +29,7 @@
 
   .social-ctn {
       padding: 10px;
-      padding-bottom: 5px;
+     
   }
 
   .foot-heading{

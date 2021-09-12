@@ -102,7 +102,7 @@ const Home = (props: Props) => {
                   <div className="highlight-card-title">{dat.title}</div>
                   <div className="highlight-card-content">
                     {dat.description.length > 100
-                      ? dat.description.substring(0, 400) + "..."
+                      ? dat.description.substring(0, (window.innerWidth < 600 ? 175 : 235)) + "..."
                       : dat.description}
                   </div>
                   <Flex
