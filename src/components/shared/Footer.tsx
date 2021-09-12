@@ -19,7 +19,7 @@ const Footer = (props: Props) => {
         </div>
         <div className="footer-text">
             <p className="sec-text">Shaastra Junior 2022  ©  All Rights Reserved</p>
-            <p className="sec-text">DESIGNED BY SHAASTR WEBOPS 2021</p>
+            <p className="sec-text">DESIGNED BY SHAASTRA WEBOPS 2021</p>
         </div>
     </div>
     )
