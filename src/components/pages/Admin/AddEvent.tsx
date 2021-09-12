@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Box, Button, Spinner, Flex, FormControl, FormLabel, Heading, HStack, Input, Select, Textarea, Checkbox } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Button, Spinner, Flex, FormControl, Text, FormLabel, Heading, HStack, Input, Select, Textarea, Checkbox } from '@chakra-ui/react'
 import { Field, Form, Formik } from 'formik'
 import React, { Fragment } from 'react'
 import { CreateEventInput, EventType, RegistraionType, Standard, useCreateEventFaqMutation, useCreateEventMutation, useCreateUserMutation, useGetEventQuery, useGetEventsQuery } from '../../../types/generated/generated'
@@ -24,13 +24,13 @@ const AddEvent = () => {
   const [uploaded, setUploaded] = React.useState(false);
   const [spinner, setSpinner] = React.useState(false);
   const [aerror, setError] = React.useState();
-  const [checked6, setChecked6] = React.useState(true);
-  const [checked7, setChecked7] = React.useState(true);
-  const [checked8, setChecked8] = React.useState(true);
-  const [checked9, setChecked9] = React.useState(true);
-  const [checked10, setChecked10] = React.useState(true);
-  const [checked11, setChecked11] = React.useState(true);
-  const [checked12, setChecked12] = React.useState(true);
+  const [checked6, setChecked6] = React.useState(false);
+  const [checked7, setChecked7] = React.useState(false);
+  const [checked8, setChecked8] = React.useState(false);
+  const [checked9, setChecked9] = React.useState(false);
+  const [checked10, setChecked10] = React.useState(false);
+  const [checked11, setChecked11] = React.useState(false);
+  const [checked12, setChecked12] = React.useState(false);
 
   const [faqs, setfaqs] = React.useState([{ question: '', answer: '' }]);
   const [addfaq] = useCreateEventFaqMutation();
@@ -177,49 +177,49 @@ const AddEvent = () => {
                         onChange={(e) => setChecked6(!checked6)}
                         marginX={"20px"}
                       >
-                        SIXTH
+                        <Text color={"black"}>SIXTH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked7}
                         onChange={(e) => setChecked7(!checked7)}
                         marginX={"20px"}
                       >
-                        SEVENTH
+                        <Text color={"black"}>SEVENTH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked8}
                         onChange={(e) => setChecked8(!checked8)}
                         marginX={"20px"}
                       >
-                        EIGTH
+                        <Text color={"black"}>EIGTH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked9}
                         onChange={(e) => setChecked9(!checked9)}
                         marginX={"20px"}
                       >
-                        NINTH
+                        <Text color={"black"}>NINTH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked10}
                         onChange={(e) => setChecked10(!checked10)}
                         marginX={"20px"}
                       >
-                        TENTH
+                        <Text color={"black"}>TENTH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked11}
                         onChange={(e) => setChecked11(!checked11)}
                         marginX={"20px"}
                       >
-                        ELEVETH
+                        <Text color={"black"}>ELEVETH</Text>
                       </Checkbox>
                       <Checkbox
                         isChecked={checked12}
                         onChange={(e) => setChecked12(!checked12)}
                         marginX={"20px"}
                       >
-                        TWELTH
+                        <Text color={"black"}>TWELTH</Text>
                       </Checkbox>
                     </FormControl>
                   )}

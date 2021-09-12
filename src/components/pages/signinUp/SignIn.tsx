@@ -85,23 +85,16 @@ const SignIn = () => {
                              console.log(resp.errors)
                        if(resp.data?.login?.isVerified)
                        {
-                           // makeProvider(resp.data.login.role)
-                           // getRole( resp.data.login.role, resp.data.login.name)
-                           // document.cookie += ";role=" + resp.data.login.role + ";path=/";
-                           // console.log(document.cookie)
+                           setRole(resp.data.login.role)
+                           const role = await bcrypt.hash(resp.data.login.role,10)
+
                            localStorage.setItem('role', resp.data.login.role)
                            localStorage.setItem('name', resp.data.login.name)
                            localStorage.setItem('school', resp.data.login.school)
-                           // if(resp.data.login.role === 'USER')
-                           // history.push(`/${resp.data.login.name}`)
-                           // else history.push(`/admin`)
-                        //    setLogged(true)
-                        history.push("/")
+
+                            setLogged(true)
+                            history.push("/")
                        }
-                       // if(!resp.data?.login?.isVerified)
-                       // {
-                       //     setError("Not verified")
-                       // }
                        if(resp.errors) setError(true)
                         }catch(err) {
                             setError(true)
@@ -185,6 +178,7 @@ const SignIn = () => {
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
+                            setLogged(true);
                             history.push("/")
                         }
                         // if(!resp.data?.login?.isVerified)
