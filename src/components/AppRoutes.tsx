@@ -20,6 +20,7 @@ import ForgotAfterLink from "./pages/signinUp/ForgotAfterLink"
 import LogOut from "./pages/signinUp/LogOut"
 import Edit from "./pages/profile/Edit"
 import {useState, useEffect} from "react"
+import EmailResend from "./pages/signinUp/EmailResend"
 
 interface Props {
     
@@ -60,9 +61,10 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/contactus" component={Contactus}></Route>
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
+            <Route exact path="/email-resend" component={EmailResend}></Route>
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
-            <Route  path="/verifyuser/:token" component={Verify}></Route>
+            {/* <Route  path="/verifyuser/:token" component={Verify}></Route> */}
             <Route exact path="/verifyuser/:token" component={Verify}>
                 {/* <Redirect from=""></Redirect> */}
             </Route>

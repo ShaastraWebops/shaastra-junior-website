@@ -11,9 +11,12 @@ import { Standard } from '../../../types/generated/generated';
 import { useHistory, Redirect } from 'react-router-dom';
 import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 import { cities } from './cities';
+import {Modal, ModalOverlay, ModalBody, ModalCloseButton, ModalContent, ModalHeader, useDisclosure} from "@chakra-ui/react"
 
 
 const SignUp = () => {
+
+    var {isOpen, onOpen, onClose} = useDisclosure();
 
     const { Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth } = Standard
     const [createUserMutation, { data, loading, error }] = useCreateUserMutation();
@@ -26,6 +29,7 @@ const SignUp = () => {
     const [city, setCity] = useState("")
     const [standard, setStandard] = useState<Standard>(Sixth)
     const history = useHistory()
+    const [logged, setLogged] = useState(false)
 
     const emailHandler = (e: any) => { setEmail(e.target.value) }
     const pwHandler = (e: any) => { setPw(e.target.value) }
@@ -51,7 +55,9 @@ const SignUp = () => {
     //     // cities[states];
     //     console.log(cities[states]);
     // }
-    console.log(state);
+    onClose =  () => {
+        history.push('/')
+    }
     return (
         <CustomBox>
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE" display="flex" alignItems="center">
@@ -64,10 +70,10 @@ const SignUp = () => {
                         <p>Registered? <a href="/signin"><span>Sign In</span></a></p>
                     </Box>
                     <form action="" onSubmit={async (e) => {
+                        console.log("clciked")
                         e.preventDefault();
                         if (pw === checkPw) {
                             try {
-                                console.log(city);
                                 const resp = await createUserMutation({
                                     variables: {
                                         createUserData: {
@@ -81,54 +87,66 @@ const SignUp = () => {
                                         }
                                     }
                                 });
-                                console.log(resp)
+                                setLogged(true)
                             }
                             catch (err) { console.log(err) }
-                            history.push('/')
                         }
                     }}>
-                        <Flex width="95%" margin="auto" justifyContent="space-between" height="70%" className="sign-input-up">
-                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input sign-input-up">
-                                <label htmlFor="name">Name</label>
-                                <label htmlFor="username">Email ID</label>
-                                <label htmlFor="password">Password</label>
-                                <label htmlFor="passwordR">Confirm Password</label>
-                                <label htmlFor="school">School</label>
-                                <label htmlFor="class">Class</label>
-                                <label htmlFor="state">State</label>
-                                <label htmlFor="city">City</label>
-                            </Flex>
-                            <Flex flexDirection="column" justifyContent="space-between" className="sign-input sign-input-up">
-                                <input required style={{ padding: "15px" }} placeholder="Enter full name" type="text" name="name" onChange={nameHandler} />
-                                <input required style={{ padding: "15px" }} placeholder="Enter your email" type="email" name="username" onChange={emailHandler} />
-                                <input required style={{ padding: "15px" }} placeholder="Enter password" type="password" name="password" onChange={pwHandler} />
-                                <input required style={{ padding: "15px" }} type="password" name="passwordR" placeholder="Re-enter your password" onChange={repeatPwHandler} />
-                                <input required style={{ padding: "15px" }} type="text" name="school" placeholder="Enter full school name" onChange={schoolHandler} />
-                                <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
-                                    <option value="SIXTH">Sixth</option>
-                                    <option value="SEVENTH">Seventh</option>
-                                    <option value="EIGTH">Eight</option>
-                                    <option value="NINTH">Ninth</option>
-                                    <option value="TENTH">Tenth</option>
-                                    <option value="ELEVENTH">Eleventh</option>
-                                    <option value="TWELTH">Twelfth</option>
-                                </select>
-                                <select required name="state" id="state" onChange={stateHandler} placeholder="Select State">
-                                    {Object.keys(cities).map((_state: any) => {
-                                        return (
-                                            <option key={_state} value={_state}>{_state}</option>
-                                        );
-                                    })}
-                                </select>
-                                <select required name="city" id="city" onChange={cityHandler} placeholder="Select City">
-                                    {cities[state].map((_city: any) => {
-                                        return (
-                                            <option key={_city} value={_city}>{_city}</option>
-                                        );
-                                    })}
-                                </select>
-                            </Flex>
-                        </Flex>
+                        {/* <Flex width="fit-content" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up"> */}
+                                <Flex flexDirection="column" width="100%" justifyContent="space-between" className="sign-input sign-input-up">
+                                   <div>
+                                   <label htmlFor="name">Name</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter full name" type="text" name="name" onChange={nameHandler} />
+                                   </div>
+                                   <div>
+                                   <label htmlFor="username">Email ID</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter your email" type="email" name="username" onChange={emailHandler} />
+                                   </div>
+                                    <div>
+                                    <label htmlFor="password">Password</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter password" type="password" name="password" onChange={pwHandler} />
+                                    </div>
+                                    <div><label htmlFor="passwordR">Repeat password</label>
+                                    <input required style={{ padding: "15px" }} type="password" name="passwordR" placeholder="Re-enter your password" onChange={repeatPwHandler} />
+                                    </div>
+                                    <div>
+                                    <label htmlFor="school">School</label>
+                                    <input required style={{ padding: "15px" }} type="text" name="school" placeholder="Enter full school name" onChange={schoolHandler} />
+                                    </div>
+                                    <div>
+                                    <label htmlFor="class">Class</label>
+                                    <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
+                                        <option value="SIXTH">Sixth</option>
+                                        <option value="SEVENTH">Seventh</option>
+                                        <option value="EIGTH">Eight</option>
+                                        <option value="NINTH">Ninth</option>
+                                        <option value="TENTH">Tenth</option>
+                                        <option value="ELEVENTH">Eleventh</option>
+                                        <option value="TWELTH">Twelfth</option>
+                                    </select>
+                                    </div>
+                                    <div>
+                                    <label htmlFor="state">State</label>
+                                    <select required name="state" id="state" onChange={stateHandler} placeholder="Select State">
+                                        {Object.keys(cities).map((_state: any) => {
+                                            return (
+                                                <option key={_state} value={_state}>{_state}</option>
+                                            );
+                                        })}
+                                    </select>
+                                    </div>
+                                    <div>
+                                    <label htmlFor="city">City</label>
+                                    <select required name="city" id="city" onChange={cityHandler} placeholder="Select City">
+                                        {cities[state].map((_city: any) => {
+                                            return (
+                                                <option key={_city} value={_city}>{_city}</option>
+                                            );
+                                        })}
+                                    </select>
+                                    </div>
+                                </Flex>
+                        {/* </Flex> */}
                         {/* <Text alignSelf={"center"} paddingTop={"15px"} fontSize={"5px"}>All field are required</Text> */}
                         {/* <Text alignSelf={"center"} paddingTop={"15px"}>Enter full school name</Text> */}
                         <input required type="submit" value="Sign Up" className="submit" />
@@ -157,9 +175,10 @@ const SignUp = () => {
                             <Image src={sj_logo} width={"50%"} />
                             {/* <p>Registered? <a href="/signin"><span>Sign In</span></a></p> */}
                         </Box>
-                        <form action="" onSubmit={async () => {
+                        <form action="" onSubmit={async (e) => {
                             if (pw === checkPw) {
                                 try {
+                                    e.preventDefault()
                                     const resp = await createUserMutation({
                                         variables: {
                                             createUserData: {
@@ -179,18 +198,61 @@ const SignUp = () => {
                                 history.push('/')
                             }
                         }}>
-                            <Flex width="75%" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up">
+                            {/* <Flex width="fit-content" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up"> */}
                                 <Flex flexDirection="column" justifyContent="space-between" className="sign-input sign-input-up">
-                                    <label htmlFor="name">Name</label>
-                                    <label htmlFor="username">Email ID</label>
+                                   <div>
+                                   <label htmlFor="name">Name</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter full name" type="text" name="name" onChange={nameHandler} />
+                                   </div>
+                                   <div>
+                                   <label htmlFor="username">Email ID</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter your email" type="email" name="username" onChange={emailHandler} />
+                                   </div>
+                                    <div>
                                     <label htmlFor="password">Password</label>
-                                    <label htmlFor="passwordR">Repeat password</label>
+                                    <input required style={{ padding: "15px" }} placeholder="Enter password" type="password" name="password" onChange={pwHandler} />
+                                    </div>
+                                    <div><label htmlFor="passwordR">Repeat password</label>
+                                    <input required style={{ padding: "15px" }} type="password" name="passwordR" placeholder="Re-enter your password" onChange={repeatPwHandler} />
+                                    </div>
+                                    <div>
                                     <label htmlFor="school">School</label>
+                                    <input required style={{ padding: "15px" }} type="text" name="school" placeholder="Enter full school name" onChange={schoolHandler} />
+                                    </div>
+                                    <div>
                                     <label htmlFor="class">Class</label>
+                                    <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
+                                        <option value="SIXTH">Sixth</option>
+                                        <option value="SEVENTH">Seventh</option>
+                                        <option value="EIGTH">Eight</option>
+                                        <option value="NINTH">Ninth</option>
+                                        <option value="TENTH">Tenth</option>
+                                        <option value="ELEVENTH">Eleventh</option>
+                                        <option value="TWELTH">Twelfth</option>
+                                    </select>
+                                    </div>
+                                    <div>
                                     <label htmlFor="state">State</label>
+                                    <select required name="state" id="state" onChange={stateHandler} placeholder="Select State">
+                                        {Object.keys(cities).map((_state: any) => {
+                                            return (
+                                                <option key={_state} value={_state}>{_state}</option>
+                                            );
+                                        })}
+                                    </select>
+                                    </div>
+                                    <div>
                                     <label htmlFor="city">City</label>
+                                    <select required name="city" id="city" onChange={cityHandler} placeholder="Select City">
+                                        {cities[state].map((_city: any) => {
+                                            return (
+                                                <option key={_city} value={_city}>{_city}</option>
+                                            );
+                                        })}
+                                    </select>
+                                    </div>
                                 </Flex>
-                                <Flex flexDirection="column" justifyContent="space-between" alignItems="center" className="sign-input sign-input-up">
+                                {/* <Flex flexDirection="column" justifyContent="space-between" alignItems="center" className="sign-input sign-input-up">
                                     <input required style={{ padding: "15px" }} placeholder="Enter full name" type="text" name="name" onChange={nameHandler} />
                                     <input required style={{ padding: "15px" }} placeholder="Enter your email" type="email" name="username" onChange={emailHandler} />
                                     <input required style={{ padding: "15px" }} placeholder="Enter password" type="password" name="password" onChange={pwHandler} />
@@ -219,8 +281,8 @@ const SignUp = () => {
                                             );
                                         })}
                                     </select>
-                                </Flex>
-                            </Flex>
+                                </Flex> */}
+                            {/* </Flex> */}
                             <Flex width="90%" margin="auto" alignItems="flex-end" justifyContent="space-between">
                                 <input type="submit" value="Sign Up" className="submit" />
                                 <p className="link-sign"> Registered? <a href="/signin"><span>Sign In</span></a></p>
@@ -241,6 +303,19 @@ const SignUp = () => {
                         </form>
                     </Flex>
                 </div>
+                {
+                    logged === true ?
+                    <Modal isOpen={true} onClose={onClose}>
+                                        <ModalOverlay></ModalOverlay>
+                                        <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
+                                            <ModalBody paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                                            <h2>Registered Successfully. Check your email to verify your registration.</h2>
+                                            </ModalBody>
+                                            <ModalCloseButton></ModalCloseButton>
+                                        </ModalContent>
+                                    </Modal>
+                    : null
+                }
             </Box>
         </CustomBox>
     )
