@@ -107,6 +107,18 @@
     font-size: 3vw;
 }
 
+ .sign-input-up > div 
+    {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:5px;
+    }
+    .sign-hidden .sign-input-up > div 
+    {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:10px;
+    }
 #particles-js
 {
     position: fixed;
@@ -119,7 +131,7 @@
     z-index: -1;
     /* z-index: -1; */
 }
-@media screen and (max-width: 850px)
+@media screen and (max-width: 1200px)
 {
     .sign-input
     {
@@ -146,7 +158,20 @@
     .sign-input-up 
     {
         margin: auto;
-        height: 80% !important;
+        width: 100% !important;
+        height: 85% !important;
+    }
+    /* .sign-input-up:last-child
+    {
+        width: 73% !important;
+    } */
+    .sign-input-up input 
+    {
+        width: 20vw;
+    }
+    .sign-input-up select 
+    {
+        width: 15vw;
     }
     .forgot
     {
@@ -190,23 +215,34 @@
     .sign-input-up 
     {
         margin: auto;
-        height: 90% !important;
+        height: 100% !important;
     }
-    .sign-input-up input 
+    .sign-input-up:last-child
     {
-        height: 3vh !important;
+        width: 80% !important;
+        height: 100% !important;
     }
+    .sign-flex-up form 
+    {
+        width: 100%;
+    }
+    /* .sign-input-up input 
+    {
+        height: 1vw !important;
+        width: 90% !important;
+        margin-bottom: 1px;
+    } */
     /* .sign-flex-up 
     {
         height: 70vh !important;
     } */
-    .sign-input-up input 
-    {
-        height: 2vh;
-    }
     .forgot
     {
         width: 40vw !important;
+    }
+    .chakra-modal__body p
+    {
+        font-size: 4vw !important;
     }
 }
 @media screen and (max-width: 540px)
@@ -282,17 +318,39 @@
     }
     .sign-input-up
     {
-        height: 90% !important;
+        margin: 0% !important;
+        height: 100% !important;
+        width: 100% !important;
+        padding: 2vw !important;
+    }
+    .sign-input-up:last-child
+    {
         width: 80% !important;
+    }
+    .sign-flex-up form 
+    {
+        width: 100%;
+        padding: 10px !important;
     }
     .sign-input-up input 
     {
+        width: 50vw !important;
         height: 2.5vh !important;
+        justify-self: flex-end !important;
+        margin: 0 !important;
+    }
+    .sign-input-up select
+    {
+        width: 50vw !important;
+        justify-self: flex-end !important;
+        margin: 0 !important;
+
     }
     .sign-hidden span, .sign-hidden a
     {
         font-size: 3vw;
     }
+    
     .forgot 
     {
         width: 80% !important;
@@ -342,7 +400,7 @@
         height: 80vh !important;
         margin-top: 20% !important;
     }
-    .sign-input-up 
+    /* .sign-input-up 
     {
         width: 90% !important;
         height: 90% !important;
@@ -351,5 +409,68 @@
     {
         height: 2vh !important;
         width: 30vw;
-    }
+    }*/
+} 
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+
+.email-resend-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #aacdbe;
+    padding: 20px;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-head {
+    font-weight: bold;
+    font-size: 1.75em;
+    font-family: 'Open Sans';
+    margin-bottom: 20px;
+    color: black;
+}
+
+.email-resend-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #eeeeee;
+    padding: 20px;
+    flex-direction: column;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-input, .email-resend-submit {
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: 0;
+    margin-top: 25px;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-submit {
+    background-color: #5aaabe;
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    color: white;
+    font-weight: bold;
 }

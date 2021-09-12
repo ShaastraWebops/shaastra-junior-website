@@ -19,6 +19,8 @@ const LogOut = () => {
     const call = async () => {
         await logOutMutation();
         localStorage.removeItem('role')
+        localStorage.removeItem('name')
+        localStorage.removeItem('school')
         document.cookie += ";max-age=0"
         console.log(data)
     }
@@ -32,7 +34,7 @@ const LogOut = () => {
         return(
             <Modal isOpen={true} onClose={onClose}>
                  <ModalOverlay></ModalOverlay>
-                 <ModalContent backgroundColor="#AACDBE" color="#222244">
+                 <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
                     <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
                      <h2>Logged out Successfully</h2>
                     </ModalHeader>
@@ -46,7 +48,7 @@ const LogOut = () => {
         return(
             <Modal isOpen={true} onClose={onClose}>
             <ModalOverlay></ModalOverlay>
-            <ModalContent backgroundColor="#AACDBE" color="#222244">
+            <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
                <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
                 <h2>Error Occured</h2>
                </ModalHeader>

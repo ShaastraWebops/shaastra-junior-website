@@ -7,7 +7,6 @@
   pointer-events: none;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -37,6 +36,70 @@
     transform: rotate(360deg);
   }
 }
-.abcd{
+.abcd {
   overflow-y: scroll;
+}
+.Helpdesk_container {
+  padding-top: 50px !important;
+}
+.Helpdesk_container h2 {
+  margin-bottom: 25px;
+}
+.Names_container {
+  width: 100%;
+  height: calc(100vh - 330px) !important;
+  overflow-y: scroll;
+}
+.Names {
+  width: 100%;
+  justify-content: flex-start !important;
+}
+.Helpdes_innerContainer input {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #fff;
+  letter-spacing: 1px;
+}
+.Names input::placeholder {
+  color: #555;
+}
+.Helpdes_innerContainer {
+  width: 100% !important;
+  max-width: 840px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.question {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 20px;
+}
+.question h2 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+.Help_desk_form {
+  padding: 10px;
+}
+.chakra-collapse {
+  width: 100%;
+}
+.Help_desk_form_inner input {
+  color: #fff;
+}
+.Help_desk_form {
+  display: flex;
+  justify-content: center;
+}
+.Help_desk_form_inner {
+  max-width: 840px;
+  width: 100%;
+}
+.question_inner {
+  padding: 15px 25px;
 }
