@@ -193,6 +193,7 @@ const SignUp = () => {
                                         }
                                     })
                                     console.log(resp)
+                                    setLogged(true)
                                 }
                                 catch (err) { console.log(err) }
                                 history.push('/')

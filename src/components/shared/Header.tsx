@@ -66,16 +66,19 @@ export default function Simple() {
               )}
             </HStack>
           </HStack>
-        <Flex alignItems={'center'} letterSpacing="1px">
-        {localStorage.getItem('logged') === 'logged' ? <Box fontSize="1vw" marginRight="5px" color="black"
-              >Hello {localStorage.getItem('name')}</Box> : null}
-          <Menu>
-            <MenuButton
-              as={Button}
-              rounded={'full'}
-              variant={'link'}
-              cursor={'pointer'}
-              minW={0}
+          <Flex alignItems={"center"} letterSpacing="1px">
+            {localStorage.getItem("name") && (
+              <Box fontSize="1vw" marginRight="5px" color="black">
+                Hello {localStorage.getItem("name")}
+              </Box>
+            )}
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
               >
                 <Avatar
                   size={"sm"}
