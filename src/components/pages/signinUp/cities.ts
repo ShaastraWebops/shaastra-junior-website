@@ -1,4 +1,4 @@
-export const cities = {
+export const cities: any = {
     "Andaman and Nicobar Islands": [
         "Port Blair"
     ],

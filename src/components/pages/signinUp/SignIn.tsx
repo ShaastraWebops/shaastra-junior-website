@@ -31,8 +31,9 @@ const SignIn = () => {
     const [pw,setPw] = useState("");
     const [loginMutation, {data,error,loading}] = useLoginMutation()
     const {isOpen, onOpen} = useDisclosure()
-    const [Error, setError] = useState(false)
     const {setRole} = useContext(Usercontext);
+    const [logged, setLogged] = useState(false)
+    const [Error, setError] = useState(false)
 
     const history =useHistory();
     const emailHandler = (e : any) => {
@@ -50,7 +51,7 @@ const SignIn = () => {
       
         if (networkError) console.log(`[Network error]: ${networkError}`);
       });
-
+      console.log(Error)
     // const forgotPw = async () => {
     //     const [resetPasswordMutation, {data,loading,error}] = useResetPasswordMutation()
     //     // const resp = await resetPasswordMutation({variables: {token: , newPassword: }})
@@ -67,6 +68,7 @@ const SignIn = () => {
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <Image src={sj_logo} width={"60%"}/>
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
+                        <p>Didn't recieve verification email? <a href=""> <span>Click here</span> </a> </p>
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
                         </Link> */}
@@ -77,36 +79,32 @@ const SignIn = () => {
                         setLoginData({email:email, password:pw});
                         try
                         {
-                            
-                            const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
-                            console.log(resp)
-                           
-                              console.log(resp.errors)
-                        if(resp.data?.login?.isVerified)
-                        {
-                            // makeProvider(resp.data.login.role)
-                            // getRole( resp.data.login.role, resp.data.login.name)
-                            // document.cookie += ";role=" + resp.data.login.role + ";path=/";
-                            // console.log(document.cookie
-                            setRole(resp.data.login.role)
-                            
-                            const role = await bcrypt.hash(resp.data.login.role,10)
-                            console.log(role)
-                            localStorage.setItem('role', role)
-                            // if(resp.data.login.role === 'USER')
-                            // history.push(`/${resp.data.login.name}`)
-                            // else history.push(`/admin`)
-                            history.push('/')
-                        }
-                        if(!resp.data?.login?.isVerified || resp.errors)
-                        {
+                           const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
+                           console.log(resp)
+                          
+                             console.log(resp.errors)
+                       if(resp.data?.login?.isVerified)
+                       {
+                           // makeProvider(resp.data.login.role)
+                           // getRole( resp.data.login.role, resp.data.login.name)
+                           // document.cookie += ";role=" + resp.data.login.role + ";path=/";
+                           // console.log(document.cookie)
+                           localStorage.setItem('role', resp.data.login.role)
+                           localStorage.setItem('name', resp.data.login.name)
+                           localStorage.setItem('school', resp.data.login.school)
+                           // if(resp.data.login.role === 'USER')
+                           // history.push(`/${resp.data.login.name}`)
+                           // else history.push(`/admin`)
+                           setLogged(true)
+                       }
+                       // if(!resp.data?.login?.isVerified)
+                       // {
+                       //     setError("Not verified")
+                       // }
+                       if(resp.errors) setError(true)
+                        }catch(err) {
                             setError(true)
                         }
-                        } catch(error)
-                        {
-                            setError(true)
-                        }
-                        
                     }}>
                         <Flex width="75%" margin="0 auto" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
                             <Flex flexDirection="column" height="12vh" justifyContent="space-between" className="sign-input">
@@ -127,17 +125,30 @@ const SignIn = () => {
                         </Flex> */}
                     </form>
                     {
-                        Error === true ? <Modal isOpen={true} onClose={onClose}>
+                        
+                        Error === true ? 
+                        error?.message === "Oops, email not verified!"  ? <Modal isOpen={true} onClose={onClose}>
                         <ModalOverlay></ModalOverlay>
                         <ModalContent backgroundColor="#AACDBE" color="#222244">
-                            <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                            <h2>Some Error Occurred</h2></ModalHeader>
+                            
                             <ModalCloseButton onClick={onClose}></ModalCloseButton>
-                            <ModalBody>
-                                <p>Kindly check if the credentials are correct</p>
+                            <ModalBody height="100px">
+                                <p>{error?.message} Please check your registered email ID for link for verification</p>
+                               
                             </ModalBody>
                         </ModalContent>
-                    </Modal> : null
+                    </Modal> : 
+                    <Modal isOpen={true} onClose={onClose}>
+                    <ModalOverlay></ModalOverlay>
+                    <ModalContent backgroundColor="#AACDBE" color="#222244">
+                        <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                        <ModalBody >
+                            <p>{error?.message}</p>
+                        </ModalBody>
+                    </ModalContent>
+                    </Modal>
+                    :
+                    null
                     }
                 </Flex>
 
@@ -155,9 +166,8 @@ const SignIn = () => {
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
                         setLoginData({email:email, password:pw});
-                        try
-                        {
-                            
+                         try
+                         {
                             const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
                             console.log(resp)
                            
@@ -174,16 +184,16 @@ const SignIn = () => {
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
-                            history.push('/')
+                            setLogged(true)
                         }
-                        if(!resp.data?.login?.isVerified || resp.errors)
-                        {
-                            setError(true)
-                        }
-                        } catch(error)
-                        {
-                            setError(true)
-                        }
+                        // if(!resp.data?.login?.isVerified)
+                        // {
+                        //     setError("Not verified")
+                        // }
+                        if(resp.errors) setError(true)
+                         }catch(err) {
+                             setError(true)
+                         }
                         
                     }}>
                         <Flex width="75%" margin="0 auto" paddingTop="4vh" marginBottom="2vh" justifyContent="space-between" className="sign-input"> 
@@ -209,20 +219,43 @@ const SignIn = () => {
                         </Flex> */}
                     </form>
                     {
-                        Error === true ? <Modal isOpen={true} onClose={onClose}>
-                        <ModalOverlay></ModalOverlay>
-                        <ModalContent backgroundColor="#AACDBE" color="#222244">
-                            <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                            <h2>Some Error Occurred</h2></ModalHeader>
-                            <ModalCloseButton onClick={onClose}></ModalCloseButton>
-                            <ModalBody>
-                                <p>Kindly check if the credentials are correct</p>
-                            </ModalBody>
-                        </ModalContent>
-                    </Modal> : null
+                       Error == true ? 
+                       (error?.message === "Oops, email not verified!"  ? <Modal isOpen={true} onClose={onClose} >
+                       <ModalOverlay></ModalOverlay>
+                       <ModalContent backgroundColor="#AACDBE" color="#222244">
+                           <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                           <ModalBody height="100px">
+                               <p>{error?.message} <br /> Please check your registered email ID for link for verification</p>
+                              
+                           </ModalBody>
+                       </ModalContent>
+                   </Modal> : 
+                   <Modal isOpen={true} onClose={onClose}>
+                   <ModalOverlay></ModalOverlay>
+                   <ModalContent backgroundColor="#AACDBE" color="#222244">
+                       <ModalCloseButton onClick={onClose}></ModalCloseButton>
+                       <ModalBody >
+                           <p>{error?.message}</p>
+                       </ModalBody>
+                   </ModalContent>
+                   </Modal>)
+                   :
+                   null
                     }
                 </Flex>
                     </div>
+                    {/* {
+                        logged===true ?
+                        <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
+                            <ModalBody paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                            <h2>Hello {localStorage.getItem("name")}</h2>
+                            </ModalBody>
+                            <ModalCloseButton></ModalCloseButton>
+                        </ModalContent>
+                    </Modal> : null
+                    } */}
             </Box>
         </CustomBox>
     )

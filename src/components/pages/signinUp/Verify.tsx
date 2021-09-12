@@ -18,24 +18,33 @@ const Verify = () => {
     const {isOpen,  onOpen} = useDisclosure()
     // let Token = stringify(token)
     const history = useHistory();
-    const onClose = () => {history.push('/')}
     const verify = async () => {
     const resp = await verifyCall(token, verifyUserMutation)
     }
     verify()
+    if(!data) return null
     if(data?.verifyUser)
     {
-        // history.push('/signin')
-        // return(<div>Verified {history.push('/signin')}</div>)
-        history.push('/signin')
-        return null
+        var onClose = () => {history.push('/signin')}
+        return(
+            <Modal isOpen={true} onClose={onClose}>
+                <ModalOverlay></ModalOverlay>
+                <ModalContent backgroundColor="#AACDBE" color="#222244">
+                    <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center" border="none">
+                    <h2>Verified. Sign in to continue.</h2>
+                    </ModalHeader>
+                    <ModalCloseButton></ModalCloseButton>
+                </ModalContent>
+            </Modal>
+        )
     }
     else
     {
+        var onClose = () => {history.push('/')}
         return(
             <Modal isOpen={true} onClose={onClose}>
                                 <ModalOverlay></ModalOverlay>
-                                <ModalContent backgroundColor="#AACDBE" color="#222244">
+                                <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
                                     <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
                                     <h2>Some Error Occurred</h2></ModalHeader>
                                     <ModalCloseButton></ModalCloseButton>
