@@ -10,7 +10,7 @@ import { theme } from "./styles/themes/theme"
 
 
 const link = new HttpLink({
-  uri: 'http://localhost:8000/graphql',
+  uri: 'https://api.shaastra.org/graphql',
   credentials: 'include'
 });
 
