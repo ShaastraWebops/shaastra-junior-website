@@ -95,7 +95,8 @@ const SignIn = () => {
                            // if(resp.data.login.role === 'USER')
                            // history.push(`/${resp.data.login.name}`)
                            // else history.push(`/admin`)
-                           setLogged(true)
+                        //    setLogged(true)
+                        history.push("/")
                        }
                        // if(!resp.data?.login?.isVerified)
                        // {
@@ -184,7 +185,7 @@ const SignIn = () => {
                             // if(resp.data.login.role === 'USER')
                             // history.push(`/${resp.data.login.name}`)
                             // else history.push(`/admin`)
-                            setLogged(true)
+                            history.push("/")
                         }
                         // if(!resp.data?.login?.isVerified)
                         // {
