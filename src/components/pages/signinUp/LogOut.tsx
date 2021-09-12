@@ -19,6 +19,8 @@ const LogOut = () => {
     const call = async () => {
         await logOutMutation();
         localStorage.removeItem('role')
+        localStorage.removeItem('name')
+        localStorage.removeItem('school')
         document.cookie += ";max-age=0"
         console.log(data)
     }
@@ -29,7 +31,6 @@ const LogOut = () => {
     }
     if(data?.logoutUser === true)
     {
-        localStorage.setItem('logged', 'not')
         return(
             <Modal isOpen={true} onClose={onClose}>
                  <ModalOverlay></ModalOverlay>
