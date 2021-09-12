@@ -64,7 +64,7 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/email-resend" component={EmailResend}></Route>
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
-            <Route  path="/verifyuser/:token" component={Verify}></Route>
+            {/* <Route  path="/verifyuser/:token" component={Verify}></Route> */}
             <Route exact path="/verifyuser/:token" component={Verify}>
                 {/* <Redirect from=""></Redirect> */}
             </Route>
