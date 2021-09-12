@@ -1,5 +1,5 @@
 import React from 'react'
-import ppl3 from '../../images/ppl3.svg';
+import cash from '../../images/cash.jpg';
 import '../../styles/home.css';
 
 // import * as React from "react";
@@ -25,16 +25,15 @@ const Slider2 = () => {
         <div>
             <Center py={6} px={10}>
                 <div className="boxx">
-                    <Box maxW={'445px'} w={'full'} borderRadius="5px" bg="#EA907A" p={6} overflow={'hidden'}>
+                    <Box maxW={'295px'} borderRadius="15px" bg="#F4F7C5" p={6} overflow={'hidden'}>
                         <Box bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
-                            <Image src={ppl3} objectFit="cover" htmlHeight="210px" htmlWidth="100%" layout={'fill'} />
+                            <Image src={cash} objectFit="cover" htmlHeight="210px" htmlWidth="100%" layout={'fill'} />
                         </Box>
                         <Stack>
-                            <Text color="black" textTransform={'uppercase'} fontWeight={800} fontSize={'sm'} letterSpacing={1.1}>
-                                SOME INFO
+                            <Text color={'gray.500'} className="sldr2" color="#000">
+                                Participate and compete for a prize pool worth over <b>INR 1 Lakh !</b>
                             </Text>
                         </Stack>
-
                     </Box>
                 </div>
             </Center>

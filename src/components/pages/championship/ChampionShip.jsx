@@ -5,6 +5,8 @@ import ppl1 from '../../../images/ppl1.svg';
 import './championship.css';
 import ppl10 from '../../../images/ppl10.svg'
 import Slider3 from '../Slider3';
+import Slider2 from '../Slider2';
+import Slider4 from '../Slider4';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useGetChampionshipQuery, refetchGetChampionshipQuery, useClearChampionshipMutation, SetChampionshipDocument, useSetChampionshipMutation, UserRole, } from '../../../types/generated/generated';
 import Loader from '../../shared/Loader';
@@ -74,7 +76,7 @@ const ChampionShip = () => {
 
     return (
         <CustomBox>
-            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'}>
+            <Box width="100%" height="100%" bg="#AACDBE" paddingTop={'5vh'} paddingBottom={'7vh'}>
                 <Flex justifyContent="center" width="100%" >
                     <Text fontSize="4xl" fontWeight="650" paddingTop="0px" color="#000">
                         LEADERBOARD
@@ -165,13 +167,13 @@ const ChampionShip = () => {
                     <Flex justifyContent="center">
                         <Text fontSize="40px" fontWeight="650" className="txt2" color="#000">PRIZES</Text>
                     </Flex>
-
-                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={40} pagination={{ "clickable": true }}>
+                    <div >
+                    <Swiper breakpoints={{ 678: { slidesPerView: 2 }, 1000: { slidesPerView: 3 } }} slidesPerView={1} spaceBetween={10} pagination={{ "clickable": true }}>
+                        <SwiperSlide><Slider2 marginLeft="5px" /></SwiperSlide>
                         <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
-                        <SwiperSlide><Slider3 marginLeft="5px" /></SwiperSlide>
+                        <SwiperSlide><Slider4 marginLeft="5px" /></SwiperSlide>
                     </Swiper>
-
+                    </div>
                 </Box>
             </Box>
         </CustomBox>
