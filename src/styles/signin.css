@@ -240,6 +240,10 @@
     {
         width: 40vw !important;
     }
+    .chakra-modal__body p
+    {
+        font-size: 4vw !important;
+    }
 }
 @media screen and (max-width: 540px)
 {
