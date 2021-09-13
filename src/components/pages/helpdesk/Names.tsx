@@ -22,6 +22,7 @@ import {
   CreateFaqMutation,
   useCreateFaqMutation,
 } from "../../../types/generated/generated";
+import Loader from "../../shared/Loader";
 
 function Names() {
   const { data, loading, error } = useGetFaQsQuery();
@@ -37,6 +38,12 @@ function Names() {
     }
     setClick(index);
   };
+
+  if(loading) return <Loader/>
+  if(error) {
+    window.alert("Some error occured");
+    return null
+  }
 
   return (
     <IconContext.Provider value={{ color: "#ffff", size: "25px" }}>
@@ -57,7 +64,10 @@ function Names() {
           alignItems="center"
           className="Names"
         >
-          {JSONdata.filter((item) => {
+          {data?.getFAQs.faqs?.filter((item) => {
+            if(!item.answer) {
+              return
+            }
             if (searchTerm == "") {
               return item;
             } else if (item.question.toLocaleLowerCase().includes(searchTerm)) {
@@ -69,7 +79,7 @@ function Names() {
           }).map((item, index) => {
             return (
               <>
-                <div
+                <Flex
                   m="5"
                   w="100%"
                   spacing="3"
@@ -94,7 +104,7 @@ function Names() {
                     </Box>
                 </Flex> */}
                   </Box>
-                </div>
+                </Flex>
 
                 <Collapse in={click === index} animateOpacity>
                   <Box
