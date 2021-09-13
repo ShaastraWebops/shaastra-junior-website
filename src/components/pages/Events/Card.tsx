@@ -41,8 +41,8 @@ const Card = ({data, type} : any) =>{
             _hover={{boxShadow : 'lg',}}
             backgroundColor={'#F1F2E1'}>
             <Image
-                h={['15%','175px']}
-                width ={['250px']}
+                h={['15%','250px']}
+                width ={['300px']}
                 objectFit ={'cover'}
                 src={data.pic}
                 rounded="2xl"
