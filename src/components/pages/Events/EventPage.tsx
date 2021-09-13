@@ -127,8 +127,10 @@ const EventPage = () => {
   event?.audience.map((a): any => {
     audience.push(parseInt(STANDARD[a]));
   });
-  audience.sort(function(a, b) {return a-b});
-  console.log(audience)
+  audience.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(audience);
   const handleedit = (faqid: string) => {
     editFaq({
       variables: {
@@ -164,6 +166,7 @@ const EventPage = () => {
         alignItems="center"
         paddingTop={["20px", "20px"]}
         minHeight={"100vh"}
+        backgroundColor="#aacdbe"
       >
         <Heading mb={4}>{event?.title}</Heading>
         <Container maxWidth="6xl" alignItems="center" justifyItems={"center"}>
@@ -291,24 +294,26 @@ const EventPage = () => {
         </Container>
 
         <Container maxWidth="6xl" alignItems="center" justifyItems={"center"}>
-          <Flex className="datetime-container">
-            <Flex className="datetime-head">Registrations</Flex>
-            <Flex className="datetime-box">
-              <Flex className="datetime">
-                {moment(parseInt(event?.registrationOpenTime!)).format(
-                  "MMMM Do YYYY, h:mm a"
-                )}
-              </Flex>
-              <div style={{ width: "10%" }} className="datetime">
-                to
-              </div>
-              <Flex className="datetime">
-                {moment(parseInt(event?.registrationCloseTime!)).format(
-                  "MMMM Do YYYY, h:mm a"
-                )}
+          {event?.registrationType !== "NONE" && (
+            <Flex className="datetime-container">
+              <Flex className="datetime-head">Registrations</Flex>
+              <Flex className="datetime-box">
+                <Flex className="datetime">
+                  {moment(parseInt(event?.registrationOpenTime!)).format(
+                    "MMMM Do YYYY, h:mm a"
+                  )}
+                </Flex>
+                <div style={{ width: "10%" }} className="datetime">
+                  to
+                </div>
+                <Flex className="datetime">
+                  {moment(parseInt(event?.registrationCloseTime!)).format(
+                    "MMMM Do YYYY, h:mm a"
+                  )}
+                </Flex>
               </Flex>
             </Flex>
-          </Flex>
+          )}
 
           <Flex className="datetime-container">
             <Flex className="datetime-head">Event Timeline</Flex>

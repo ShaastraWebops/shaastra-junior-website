@@ -57,7 +57,7 @@ const Card = ({data, type} : any) =>{
                 <Text
                 fontWeight={'medium'}
                 fontSize={'15px'}
-                p={3}>
+                p={2}>
                 {
                   data.description.length > 400 ? data.description.substring(0,400)+ "...." : data.description
                 }
@@ -66,7 +66,7 @@ const Card = ({data, type} : any) =>{
                 <Flex p={2}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
-                    <Flex p={3} justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
+                    <Flex justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
                     Registration Deadline :  
                     <Tag variant="solid" 
                     colorScheme = {(parseInt((moment(parseInt(data?.registrationCloseTime!)).format("MM").toString())) === today.getMonth()+1) &&
@@ -81,7 +81,7 @@ const Card = ({data, type} : any) =>{
                     </Flex>
                  
                
-                  <Flex p={3} flexDirection={["column","column","row"]}>
+                  <Flex p={2} paddingX={0} flexDirection={["column","column","row"]}>
                    
                     <Button color={'#244f3b'} variant="outline" border="2px solid"
                     borderColor = "#244f3b"
