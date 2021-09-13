@@ -62,8 +62,7 @@ const Card = ({data, type} : any) =>{
                   data.description.length > 400 ? data.description.substring(0,400)+ "...." : data.description
                 }
                 </Text>
-                
-                <Flex p={2}>
+                <Flex p={2} visibility={data?.registrationType === "NONE" ? "hidden" :  "visible"}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
                     <Flex justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
