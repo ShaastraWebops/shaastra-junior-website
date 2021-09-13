@@ -164,6 +164,7 @@ const EventPage = () => {
         alignItems="center"
         paddingTop={["20px", "20px"]}
         minHeight={"100vh"}
+        backgroundColor="#aacdbe"
       >
         <Heading mb={4}>{event?.title}</Heading>
         <Container maxWidth="6xl" alignItems="center" justifyItems={"center"}>
