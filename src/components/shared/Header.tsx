@@ -61,6 +61,7 @@ export default function Simple() {
               <Link to="/workshops">Workshops</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
               )}
@@ -99,13 +100,13 @@ export default function Simple() {
                 <Link to="/helpdesk">
                   <MenuItem>Help Desk</MenuItem>
                 </Link>
-                <MenuDivider />
-                <Link to="/contactus">
-                  <MenuItem>Contact Us</MenuItem>
-                </Link>
-                {(role === "ADMIN" || role === "USER") && (
+                {role === "ADMIN" || role === "USER" ? (
                   <Link to="/logout">
                     <MenuItem>Sign Out</MenuItem>
+                  </Link>
+                ) : (
+                  <Link to="/signin">
+                    <MenuItem>Sign In</MenuItem>
                   </Link>
                 )}
               </MenuList>
@@ -120,6 +121,7 @@ export default function Simple() {
               <Link to="/competitions">Competitions</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>
               )}
