@@ -91,7 +91,7 @@ const EditEvent = () => {
                   eventTimeTo: moment(values.ect).format("DD/MM/YYYY h:mm a"),
                   registrationType: values.regtype,
                   teamSize: values.teamsize,
-                  pic: url
+                  pic: !!url ? url : event?.pic
                 }
               },
               refetchQueries: [{ query: GETEVENTS, variables: { getEventsFilter: values.type } }]
