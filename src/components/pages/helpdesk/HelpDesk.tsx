@@ -3,7 +3,7 @@ import CustomBox from "../../shared/CustomBox";
 import { Flex, Heading } from "@chakra-ui/layout";
 import { Input, Button, FormControl, Container, Box } from "@chakra-ui/react";
 import Names from "./Names";
-import { useCreateFaqMutation } from "../../../types/generated/generated";
+import { refetchGetFaQsQuery, useCreateFaqMutation } from "../../../types/generated/generated";
 import "../../../App.css";
 
 function HelpDesk() {
@@ -13,14 +13,14 @@ function HelpDesk() {
     variables: {
       createFaqQuestion: question,
     },
+    refetchQueries: [refetchGetFaQsQuery()]
   });
 
   const handelSubmit = () => {
     console.log(question);
     createFaqMutation()
       .then(() => {
-        console.log("query subitted ");
-        console.log(error);
+        window.alert("Query Submitted");
       })
       .catch((err) => {
         console.log(err);
