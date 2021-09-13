@@ -5,6 +5,7 @@ import moment from 'moment'
 import React, { Fragment } from 'react'
 import { useParams } from 'react-router-dom'
 import { GETEVENTS } from '../../../Queries.graphql'
+import { StandardArray } from '../../../types/generated/constants'
 import { EventType, RegistraionType, Standard, useEditEventMutation, useGetEventQuery } from '../../../types/generated/generated'
 import CustomBox from '../../shared/CustomBox'
 import Loader from '../../shared/Loader'
@@ -19,13 +20,6 @@ const EditEvent = () => {
   const [uploaded, setUploaded] = React.useState(false);
   const [spinner, setSpinner] = React.useState(false);
   const [aerror, setError] = React.useState();
-  const [checked6, setChecked6] = React.useState(false);
-  const [checked7, setChecked7] = React.useState(false);
-  const [checked8, setChecked8] = React.useState(false);
-  const [checked9, setChecked9] = React.useState(false);
-  const [checked10, setChecked10] = React.useState(false);
-  const [checked11, setChecked11] = React.useState(false);
-  const [checked12, setChecked12] = React.useState(false);
 
   const { data, loading, error } = useGetEventQuery({
     variables: {
@@ -67,7 +61,8 @@ const EditEvent = () => {
             {
               "title": event!.title,
               "type": event!.eventType,
-              "Audience Type": event!.audience,
+              "audienceStart": StandardArray.indexOf(event!.audience[0]),
+              "audienceEnd": StandardArray.indexOf(event!.audience.slice(-1)[0]),
               "rot": moment(parseInt(event?.registrationOpenTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
               "rct": moment(parseInt(event?.registrationCloseTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
               "est": moment(parseInt(event?.eventTimeFrom!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
@@ -79,14 +74,6 @@ const EditEvent = () => {
               "description": event!.description,
             }}
           onSubmit={(values, actions) => {
-            let audience: any[] = [];
-            if (checked6) audience.push(Standard.Sixth)
-            if (checked7) audience.push(Standard.Seventh)
-            if (checked8) audience.push(Standard.Eigth)
-            if (checked9) audience.push(Standard.Ninth)
-            if (checked10) audience.push(Standard.Tenth)
-            if (checked11) audience.push(Standard.Eleventh)
-            if (checked12) audience.push(Standard.Twelfth)
 
             EditEvent({
               variables: {
@@ -95,7 +82,7 @@ const EditEvent = () => {
                   title: values.title,
                   description: values.description,
                   eventType: values.type,
-                  audience: audience,
+                  audience: StandardArray.slice(values.audienceStart, values.audienceEnd),
                   platform: values.platform,
                   requirements: values.requirements,
                   registrationOpenTime: moment(values.rot).format("DD/MM/YYYY h:mm a"),
@@ -149,59 +136,23 @@ const EditEvent = () => {
                   )}
                 </Field>
 
-                <Field name="Audience Type">
+                <Field name="audienceStart">
                   {({ field }: { field: any }) => (
                     <FormControl m={2}>
-                      <FormLabel >Audience Type</FormLabel>
-                      <Checkbox
-                        isChecked={checked6}
-                        onChange={(e) => setChecked6(!checked6)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>SIXTH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked7}
-                        onChange={(e) => setChecked7(!checked7)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>SEVENTH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked8}
-                        onChange={(e) => setChecked8(!checked8)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>EIGTH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked9}
-                        onChange={(e) => setChecked9(!checked9)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>NINTH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked10}
-                        onChange={(e) => setChecked10(!checked10)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>TENTH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked11}
-                        onChange={(e) => setChecked11(!checked11)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>ELEVETH</Text>
-                      </Checkbox>
-                      <Checkbox
-                        isChecked={checked12}
-                        onChange={(e) => setChecked12(!checked12)}
-                        marginX={"20px"}
-                      >
-                        <Text color={"black"}>TWELTH</Text>
-                      </Checkbox>
+                      <FormLabel >Audience From</FormLabel>
+                      <Select {...field} id="type" borderColor={'#244f3b'} placeholder="EventType" color={"#244f3b"}>
+                        {StandardArray.map((standard, index) => <option value={index}>{standard}</option>)}
+                      </Select>
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="audienceEnd">
+                  {({ field }: { field: any }) => (
+                    <FormControl m={2}>
+                      <FormLabel >Audience To</FormLabel>
+                      <Select {...field} id="type" borderColor={'#244f3b'} placeholder="EventType" color={"#244f3b"}>
+                        {StandardArray.map((standard, index) => <option value={index}>{standard}</option>)}
+                      </Select>
                     </FormControl>
                   )}
                 </Field>
