@@ -91,11 +91,17 @@ mutation Login($loginData: LoginInput!){
     getFAQs {
       count,
       faqs {
+        id,
         question,
         answer,
         createdOn
       }
     }
+  }`
+
+  export const ANSWERFAQ = gql`
+  mutation answerFAQ($answerFaqAnswer: String!, $answerFaqFaqid: String!){
+    answerFAQ(answer: $answerFaqAnswer, FAQID: $answerFaqFaqid)
   }`
   
   export const CREATEEVENT = gql`
