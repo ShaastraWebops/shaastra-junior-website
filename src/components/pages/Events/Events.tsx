@@ -28,6 +28,7 @@ const Events = ({type}: any) => {
         <CustomBox>
          <Flex flexDirection={"column"}  alignItems="center" paddingTop={['10px','20px']} minHeight={"100vh"}>
             <Heading p={2}>{type}</Heading>
+            <Heading pb={2} fontSize={"1em"}>[All {type.toLowerCase()} are free]</Heading>
            {
              role === "ADMIN" ? (
               <Box width={['90%','85%']}><Link to="/addevent"><Button float={'right'} color={'#244f3b'} variant="solid" border="2px solid"
