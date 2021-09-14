@@ -84,7 +84,7 @@ const AddEvent = () => {
                   title: values.title,
                   description: values.description,
                   eventType: values.type,
-                  audience: StandardArray.slice(values.audienceStart, values.audienceEnd),
+                  audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
                   requirements: values.requirements,
                   registrationOpenTime: moment(values.rot).format("DD/MM/YYYY h:mm a"),

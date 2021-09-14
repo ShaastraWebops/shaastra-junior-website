@@ -20,8 +20,6 @@ const Events = ({type}: any) => {
        getEventsFilter: type
       }});
     const data1 =data?.getEvents.events
-   
-    console.log(data)
     
     if(loading) return(<Loader />)
     return (
