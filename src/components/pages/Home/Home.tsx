@@ -154,7 +154,7 @@ const Home = (props: Props) => {
               & Innovation Fair, Shaastra, which centres around the ideas,
               imagination, and innovation skills of high school students and
               allows them to learn practical skills and apply them to create new
-              models and devices. One of the primar y aims of JMT is to promote
+              models and devices. One of the primary aims of JMT is to promote
               maker culture among school students, with quality mentorship and
               workshops.
             </div>
@@ -197,8 +197,8 @@ const Home = (props: Props) => {
               Do you love putting your brain into overdrive mode while cracking
               arduous puzzles. Students had come to experience the bliss of
               solving mind-bending questions in Brain Squeeze. An entirely
-              logical event which puts your reasoning and analy tical skills to
-              the test with exceptionally trick y questions. Qualif y the
+              logical event which puts your reasoning and analytical skills to
+              the test with exceptionally tricky questions. Qualify the
               prelims to battle it out with the brightest of minds in the
               finals.
             </div>
