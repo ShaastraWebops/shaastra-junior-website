@@ -122,15 +122,15 @@ const EventPage = () => {
     setAQuestion("");
     setAAnswer("");
   };
-  let audience: number[] = [];
+  let audience = event?.audience;
 
-  event?.audience.map((a): any => {
-    audience.push(parseInt(STANDARD[a]));
-  });
-  audience.sort(function (a, b) {
-    return a - b;
-  });
-  console.log(audience);
+  // event?.audience.map((a): any => {
+  //   audience.push(parseInt(STANDARD[a]));
+  // });
+  // audience.sort(function (a, b) {
+  //   return a - b;
+  // });
+ // console.log(audience);
   const handleedit = (faqid: string) => {
     editFaq({
       variables: {
@@ -199,10 +199,10 @@ const EventPage = () => {
               <strong>Audience: &nbsp;</strong>
               {audience.length > 1
                 ? audience[0] +
-                  " th - " +
+                  " Grade to " +
                   audience[audience.length - 1] +
-                  " th "
-                : audience[0] + " th"}
+                  " Grade "
+                : audience[0] + " Grade"}
             </Flex>
             <Flex className="events-details-box">
               <strong>Platform: &nbsp;</strong>

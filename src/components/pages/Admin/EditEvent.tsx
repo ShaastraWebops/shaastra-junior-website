@@ -49,6 +49,10 @@ const EditEvent = () => {
       .catch(err => console.log(err))
   }
 
+let rotArr = moment(parseInt(event?.registrationOpenTime!)).format().split(":00+05")
+let rctArr = moment(parseInt(event?.registrationCloseTime!)).format().split(":00+05")
+let estArr = moment(parseInt(event?.eventTimeFrom!)).format().split(":00+05")
+let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
 
   return (
     <CustomBox>
@@ -63,10 +67,10 @@ const EditEvent = () => {
               "type": event!.eventType,
               "audienceStart": StandardArray.indexOf(event!.audience[0]),
               "audienceEnd": StandardArray.indexOf(event!.audience.slice(-1)[0]),
-              "rot": moment(parseInt(event?.registrationOpenTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
-              "rct": moment(parseInt(event?.registrationCloseTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
-              "est": moment(parseInt(event?.eventTimeFrom!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
-              "ect": moment(parseInt(event?.eventTimeTo!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+              "rot": rotArr[0],//moment(parseInt(event?.registrationOpenTime!)).format("yyyy-MM-DDThh:mm"),
+              "rct": rctArr[0],//moment(parseInt(event?.registrationCloseTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+              "est": estArr[0],//moment(parseInt(event?.eventTimeFrom!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+              "ect": ectArr[0],//moment(parseInt(event?.eventTimeTo!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
               "platform": event?.platform!,
               "requirements": event?.requirements!,
               "regtype": event!.registrationType,
@@ -82,7 +86,7 @@ const EditEvent = () => {
                   title: values.title,
                   description: values.description,
                   eventType: values.type,
-                  audience: StandardArray.slice(values.audienceStart, values.audienceEnd),
+                  audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
                   requirements: values.requirements,
                   registrationOpenTime: moment(values.rot).format("DD/MM/YYYY h:mm a"),
@@ -91,7 +95,7 @@ const EditEvent = () => {
                   eventTimeTo: moment(values.ect).format("DD/MM/YYYY h:mm a"),
                   registrationType: values.regtype,
                   teamSize: values.teamsize,
-                  pic: url
+                  pic: !!url ? url : event?.pic
                 }
               },
               refetchQueries: [{ query: GETEVENTS, variables: { getEventsFilter: values.type } }]

@@ -73,7 +73,7 @@ const CustomDrawer = (props: Props) => {
           <Flex flexDirection="column" height="80%" width="100%" justifyContent="space-around" alignItems="center">
             {data?.me ? < Link to="/profile">My Profile</Link> : null}
             <Link to="/helpdesk">Help Desk</Link>
-            <Link to="/contactus">Contact Us</Link>
+            {/* <Link to="/contactus">Contact Us</Link> */}
             {data?.me ? <Link to="/logout">Sign Out</Link> : null }
           </Flex>
           <Flex height="50%"  width="80%" margin="auto" justifyContent="space-between" alignItems="flex-end">

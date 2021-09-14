@@ -13,7 +13,6 @@ import { Usercontext } from "../signinUp/Context";
 const Card = ({data, type} : any) =>{
     const history = useHistory();
     const today = new Date();
-    console.log(type)
     const [deleteEvent , {data : data1,loading,error}] = useDeleteEventMutation();
     const {role} =React.useContext(Usercontext);
      
@@ -27,7 +26,7 @@ const Card = ({data, type} : any) =>{
             }
         )
     }
-    console.log(role)
+
     if(loading) return (<Loader />)
     return(
             <Box width={'85%'}>
