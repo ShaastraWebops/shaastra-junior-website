@@ -16,20 +16,31 @@ import {
   Input,
   Collapse,
   Flex,
+  Button,
 } from "@chakra-ui/react";
 import {
   useGetFaQsQuery,
   CreateFaqMutation,
   useCreateFaqMutation,
+  UserRole,
+  useAnswerFaqMutation,
+  refetchGetFaQsQuery,
 } from "../../../types/generated/generated";
+import Loader from "../../shared/Loader";
+import { Usercontext } from "../signinUp/Context";
 
 function Names() {
   const { data, loading, error } = useGetFaQsQuery();
 
-  console.log(data);
+  const [answerFaqMutation, { data: answerFAQdata, loading: answerFAQloading, error: answerFAQerror }] = useAnswerFaqMutation({
+    refetchQueries: [refetchGetFaQsQuery()]
+  });
 
+  const { role } = React.useContext(Usercontext);
   const [click, setClick] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [faqAnswer, setFaqAnswer] = useState("");
+
 
   const toggle = (index: any) => {
     if (click === index) {
@@ -37,6 +48,12 @@ function Names() {
     }
     setClick(index);
   };
+
+  if (loading || answerFAQloading) return <Loader />
+  if (error || answerFAQerror) {
+    window.alert("Some error occured");
+    return null
+  }
 
   return (
     <IconContext.Provider value={{ color: "#ffff", size: "25px" }}>
@@ -57,7 +74,10 @@ function Names() {
           alignItems="center"
           className="Names"
         >
-          {JSONdata.filter((item) => {
+          {data?.getFAQs.faqs?.filter((item) => {
+            if (!item.answer && role !== UserRole.Admin) {
+              return
+            }
             if (searchTerm == "") {
               return item;
             } else if (item.question.toLocaleLowerCase().includes(searchTerm)) {
@@ -67,9 +87,28 @@ function Names() {
             ) {
             }
           }).map((item, index) => {
+            const handelSubmit = () => {
+              if(!faqAnswer) {
+                window.alert("Add answer to the faq");
+                return
+              }
+              answerFaqMutation({
+                variables: {
+                  answerFaqAnswer: faqAnswer,
+                  answerFaqFaqid: item.id,
+                }
+              })
+                .then(() => {
+                  window.alert("Query Submitted");
+                  setFaqAnswer("");
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            };
             return (
               <>
-                <div
+                <Flex
                   m="5"
                   w="100%"
                   spacing="3"
@@ -94,20 +133,34 @@ function Names() {
                     </Box>
                 </Flex> */}
                   </Box>
-                </div>
+                </Flex>
 
                 <Collapse in={click === index} animateOpacity>
-                  <Box
-                    w="100%"
-                    p={"5"}
-                    color="black"
-                    mb="5"
-                    backgroundColor={"#dbdbff"}
-                    rounded="md"
-                    shadow="md"
-                  >
-                    {item.answer}
-                  </Box>
+                  {role === UserRole.Admin ?
+                    <Box>
+                      <Input
+                        value={faqAnswer}
+                        required={true}
+                        onChange={(e) => {
+                          setFaqAnswer(e.target.value);
+                        }}
+                        placeholder="Post your question here"
+                      ></Input>
+                      <Button onClick={handelSubmit} m="1" type="submit">
+                        Submit
+                      </Button>
+                    </Box>
+                    : <Box
+                      w="100%"
+                      p={"5"}
+                      color="black"
+                      mb="5"
+                      backgroundColor={"#dbdbff"}
+                      rounded="md"
+                      shadow="md"
+                    >
+                      {item.answer}
+                    </Box>}
                 </Collapse>
               </>
             );

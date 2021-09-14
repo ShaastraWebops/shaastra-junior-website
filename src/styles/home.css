@@ -285,6 +285,12 @@ span
     text-transform: unset;
 }
 
+.home-register-button {
+    padding: 24px;
+    margin-top: 16px;
+    font-size: 1.35em;
+}
+
 
 .home-heads {
     display: flex;
@@ -496,6 +502,21 @@ span
     padding-bottom: 10px;
 }
 
+.home-stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2em;
+    width: 100%;
+}
+
+.home-stats svg {
+    width: 300px;
+    padding: 35px;
+}
+
 .prev-year-card:hover .prev-year-card-content{
     left: 0;
     bottom: 0;
@@ -529,6 +550,23 @@ span
         font-size: 2.25em;
     }
 
+    .home-register-button {
+        padding: 16px;
+        margin-top: 16px;
+        font-size: 1em;
+    }
+
+    .home-stats {
+        order: 2;
+    }
+
+    .home-stats svg {
+        width: 300px;
+        padding: 0px;
+        margin-bottom: 2em;
+    }
+    
+
     .who-are-we-image {
         display: flex;
     }
@@ -544,6 +582,7 @@ span
 
     .prev-year-card-container {
         padding: 0;
+        order: 3;
     }
 
     .prev-year-container .home-heads::after {

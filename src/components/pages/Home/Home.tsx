@@ -6,34 +6,26 @@ import {
   Atlasian,
   Boeing,
   CAT,
-  foxmula,
-  innovaccer,
-  kamal,
   KLA,
-  LT,
   Mahindra,
-  mtx,
   Salesforces,
-  subex,
-  surana,
   Wells,
-  A2,
-  A3,
-  A1,
   exhibi,
   sj_logo,
   jmt,
   chess,
-  spark1,
   spark,
   brain
 } from "./Images";
 import Footer from "../../shared/Footer";
 import { useTodaysHighlightsQuery } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Usercontext } from "../signinUp/Context";
 import RegisterNow from "../Events/RegisterNow";
+import {ReactComponent as Stats1} from "../../../images/home/3k.svg"
+import {ReactComponent as Stats2} from "../../../images/home/30.svg"
+import {ReactComponent as Stats3} from "../../../images/home/75.svg"
 
 interface Props {}
 
@@ -51,6 +43,12 @@ const Home = (props: Props) => {
         <div className="home-landing-head">Shaastra Juniors</div>
         <div className="home-landing-subhead">2021</div>
         <div className="home-landing-subhead-date">24th - 26th Sep | 1st - 3rd Oct</div>
+        {
+          role === "USER" || role === "ADMIN" ?
+          <Link to="/workshops"><Button className="home-register-button">REGISTER</Button></Link>
+          : <Link to="/signup"><Button className="home-register-button">REGISTER</Button></Link>
+
+        }
         {/* <div className="home-landing-subhead-init">An Initiative by Shaastra</div> */}
       </div>
 
@@ -223,10 +221,15 @@ const Home = (props: Props) => {
             </div>
           </div>
         </div>
-      </div>
+        <div className="home-stats">
+          <Stats1 style={{flex :1}}  />
+          <Stats2 style={{flex :1}}  />
+          <Stats3 style={{flex :1}} />
+        </div>
+        </div>
 
       <div>
-        <div className="home-heads">Sponsors</div>
+        <div className="home-heads">Past Sponsors</div>
         <div className="underline"></div>
         <Box width="100%">
           <Flex width="100%" bg="#fff" flexWrap="wrap" justifyContent="center">
@@ -285,57 +288,6 @@ const Home = (props: Props) => {
               width="400px"
               p={8}
               alt="Wells"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={foxmula}
-              width="400px"
-              p={8}
-              alt="foxmula"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={kamal}
-              width="400px"
-              p={8}
-              alt="kamal"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={innovaccer}
-              width="400px"
-              p={8}
-              alt="kamal"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={LT}
-              width="400px"
-              p={8}
-              alt="LT"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={subex}
-              height="150px"
-              width="400px"
-              p={8}
-              alt="subex"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={mtx}
-              height="170px"
-              width="400px"
-              p={8}
-              alt="mtx"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={surana}
-              width="400px"
-              p={8}
-              alt="surana"
             />
           </Flex>
         </Box>

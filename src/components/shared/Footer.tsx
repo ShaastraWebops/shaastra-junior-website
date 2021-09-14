@@ -18,8 +18,8 @@ const Footer = (props: Props) => {
            <a href="https://in.linkedin.com/company/shaastra-iit-madras" target="_blank" rel="noreferrer"><FontAwesomeIcon size="4x" icon={faLinkedin} className="social-icon" ></FontAwesomeIcon></a>
         </div>
         <div className="footer-text">
-            <p className="sec-text">Shaastra Junior 2022  ©  All Rights Reserved</p>
-            <p className="sec-text">DESIGNED BY SHAASTRA WEBOPS 2021</p>
+            <p className="sec-text">Shaastra Junior 2021  ©  All Rights Reserved</p>
+            <p className="sec-text">DESIGNED BY SHAASTRA WEBOPS 2022</p>
         </div>
     </div>
     )
