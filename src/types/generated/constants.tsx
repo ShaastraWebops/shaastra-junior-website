@@ -8,7 +8,7 @@ export const StandardArray = [
     Standard.Fifth,
     Standard.Sixth,
     Standard.Seventh,
-    Standard.Eigth,
+    Standard.Eighth,
     Standard.Ninth,
     Standard.Tenth,
     Standard.Eleventh,

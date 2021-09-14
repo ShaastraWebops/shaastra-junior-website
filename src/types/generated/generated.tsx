@@ -377,7 +377,7 @@ export type SetChampionshipInput = {
 };
 
 export enum Standard {
-  Eigth = 'EIGTH',
+  Eighth = 'EIGHTH',
   Eleventh = 'ELEVENTH',
   Fifth = 'FIFTH',
   First = 'FIRST',
