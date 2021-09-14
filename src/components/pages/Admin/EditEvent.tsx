@@ -23,8 +23,6 @@ const converter = new Showdown.Converter({
 
 const EditEvent = () => {
 
-  
-  const audience = [Standard.Sixth, Standard.Seventh, Standard.Eigth, Standard.Ninth, Standard.Tenth, Standard.Eleventh, Standard.Twelfth];
   const [EditEvent] = useEditEventMutation();
   const [image, setImage] = React.useState<any | null>();
   const [url, setUrl] = React.useState<any | null>();
