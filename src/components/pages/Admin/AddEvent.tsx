@@ -9,11 +9,21 @@ import { AddIcon, CheckIcon, MinusIcon } from '@chakra-ui/icons'
 import '../../../styles/addevent.css'
 import { GETEVENTS } from '../../../Queries.graphql'
 import { StandardArray } from '../../../types/generated/constants'
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
 
-
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
 
 const AddEvent = () => {
 
+  const [value, setValue] = React.useState("");
+  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
   const [filter, setFilter] = React.useState("")
   const [addEvent, { data }] = useCreateEventMutation();
   const [image, setImage] = React.useState<any | null>();
@@ -82,7 +92,7 @@ const AddEvent = () => {
               variables: {
                 createEventData: {
                   title: values.title,
-                  description: values.description,
+                  description: value,
                   eventType: values.type,
                   audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
@@ -255,7 +265,19 @@ const AddEvent = () => {
                   {({ field }: { field: any }) => (
                     <FormControl m={2}>
                       <FormLabel>Description</FormLabel>
-                      <Textarea {...field} id="description" borderColor={'#244f3b'} color={"#244f3b"} />
+                      <ReactMde
+                      {...field}
+                        id="description"
+                        borderColor={'#244f3b'} color={"#244f3b"}
+                        value={value}
+                        onChange={setValue}
+                        selectedTab={selectedTab}
+                        onTabChange={setSelectedTab}
+                        generateMarkdownPreview={markdown =>
+                          Promise.resolve(converter.makeHtml(markdown))
+                        }
+                      />
+                      {/* <Textarea {...field} id="description" borderColor={'#244f3b'} color={"#244f3b"} /> */}
                     </FormControl>
                   )}
                 </Field>

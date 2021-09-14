@@ -88,7 +88,7 @@ const SignIn = () => {
                            setRole(resp.data.login.role)
                            const role = await bcrypt.hash(resp.data.login.role,10)
 
-                           localStorage.setItem('role', resp.data.login.role)
+                           localStorage.setItem('role', role)
                            localStorage.setItem('name', resp.data.login.name)
                            localStorage.setItem('school', resp.data.login.school)
 

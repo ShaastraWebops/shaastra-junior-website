@@ -41,6 +41,19 @@ import RegisterNow from "./RegisterNow";
 import { onError } from "apollo-link-error";
 import fileDownload from "js-file-download";
 import { Usercontext } from "../signinUp/Context";
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import parse from 'html-react-parser';
+
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
 
 const EventPage = () => {
   const history = useHistory();
@@ -146,7 +159,6 @@ const EventPage = () => {
     setQuestion("");
     setAnswer("");
   };
-
   const {
     data: data2,
     loading: loading2,
@@ -158,7 +170,7 @@ const EventPage = () => {
   });
 
   if (loading) return <Loader />;
-
+  console.log()
   return (
     <CustomBox>
       <Flex
@@ -186,7 +198,9 @@ const EventPage = () => {
           </Center>
           <Center style={{ backgroundColor: "#ffffff", borderRadius: 8 }}>
             <Text fontWeight={"medium"} fontSize={"20px"} p={6}>
-              {event?.description}
+              {
+                parse(converter.makeHtml(event?.description!))
+              }
             </Text>
           </Center>
 
@@ -197,12 +211,12 @@ const EventPage = () => {
           <Flex className="events-details-box-container">
             <Flex className="events-details-box">
               <strong>Audience: &nbsp;</strong>
-              {audience.length > 1
-                ? audience[0] +
+              {audience!.length > 1
+                ? audience![0] +
                   " Grade to " +
-                  audience[audience.length - 1] +
+                  audience![audience!.length - 1] +
                   " Grade "
-                : audience[0] + " Grade"}
+                : audience![0] + " Grade"}
             </Flex>
             <Flex className="events-details-box">
               <strong>Platform: &nbsp;</strong>

@@ -10,8 +10,20 @@ import { EventType, RegistraionType, Standard, useEditEventMutation, useGetEvent
 import CustomBox from '../../shared/CustomBox'
 import Loader from '../../shared/Loader'
 
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
 const EditEvent = () => {
 
+  
   const audience = [Standard.Sixth, Standard.Seventh, Standard.Eigth, Standard.Ninth, Standard.Tenth, Standard.Eleventh, Standard.Twelfth];
   const [EditEvent] = useEditEventMutation();
   const [image, setImage] = React.useState<any | null>();
@@ -28,6 +40,9 @@ const EditEvent = () => {
   });
   if (loading) return (<Loader />)
   const event = data?.getEvent;
+  const [value, setValue] = React.useState();
+  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
+  
 
   const uploadImage = () => {
     setSpinner(true)
@@ -84,7 +99,7 @@ let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
                 editEventEventId: id,
                 editEventData: {
                   title: values.title,
-                  description: values.description,
+                  description: value,
                   eventType: values.type,
                   audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
@@ -243,7 +258,17 @@ let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
                   {({ field }: { field: any }) => (
                     <FormControl m={2}>
                       <FormLabel>Description</FormLabel>
-                      <Textarea {...field} id="description" borderColor={'#244f3b'} color={"#244f3b"} />
+                      <ReactMde
+                      {...field}
+                        id="description"
+                        value={value}
+                        onChange={setValue}
+                        selectedTab={selectedTab}
+                        onTabChange={setSelectedTab}
+                        generateMarkdownPreview={markdown =>
+                          Promise.resolve(converter.makeHtml(markdown))
+                        }
+                      />
                     </FormControl>
                   )}
                 </Field>
