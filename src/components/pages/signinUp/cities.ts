@@ -18,7 +18,6 @@ export const cities: any = {
         "Chirala",
         "Chittoor",
         "Dharmavaram",
-        "Dhone",
         "Eluru",
         "Gavaravaram",
         "Gooty",
@@ -27,7 +26,6 @@ export const cities: any = {
         "Guntakal",
         "Guntur",
         "Hindupur",
-        "Inkollu",
         "Jaggaiahpet",
         "Jammalamadugu",
         "Kadapa",
@@ -97,6 +95,12 @@ export const cities: any = {
         "Vuyyuru",
         "Yemmiganur",
         "Yerraguntla"
+    ],
+    "Andhra pradesh": [
+        "Inkollu"
+    ],
+    "Andhrapradesh": [
+        "Dhone"
     ],
     "Arunachal Pradesh": [
         "Naharlagun",
@@ -859,6 +863,12 @@ export const cities: any = {
         "Zira",
         "Zirakpur"
     ],
+    " India": [
+        "Morinda"
+    ],
+    "Rajashthan": [
+        "Singhana"
+    ],
     "Rajasthan": [
         "Ajmer",
         "Alwar",
@@ -926,7 +936,6 @@ export const cities: any = {
         "Shahpura",
         "Sheoganj",
         "Sikar",
-        "Singhana",
         "Sirohi",
         "Sojat",
         "Sri Ganganagar",
@@ -1242,6 +1251,24 @@ export const cities: any = {
         "Warhapur",
         "Zaidpur",
         "Zamania"
+    ],
+    " Ghaziabad": [
+        "Khora"
+    ],
+    " Hardoi": [
+        "Shahabad"
+    ],
+    " Rampur": [
+        "Shahabad"
+    ],
+    " Agra": [
+        "Shamsabad"
+    ],
+    " Farrukhabad": [
+        "Shamsabad"
+    ],
+    "Bulandshahr": [
+        "Shikarpur"
     ],
     "Uttarakhand": [
         "Almora",
