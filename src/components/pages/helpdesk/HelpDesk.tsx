@@ -17,7 +17,10 @@ function HelpDesk() {
   });
 
   const handelSubmit = () => {
-    console.log(question);
+    if(!question) {
+      window.alert("Add question in the box given below");
+      return
+    }
     createFaqMutation()
       .then(() => {
         window.alert("Query Submitted");
@@ -64,6 +67,7 @@ function HelpDesk() {
         >
           <Input
             value={question}
+            required={true}
             onChange={(e) => {
               setQuestion(e.target.value);
             }}
