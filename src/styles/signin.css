@@ -6,6 +6,10 @@
 {
     display: none;
 }
+.sign #resend 
+{
+    margin: auto;
+}
 .sign form, .profile form
 {
     display: flex;
@@ -131,6 +135,11 @@
     z-index: -1;
     /* z-index: -1; */
 }
+
+.sign-intro
+    {
+       padding: 3vw !important;
+    }
 @media screen and (max-width: 1200px)
 {
     .sign-input
@@ -268,6 +277,7 @@
     .sign-intro
     {
         width: 90vw !important;
+        padding: 3vw !important;
     }
     .sign form 
     {
@@ -350,7 +360,6 @@
     {
         font-size: 3vw;
     }
-    
     .forgot 
     {
         width: 80% !important;
@@ -409,5 +418,68 @@
     {
         height: 2vh !important;
         width: 30vw;
-    } */
+    }*/
+} 
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+
+.email-resend-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #aacdbe;
+    padding: 20px;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-head {
+    font-weight: bold;
+    font-size: 1.75em;
+    font-family: 'Open Sans';
+    margin-bottom: 20px;
+    color: black;
+}
+
+.email-resend-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #eeeeee;
+    padding: 20px;
+    flex-direction: column;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-input, .email-resend-submit {
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    border: 0;
+    margin-top: 25px;
+    font-family: 'Open Sans';
+    color: black;
+}
+
+.email-resend-submit {
+    background-color: #5aaabe;
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    color: white;
+    font-weight: bold;
 }

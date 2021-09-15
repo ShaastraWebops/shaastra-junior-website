@@ -61,21 +61,25 @@ export default function Simple() {
               <Link to="/workshops">Workshops</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
               )}
             </HStack>
           </HStack>
-        <Flex alignItems={'center'} letterSpacing="1px">
-        {localStorage.getItem('logged') === 'logged' ? <Box fontSize="1vw" marginRight="5px" color="black"
-              >Hello {localStorage.getItem('name')}</Box> : null}
-          <Menu>
-            <MenuButton
-              as={Button}
-              rounded={'full'}
-              variant={'link'}
-              cursor={'pointer'}
-              minW={0}
+          <Flex alignItems={"center"} letterSpacing="1px">
+            {localStorage.getItem("name") && (
+              <Box fontSize="1vw" marginRight="5px" color="black">
+                Hello {localStorage.getItem("name")}
+              </Box>
+            )}
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={"full"}
+                variant={"link"}
+                cursor={"pointer"}
+                minW={0}
               >
                 <Avatar
                   size={"sm"}
@@ -96,13 +100,13 @@ export default function Simple() {
                 <Link to="/helpdesk">
                   <MenuItem>Help Desk</MenuItem>
                 </Link>
-                <MenuDivider />
-                <Link to="/contactus">
-                  <MenuItem>Contact Us</MenuItem>
-                </Link>
-                {(role === "ADMIN" || role === "USER") && (
+                {role === "ADMIN" || role === "USER" ? (
                   <Link to="/logout">
                     <MenuItem>Sign Out</MenuItem>
+                  </Link>
+                ) : (
+                  <Link to="/signin">
+                    <MenuItem>Sign In</MenuItem>
                   </Link>
                 )}
               </MenuList>
@@ -117,6 +121,7 @@ export default function Simple() {
               <Link to="/competitions">Competitions</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>
               )}

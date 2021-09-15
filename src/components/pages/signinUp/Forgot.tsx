@@ -20,19 +20,13 @@ import {
     useDisclosure
   } from "@chakra-ui/react";
 import sj_logo from "../../../images/home/sj_logo_color_tr.png";
-// const makeProvider = (role: UserRole) =>
-// {
-//     return(
-//         <Role.Provider value={{role}}>
-//             {props.children}
-//         </Role.Provider>
-//     )
-// }
+
 
 
 const Forgot = () => {
     const [input,setEmail] = useState<RequestForgotPassInput>();
     const [reqForgotPassVerificationMutation, { data, loading, error }] = useReqForgotPassVerificationMutation()
+    const [verify, setVerify] = useState("")
 
     const history = useHistory()
 
@@ -40,10 +34,7 @@ const Forgot = () => {
 
     var {isOpen, onOpen, onClose} = useDisclosure()
 
-    // const forgotPw = async () => {
-    //     const [resetPasswordMutation, {data,loading,error}] = useResetPasswordMutation()
-    //     // const resp = await resetPasswordMutation({variables: {token: , newPassword: }})
-    // }
+    onClose = () => {history.push('/')}
 
     return(
         <CustomBox>
@@ -57,39 +48,18 @@ const Forgot = () => {
                     </Box>
                     <form onSubmit={async (e) => {
                         e.preventDefault();
-                        const resp = await reqForgotPassVerificationMutation({variables: {email: input!}});
-                        console.log(resp.errors)
-                        if(resp.errors) 
-                        return(
-                            <Modal isOpen={true} onClose={onClose}>
-                                <ModalOverlay></ModalOverlay>
-                                <ModalContent backgroundColor="#AACDBE" color="#222244">
-                                    <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                                    <h2>Some Error Occurred</h2></ModalHeader>
-                                    <ModalCloseButton></ModalCloseButton>
-                                    <ModalBody>
-                                        <p>Kindly check if you have entered the registered email ID</p>
-                                    </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                            )
-                        if(resp.data?.reqForgotPassVerification === true) history.push('/')
-                        else 
+                        try
                         {
-                            console.log(error)
-                            return(
-                            <Modal isOpen={true} onClose={onClose}>
-                                <ModalOverlay></ModalOverlay>
-                                <ModalContent backgroundColor="#AACDBE" color="#222244">
-                                    <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                                    <h2>Some Error Occurred</h2></ModalHeader>
-                                    <ModalCloseButton></ModalCloseButton>
-                                    <ModalBody>
-                                        <p>Kindly check if you have entered the registered email ID</p>
-                                    </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                            )
+                            const resp = await reqForgotPassVerificationMutation({variables: {email: input!}});
+                            console.log(resp)
+                            if(resp.data?.reqForgotPassVerification === true) 
+                            {
+                                setVerify("true")
+                            }
+                        }
+                        catch(err)
+                        {
+                            setVerify("Please check if you entered a registered email")
                         }
                     }}>
                         <Flex width="80%" margin="0 auto" justifyContent="center" alignItems="center" className="sign-input forgot" height="fit-content"> 
@@ -101,6 +71,30 @@ const Forgot = () => {
                             </Flex>
                         </Flex>
                         <input type="submit" value="Send link to reset password" className="submit" />
+                        {
+                        verify!= "" ?
+                        verify==="true" ? <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" zIndex="10000000" color="#222244">
+                            <ModalCloseButton></ModalCloseButton>
+                            <ModalBody>
+                                <p>Email has been sent!</p>
+                            </ModalBody>
+                        </ModalContent>
+                    </Modal>
+                    :
+                    <Modal isOpen={true} onClose={onClose}>
+                        <ModalOverlay></ModalOverlay>
+                        <ModalContent backgroundColor="#AACDBE" color="#222244" zIndex="10000000">
+                            <ModalCloseButton></ModalCloseButton>
+                            <ModalBody>
+                                <p>{verify}</p>
+                            </ModalBody>
+                        </ModalContent>
+                    </Modal>
+
+                    : null
+                    }
                     </form>
                 </Flex>
             </Box>

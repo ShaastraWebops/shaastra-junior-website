@@ -9,11 +9,22 @@ import Loader from "../../shared/Loader";
 import moment from 'moment';
 import { GETEVENTS } from "../../../Queries.graphql";
 import { Usercontext } from "../signinUp/Context";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import parse from 'html-react-parser';
+
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
 
 const Card = ({data, type} : any) =>{
     const history = useHistory();
     const today = new Date();
-    console.log(type)
     const [deleteEvent , {data : data1,loading,error}] = useDeleteEventMutation();
     const {role} =React.useContext(Usercontext);
      
@@ -27,7 +38,7 @@ const Card = ({data, type} : any) =>{
             }
         )
     }
-    console.log(role)
+
     if(loading) return (<Loader />)
     return(
             <Box width={'85%'}>
@@ -41,8 +52,8 @@ const Card = ({data, type} : any) =>{
             _hover={{boxShadow : 'lg',}}
             backgroundColor={'#F1F2E1'}>
             <Image
-                h={['15%','175px']}
-                width ={['250px']}
+                h={['15%','250px']}
+                width ={['300px']}
                 objectFit ={'cover'}
                 src={data.pic}
                 rounded="2xl"
@@ -57,16 +68,17 @@ const Card = ({data, type} : any) =>{
                 <Text
                 fontWeight={'medium'}
                 fontSize={'15px'}
-                p={3}>
+                p={2}>
                 {
-                  data.description.length > 400 ? data.description.substring(0,400)+ "...." : data.description
+                  data.description.length > 400 ?
+                   (parse(converter.makeHtml(data.description.substring(0,400) + "....."))): 
+                    parse(converter.makeHtml(data.description))
                 }
                 </Text>
-                
-                <Flex p={2}>
+                <Flex p={2} visibility={data?.registrationType === "NONE" ? "hidden" :  "visible"}>
                 <Center as ={'h6'} fontWeight={'medium'}>
                 
-                    <Flex p={3} justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
+                    <Flex justifyContent={"center"} alignItems={"center"} flexDirection={['column','row']}>
                     Registration Deadline :  
                     <Tag variant="solid" 
                     colorScheme = {(parseInt((moment(parseInt(data?.registrationCloseTime!)).format("MM").toString())) === today.getMonth()+1) &&
@@ -81,7 +93,7 @@ const Card = ({data, type} : any) =>{
                     </Flex>
                  
                
-                  <Flex p={3} flexDirection={["column","column","row"]}>
+                  <Flex p={2} paddingX={0} flexDirection={["column","column","row"]}>
                    
                     <Button color={'#244f3b'} variant="outline" border="2px solid"
                     borderColor = "#244f3b"

@@ -41,6 +41,19 @@ import RegisterNow from "./RegisterNow";
 import { onError } from "apollo-link-error";
 import fileDownload from "js-file-download";
 import { Usercontext } from "../signinUp/Context";
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import parse from 'html-react-parser';
+
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
 
 const EventPage = () => {
   const history = useHistory();
@@ -122,13 +135,15 @@ const EventPage = () => {
     setAQuestion("");
     setAAnswer("");
   };
-  let audience: number[] = [];
+  let audience = event?.audience;
 
-  event?.audience.map((a): any => {
-    audience.push(parseInt(STANDARD[a]));
-  });
-  audience.sort(function(a, b) {return a-b});
-  console.log(audience)
+  // event?.audience.map((a): any => {
+  //   audience.push(parseInt(STANDARD[a]));
+  // });
+  // audience.sort(function (a, b) {
+  //   return a - b;
+  // });
+ // console.log(audience);
   const handleedit = (faqid: string) => {
     editFaq({
       variables: {
@@ -144,7 +159,6 @@ const EventPage = () => {
     setQuestion("");
     setAnswer("");
   };
-
   const {
     data: data2,
     loading: loading2,
@@ -156,7 +170,7 @@ const EventPage = () => {
   });
 
   if (loading) return <Loader />;
-
+  console.log()
   return (
     <CustomBox>
       <Flex
@@ -164,6 +178,7 @@ const EventPage = () => {
         alignItems="center"
         paddingTop={["20px", "20px"]}
         minHeight={"100vh"}
+        backgroundColor="#aacdbe"
       >
         <Heading mb={4}>{event?.title}</Heading>
         <Container maxWidth="6xl" alignItems="center" justifyItems={"center"}>
@@ -183,7 +198,9 @@ const EventPage = () => {
           </Center>
           <Center style={{ backgroundColor: "#ffffff", borderRadius: 8 }}>
             <Text fontWeight={"medium"} fontSize={"20px"} p={6}>
-              {event?.description}
+              {
+                parse(converter.makeHtml(event?.description!))
+              }
             </Text>
           </Center>
 
@@ -194,12 +211,12 @@ const EventPage = () => {
           <Flex className="events-details-box-container">
             <Flex className="events-details-box">
               <strong>Audience: &nbsp;</strong>
-              {audience.length > 1
-                ? audience[0] +
-                  " th - " +
-                  audience[audience.length - 1] +
-                  " th "
-                : audience[0] + " th"}
+              {audience!.length > 1
+                ? audience![0] +
+                  " Grade to " +
+                  audience![audience!.length - 1] +
+                  " Grade "
+                : audience![0] + " Grade"}
             </Flex>
             <Flex className="events-details-box">
               <strong>Platform: &nbsp;</strong>
@@ -291,24 +308,26 @@ const EventPage = () => {
         </Container>
 
         <Container maxWidth="6xl" alignItems="center" justifyItems={"center"}>
-          <Flex className="datetime-container">
-            <Flex className="datetime-head">Registrations</Flex>
-            <Flex className="datetime-box">
-              <Flex className="datetime">
-                {moment(parseInt(event?.registrationOpenTime!)).format(
-                  "MMMM Do YYYY, h:mm a"
-                )}
-              </Flex>
-              <div style={{ width: "10%" }} className="datetime">
-                to
-              </div>
-              <Flex className="datetime">
-                {moment(parseInt(event?.registrationCloseTime!)).format(
-                  "MMMM Do YYYY, h:mm a"
-                )}
+          {event?.registrationType !== "NONE" && (
+            <Flex className="datetime-container">
+              <Flex className="datetime-head">Registrations</Flex>
+              <Flex className="datetime-box">
+                <Flex className="datetime">
+                  {moment(parseInt(event?.registrationOpenTime!)).format(
+                    "MMMM Do YYYY, h:mm a"
+                  )}
+                </Flex>
+                <div style={{ width: "10%" }} className="datetime">
+                  to
+                </div>
+                <Flex className="datetime">
+                  {moment(parseInt(event?.registrationCloseTime!)).format(
+                    "MMMM Do YYYY, h:mm a"
+                  )}
+                </Flex>
               </Flex>
             </Flex>
-          </Flex>
+          )}
 
           <Flex className="datetime-container">
             <Flex className="datetime-head">Event Timeline</Flex>

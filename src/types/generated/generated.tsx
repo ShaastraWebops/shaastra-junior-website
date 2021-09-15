@@ -73,7 +73,7 @@ export type EditEventInput = {
   platform: Scalars['String'];
   registrationCloseTime?: Maybe<Scalars['String']>;
   registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<RegistraionType>;
+  registrationType?: Maybe<Scalars['String']>;
   requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
   title?: Maybe<Scalars['String']>;
@@ -180,6 +180,7 @@ export type Mutation = {
   logoutUser: Scalars['Boolean'];
   register: Scalars['Boolean'];
   reqForgotPassVerification: Scalars['Boolean'];
+  resendVerificationMail: Scalars['Boolean'];
   resetPassword: Scalars['Boolean'];
   setChampionship: Scalars['Boolean'];
   verifyUser: Scalars['Boolean'];
@@ -266,6 +267,11 @@ export type MutationRegisterArgs = {
 
 
 export type MutationReqForgotPassVerificationArgs = {
+  data: RequestForgotPassInput;
+};
+
+
+export type MutationResendVerificationMailArgs = {
   data: RequestForgotPassInput;
 };
 
@@ -371,7 +377,7 @@ export type SetChampionshipInput = {
 };
 
 export enum Standard {
-  Eigth = 'EIGTH',
+  Eighth = 'EIGHTH',
   Eleventh = 'ELEVENTH',
   Fifth = 'FIFTH',
   First = 'FIRST',
@@ -475,7 +481,15 @@ export type CreateFaqMutation = { createFAQ: boolean };
 export type GetFaQsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFaQsQuery = { getFAQs: { count: number, faqs: Array<{ question: string, answer?: Maybe<string>, createdOn: string }> } };
+export type GetFaQsQuery = { getFAQs: { count: number, faqs: Array<{ id: string, question: string, answer?: Maybe<string>, createdOn: string }> } };
+
+export type AnswerFaqMutationVariables = Exact<{
+  answerFaqAnswer: Scalars['String'];
+  answerFaqFaqid: Scalars['String'];
+}>;
+
+
+export type AnswerFaqMutation = { answerFAQ: boolean };
 
 export type CreateEventMutationVariables = Exact<{
   createEventData: CreateEventInput;
@@ -914,6 +928,7 @@ export const GetFaQsDocument = gql`
   getFAQs {
     count
     faqs {
+      id
       question
       answer
       createdOn
@@ -951,6 +966,38 @@ export type GetFaQsQueryResult = ApolloReactCommon.QueryResult<GetFaQsQuery, Get
 export function refetchGetFaQsQuery(variables?: GetFaQsQueryVariables) {
       return { query: GetFaQsDocument, variables: variables }
     }
+export const AnswerFaqDocument = gql`
+    mutation answerFAQ($answerFaqAnswer: String!, $answerFaqFaqid: String!) {
+  answerFAQ(answer: $answerFaqAnswer, FAQID: $answerFaqFaqid)
+}
+    `;
+export type AnswerFaqMutationFn = ApolloReactCommon.MutationFunction<AnswerFaqMutation, AnswerFaqMutationVariables>;
+
+/**
+ * __useAnswerFaqMutation__
+ *
+ * To run a mutation, you first call `useAnswerFaqMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAnswerFaqMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [answerFaqMutation, { data, loading, error }] = useAnswerFaqMutation({
+ *   variables: {
+ *      answerFaqAnswer: // value for 'answerFaqAnswer'
+ *      answerFaqFaqid: // value for 'answerFaqFaqid'
+ *   },
+ * });
+ */
+export function useAnswerFaqMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AnswerFaqMutation, AnswerFaqMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<AnswerFaqMutation, AnswerFaqMutationVariables>(AnswerFaqDocument, options);
+      }
+export type AnswerFaqMutationHookResult = ReturnType<typeof useAnswerFaqMutation>;
+export type AnswerFaqMutationResult = ApolloReactCommon.MutationResult<AnswerFaqMutation>;
+export type AnswerFaqMutationOptions = ApolloReactCommon.BaseMutationOptions<AnswerFaqMutation, AnswerFaqMutationVariables>;
 export const CreateEventDocument = gql`
     mutation createEvent($createEventData: CreateEventInput!) {
   createEvent(data: $createEventData) {

@@ -21,7 +21,7 @@ const Contactus = () => {
                         </Box>
                         <Box alignSelf="flex-start" marginTop="7vh" justifySelf="flex-end" width="30vw" height="fit-content" className="contact-main">
                             <h1 style={{ fontSize: "4em" }}>CONTACT US</h1>
-                            <Box marginBottom="0" fontSize="1.5vw" marginTop="1vh" className="lang">English:</Box>
+                            <Box marginBottom="0" fontSize="1.5vw" marginTop="1vh" className="lang">English</Box>
                             <Flex className="contact-div" height="18%" borderBottom="2px dotted #2b3336" alignSelf="flex-start" justifyContent="space-between" >
                                 <Flex className="contact-info" fontSize="1.5vw" margin="0" justifyContent="center" padding="2vw" paddingLeft="0" flexDirection="column">
                                     <b>Siddhivinayak</b>
@@ -34,7 +34,7 @@ const Contactus = () => {
                             </Flex>
                             <Flex width="100%" justifyContent="space-between" borderBottom="2px dotted #2b3336" height="fit-content">
                                 <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Hindi:</Box>
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Hindi</Box>
                                     <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Aditya</b>
@@ -43,7 +43,7 @@ const Contactus = () => {
                                     </Flex>
                                 </Flex>
                                 <Flex flexDirection="column" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Tamil:</Box>
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Tamil</Box>
                                     <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Mohan</b>
@@ -54,7 +54,7 @@ const Contactus = () => {
                             </Flex>
                             <Flex width="100%" justifyContent="space-between" height="fit-content">
                                 <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Telugu:</Box>
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Telugu</Box>
                                     <Flex className="contact-div" height="fit-content" alignSelf="flex-start" justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" marginBottom="0" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Anogna</b>
@@ -63,7 +63,7 @@ const Contactus = () => {
                                     </Flex>
                                 </Flex>
                                 <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Malayalam:</Box>
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Malayalam</Box>
                                     <Flex className="contact-div" height="fit-content" alignSelf="flex-start" justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" marginBottom="0" padding="2vw" paddingBottom="0" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Anshid</b>

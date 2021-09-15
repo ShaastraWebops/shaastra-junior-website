@@ -12,13 +12,14 @@ import { useHistory, Redirect } from 'react-router-dom';
 import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 import { cities } from './cities';
 import {Modal, ModalOverlay, ModalBody, ModalCloseButton, ModalContent, ModalHeader, useDisclosure} from "@chakra-ui/react"
+import { StandardArray } from '../../../types/generated/constants';
 
 
 const SignUp = () => {
 
     var {isOpen, onOpen, onClose} = useDisclosure();
 
-    const { Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth } = Standard
+    //const { Sixth, Seventh, Eigth, Ninth, Tenth, Eleventh, Twelfth } = Standard
     const [createUserMutation, { data, loading, error }] = useCreateUserMutation();
     const [email, setEmail] = useState("")
     const [pw, setPw] = useState("")
@@ -27,7 +28,7 @@ const SignUp = () => {
     const [school, setSchool] = useState("")
     const [state, setState] = useState("Andaman and Nicobar Islands")
     const [city, setCity] = useState("")
-    const [standard, setStandard] = useState<Standard>(Sixth)
+    const [standard, setStandard] = useState<Standard>(StandardArray[0])
     const history = useHistory()
     const [logged, setLogged] = useState(false)
 
@@ -38,18 +39,18 @@ const SignUp = () => {
     const schoolHandler = (e: any) => { setSchool(e.target.value) }
     const stateHandler = (e: any) => { setState(e.target.value) }
     const cityHandler = (e: any) => { setCity(e.target.value) }
-    const classHandler = (e: any) => {
-        switch (e.target.value) {
-            case 'SIXTH': setStandard(Sixth); break;
-            case 'SEVENTH': setStandard(Seventh); break;
-            case 'EIGTH': setStandard(Eigth); break;
-            case 'NINTH': setStandard(Ninth); break;
-            case 'TENTH': setStandard(Tenth); break;
-            case 'ELEVENTH': setStandard(Eleventh); break;
-            default: setStandard(Twelfth);
+    const classHandler = (e: any) => { setStandard(e.target.value)}
+    //     switch (e.target.value) {
+    //         case 'SIXTH': setStandard(Sixth); break;
+    //         case 'SEVENTH': setStandard(Seventh); break;
+    //         case 'EIGTH': setStandard(Eigth); break;
+    //         case 'NINTH': setStandard(Ninth); break;
+    //         case 'TENTH': setStandard(Tenth); break;
+    //         case 'ELEVENTH': setStandard(Eleventh); break;
+    //         default: setStandard(Twelfth);
 
-        }
-    }
+    //     }
+    // }
     // let states: any = '';
     // for (states in cities) {
     //     // cities[states];
@@ -74,6 +75,7 @@ const SignUp = () => {
                         e.preventDefault();
                         if (pw === checkPw) {
                             try {
+                                console.log(standard);
                                 const resp = await createUserMutation({
                                     variables: {
                                         createUserData: {
@@ -91,6 +93,8 @@ const SignUp = () => {
                                 console.log(logged)
                             }
                             catch (err) { console.log(err) }
+                        } else {
+                            window.alert("Password and confirm password didn't match")
                         }
                     }}>
                         {/* <Flex width="fit-content" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up"> */}
@@ -117,13 +121,7 @@ const SignUp = () => {
                                     <div>
                                     <label htmlFor="class">Class</label>
                                     <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
-                                        <option value="SIXTH">Sixth</option>
-                                        <option value="SEVENTH">Seventh</option>
-                                        <option value="EIGTH">Eight</option>
-                                        <option value="NINTH">Ninth</option>
-                                        <option value="TENTH">Tenth</option>
-                                        <option value="ELEVENTH">Eleventh</option>
-                                        <option value="TWELTH">Twelfth</option>
+                                        {StandardArray.map((_standard) => <option value={_standard}>{_standard}</option>)}
                                     </select>
                                     </div>
                                     <div>
@@ -179,7 +177,6 @@ const SignUp = () => {
                         <form action="" onSubmit={async (e) => {
                             if (pw === checkPw) {
                                 try {
-                                    console.log('yelo')
                                     e.preventDefault()
                                     const resp = await createUserMutation({
                                         variables: {
@@ -196,8 +193,12 @@ const SignUp = () => {
                                     });
                                     setLogged(true)
                                     console.log(resp)
+                                    setLogged(true)
                                 }
                                 catch (err) { console.log(err) }
+                                history.push('/')
+                            } else {
+                                window.alert("Password and confirm password didn't match")
                             }
                         }}>
                             {/* <Flex width="fit-content" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up"> */}
@@ -224,13 +225,7 @@ const SignUp = () => {
                                     <div>
                                     <label htmlFor="class">Class</label>
                                     <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
-                                        <option value="SIXTH">Sixth</option>
-                                        <option value="SEVENTH">Seventh</option>
-                                        <option value="EIGTH">Eight</option>
-                                        <option value="NINTH">Ninth</option>
-                                        <option value="TENTH">Tenth</option>
-                                        <option value="ELEVENTH">Eleventh</option>
-                                        <option value="TWELTH">Twelfth</option>
+                                        {StandardArray.map((_standard) => <option value={_standard}>{_standard}</option>)}
                                     </select>
                                     </div>
                                     <div>
