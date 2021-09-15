@@ -22,7 +22,8 @@ const converter = new Showdown.Converter({
 });
 
 const EditEvent = () => {
-
+  const [value, setValue] = React.useState();
+  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
   const [EditEvent] = useEditEventMutation();
   const [image, setImage] = React.useState<any | null>();
   const [url, setUrl] = React.useState<any | null>();
@@ -38,9 +39,7 @@ const EditEvent = () => {
   });
   if (loading) return (<Loader />)
   const event = data?.getEvent;
-  const [value, setValue] = React.useState();
-  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
-  
+ 
 
   const uploadImage = () => {
     setSpinner(true)
