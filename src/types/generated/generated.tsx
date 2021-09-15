@@ -73,7 +73,7 @@ export type EditEventInput = {
   platform: Scalars['String'];
   registrationCloseTime?: Maybe<Scalars['String']>;
   registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<Scalars['String']>;
+  registrationType?: Maybe<RegistraionType>;
   requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
   title?: Maybe<Scalars['String']>;
@@ -454,6 +454,13 @@ export type ReqForgotPassVerificationMutationVariables = Exact<{
 
 export type ReqForgotPassVerificationMutation = { reqForgotPassVerification: boolean };
 
+export type ResendVerificationMailMutationVariables = Exact<{
+  email: RequestForgotPassInput;
+}>;
+
+
+export type ResendVerificationMailMutation = { resendVerificationMail: boolean };
+
 export type GetProfileQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -765,6 +772,37 @@ export function useReqForgotPassVerificationMutation(baseOptions?: ApolloReactHo
 export type ReqForgotPassVerificationMutationHookResult = ReturnType<typeof useReqForgotPassVerificationMutation>;
 export type ReqForgotPassVerificationMutationResult = ApolloReactCommon.MutationResult<ReqForgotPassVerificationMutation>;
 export type ReqForgotPassVerificationMutationOptions = ApolloReactCommon.BaseMutationOptions<ReqForgotPassVerificationMutation, ReqForgotPassVerificationMutationVariables>;
+export const ResendVerificationMailDocument = gql`
+    mutation resendVerificationMail($email: RequestForgotPassInput!) {
+  resendVerificationMail(data: $email)
+}
+    `;
+export type ResendVerificationMailMutationFn = ApolloReactCommon.MutationFunction<ResendVerificationMailMutation, ResendVerificationMailMutationVariables>;
+
+/**
+ * __useResendVerificationMailMutation__
+ *
+ * To run a mutation, you first call `useResendVerificationMailMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useResendVerificationMailMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [resendVerificationMailMutation, { data, loading, error }] = useResendVerificationMailMutation({
+ *   variables: {
+ *      email: // value for 'email'
+ *   },
+ * });
+ */
+export function useResendVerificationMailMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<ResendVerificationMailMutation, ResendVerificationMailMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<ResendVerificationMailMutation, ResendVerificationMailMutationVariables>(ResendVerificationMailDocument, options);
+      }
+export type ResendVerificationMailMutationHookResult = ReturnType<typeof useResendVerificationMailMutation>;
+export type ResendVerificationMailMutationResult = ApolloReactCommon.MutationResult<ResendVerificationMailMutation>;
+export type ResendVerificationMailMutationOptions = ApolloReactCommon.BaseMutationOptions<ResendVerificationMailMutation, ResendVerificationMailMutationVariables>;
 export const GetProfileDocument = gql`
     query getProfile {
   me {

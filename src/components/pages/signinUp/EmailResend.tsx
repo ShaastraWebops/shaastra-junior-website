@@ -2,7 +2,7 @@ import { Text } from '@chakra-ui/react'
 import React from 'react'
 import {useState} from "react"
 import { useHistory } from 'react-router'
-import {RequestForgotPassInput, useReqForgotPassVerificationMutation} from "../../../types/generated/generated"
+import {RequestForgotPassInput, useReqForgotPassVerificationMutation, useResendVerificationMailMutation} from "../../../types/generated/generated"
 import {Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, ModalHeader, useDisclosure} from "@chakra-ui/react"
 
 interface Props {
@@ -13,7 +13,7 @@ const EmailResend = (props: Props) => {
     const [input, setEmail] = useState<RequestForgotPassInput>()
     const emailHandler = (e:any) => {setEmail({email: e.target.value})}
     const [verify, setVerify] = useState("")
-    const [reqForgotPassVerificationMutation, { data, loading, error }] = useReqForgotPassVerificationMutation()
+    const [reqForgotPassVerificationMutation, { data, loading, error }] = useResendVerificationMailMutation()
 
     var {isOpen, onOpen, onClose} = useDisclosure()
     const history = useHistory()
@@ -30,7 +30,7 @@ const EmailResend = (props: Props) => {
                     try
                     {
                         const resp = await reqForgotPassVerificationMutation({variables: {email: input!}});
-                        if(resp.data?.reqForgotPassVerification === true) 
+                        if(resp.data?.resendVerificationMail === true) 
                         {
                             console.log("y")
                             setVerify("true")
