@@ -56,6 +56,7 @@ const SignUp = () => {
     //     console.log(cities[states]);
     // }
     onClose =  () => {
+        setLogged(false)
         history.push('/')
     }
     return (
@@ -70,7 +71,6 @@ const SignUp = () => {
                         <p>Registered? <a href="/signin"><span>Sign In</span></a></p>
                     </Box>
                     <form action="" onSubmit={async (e) => {
-                        console.log("clciked")
                         e.preventDefault();
                         if (pw === checkPw) {
                             try {
@@ -88,6 +88,7 @@ const SignUp = () => {
                                     }
                                 });
                                 setLogged(true)
+                                console.log(logged)
                             }
                             catch (err) { console.log(err) }
                         }
@@ -175,9 +176,11 @@ const SignUp = () => {
                             <Image src={sj_logo} width={"50%"} />
                             {/* <p>Registered? <a href="/signin"><span>Sign In</span></a></p> */}
                         </Box>
-                        <form action="" onSubmit={async () => {
+                        <form action="" onSubmit={async (e) => {
                             if (pw === checkPw) {
                                 try {
+                                    console.log('yelo')
+                                    e.preventDefault()
                                     const resp = await createUserMutation({
                                         variables: {
                                             createUserData: {
@@ -190,11 +193,11 @@ const SignUp = () => {
                                                 city: city
                                             }
                                         }
-                                    })
+                                    });
+                                    setLogged(true)
                                     console.log(resp)
                                 }
                                 catch (err) { console.log(err) }
-                                history.push('/')
                             }
                         }}>
                             {/* <Flex width="fit-content" margin="auto" paddingTop="2vh" paddingBottom="2vh" justifyContent="space-between" height="70%" className="sign-input-up"> */}
@@ -251,54 +254,24 @@ const SignUp = () => {
                                     </select>
                                     </div>
                                 </Flex>
-                                {/* <Flex flexDirection="column" justifyContent="space-between" alignItems="center" className="sign-input sign-input-up">
-                                    <input required style={{ padding: "15px" }} placeholder="Enter full name" type="text" name="name" onChange={nameHandler} />
-                                    <input required style={{ padding: "15px" }} placeholder="Enter your email" type="email" name="username" onChange={emailHandler} />
-                                    <input required style={{ padding: "15px" }} placeholder="Enter password" type="password" name="password" onChange={pwHandler} />
-                                    <input required style={{ padding: "15px" }} type="password" name="passwordR" placeholder="Re-enter your password" onChange={repeatPwHandler} />
-                                    <input required style={{ padding: "15px" }} type="text" name="school" placeholder="Enter full school name" onChange={schoolHandler} />
-                                    <select required name="class" id="class" onChange={classHandler} placeholder="Select Class">
-                                        <option value="SIXTH">Sixth</option>
-                                        <option value="SEVENTH">Seventh</option>
-                                        <option value="EIGTH">Eight</option>
-                                        <option value="NINTH">Ninth</option>
-                                        <option value="TENTH">Tenth</option>
-                                        <option value="ELEVENTH">Eleventh</option>
-                                        <option value="TWELTH">Twelfth</option>
-                                    </select>
-                                    <select required name="state" id="state" onChange={stateHandler} placeholder="Select State">
-                                        {Object.keys(cities).map((_state: any) => {
-                                            return (
-                                                <option key={_state} value={_state}>{_state}</option>
-                                            );
-                                        })}
-                                    </select>
-                                    <select required name="city" id="city" onChange={cityHandler} placeholder="Select City">
-                                        {cities[state].map((_city: any) => {
-                                            return (
-                                                <option key={_city} value={_city}>{_city}</option>
-                                            );
-                                        })}
-                                    </select>
-                                </Flex> */}
-                            {/* </Flex> */}
+                               
                             <Flex width="90%" margin="auto" alignItems="flex-end" justifyContent="space-between">
                                 <input type="submit" value="Sign Up" className="submit" />
                                 <p className="link-sign"> Registered? <a href="/signin"><span>Sign In</span></a></p>
                             </Flex>
-                            {/* <Flex width="30vw" justifyContent="space-around">
-                        <label htmlFor="username">Username</label>
-                        <input type="text" name="username"  />
-                        </Flex>
-                        <Flex width="30vw" justifyContent="space-around" margin="4vh 0">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" name="password" />
-                        </Flex>
-                        <Flex width="30vw" justifyContent="space-around" margin="4vh 0">
-                        <label htmlFor="passwordR">Repeat password</label>
-                        <input type="password" name="passwordR" />
-                        </Flex> */}
-                            {/* <button>SIGN UP</button> */}
+                            {
+                                logged === true ?
+                                <Modal isOpen={true} onClose={onClose}>
+                                                    <ModalOverlay></ModalOverlay>
+                                                    <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
+                                                        <ModalBody paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
+                                                        <h2>Registered Successfully. Check your email to verify your registration.</h2>
+                                                        </ModalBody>
+                                                        <ModalCloseButton></ModalCloseButton>
+                                                    </ModalContent>
+                                                </Modal>
+                                : null
+                            }
                         </form>
                     </Flex>
                 </div>
