@@ -63,11 +63,6 @@ const EditEvent = () => {
       .catch(err => console.log(err))
   }
 
-let rotArr = moment(parseInt(event?.registrationOpenTime!)).format().split(":00+05")
-let rctArr = moment(parseInt(event?.registrationCloseTime!)).format().split(":00+05")
-let estArr = moment(parseInt(event?.eventTimeFrom!)).format().split(":00+05")
-let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
-
   return (
     <CustomBox>
       <Flex flexDirection={"column"} alignItems="center" paddingTop={['20px', '20px']} minHeight={"100vh"}>
@@ -81,10 +76,10 @@ let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
               "type": event!.eventType,
               "audienceStart": StandardArray.indexOf(event!.audience[0]),
               "audienceEnd": StandardArray.indexOf(event!.audience.slice(-1)[0]),
-              "rot": rotArr[0],//moment(parseInt(event?.registrationOpenTime!)).format("yyyy-MM-DDThh:mm"),
-              "rct": rctArr[0],//moment(parseInt(event?.registrationCloseTime!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
-              "est": estArr[0],//moment(parseInt(event?.eventTimeFrom!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
-              "ect": ectArr[0],//moment(parseInt(event?.eventTimeTo!)).format("yyyy-MM-DDThh:mm:ss.SSS"),
+              "rot": moment(parseInt(event?.registrationOpenTime!)).format("YYYY-MM-DD[T]HH:mm:ss"),
+              "rct": moment(parseInt(event?.registrationCloseTime!)).format("YYYY-MM-DD[T]HH:mm:ss"),
+              "est": moment(parseInt(event?.eventTimeFrom!)).format("YYYY-MM-DD[T]HH:mm:ss"),
+              "ect": moment(parseInt(event?.eventTimeTo!)).format("YYYY-MM-DD[T]HH:mm:ss"),
               "platform": event?.platform!,
               "requirements": event?.requirements!,
               "regtype": event!.registrationType,
@@ -103,10 +98,10 @@ let ectArr = moment(parseInt(event?.eventTimeTo!)).format().split(":00+05")
                   audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
                   requirements: values.requirements,
-                  registrationOpenTime: moment(values.rot).format("DD/MM/YYYY h:mm a"),
-                  registrationCloseTime: moment(values.rct).format("DD/MM/YYYY h:mm a"),
-                  eventTimeFrom: moment(values.est).format("DD/MM/YYYY h:mm a"),
-                  eventTimeTo: moment(values.ect).format("DD/MM/YYYY h:mm a"),
+                  registrationOpenTime: new Date(values.rot).toISOString(),
+                  registrationCloseTime: new Date(values.rct).toISOString(),
+                  eventTimeFrom: new Date(values.est).toISOString(),
+                  eventTimeTo: new Date(values.ect).toISOString(),
                   registrationType: values.regtype,
                   teamSize: values.teamsize,
                   pic: !!url ? url : event?.pic
