@@ -2,11 +2,11 @@
 .contact
 {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     content: "";
     padding: 0%;
     position: relative;
-    /* overflow: hidden; */
+    overflow-y: hidden;
     color: #222244;
 }
 .contact-bg
@@ -136,6 +136,10 @@
     {
         width: 45vw !important;
     }
+    .contact-side-img
+    {
+        right: 0% !important;
+    }
     .lang 
     {
         font-size: 2.4vw !important;
@@ -178,9 +182,17 @@
     } */
     .contact-main
     {
+        width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
         align-self: flex-end !important;
+        margin-top: 5vh !important;
+    }
+    .contact-main h1 
+    {
+        align-self: flex-start !important;
+        margin-bottom: 8vh;
+        font-size: 10vw !important;
     }
     .contact span 
     {
@@ -192,7 +204,21 @@
     }
     .lang 
     {
-        text-align: center;
+        text-align: left;
+        font-size: 5vw !important;
+    }
+    .contact-info 
+    {
+        margin-top: 2vh !important;
+    }
+    .contact b, .contact p
+    {
+        font-size: 4vw;
+        text-align: left;
+    }
+    .contact-div 
+    {
+        margin: auto;
     }
     .contact a 
     {

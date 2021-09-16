@@ -34,6 +34,11 @@ mutation Login($loginData: LoginInput!){
       reqForgotPassVerification(data: $email)
     }
   `
+  export const RESENDVERIFICATIONMAIL = gql`
+  mutation  resendVerificationMail($email: RequestForgotPassInput!){
+    resendVerificationMail(data: $email)
+  }
+`
 
   export const ME = gql`
   query getProfile{

@@ -34,12 +34,7 @@ const ForgotAfter = () => {
     const history = useHistory()
 
     const pwHandler = (e:any) => {setPw(e.target.value)} 
-
-    // const forgotPw = async () => {
-    //     const [resetPasswordMutation, {data,loading,error}] = useResetPasswordMutation()
-    //     // const resp = await resetPasswordMutation({variables: {token: , newPassword: }})
-    // }
-
+    const [verify, setVerify] = useState("")
     return(
         <CustomBox>
             <Box width="100vw" height="100vh" className="sign" backgroundColor="#AACDBE"  display="flex" alignItems="center">
@@ -52,44 +47,19 @@ const ForgotAfter = () => {
                     </Box>
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
-                        const resp = await resetPasswordMutation({variables : {data: {
-                            token: token,
-                            newPassword: pw
-                        }}})
-                        if(resp.errors)
-                        return(
-                            <Modal isOpen={true} onClose={onClose}>
-                                <ModalOverlay></ModalOverlay>
-                                <ModalContent backgroundColor="#AACDBE" color="#222244">
-                                    <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                                    <h2>Some Error Occurred</h2></ModalHeader>
-                                    <ModalCloseButton></ModalCloseButton>
-                                    <ModalBody>
-                                        <p>Kindly check if the link is correct</p>
-                                    </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                            )
-                        if(resp.data?.resetPassword === true)
-                        {
+                        try{
+                            const resp = await resetPasswordMutation({variables : {data: {
+                                token: token,
+                                newPassword: pw
+                            }}})
+                            if(resp.data?.resetPassword === true)
+                            {
                             history.push('/signin')
+                            }
                         }
-                        else 
+                        catch(err)
                         {
-                            isOpen = true;
-                            return(
-                            <Modal isOpen={isOpen} onClose={onClose}>
-                                <ModalOverlay></ModalOverlay>
-                                <ModalContent backgroundColor="#AACDBE" color="#222244">
-                                    <ModalHeader paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                                    <h2>Some Error Occurred</h2></ModalHeader>
-                                    <ModalCloseButton></ModalCloseButton>
-                                    <ModalBody>
-                                        <p>Kindly check if the link is correct</p>
-                                    </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                            )
+                            setVerify("true")
                         }
                     }}>
                         <Flex width="85%" margin="auto" justifyContent="space-between" className="sign-input forgot"> 
@@ -101,6 +71,17 @@ const ForgotAfter = () => {
                             </Flex>
                         </Flex>
                         <input type="submit" value="Reset Password" className="submit" />
+                        {
+                            verify === "true" ? <Modal isOpen={isOpen} onClose={onClose}>
+                            <ModalOverlay></ModalOverlay>
+                            <ModalContent backgroundColor="#AACDBE" color="#222244">
+                                <ModalCloseButton></ModalCloseButton>
+                                <ModalBody>
+                                    <p>{error?.message}</p>
+                                </ModalBody>
+                            </ModalContent>
+                        </Modal> : null
+                        }
                     </form>
                 </Flex>
             </Box>

@@ -63,7 +63,7 @@ const Home = (props: Props) => {
           <div className="who-are-we-content">
             Shaastra Juniors, from Shaastra IIT Madras is the 1st ever
             completely online Tech fest specially aimed at spreading
-            technical awareness among school students. A fun filled weekend
+            technical awareness among school students (Class 1 - 12). A fun filled weekend
             filled with events, shows, lectures and workshops is sure to have
             each and every students yearning for more. Shaastra Juniors will be
             conducted online so each and every student can participate from the

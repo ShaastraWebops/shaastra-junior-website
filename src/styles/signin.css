@@ -6,6 +6,10 @@
 {
     display: none;
 }
+.sign #resend 
+{
+    margin: auto;
+}
 .sign form, .profile form
 {
     display: flex;
@@ -356,7 +360,6 @@
     {
         font-size: 3vw;
     }
-    
     .forgot 
     {
         width: 80% !important;

@@ -68,7 +68,7 @@ const SignIn = () => {
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <Image src={sj_logo} width={"60%"}/>
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
-                        <p>Didn't recieve verification email? <a href=""> <span>Click here</span> </a> </p>
+                        <p>Didn't recieve verification email? <a href="/email-resend"> <span>Click here</span> </a> </p>
                         {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
                                 Forgot Pasword
                         </Link> */}
@@ -111,12 +111,6 @@ const SignIn = () => {
                             </Flex>
                         </Flex>
                         <input type="submit" value="Log In" className="submit" />
-                        {/* <Flex width="100%" justifySelf="flex-end" alignItems="center" justifyContent="center">
-                            <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
-                                Forgot Pasword
-                            </Link>
-                            <button>LOGIN</button>
-                        </Flex> */}
                     </form>
                     {
                         
@@ -153,9 +147,6 @@ const SignIn = () => {
                     display="flex" flexDirection="column" justifyContent="center" alignItems="center">
                         <Image src={sj_logo} width={"50%"}/>
                         
-                        {/* <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
-                                Forgot Pasword
-                        </Link> */}
                     </Box>
                     <form action="" onSubmit={async (e) => {
                         e.preventDefault();
@@ -163,29 +154,17 @@ const SignIn = () => {
                          try
                          {
                             const resp = await loginMutation({variables: {loginData: {email:email, password:pw}}});
-                            console.log(resp)
-                           
-                              console.log(resp.errors)
-                        if(resp.data?.login?.isVerified)
-                        {
-                            // makeProvider(resp.data.login.role)
-                            // getRole( resp.data.login.role, resp.data.login.name)
-                            // document.cookie += ";role=" + resp.data.login.role + ";path=/";
-                            // console.log(document.cookie)
-                            localStorage.setItem('role', resp.data.login.role)
-                            localStorage.setItem('name', resp.data.login.name)
-                            localStorage.setItem('school', resp.data.login.school)
-                            // if(resp.data.login.role === 'USER')
-                            // history.push(`/${resp.data.login.name}`)
-                            // else history.push(`/admin`)
-                            setLogged(true);
-                            history.push("/")
-                        }
-                        // if(!resp.data?.login?.isVerified)
-                        // {
-                        //     setError("Not verified")
-                        // }
-                        if(resp.errors) setError(true)
+                            if(resp.data?.login?.isVerified)
+                            {
+                                localStorage.setItem('role', resp.data.login.role)
+                                localStorage.setItem('name', resp.data.login.name)
+                                localStorage.setItem('school', resp.data.login.school)
+                                setLogged(true);
+                                history.push("/")
+                            }
+
+                            if(resp.errors) setError(true)
+                            
                          }catch(err) {
                              setError(true)
                          }
@@ -201,17 +180,13 @@ const SignIn = () => {
                                 <input required type="password" name="password" onChange={pwHandler}/> 
                             </Flex>
                         </Flex>
-                        <Flex width="80%" margin="auto" alignItems="center" justifyContent="space-between">
+                        <Flex width="80%" margin="auto" marginTop="5vh" alignItems="center" justifyContent="space-between">
                         <input type="submit" value="Log In" className="submit" />
                         <p>New User? <a href="/signup"><span>Sign Up</span></a></p>
                         </Flex>
+                        <span id="resend"> Didn't recieve verification email? <a href="/email-resend">Click here</a> </span>
                         <span> <a href="/forgot">Forgot Password</a> </span>
-                        {/* <Flex width="100%" justifySelf="flex-end" alignItems="center" justifyContent="center">
-                            <Link border="none" backgroundColor="transparent" width="fit-content" margin="auto" to="/forgot/">
-                                Forgot Pasword
-                            </Link>
-                            <button>LOGIN</button>
-                        </Flex> */}
+                        
                     </form>
                     {
                        Error == true ? 
@@ -239,18 +214,6 @@ const SignIn = () => {
                     }
                 </Flex>
                     </div>
-                    {/* {
-                        logged===true ?
-                        <Modal isOpen={true} onClose={onClose}>
-                        <ModalOverlay></ModalOverlay>
-                        <ModalContent backgroundColor="#AACDBE" color="#222244" border="none">
-                            <ModalBody paddingTop="4vh" borderBottom="2px solid #1c1c2bc2" margin="0 1vw" textAlign="center">
-                            <h2>Hello {localStorage.getItem("name")}</h2>
-                            </ModalBody>
-                            <ModalCloseButton></ModalCloseButton>
-                        </ModalContent>
-                    </Modal> : null
-                    } */}
             </Box>
         </CustomBox>
     )
