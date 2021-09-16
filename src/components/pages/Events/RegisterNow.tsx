@@ -16,7 +16,7 @@ const RegisterNow = ({data} : any) => {
     const {role} =useContext(Usercontext)
     const [rerror , setError] = React.useState();
     const [rsucessful,setRsucessful] = React.useState(false);
-    const [members , setMembers] = React.useState(['']);
+    const [members , setMembers] = React.useState<string[]>(['']);
     const [teamname, setTeamname] = React.useState('');
     
 
@@ -135,6 +135,9 @@ const RegisterNow = ({data} : any) => {
                                 </HStack>
                             </RadioGroup>
                             </FormControl>
+                            {
+                                rvalue === "1" ? ()=>{setMembers([''])}  : null    
+                            }
                            {
                                 rvalue === "1" ? (
                                 <Fragment>
@@ -187,12 +190,22 @@ const RegisterNow = ({data} : any) => {
                                         <Text>MAX TeamSize : {data.teamSize}</Text> 
                                         </Center>
                                         </Fragment>):null}
+                                        {
+                                            (data.registrationType === "TEAM") && (rvalue === "0") ? 
+                                            (<FormControl m={2}>
+                                                <FormLabel>Team Name</FormLabel>
+                                                <Input value={teamname}
+                                                onChange ={(e) => { setTeamname(e.target.value)}}
+                                                 borderColor={'#244f3b'} placeholder="Team Name" color={"#244f3b"} />
+                                                </FormControl>): null
+
+                                        }
                                        
                             </ModalBody>
                                                                     
                             <ModalFooter>
                             {
-                                rvalue === "0"? ( <Button 
+                                rvalue === "0" && data.registrationType !== "TEAM"  ? ( <Button 
                                     color='#244f3b' variant={'outline'} border="2px solid"
                                     borderColor = '#244f3b'
                                     mr={3}
