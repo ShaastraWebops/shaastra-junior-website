@@ -7,7 +7,7 @@ import contact from "../../../images/contact/contact.png"
 const Contactus = () => {
     return (
         <CustomBox>
-            <Box width="100vw" height="calc(100vh - 94px)" zIndex="1" backgroundColor="#AACDBE">
+            <Box width="100vw" height="calc(100vh - 95px)" zIndex="1" backgroundColor="#AACDBE" className="contact-box">
 
                 <div className="contact">
                     {/* <svg width="100vw" height="calc(100vh - 94px)" viewBox="0 0 1566 1448" fill="none" xmlns="http://www.w3.org/2000/svg" className="contact-img">
@@ -19,58 +19,76 @@ const Contactus = () => {
                             <Image src={contact} width="100%" height="auto" ></Image>
                             <a href='https://www.freepik.com/vectors/business' target="_blank">Created by pikisuperstar - www.freepik.com</a>
                         </Box>
-                        <Box alignSelf="flex-start" marginTop="7vh" justifySelf="flex-end" width="30vw" height="fit-content" className="contact-main">
+                        <Box alignSelf="flex-start" marginTop="7vh" justifySelf="flex-end" width="42vw" height="fit-content" className="contact-main">
                             <h1 style={{ fontSize: "4em" }}>CONTACT US</h1>
-                            <Box marginBottom="0" fontSize="1.5vw" marginTop="1vh" className="lang">English</Box>
-                            <Flex className="contact-div" height="18%" borderBottom="2px dotted #2b3336" alignSelf="flex-start" justifyContent="space-between" >
-                                <Flex className="contact-info" fontSize="1.5vw" margin="0" justifyContent="center" padding="2vw" paddingLeft="0" flexDirection="column">
-                                    <b>Siddhivinayak</b>
-                                    <a href={"http://wa.me/+919672025542"} target="_blank"><p>96720 25542</p></a>
-                                </Flex>
-                                <Flex className="contact-info" fontSize="1.5vw" margin="0" justifyContent="center" padding="2vw" flexDirection="column">
-                                    <b>Vyshnavi </b>
-                                    <a href={"http://wa.me/+918897091122"} target="_blank"><p>88970 91122</p></a>
-                                </Flex>
-                            </Flex>
-                            <Flex width="100%" justifyContent="space-between" borderBottom="2px dotted #2b3336" height="fit-content">
-                                <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Hindi</Box>
-                                    <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
+                            <Flex className="contact-div" height="18%" borderBottom="2px dotted #2b3336" alignSelf="flex-start" justifyContent="space-around"  >
+                            <Flex flexDirection="column">
+                                    <Box fontSize="1.5vw" marginTop="3vh" textAlign="center" className="lang">English</Box> 
+                               <Flex justifyItems="space-between" className="mobile">
+                               <Flex  fontSize="1.5vw" margin="3vh 0" marginRight="2vw" justifyContent="center" alignItems="space-around" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                            <b>Siddhivinayak</b>
+                                            <a href={"http://wa.me/+919672025542"} target="_blank"><p>96720 25542</p></a>
+                                    </Flex>
+                                    <Flex className="contact-info"alignSelf="flex-end" fontSize="1.5vw" margin="3vh 0" justifyContent="center"  padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                        <b>Vyshnavi </b>
+                                        <a href={"http://wa.me/+918897091122"} target="_blank"><p>88970 91122</p></a>
+                                    </Flex>
+                               </Flex>
+                               </Flex>
+                                <Flex flexDirection="column"  justifyContent="center">
+                                 <Box fontSize="1.5vw" marginTop="3vh"  className="lang">Hindi</Box>
+                                    <Flex className="contact-div"  alignSelf="flex-start" justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Aditya</b>
                                             <a href={"http://wa.me/+918178180545"} target="_blank"><p>81781 80545</p></a>
                                         </Flex>
                                     </Flex>
                                 </Flex>
-                                <Flex flexDirection="column" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Tamil</Box>
-                                    <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
-                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                            </Flex>
+
+                            <Flex className="contact-div" height="18%" borderBottom="2px dotted #2b3336" alignSelf="flex-start" justifyContent="space-around" >
+                            <Flex flexDirection="column">
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang" textAlign="center">Tamil</Box>
+                               <Flex justifyItems="space-between" className="mobile">
+                                        <Flex className="contact-info mob-margin" fontSize="1.5vw" margin="3vh 0" marginRight="3vw" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Mohan</b>
                                             <a href={"http://wa.me/+919952729095"} target="_blank"><p>99527 29095</p></a>
+                                        </Flex>
+                                        <Flex className="contact-info" alignSelf="flex-end" fontSize="1.5vw" margin="3vh 0" justifyContent="center"  padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                            <b>Vishwa</b>
+                                            <a href={"http://wa.me/+919952180821"} target="_blank"><p>99521 80821</p></a>
+                                        </Flex>
+                               </Flex>
+                               </Flex>
+                                <Flex flexDirection="column">
+                                <Box fontSize="1.5vw" marginTop="3vh" className="lang">Kannada</Box>
+                                    <Flex className="contact-div" textAlign="center" alignSelf="flex-start" justifyContent="space-between" >
+                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                            <b>Manoghna</b>
+                                            <a href={"http://wa.me/+919480318016"} target="_blank"><p>94803 18016</p></a>
                                         </Flex>
                                     </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex width="100%" justifyContent="space-between" height="fit-content">
-                                <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Telugu</Box>
-                                    <Flex className="contact-div" height="fit-content" alignSelf="flex-start" justifyContent="space-between" >
-                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" marginBottom="0" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
-                                            <b>Anogna</b>
-                                            <a href={"http://wa.me/+916305984724"} target="_blank"><p>63059 84724</p></a>
+                            <Flex  justifyContent="space-around" height="10%" className="contact-div" margin="auto">
+                                    <Flex flexDirection="column">
+                                        <Box fontSize="1.5vw" marginTop="3vh" className="lang">Telugu</Box>
+                                        <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
+                                            <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                                <b>Anogna</b>
+                                                <a href={"http://wa.me/+916305984724"} target="_blank"><p>63059 84724</p></a>
+                                            </Flex>
                                         </Flex>
                                     </Flex>
-                                </Flex>
-                                <Flex flexDirection="column" justifyContent="center" height="10%">
-                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Malayalam</Box>
-                                    <Flex className="contact-div" height="fit-content" alignSelf="flex-start" justifyContent="space-between" >
-                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" marginBottom="0" padding="2vw" paddingBottom="0" paddingTop="0" paddingLeft="0" flexDirection="column">
-                                            <b>Anshid</b>
-                                            <a href={"http://wa.me/+919672025542"} target="_blank"><p>75929 76901</p></a>
+                                    <Flex flexDirection="column">
+                                        <Box fontSize="1.5vw" marginTop="3vh" className="lang">Malayalam</Box>
+                                        <Flex className="contact-div"  alignSelf="flex-start" justifyContent="space-between" >
+                                            <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                                <b>Anshid</b>
+                                                <a href={"http://wa.me/+917592976901"} target="_blank"><p>75929 76901</p></a>
+                                            </Flex>
                                         </Flex>
                                     </Flex>
-                                </Flex>
                             </Flex>
                         </Box>
                     </Flex>

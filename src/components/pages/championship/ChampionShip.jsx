@@ -135,7 +135,7 @@ const ChampionShip = () => {
 
                     {data?.championship.length === 0 &&
 
-                        <div className="results-soon">Results will be released soon...</div>
+                        <div className="results-soon">Results will be updated here!</div>
                     }
 
                     {data?.championship.map((champion) => (

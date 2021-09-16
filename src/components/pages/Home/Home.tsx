@@ -26,6 +26,18 @@ import RegisterNow from "../Events/RegisterNow";
 import {ReactComponent as Stats1} from "../../../images/home/3k.svg"
 import {ReactComponent as Stats2} from "../../../images/home/30.svg"
 import {ReactComponent as Stats3} from "../../../images/home/75.svg"
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import parse from 'html-react-parser';
+
+
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
 
 interface Props {}
 
@@ -99,9 +111,9 @@ const Home = (props: Props) => {
                   </div>
                   <div className="highlight-card-title">{dat.title}</div>
                   <div className="highlight-card-content">
-                    {dat.description.length > 100
+                  {parse(converter.makeHtml(dat.description.length > 100
                       ? dat.description.substring(0, (window.innerWidth < 600 ? 175 : 235)) + "..."
-                      : dat.description}
+                      : dat.description))}
                   </div>
                   <Flex
                     p={3}
@@ -216,7 +228,7 @@ const Home = (props: Props) => {
               Spark Junior Quiz was conducted in 20 cities and saw a
               participation of more than 3000+ students across the nation. From
               introducing quizzing to students to organising a coveted
-              nationwide inter school competition, Spark has seen tremendousl
+              nationwide inter school competition, Spark has seen amazing
               growth.
             </div>
           </div>

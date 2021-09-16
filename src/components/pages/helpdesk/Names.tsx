@@ -28,6 +28,7 @@ import {
 } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
 import { Usercontext } from "../signinUp/Context";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 function Names() {
   const { data, loading, error } = useGetFaQsQuery();
@@ -118,14 +119,18 @@ function Names() {
                 >
                   <Box w="100%">
                     <Flex w="100%">
-                      <Box
+                      <Flex
                         borderRadius={"5px"}
                         w="100%"
                         className="question_inner"
                         backgroundColor={"#6a6a85b6"}
+                        flexDirection={"row"}
+                        justifyContent={"space-between"}
+                        alignItems={"center"}
                       >
                         <Heading size="md">{item.question}</Heading>
-                      </Box>
+                        <ChevronDownIcon boxSize={6}/>
+                      </Flex>
                     </Flex>
                     {/* <Flex>
                     <Box width ="850px" p={'5'} backgroundColor={'#dbdbff'} >
@@ -144,7 +149,7 @@ function Names() {
                         onChange={(e) => {
                           setFaqAnswer(e.target.value);
                         }}
-                        placeholder="Post your question here"
+                        placeholder="Add your answer here"
                       ></Input>
                       <Button onClick={handelSubmit} m="1" type="submit">
                         Submit

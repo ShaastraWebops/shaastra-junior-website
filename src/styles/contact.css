@@ -2,13 +2,22 @@
 .contact
 {
     width: 100vw;
-    height: 100%;
+    height: 100% !important;
     content: "";
     padding: 0%;
     position: relative;
     overflow-y: hidden;
     color: #222244;
 }
+
+/* ::-webkit-scrollbar
+{
+    height: 100vh !important;
+}
+::-webkit-scrollbar-thumb
+{
+    background-color: white;
+} */
 .contact-bg
 {
     background-image: url("../images/contact/contactBg.svg");
@@ -105,6 +114,11 @@
 {
     font-size: 5vw;
 }
+.lang 
+{
+    color: #f4f8fd;
+    font-weight: 600;
+}
 
 @media screen and (max-width: 1200px)
 {
@@ -154,6 +168,11 @@
         right: unset !important;
         width: 50% !important;
     }
+    .contact
+    {
+        height: fit-content;
+        overflow-y: scroll;
+    }
     .main-contact-div h1, .contact-info
     {
         margin-right: 0% !important;
@@ -171,11 +190,11 @@
         margin: auto !important;
         justify-self: flex-end;
     }
-    .contact-info:nth-child(2), .contact-info:last-child
+    /* .contact-info:nth-child(2), .contact-info:last-child
     {
         padding-right: 0% !important;
         align-self: center !important;
-    }
+    } */
     /* .contact-info p, .contact-info b 
     {
         margin: auto !important;
@@ -190,8 +209,7 @@
     }
     .contact-main h1 
     {
-        align-self: flex-start !important;
-        margin-bottom: 8vh;
+        margin: auto !important;
         font-size: 10vw !important;
     }
     .contact span 
@@ -204,21 +222,23 @@
     }
     .lang 
     {
-        text-align: left;
+        text-align: center;
         font-size: 5vw !important;
-    }
-    .contact-info 
-    {
-        margin-top: 2vh !important;
     }
     .contact b, .contact p
     {
         font-size: 4vw;
         text-align: left;
     }
+    .mobile 
+    {
+        margin: auto;
+    }
     .contact-div 
     {
         margin: auto;
+        border-bottom: none !important;
+        flex-direction: column !important;
     }
     .contact a 
     {
@@ -228,9 +248,17 @@
     {
         font-size: 8vw;
     }
+    .mob-margin
+    {
+        margin-right: 6vw !important;
+    }
     .contact-info
     {
         font-size: 3vw !important;
+    }
+    .contact p, .contact b 
+    {
+        text-align: center !important;
     }
 }
 @media screen and (max-width: 300px)

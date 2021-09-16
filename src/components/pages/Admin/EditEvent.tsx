@@ -24,6 +24,13 @@ const converter = new Showdown.Converter({
 });
 
 const EditEvent = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data, loading, error } = useGetEventQuery({
+    variables: {
+      getEventEventId: id
+    }
+  });
+  const event = data?.getEvent;
 
  const { id } = useParams<{ id: string }>();
   const { data, loading, error } = useGetEventQuery({
@@ -42,12 +49,12 @@ const EditEvent = () => {
   const [uploaded, setUploaded] = React.useState(false);
   const [spinner, setSpinner] = React.useState(false);
   const [aerror, setError] = React.useState();
-  // if(event) setValue(event?.description)
+
   React.useEffect(() => {
-    if(!loading) setValue(event?.description)
-    }, [loading])
+    if(!loading) setValue(event?.description || "");
+  }, [loading])
   if (loading) return (<Loader />)
- 
+
   const uploadImage = () => {
     setSpinner(true)
     const data = new FormData()
