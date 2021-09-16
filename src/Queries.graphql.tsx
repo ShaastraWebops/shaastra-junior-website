@@ -85,6 +85,17 @@ mutation Login($loginData: LoginInput!){
    mutation Logout{
     logoutUser
   }`
+
+  export const GETUSERCOUNT = gql`
+  query getUsersCount{
+    getUsersCount
+  }
+  `
+
+  export const GETUSERDATACSV = gql`
+  query getUsersDataCSV{
+    getUsersDataCSV
+  }`
   
   export const CREATEFAQ = gql`
   mutation createFAQ($createFaqQuestion: String!){

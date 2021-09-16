@@ -18,7 +18,7 @@ import {
   brain
 } from "./Images";
 import Footer from "../../shared/Footer";
-import { useTodaysHighlightsQuery } from "../../../types/generated/generated";
+import { useGetUsersCountQuery, useGetUsersDataCsvQuery, useTodaysHighlightsQuery } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
 import { Link, useHistory } from "react-router-dom";
 import { Usercontext } from "../signinUp/Context";
@@ -29,6 +29,8 @@ import {ReactComponent as Stats3} from "../../../images/home/75.svg"
 import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import parse from 'html-react-parser';
+import { EditIcon } from "@chakra-ui/icons";
+import fileDownload from "js-file-download";
 
 
 const converter = new Showdown.Converter({
@@ -46,6 +48,8 @@ const Home = (props: Props) => {
 
   const { data, loading, error } = useTodaysHighlightsQuery({});
   const { role } = React.useContext(Usercontext);
+  const { data: csv } = useGetUsersDataCsvQuery();
+  const { data: count } = useGetUsersCountQuery();
 
   if (loading) return <Loader />;
 
@@ -60,6 +64,23 @@ const Home = (props: Props) => {
           <Link to="/workshops"><Button className="home-register-button">REGISTER</Button></Link>
           : <Link to="/signup"><Button className="home-register-button">REGISTER</Button></Link>
 
+        }
+        {
+          role === "ADMIN" &&
+          <Flex alignItems={"center"} flexDirection={["column", "row"]}>
+            <Flex fontSize={"2xl"}>Total Number of Registration: {count?.getUsersCount}</Flex>
+            <Button
+              className="home-register-button"
+              marginTop={"0px"}
+              marginLeft={"15px"}
+              onClick={() => {
+                fileDownload(csv?.getUsersDataCSV!,`sj_participants.csv`);
+              }}
+            >
+            <EditIcon m={2} />
+            Download Participants Data
+            </Button>
+          </Flex>
         }
         {/* <div className="home-landing-subhead-init">An Initiative by Shaastra</div> */}
       </div>

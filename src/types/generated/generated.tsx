@@ -300,6 +300,7 @@ export type Query = {
   getUser?: Maybe<User>;
   getUsers?: Maybe<GetUsersOutput>;
   getUsersCount: Scalars['Float'];
+  getUsersDataCSV: Scalars['String'];
   me?: Maybe<User>;
   searchUser?: Maybe<Array<User>>;
   todaysHighlights?: Maybe<Array<Event>>;
@@ -344,11 +345,6 @@ export type QueryGetUsersArgs = {
   filter?: Maybe<GetUsersFilter>;
   limit?: Maybe<Scalars['Float']>;
   skip?: Maybe<Scalars['Float']>;
-};
-
-
-export type QueryGetUsersCountArgs = {
-  filter: GetUsersFilter;
 };
 
 
@@ -477,6 +473,16 @@ export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LogoutMutation = { logoutUser: boolean };
+
+export type GetUsersCountQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUsersCountQuery = { getUsersCount: number };
+
+export type GetUsersDataCsvQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetUsersDataCsvQuery = { getUsersDataCSV: string };
 
 export type CreateFaqMutationVariables = Exact<{
   createFaqQuestion: Scalars['String'];
@@ -930,6 +936,76 @@ export function useLogoutMutation(baseOptions?: ApolloReactHooks.MutationHookOpt
 export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
 export type LogoutMutationResult = ApolloReactCommon.MutationResult<LogoutMutation>;
 export type LogoutMutationOptions = ApolloReactCommon.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
+export const GetUsersCountDocument = gql`
+    query getUsersCount {
+  getUsersCount
+}
+    `;
+
+/**
+ * __useGetUsersCountQuery__
+ *
+ * To run a query within a React component, call `useGetUsersCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUsersCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUsersCountQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUsersCountQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetUsersCountQuery, GetUsersCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetUsersCountQuery, GetUsersCountQueryVariables>(GetUsersCountDocument, options);
+      }
+export function useGetUsersCountLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetUsersCountQuery, GetUsersCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetUsersCountQuery, GetUsersCountQueryVariables>(GetUsersCountDocument, options);
+        }
+export type GetUsersCountQueryHookResult = ReturnType<typeof useGetUsersCountQuery>;
+export type GetUsersCountLazyQueryHookResult = ReturnType<typeof useGetUsersCountLazyQuery>;
+export type GetUsersCountQueryResult = ApolloReactCommon.QueryResult<GetUsersCountQuery, GetUsersCountQueryVariables>;
+export function refetchGetUsersCountQuery(variables?: GetUsersCountQueryVariables) {
+      return { query: GetUsersCountDocument, variables: variables }
+    }
+export const GetUsersDataCsvDocument = gql`
+    query getUsersDataCSV {
+  getUsersDataCSV
+}
+    `;
+
+/**
+ * __useGetUsersDataCsvQuery__
+ *
+ * To run a query within a React component, call `useGetUsersDataCsvQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetUsersDataCsvQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetUsersDataCsvQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetUsersDataCsvQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetUsersDataCsvQuery, GetUsersDataCsvQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetUsersDataCsvQuery, GetUsersDataCsvQueryVariables>(GetUsersDataCsvDocument, options);
+      }
+export function useGetUsersDataCsvLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetUsersDataCsvQuery, GetUsersDataCsvQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetUsersDataCsvQuery, GetUsersDataCsvQueryVariables>(GetUsersDataCsvDocument, options);
+        }
+export type GetUsersDataCsvQueryHookResult = ReturnType<typeof useGetUsersDataCsvQuery>;
+export type GetUsersDataCsvLazyQueryHookResult = ReturnType<typeof useGetUsersDataCsvLazyQuery>;
+export type GetUsersDataCsvQueryResult = ApolloReactCommon.QueryResult<GetUsersDataCsvQuery, GetUsersDataCsvQueryVariables>;
+export function refetchGetUsersDataCsvQuery(variables?: GetUsersDataCsvQueryVariables) {
+      return { query: GetUsersDataCsvDocument, variables: variables }
+    }
 export const CreateFaqDocument = gql`
     mutation createFAQ($createFaqQuestion: String!) {
   createFAQ(question: $createFaqQuestion)
