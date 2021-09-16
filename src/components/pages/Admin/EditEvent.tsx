@@ -32,14 +32,6 @@ const EditEvent = () => {
   });
   const event = data?.getEvent;
 
- const { id } = useParams<{ id: string }>();
-  const { data, loading, error } = useGetEventQuery({
-    variables: {
-      getEventEventId: id
-    }
-  });
-  const event = data?.getEvent;
-
   const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
   const [value, setValue] = React.useState("");
 
