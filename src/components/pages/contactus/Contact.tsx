@@ -7,7 +7,7 @@ import contact from "../../../images/contact/contact.png"
 const Contactus = () => {
     return (
         <CustomBox>
-            <Box width="100vw" height="calc(100vh - 94px)" zIndex="1" backgroundColor="#AACDBE">
+            <Box width="100vw" height="fit-content" zIndex="1" backgroundColor="#AACDBE" className="contact-box" paddingBottom="50px">
 
                 <div className="contact">
                     {/* <svg width="100vw" height="calc(100vh - 94px)" viewBox="0 0 1566 1448" fill="none" xmlns="http://www.w3.org/2000/svg" className="contact-img">
