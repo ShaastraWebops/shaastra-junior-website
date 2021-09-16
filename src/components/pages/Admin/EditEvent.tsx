@@ -22,26 +22,28 @@ const converter = new Showdown.Converter({
 });
 
 const EditEvent = () => {
-
-  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
-  const [value, setValue] = React.useState();
-
-  const [EditEvent] = useEditEventMutation();
-  const [image, setImage] = React.useState<any | null>();
-  const [url, setUrl] = React.useState<any | null>();
   const { id } = useParams<{ id: string }>();
-  const [uploaded, setUploaded] = React.useState(false);
-  const [spinner, setSpinner] = React.useState(false);
-  const [aerror, setError] = React.useState();
-
   const { data, loading, error } = useGetEventQuery({
     variables: {
       getEventEventId: id
     }
   });
-  if (loading) return (<Loader />)
   const event = data?.getEvent;
-  
+
+  const [selectedTab, setSelectedTab] = React.useState<"write" | "preview">("write");
+  const [value, setValue] = React.useState("");
+
+  const [EditEvent] = useEditEventMutation();
+  const [image, setImage] = React.useState<any | null>();
+  const [url, setUrl] = React.useState<any | null>();
+  const [uploaded, setUploaded] = React.useState(false);
+  const [spinner, setSpinner] = React.useState(false);
+  const [aerror, setError] = React.useState();
+
+  React.useEffect(() => {
+    if(!loading) setValue(event?.description || "");
+  }, [loading])
+  if (loading) return (<Loader />)
 
   const uploadImage = () => {
     setSpinner(true)
