@@ -49,7 +49,7 @@ export default function Simple() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <LogoBlack width="88" className="header-logo" />
+              <Link to="/"><LogoBlack width="88" className="header-logo" /></Link>
             </Box>
             <HStack
               as={"nav"}
@@ -61,6 +61,7 @@ export default function Simple() {
               <Link to="/workshops">Workshops</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/helpdesk">Helpdesk</Link>
               <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
@@ -97,8 +98,8 @@ export default function Simple() {
                     <MenuItem>My Profile</MenuItem>
                   </Link>
                 )}
-                <Link to="/helpdesk">
-                  <MenuItem>Help Desk</MenuItem>
+                <Link to="/contactus">
+                  <MenuItem>Contact Us</MenuItem>
                 </Link>
                 {role === "ADMIN" || role === "USER" ? (
                   <Link to="/logout">
@@ -121,6 +122,7 @@ export default function Simple() {
               <Link to="/competitions">Competitions</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
+              <Link to="/helpdesk">Helpdesk</Link>
               <Link to="/contactus">Contact Us</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>

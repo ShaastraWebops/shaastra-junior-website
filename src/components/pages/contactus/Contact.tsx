@@ -41,13 +41,24 @@ const Contactus = () => {
                                             <a href={"http://wa.me/+918178180545"} target="_blank"><p>81781 80545</p></a>
                                         </Flex>
                                     </Flex>
+                                    <Box fontSize="1.5vw" marginTop="3vh" className="lang">Kannada</Box>
+                                    <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
+                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                            <b>Manoghna</b>
+                                            <a href={"http://wa.me/+919480318016"} target="_blank"><p>94803 18016</p></a>
+                                        </Flex>
+                                    </Flex>
                                 </Flex>
                                 <Flex flexDirection="column" height="10%">
                                     <Box fontSize="1.5vw" marginTop="3vh" className="lang">Tamil</Box>
-                                    <Flex className="contact-div" alignSelf="flex-start" justifyContent="space-between" >
+                                    <Flex className="contact-div" alignSelf="flex-start" flexDirection={'column'} justifyContent="space-between" >
                                         <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
                                             <b>Mohan</b>
                                             <a href={"http://wa.me/+919952729095"} target="_blank"><p>99527 29095</p></a>
+                                        </Flex>
+                                        <Flex className="contact-info" fontSize="1.5vw" margin="3vh 0" justifyContent="center" padding="2vw" paddingBottom="0vw" paddingTop="0" paddingLeft="0" flexDirection="column">
+                                            <b>Vishwa</b>
+                                            <a href={"http://wa.me/+919952180821"} target="_blank"><p>99521 80821</p></a>
                                         </Flex>
                                     </Flex>
                                 </Flex>
