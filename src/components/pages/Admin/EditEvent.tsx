@@ -93,7 +93,7 @@ const EditEvent = () => {
                 editEventEventId: id,
                 editEventData: {
                   title: values.title,
-                  description: value,
+                  description: !!value ? value : event?.description,
                   eventType: values.type,
                   audience: StandardArray.slice(values.audienceStart, (values.audienceEnd*1 + 1)),
                   platform: values.platform,
