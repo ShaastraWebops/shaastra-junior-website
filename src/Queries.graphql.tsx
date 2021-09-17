@@ -119,6 +119,12 @@ mutation Login($loginData: LoginInput!){
   mutation answerFAQ($answerFaqAnswer: String!, $answerFaqFaqid: String!){
     answerFAQ(answer: $answerFaqAnswer, FAQID: $answerFaqFaqid)
   }`
+
+  export const DELETEFAQ = gql`
+  mutation deleteFAQs($deleteFAQsFAQID: String!) {
+    deleteFAQs(FAQID: $deleteFAQsFAQID)
+  }
+  `
   
   export const CREATEEVENT = gql`
   mutation createEvent($createEventData: CreateEventInput!){

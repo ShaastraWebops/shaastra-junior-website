@@ -504,6 +504,13 @@ export type AnswerFaqMutationVariables = Exact<{
 
 export type AnswerFaqMutation = { answerFAQ: boolean };
 
+export type DeleteFaQsMutationVariables = Exact<{
+  deleteFAQsFAQID: Scalars['String'];
+}>;
+
+
+export type DeleteFaQsMutation = { deleteFAQs: boolean };
+
 export type CreateEventMutationVariables = Exact<{
   createEventData: CreateEventInput;
 }>;
@@ -1112,6 +1119,37 @@ export function useAnswerFaqMutation(baseOptions?: ApolloReactHooks.MutationHook
 export type AnswerFaqMutationHookResult = ReturnType<typeof useAnswerFaqMutation>;
 export type AnswerFaqMutationResult = ApolloReactCommon.MutationResult<AnswerFaqMutation>;
 export type AnswerFaqMutationOptions = ApolloReactCommon.BaseMutationOptions<AnswerFaqMutation, AnswerFaqMutationVariables>;
+export const DeleteFaQsDocument = gql`
+    mutation deleteFAQs($deleteFAQsFAQID: String!) {
+  deleteFAQs(FAQID: $deleteFAQsFAQID)
+}
+    `;
+export type DeleteFaQsMutationFn = ApolloReactCommon.MutationFunction<DeleteFaQsMutation, DeleteFaQsMutationVariables>;
+
+/**
+ * __useDeleteFaQsMutation__
+ *
+ * To run a mutation, you first call `useDeleteFaQsMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteFaQsMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteFaQsMutation, { data, loading, error }] = useDeleteFaQsMutation({
+ *   variables: {
+ *      deleteFAQsFAQID: // value for 'deleteFAQsFAQID'
+ *   },
+ * });
+ */
+export function useDeleteFaQsMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteFaQsMutation, DeleteFaQsMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useMutation<DeleteFaQsMutation, DeleteFaQsMutationVariables>(DeleteFaQsDocument, options);
+      }
+export type DeleteFaQsMutationHookResult = ReturnType<typeof useDeleteFaQsMutation>;
+export type DeleteFaQsMutationResult = ApolloReactCommon.MutationResult<DeleteFaQsMutation>;
+export type DeleteFaQsMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteFaQsMutation, DeleteFaQsMutationVariables>;
 export const CreateEventDocument = gql`
     mutation createEvent($createEventData: CreateEventInput!) {
   createEvent(data: $createEventData) {

@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import JSONdata from "./data.json";
 import { IconContext } from "react-icons";
 
 import {
   Box,
-  Text,
-  Center,
-  ChakraProvider,
-  Container,
   Heading,
-  HStack,
-  Wrap,
-  SlideFade,
-  useDisclosure,
   Input,
   Collapse,
   Flex,
@@ -20,11 +11,10 @@ import {
 } from "@chakra-ui/react";
 import {
   useGetFaQsQuery,
-  CreateFaqMutation,
-  useCreateFaqMutation,
   UserRole,
   useAnswerFaqMutation,
   refetchGetFaQsQuery,
+  useDeleteFaQsMutation,
 } from "../../../types/generated/generated";
 import Loader from "../../shared/Loader";
 import { Usercontext } from "../signinUp/Context";
@@ -33,9 +23,13 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 function Names() {
   const { data, loading, error } = useGetFaQsQuery();
 
-  const [answerFaqMutation, { data: answerFAQdata, loading: answerFAQloading, error: answerFAQerror }] = useAnswerFaqMutation({
+  const [answerFaqMutation, { loading: answerFAQloading, error: answerFAQerror }] = useAnswerFaqMutation({
     refetchQueries: [refetchGetFaQsQuery()]
   });
+
+  const [ deleteFaQsMutation, { error: deleteFAQError } ] = useDeleteFaQsMutation({
+    refetchQueries: [refetchGetFaQsQuery()]
+  })
 
   const { role } = React.useContext(Usercontext);
   const [click, setClick] = useState(false);
@@ -51,11 +45,11 @@ function Names() {
   };
 
   if (loading || answerFAQloading) return <Loader />
-  if (error || answerFAQerror) {
+  if (error || answerFAQerror || deleteFAQError ) {
     window.alert("Some error occured");
     return null
   }
-
+console.log(data?.getFAQs.faqs);
   return (
     <IconContext.Provider value={{ color: "#ffff", size: "25px" }}>
       <Input
@@ -76,9 +70,9 @@ function Names() {
           className="Names"
         >
           {data?.getFAQs.faqs?.filter((item) => {
-            if (!item.answer && role !== UserRole.Admin) {
-              return
-            }
+            // if (!item.answer && role !== UserRole.Admin) {
+            //   return
+            // }
             if (searchTerm == "") {
               return item;
             } else if (item.question.toLocaleLowerCase().includes(searchTerm)) {
@@ -90,7 +84,8 @@ function Names() {
           }).map((item, index) => {
             const handelSubmit = () => {
               if(!faqAnswer) {
-                window.alert("Add answer to the faq");
+                if(item.answer) window.alert("FAQ answer is not edited");
+                else window.alert("Add answer to FAQ")
                 return
               }
               answerFaqMutation({
@@ -100,13 +95,22 @@ function Names() {
                 }
               })
                 .then(() => {
-                  window.alert("Query Submitted");
+                  window.alert("Answer Saved");
                   setFaqAnswer("");
                 })
                 .catch((err) => {
                   console.log(err);
                 });
             };
+            const handleDelete = () => {
+              deleteFaQsMutation({
+                variables: {
+                  deleteFAQsFAQID: item.id    
+                }
+              }).then(() => {
+                window.alert("FAQ Deleted")
+              })
+            }
             return (
               <>
                 <Flex
@@ -144,7 +148,7 @@ function Names() {
                   {role === UserRole.Admin ?
                     <Box>
                       <Input
-                        value={faqAnswer}
+                        value={item.answer && !faqAnswer ? item.answer : faqAnswer}
                         required={true}
                         onChange={(e) => {
                           setFaqAnswer(e.target.value);
@@ -152,8 +156,9 @@ function Names() {
                         placeholder="Add your answer here"
                       ></Input>
                       <Button onClick={handelSubmit} m="1" type="submit">
-                        Submit
+                        {item.answer ? "Edit" : "Submit"}
                       </Button>
+                      <Button onClick={handleDelete}>Delete FAQ</Button>
                     </Box>
                     : <Box
                       w="100%"
@@ -177,5 +182,3 @@ function Names() {
 }
 
 export default Names;
-
-//data?.getFAQs.faqs
