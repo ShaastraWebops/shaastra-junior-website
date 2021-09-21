@@ -212,7 +212,7 @@ const Home = (props: Props) => {
               <img src={exhibi} width="100%" alt="prev-year-pic" />
             </div>
             <div className="prev-year-card-content">
-              <h5>Virtual Tech Exhibition</h5>A Vir tual Tech Exhibition of
+              <h5>Virtual Tech Exhibition</h5>A Virtual Tech Exhibition of
               innovative techno-enter tainment projects using 3D animations to
               show the students the principle behind its working. It includes an
               animated video to explain the working of the projects and a 3D
