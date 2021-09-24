@@ -58,6 +58,7 @@ const Card = ({data, type} : any) =>{
                 src={data.pic}
                 rounded="2xl"
                 m={3}
+                alt = "Display-Image"
                 className="card-img"
             />
             <Flex
