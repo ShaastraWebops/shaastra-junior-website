@@ -216,7 +216,7 @@ const Profile = () => {
                                                     <ModalCloseButton></ModalCloseButton>
                                                     <ModalBody paddingBottom="4vh" className="pop-up" paddingTop="4vh">
                                                         <Flex flexDirection="column" fontSize="1.5vw">
-                                                            <p>{el.yourTeam?.name} :  {el.teamSize} members</p>
+                                                            <p>{el.yourTeam?.name} :  {el.yourTeam?.members.length} members</p>
                                                             <b>MEMBERS:</b>
                                                             {
                                                                 el.yourTeam?.members.map(m => {return(<p>{m.name}</p>)})
