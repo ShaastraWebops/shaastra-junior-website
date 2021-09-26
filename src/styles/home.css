@@ -4,6 +4,7 @@
     box-sizing: border-box;
 
 }
+@import "~react-image-gallery/styles/css/image-gallery.css";
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rationale&display=swap');
@@ -218,6 +219,10 @@ span
         font-size: 18px;
         padding-top: 20px;
         width: 100%;
+    }
+
+    .image-gallery-svg {
+        height: 30px !important
     }
 }
 .mySwiper{

@@ -21,6 +21,7 @@ import LogOut from "./pages/signinUp/LogOut"
 import Edit from "./pages/profile/Edit"
 import {useState, useEffect} from "react"
 import EmailResend from "./pages/signinUp/EmailResend"
+import Schedule from "./pages/Schedule/Schedule"
 
 interface Props {
     
@@ -53,6 +54,7 @@ const AppRoutes = (props: Props) => {
                     <EventPage />
             </Route>
             <Route exact path="/championships" component={ChampionShip}/>
+            <Route exact path="/schedule" component={Schedule}/>
             <Route exact path="/profile" component={Profile}></Route>
             <Route exact path="/editProfile" component={Edit}></Route>
             {/* <Route exact path="/editProfile" component={Edit}></Route> */}
