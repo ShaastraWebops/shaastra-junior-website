@@ -45,7 +45,7 @@ const Schedule = () => {
     const [title,setTitle] = React.useState("September 25th 2021");
     return (
         <CustomBox >
-            <Flex flexDirection={"column"} justifyItems="center" alignItems="center" paddingTop={['50px', '20px']} minHeight={'100vh'} >
+            <Flex flexDirection={"column"} justifyItems="center" alignItems="center" paddingTop={['50px', '20px']} minHeight={'100vh'} backgroundColor="#AACDBE" >
            <Heading m={2} p={2}>{title}</Heading>
             <Box p={3} >
            <ImageGallery 
