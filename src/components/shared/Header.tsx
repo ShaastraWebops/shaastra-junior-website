@@ -60,11 +60,12 @@ export default function Simple() {
               <Link to="/">Home</Link>
               <Link to="/competitions">Competitions</Link>
               <Link to="/workshops">Workshops</Link>
+              <Link to="/sales"  target="_blank">Sales</Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
               <Link to="/helpdesk">Helpdesk</Link>
-              <Link to="/sales"  target="_blank">Sales</Link>
+              {/* <Link to="/sales"  target="_blank">Sales</Link> */}
               {/* <Link to="/sales">Sales</Link> */}
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
@@ -121,13 +122,15 @@ export default function Simple() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               <Link to="/">Home</Link>
-              <Link to="/workshops">Workshops</Link>
               <Link to="/competitions">Competitions</Link>
+              <Link to="/workshops">Workshops</Link>
+              <Link to="/sales"  target="_blank">Sales</Link>
+            
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
               <Link to="/helpdesk">Helpdesk</Link>
-              <Link to="/sales"  target="_blank">Sales</Link>
+              
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>
               )}
