@@ -1,0 +1,134 @@
+/* .ss{
+    /* background-color: rgb(80, 207, 101); */
+    /* background-color: rgb(68 23 79); */
+
+.ss{
+  padding: 2.5rem;
+  padding-right: 6rem;
+  padding-left: 6rem;
+background-color: white;
+}
+
+/* .footer{
+    background-color: #266e5d;
+    font-size: larger;
+    padding: 20px 50px;
+} */
+
+.footer .ll{
+    font-size: x-large;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.hhh{
+    display: flex;
+    justify-items: center;
+    background-color: #5866ef;
+    align-content: center;
+    justify-content: space-evenly;
+}
+.hhh .Home_responsiblities {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: space-evenly;
+  width: 60%;
+  height: fit-content;
+  /* margin: 30px 0 30px 0; */
+  /* background-color: #5866ef; */
+  padding: 20px 30px 20px 90px;
+
+}
+.hhh .asd{
+    /* align-content: center;
+    justify-self: center;
+    justify-content: center; */
+    align-self: center;
+   padding-right: 2%;
+}
+
+.Home_whyJoinUS h1,
+.hhh .Home_responsiblities h1 {
+  font-weight: 600;
+  font-size: 2.1em;
+  line-height: 1.2em;
+  margin-bottom: 10px;
+  display: flex;
+  /* color: #59cfdf; */
+  letter-spacing: 2px;
+  align-self: flex-start;
+}
+
+.hhh .Home_responsiblities ul {
+  width: 100%;
+  max-width: 1000px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* text-align: center; */
+}
+
+.hhh .Home_responsiblities ul li {
+  margin: 5px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.hhh .Home_responsiblities ul li p {
+  /* width: calc(100% - 10px); */
+  /* color: pink; */
+  font-size: medium;
+}
+.Home_prizes ul li svg,
+.Home_whyJoinUS ul li svg,
+.hhh .Home_responsiblities ul li svg {
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 20px;
+}
+@media screen and (max-width: 1150px) {
+  .hhh .Home_responsiblities,
+  .Home_whyJoinUS {
+    width: 100%;
+    align-self: center;
+    /* padding: 30px 30px; */
+    margin: 0;
+    flex-direction: column;
+    display: flex;
+    /* margin-bottom: 60px; */
+    align-items:center;
+    justify-content: center;
+    padding: 20px 30px 20px 60px;
+  }
+  .hhh .Home_responsiblities ul li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* .hhh .Home_responsiblities ul li p {
+    width: calc(100% - 10px);
+   
+    font-size: medium;
+    align-self: center;
+  } */
+ 
+}
+/* 
+.hhh{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+@media screen and (max-width: 700px) {
+    .hhh{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+   
+  }

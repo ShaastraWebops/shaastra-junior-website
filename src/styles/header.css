@@ -11,6 +11,7 @@
     margin: 0 0.5vw;
     padding: 1vw;
     border-radius: 25px;
+    color: black;
 }
 .header
 {
@@ -22,7 +23,8 @@
 }
 .chakra-modal__body a:hover, .chakra-modal__body svg:hover
 {
-    color: #F4F7C5;
+    /* color: #F4F7C5; */
+    color: black;
 }
 .chakra-modal__body
 {
