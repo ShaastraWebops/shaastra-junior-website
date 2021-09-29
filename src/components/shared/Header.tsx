@@ -127,6 +127,7 @@ export default function Simple() {
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
               <Link to="/helpdesk">Helpdesk</Link>
+              <Link to="/sales"  target="_blank">Sales</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>
               )}

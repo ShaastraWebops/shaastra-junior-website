@@ -130,5 +130,11 @@ background-color: white;
         justify-content: center;
     }
     
-   
+    .ss{
+      /* padding: 2.5rem; */
+      /* padding-right: 6rem;
+      padding-left: 6rem; */
+      padding: 1rem;
+    background-color: white;
+    }
   }
