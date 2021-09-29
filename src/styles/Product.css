@@ -139,6 +139,8 @@ cursor: pointer;
 .dd .ccs .lk{
     width: calc(100% - 10px);
     font-size: medium;
+    /* justify-content: flex-start; */
+    text-align: start;
 
 }
 /* .dd .ccs p{
@@ -164,4 +166,26 @@ cursor: pointer;
       justify-content: center;
       text-align: center;
     }
+    .dd .ccs .lk{
+        width: calc(100% - 10px);
+        font-size: medium;
+        /* justify-content: flex-start; */
+        text-align: start;
+
+    
+    }
+  }
+
+  @media screen and (max-width:400px) {
+    .dd .ccs{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        /* margin-bottom: 60px; */
+        align-items:center;
+        justify-content: center;
+        text-align: center;
+      }
+      
   }

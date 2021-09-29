@@ -111,9 +111,9 @@
  
   @media screen and (max-width: 400px) {
     .Header img {
-      margin-left: auto;
+      /* margin-left: auto; */
     height: 40px;
-    object-fit: cover;
+    object-fit: contain;
   }
   .Header .kk{
     
