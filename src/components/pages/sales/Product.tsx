@@ -75,7 +75,8 @@ const Product = (props:any) => {
         <h3 className="hez">Purple Round Neck T-shirt</h3>
         <p className="loki" >Price: ₹400</p>
         <p className="loka" >Junior Shaastra Bonanza Sale</p>
-        <p className="lok" >Price: ₹350 (including shipping charges)</p>
+        <p className="lok" >Price: ₹350 </p>
+        <p className="loko" >(Including Shipping Charges)</p>
         {/* <ModalImage
   small={urlt}
   large={urll}

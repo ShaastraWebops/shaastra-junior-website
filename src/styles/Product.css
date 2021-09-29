@@ -55,7 +55,7 @@
     
     font-size: large;
     font-weight: 500;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
 
 }
 
@@ -73,6 +73,14 @@
     
     font-size: large;
     font-weight: 500;
+    padding-bottom: 5px;
+
+}
+.dd .ccs .loko{
+    /* text-decoration: rgb(249, 253, 25); */
+    
+    font-size: medium;
+    font-weight: 400;
     padding-bottom: 5px;
 
 }
