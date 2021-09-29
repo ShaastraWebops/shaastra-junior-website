@@ -59,7 +59,7 @@
   @media screen and (max-width: 800px) {
     .Header {
       padding: 0 30px 0 10px;
-      height: 160px;
+      height: 100px;
     }
     .Header button {
       display: block;
@@ -80,7 +80,7 @@
     }
     .Header img {
         margin-left: auto;
-      height: 80px;
+      height: 60px;
       object-fit: cover;
     }
     .Header ul {
@@ -109,4 +109,22 @@
   }
 
  
-  
+  @media screen and (max-width: 400px) {
+    .Header img {
+      margin-left: auto;
+    height: 40px;
+    object-fit: cover;
+  }
+  .Header .kk{
+    
+    justify-content: center;
+    align-self: center;
+    /* flex-direction: column; */
+    font-weight: 600;
+    font-size:large;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+}
+}

@@ -36,7 +36,7 @@ function Header() {
    
     <div className="Header">
     <Link to="/">
-      <img src={shaastraLogo} alt="" />
+      <img src={shaastraLogo} alt=""  />
     </Link>
     {/* <button onClick={() => setHeader(!header)}>
       <FaBars />
