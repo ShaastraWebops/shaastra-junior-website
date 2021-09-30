@@ -65,7 +65,7 @@ const Home = (props: Props) => {
     <CustomBox>
       <div className="home-landing-section">
 
-        <div>
+        {/* <div>
           <Marquee pauseOnHover={true} gradient={false} speed={100} style={{
             background:"transparent",
             zIndex:0,
@@ -77,17 +77,20 @@ const Home = (props: Props) => {
             
             
             </Marquee>
-        </div>
+        </div> */}
 
         <div className="home-landing-head">Shaastra Juniors</div>
         <div className="home-landing-subhead">2021</div>
         <div className="home-landing-subhead-date">24th - 26th Sep | 1st - 3rd Oct</div>
+
         {
           role === "USER" || role === "ADMIN" ?
           <Link to="/workshops"><Button className="home-register-button">REGISTER</Button></Link>
           : <Link to="/signup"><Button className="home-register-button">REGISTER</Button></Link>
 
         }
+         <Link to="/sales" target="_blank"><Button className="home-register-button">MERCHANDISE</Button></Link>
+         
         {
           role === "ADMIN" &&
           <Flex alignItems={"center"} flexDirection={["column", "row"]}>
