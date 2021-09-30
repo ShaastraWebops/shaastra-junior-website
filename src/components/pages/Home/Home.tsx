@@ -21,6 +21,8 @@ import {
   chess,
   spark,
   brain,
+  mtx,
+  subex,
 } from "./Images";
 import Footer from "../../shared/Footer";
 import {
@@ -308,31 +310,17 @@ const Home = (props: Props) => {
             />
             <Image
               style={{ objectFit: "contain" }}
-              src={CAT}
+              src={mtx}
               width="400px"
               p={8}
-              alt="CAT"
+              alt="MTX"
             />
             <Image
               style={{ objectFit: "contain" }}
-              src={KLA}
+              src={subex}
               width="400px"
               p={8}
-              alt="KLA"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={Mahindra}
-              width="400px"
-              p={8}
-              alt="Mahindra"
-            />
-            <Image
-              style={{ objectFit: "contain" }}
-              src={Salesforces}
-              width="400px"
-              p={8}
-              alt="Salesforces"
+              alt="Subex"
             />
             <Image
               style={{ objectFit: "contain" }}
@@ -341,6 +329,21 @@ const Home = (props: Props) => {
               p={8}
               alt="Wells"
             />
+          </Flex>
+        </Box>
+      </div>
+
+      <div>
+        <div className="home-heads">Juniors Sponsors</div>
+        <div className="underline"></div>
+        <Box width="100%">
+          <Flex
+            width="100%"
+            bg="#fff"
+            flexWrap="wrap"
+            justifyContent="center"
+            padding="30px 0 50px 0"
+          >
             <Image
               style={{ objectFit: "contain" }}
               src={GFG}
@@ -384,6 +387,7 @@ const Home = (props: Props) => {
           </Flex>
         </Box>
       </div>
+
       <Footer></Footer>
     </CustomBox>
   );
