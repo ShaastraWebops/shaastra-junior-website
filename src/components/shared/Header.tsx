@@ -126,7 +126,7 @@ export default function Simple() {
               <Link to="/">Home</Link>
               <Link to="/competitions">Competitions</Link>
               <Link to="/workshops">Workshops</Link>
-              <Link to="/sales"  target="_blank">Sales</Link>
+              <Link to="/sales"  target="_blank"><div className="rainbow">Sales</div></Link>
             
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
