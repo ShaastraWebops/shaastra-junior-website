@@ -10,7 +10,7 @@ import righta from "./../../../images/sales/Right Arm.jpg";
 // assets/WhatsApp Image 2021-09-24 at 8.46.57 AM (2).jpeg
 import { Carousel } from 'react-responsive-carousel';
 import "./../../../styles/Product.css";
-import size1 from "./../../../images/sales/sizechart.jpeg";
+import size1 from "./../../../images/sales/sizechzrt2.jpeg";
 // import ModalImage from "react-modal-image";
 // import urlt from "./../assets/sizechart.jpeg";
 // import urll from "./../assets/sizechart.jpeg";

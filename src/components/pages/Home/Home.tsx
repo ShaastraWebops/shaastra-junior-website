@@ -31,6 +31,9 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 import parse from 'html-react-parser';
 import { EditIcon } from "@chakra-ui/icons";
 import fileDownload from "js-file-download";
+import Marquee from "react-fast-marquee";
+import "./../../../styles/rainbow.css";
+// import Marquee from "react-fast-marquee";
 
 
 const converter = new Showdown.Converter({
@@ -51,11 +54,31 @@ const Home = (props: Props) => {
   const { data: csv } = useGetUsersDataCsvQuery();
   const { data: count } = useGetUsersCountQuery();
 
+  const Links = [
+   
+    "sales",
+  ];
+
   if (loading) return <Loader />;
 
   return (
     <CustomBox>
       <div className="home-landing-section">
+
+        <div>
+          <Marquee pauseOnHover={true} gradient={false} speed={100} style={{
+            background:"transparent",
+            zIndex:0,
+          
+          }}>
+           
+            
+            <Link to="/sales"  target="_blank" > <div className="rainbow1">Shaastra Juniors Merchandise Sale is live. Visit Sales.shaastra.org and know more.</div> </Link>
+            
+            
+            </Marquee>
+        </div>
+
         <div className="home-landing-head">Shaastra Juniors</div>
         <div className="home-landing-subhead">2021</div>
         <div className="home-landing-subhead-date">24th - 26th Sep | 1st - 3rd Oct</div>

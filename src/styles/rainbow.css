@@ -4,23 +4,43 @@
   
     .rainbow {
       background-clip: border-box;
-      background-image: linear-gradient(to left, violet, indigo, blue, green, orange, red);   -webkit-background-clip: text;
+      font-weight:bolder;
+      background-image: linear-gradient(to left, rgb(61, 0, 105), blue, green, rgb(141, 92, 0), red);   -webkit-background-clip: text;
       color: transparent;
-      font-weight: 500;
+      /* font-weight: 500; */
+      font-size: large;
+      /* text-transform: uppercase; */
       animation: animate 
           1.5s linear infinite;
     }
 
-  @keyframes animate {
-      0% {
-          opacity: 0;
-      }
 
-      50% {
-          opacity: 0.7;
-      }
 
-      100% {
-          opacity: 0;
-      }
+  .rainbow1 {
+    background-clip: border-box;
+    font-weight:bolder;
+    background-image: linear-gradient(to left, rgb(229, 194, 255), rgb(169, 154, 255), rgb(95, 255, 95), rgb(240, 215, 170), rgb(247, 191, 191));   -webkit-background-clip: text;
+    color: transparent;
+    /* background: transparent; */
+    /* font-weight: 500; */
+    font-size: xx-large;
+    /* text-transform: uppercase; */
+    animation: animate 
+        1.5s linear infinite;
   }
+
+ 
+
+  @keyframes animate {
+    0% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.25;
+    }
+}
