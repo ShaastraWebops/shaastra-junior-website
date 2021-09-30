@@ -84,6 +84,11 @@
     padding-bottom: 5px;
 
 }
+/* a:hover{
+     
+        background-color: yellow;
+      
+} */
 .dd .ccs .hez{
     font-weight: bold;
     font-size: larger;
@@ -155,13 +160,47 @@ cursor: pointer;
     width: calc(100% - 10px);
 } */
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 400px) and (min-width: 0px) {
     .dd{
         display:flex;
         flex-direction: column;
         background-color: white;
         padding: 0 0.5rem;
         color: black;
+    }
+    .dd .ccs{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        
+        align-items:center;
+        justify-content: space-between;
+        text-align: center;
+      }
+ 
+  }
+  @media screen and (max-width: 1000px) and (min-width: 800px) {
+    .dd{
+        display:flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 0 0.5rem;
+        color: black;
+    }
+  
+    .dd .ccs .pop{
+        color: black;
+        font-weight: 500;
+        display: flex;
+        /* flex-direction: column-reverse; */
+        justify-content: space-between;
+        /* word-spacing: 100%; */
+        /* --tw-space-x-reverse: 0;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse))); */
+        align-items: flex-start;
+        width: 60%;
     }
    
     .dd .ccs{
@@ -182,18 +221,53 @@ cursor: pointer;
 
     
     }
+ 
   }
 
-  @media screen and (max-width:400px) {
-    .dd .ccs{
-        width: 100%;
-        padding: 0;
-        margin: 0;
+/* @media screen and (max-width: 1000px) {
+    
+  } */
+
+  /* @media screen and (max-width:400px) {
+   
+    
+  } */
+
+  @media screen and (max-width:800px)and (min-width:400px){
+    .dd{
+        display:flex;
+        flex-direction: column;
+        background-color: white;
+        padding: 0 0.5rem;
+        color: black;
+    }
+    .dd .ccs .pop{
+        color: black;
+        font-weight: 500;
         display: flex;
-        /* margin-bottom: 60px; */
-        align-items:center;
-        justify-content: center;
-        text-align: center;
-      }
-      
-  }
+        /* flex-direction: column-reverse; */
+        justify-content: space-between;
+        /* word-spacing: 100%; */
+        /* --tw-space-x-reverse: 0;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse))); */
+        align-items: flex-start;
+        width: 80%;
+    }}
+    /* @media screen and (max-width:1000px) { */
+       
+        /* @media screen and (min-width:800px) {
+           
+            }} */
+    
+    /* @media screen and (max-width:1250px) {
+        .dd .ccs .pop{
+            color: black;
+            font-weight: 500;
+            display: flex;
+            
+            justify-content: space-between;
+           
+            align-items: flex-start;
+            width: 80%;
+        }} */

@@ -19,6 +19,8 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg";
 import user from "../../images/user.png";
 import { Usercontext } from "../pages/signinUp/Context";
+import "./../../styles/rainbow.css";
+import Marquee from "react-fast-marquee";
 
 const Links = [
   "Home",
@@ -60,7 +62,7 @@ export default function Simple() {
               <Link to="/">Home</Link>
               <Link to="/competitions">Competitions</Link>
               <Link to="/workshops">Workshops</Link>
-              <Link to="/sales"  target="_blank">Sales</Link>
+              <Link to="/sales"  target="_blank" ><div className="rainbow">Sales</div></Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
