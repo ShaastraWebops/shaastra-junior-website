@@ -75,7 +75,8 @@ const Product = (props:any) => {
         <h3 className="hez">Purple Round Neck T-shirt</h3>
         <p className="loki" >Price: ₹400</p>
         <p className="loka" >Junior Shaastra Bonanza Sale</p>
-        <p className="lok" >Price: ₹350 (including shipping charges)</p>
+        <p className="lok" >Price: ₹350 </p>
+        <p className="loko" >(Including Shipping Charges)</p>
         {/* <ModalImage
   small={urlt}
   large={urll}
@@ -93,7 +94,7 @@ const Product = (props:any) => {
           Size Chart
         </button>
               </a> -{" "}
-          {size && <span style={{color:"black", fontSize:"large"}}>Selected size {size}</span>}
+          {size && <span style={{color:"black", fontSize:"large"}}>{size}</span>}
         </p>
         <div className="pop">
           <p onClick={() => setSize("XS")} className="size">
@@ -118,8 +119,8 @@ const Product = (props:any) => {
         {/* <img src={size1} alt="sizechart" /> */}
        
 
-        <a target="_blank" href="https://www.meraevents.com/previewevent?view=preview&eventId=245077">
-        <button onClick={addItemToCart} className="btn">
+        <a target="_blank" href="https://www.meraevents.com/previewevent?view=preview&eventId=245077" className="mnm"> 
+        <button onClick={addItemToCart} className="btn" >
           Buy Now
         </button>
               </a>
