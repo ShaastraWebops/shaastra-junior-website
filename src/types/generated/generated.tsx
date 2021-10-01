@@ -73,7 +73,7 @@ export type EditEventInput = {
   platform: Scalars['String'];
   registrationCloseTime?: Maybe<Scalars['String']>;
   registrationOpenTime?: Maybe<Scalars['String']>;
-  registrationType?: Maybe<Scalars['String']>;
+  registrationType?: Maybe<RegistraionType>;
   requirements: Scalars['String'];
   teamSize?: Maybe<Scalars['Float']>;
   title?: Maybe<Scalars['String']>;
