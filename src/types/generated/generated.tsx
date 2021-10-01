@@ -168,7 +168,7 @@ export type Mutation = {
   createEventFAQ: Scalars['Boolean'];
   createFAQ: Scalars['Boolean'];
   createTeamAndRegister: Scalars['Boolean'];
-  createUser: Scalars['Boolean'];
+  createUser: User;
   deleteEvent: Scalars['Boolean'];
   deleteEventFAQ: Scalars['Boolean'];
   deleteFAQs: Scalars['Boolean'];
@@ -420,7 +420,7 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { createUser: boolean };
+export type CreateUserMutation = { createUser: { name: string, id: string, sjID: string, email: string, isVerified: boolean, role: UserRole, school: string, class: Standard } };
 
 export type LoginMutationVariables = Exact<{
   loginData: LoginInput;
@@ -623,7 +623,16 @@ export type ExportCsvQuery = { exportCSV: string };
 
 export const CreateUserDocument = gql`
     mutation createUser($createUserData: CreateUserInput!) {
-  createUser(data: $createUserData)
+  createUser(data: $createUserData) {
+    name
+    id
+    sjID
+    email
+    isVerified
+    role
+    school
+    class
+  }
 }
     `;
 export type CreateUserMutationFn = ApolloReactCommon.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
