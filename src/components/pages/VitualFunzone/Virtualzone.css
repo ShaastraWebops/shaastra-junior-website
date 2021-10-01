@@ -1,0 +1,69 @@
+@import url('http://fonts.cdnfonts.com/css/sf-cartoonist-hand');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@media only screen and (max-width: 1400px)
+{
+    .virtualzone {
+        height: "100vh" !important;
+        background-image: url("../../../images/Virtualfunzone/sjbgmblurred.png") !important;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+       
+    }
+
+    .vtitle {
+
+        font-family: 'SF Cartoonist Hand',sans-serif;
+        color: rebeccapurple;
+        background-color: rgb(255,255,255,0.4);
+        border-radius: 1000px;
+        padding: 7px 20px 0px 20px;
+        text-shadow: rebeccapurple 0px 0px 5px;
+        box-shadow: 0 0 10px rgba(0, 0,0, 0.1);
+    }
+
+    .vhome{
+        margin-top: 20px;
+    }
+    
+    
+}
+
+
+@media only screen and (min-width: 1400px){
+
+    .virtualzone {
+        height: "100vh" !important;
+        background-image: url("../../../images/Virtualfunzone/sjbgblurred.png") !important;
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        position: relative;
+    }
+    
+    .vtitle {
+        font-weight: 600px;
+        position: absolute;
+        top: 10%;
+        left: 0.5%;
+        transform: rotate(-35deg);
+        font-family: 'SF Cartoonist Hand',sans-serif;
+        color: rebeccapurple;
+        background-color: rgb(255,255,255,0.4);
+        border-radius: 1000px;
+        padding: 7px 20px 0px 20px;
+        text-shadow: rebeccapurple 0px 0px 5px;
+        box-shadow: 0 0 10px rgba(0, 0,0, 0.1);
+    
+    }
+
+    .vhome{
+        margin-top: 75px;
+    }
+    
+
+}
