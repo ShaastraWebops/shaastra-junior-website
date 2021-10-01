@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CustomBox from "../../shared/CustomBox";
 import "../../../styles/signin.css"
 import Particles from 'react-tsparticles';
@@ -13,9 +13,12 @@ import sj_logo from "../../../images/home/sj_logo_color_tr.png";
 import { cities } from './cities';
 import {Modal, ModalOverlay, ModalBody, ModalCloseButton, ModalContent, ModalHeader, useDisclosure} from "@chakra-ui/react"
 import { StandardArray } from '../../../types/generated/constants';
-
+import { Usercontext } from './Context';
+import bcrypt from 'bcryptjs'
 
 const SignUp = () => {
+
+    const {setRole} = useContext(Usercontext);
 
     var {isOpen, onOpen, onClose} = useDisclosure();
 
@@ -89,8 +92,18 @@ const SignUp = () => {
                                         }
                                     }
                                 });
-                                setLogged(true)
-                                console.log(logged)
+                                if(resp.data?.createUser.isVerified)
+                                {
+                                    setRole(resp.data.createUser.role)
+                                    const role = await bcrypt.hash(resp.data.createUser.role,10)
+         
+                                    localStorage.setItem('role', role)
+                                    localStorage.setItem('name', resp.data.createUser.name)
+                                    localStorage.setItem('school', resp.data.createUser.school)
+         
+                                     setLogged(true)
+                                     history.push("/")
+                                }
                             }
                             catch (err) { console.log(err) }
                         } else {

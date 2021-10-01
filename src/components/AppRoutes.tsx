@@ -66,7 +66,7 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/sales" component={sales}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
-            <Route exact path="/email-resend" component={EmailResend}></Route>
+            {/* <Route exact path="/email-resend" component={EmailResend}></Route> */}
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
             <Route exact path="/verifyuser/:token" component={Verify}>
