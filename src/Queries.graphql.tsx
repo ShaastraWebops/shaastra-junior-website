@@ -2,7 +2,16 @@ import gql from 'graphql-tag';
 
 export const CREATEUSER = gql` 
 mutation createUser($createUserData: CreateUserInput!) {
-    createUser(data: $createUserData)
+    createUser(data: $createUserData) {
+      name,
+      id,
+      sjID,
+      email,
+      isVerified,
+      role,
+      school,
+      class
+    }
   }
   `
 export const LOGIN = gql` 
