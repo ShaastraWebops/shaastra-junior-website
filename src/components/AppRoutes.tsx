@@ -23,6 +23,7 @@ import {useState, useEffect} from "react"
 import EmailResend from "./pages/signinUp/EmailResend"
 import Schedule from "./pages/Schedule/Schedule"
 import sales from "./pages/sales/sales"
+import VirtualFunZone from "./pages/VitualFunzone/VirtualFunZone"
 
 interface Props {
     
@@ -65,7 +66,7 @@ const AppRoutes = (props: Props) => {
             <Route exact path="/signin" component={SignIn}></Route>
             <Route exact path="/sales" component={sales}></Route>
             <Route exact path="/signup" component={SignUp}></Route>
-            <Route exact path="/email-resend" component={EmailResend}></Route>
+            {/* <Route exact path="/email-resend" component={EmailResend}></Route> */}
             <Route exact path="/addevent" component={AddEvent}/>
             <Route exact path="/editevent/:id" component={EditEvent}/>
             <Route exact path="/verifyuser/:token" component={Verify}>
@@ -73,7 +74,7 @@ const AppRoutes = (props: Props) => {
 
             <Route exact path="/forgot" component={Forgot}></Route>
             <Route exact path="/forgotpassword/:token" component={ForgotAfterLink}></Route>
-
+            <Route exact path="/virtualfunzone" component={VirtualFunZone}/>
             <Route exact path="/logout" component={LogOut}></Route>
 
         </Router>

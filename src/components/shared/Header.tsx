@@ -67,8 +67,7 @@ export default function Simple() {
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
               <Link to="/helpdesk">Helpdesk</Link>
-              {/* <Link to="/sales"  target="_blank">Sales</Link> */}
-              {/* <Link to="/sales">Sales</Link> */}
+              <Link to="/virtualfunzone" >Virtual Funzone</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
               )}
@@ -131,8 +130,8 @@ export default function Simple() {
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
-              <Link to="/helpdesk">Helpdesk</Link>
-              
+              <Link to="/helpdesk">Helpdesk</Link
+              <Link to="/virtualfunzone" >Virtual Funzone</Link>
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Signin/Register</Link>
               )}
