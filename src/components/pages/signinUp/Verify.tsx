@@ -21,8 +21,10 @@ const Verify = () => {
     const verify = async () => {
     const resp = await verifyCall(token, verifyUserMutation)
     }
-    verify()
-    if(!data) return null
+    React.useEffect(() => {
+        verify();
+    }, [])
+    //if(!data) return null
     if(data?.verifyUser)
     {
         var onClose = () => {history.push('/signin')}
