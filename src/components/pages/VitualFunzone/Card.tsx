@@ -42,18 +42,32 @@ const Card = ({data,setAlert} : any) =>{
             _hover={{boxShadow : 'lg',}}
             height = {["full" ,"425px"]}
             >
-            <Link href={data.link}>
+            {
+                md.mobile() === null ? (<Link href={data.link}>
+                    <Image
+                       
+                        // h={['15%','200px']}
+                        // width ={['300px']}
+                        borderRadius = {'50px'}
+                        objectFit ={'contain'}
+                        src={data.image}
+                        m={3}
+                        alt = "Display-Image"
+                    />
+                   </Link>) : (
             <Image
                
                 // h={['15%','200px']}
                 // width ={['300px']}
+                onClick = {handleview}
                 borderRadius = {'50px'}
                 objectFit ={'contain'}
                 src={data.image}
                 m={3}
                 alt = "Display-Image"
             />
-           </Link>
+           )
+            }
             <Flex
                 direction={'column'}
                 justifyContent={['center','space-between']}
