@@ -1,0 +1,26 @@
+/* .rainbow{
+    background-color: blue; 
+    /* color: transparent; */
+  
+    .rainbow {
+      background-clip: border-box;
+      background-image: linear-gradient(to left, violet, indigo, blue, green, orange, red);   -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 500;
+      animation: animate 
+          1.5s linear infinite;
+    }
+
+  @keyframes animate {
+      0% {
+          opacity: 0;
+      }
+
+      50% {
+          opacity: 0.7;
+      }
+
+      100% {
+          opacity: 0;
+      }
+  }

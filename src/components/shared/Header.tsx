@@ -19,6 +19,8 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { ReactComponent as LogoBlack } from "./../../images/logo/static/Main_logo_black.svg";
 import user from "../../images/user.png";
 import { Usercontext } from "../pages/signinUp/Context";
+import "./../../styles/rainbow.css";
+import Marquee from "react-fast-marquee";
 
 const Links = [
   "Home",
@@ -60,13 +62,18 @@ export default function Simple() {
               <Link to="/">Home</Link>
               <Link to="/competitions">Competitions</Link>
               <Link to="/workshops">Workshops</Link>
+              <Link to="/sales"  target="_blank" ><div className="rainbow">Sales</div></Link>
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>
               <Link to="/helpdesk">Helpdesk</Link>
+<<<<<<< HEAD
               <Link to="/sales"  target="_blank">Sales</Link>
               <Link to="/virtualfunzone" >Virtual Funzone</Link>
 
+=======
+              {/* <Link to="/sales"  target="_blank">Sales</Link> */}
+>>>>>>> c33f0864b7694de5384747014194f9424482c177
               {/* <Link to="/sales">Sales</Link> */}
               {role === "USER" || role === "ADMIN" ? null : (
                 <Link to="/signin">Login/Register</Link>
@@ -123,8 +130,10 @@ export default function Simple() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               <Link to="/">Home</Link>
-              <Link to="/workshops">Workshops</Link>
               <Link to="/competitions">Competitions</Link>
+              <Link to="/workshops">Workshops</Link>
+              <Link to="/sales"  target="_blank"><div className="rainbow">Sales</div></Link>
+            
               <Link to="/shows">Shows</Link>
               <Link to="/championships">Championship</Link>
               <Link to="/schedule">Schedule</Link>

@@ -6,6 +6,9 @@ import Footer from "./sfooter";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "./Cart";
 import items from "./items";
+import  { useState, useEffect } from 'react';
+
+
 // import { OrderedList,ListItem,Text } from "@chakra-ui/react";
 // import {
 //   FaPhoneAlt,
@@ -23,9 +26,15 @@ import items from "./items";
 // } from "react-icons/fa";
 
 function Sales() {
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `Shaastra Juniors Merchandise Sale`;
+  });
+  
   return (
     <BrowserRouter>
       <>
+      
         <Header />
         <div className="ss">
         <div className="p-10 max-w-screen-xl mx-auto">
@@ -69,14 +78,19 @@ function Sales() {
           </li>
           <li>
             {/* <FaHandPointRight /> */}
-            <p>
-            4.Sale close on 11th October, 6PM
+            <p>4.International shipping not available.
             </p>
           </li>
           <li>
             {/* <FaHandPointRight /> */}
             <p>
-            5.For any queries mail to <span style={{ color: "yellow", fontSize:"medium" }}>sales@shaastra.org</span>
+            5.Sale close on 11th October, 6PM.
+            </p>
+          </li>
+          <li>
+            {/* <FaHandPointRight /> */}
+            <p>
+            6.For any queries mail to <span style={{ color: "yellow", fontSize:"medium" }}>sales@shaastra.org</span>
             </p>
           </li>
         </ul>

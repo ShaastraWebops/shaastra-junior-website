@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: center;
     padding: 25px 20px;
+    color: white;
     text-align: center;
     /* margin-top: 20px; */
   }
@@ -58,7 +59,7 @@
 
   @media screen and (max-width: 800px) {
     .Header {
-      padding: 0 30px 0 10px;
+      padding: 0 15px 0 15px;
       height: 100px;
     }
     .Header button {
@@ -110,21 +111,31 @@
 
  
   @media screen and (max-width: 400px) {
-    .Header img {
-      /* margin-left: auto; */
-    height: 40px;
-    object-fit: contain;
-  }
-  .Header .kk{
-    
-    justify-content: center;
-    align-self: center;
-    /* flex-direction: column; */
-    font-weight: 600;
-    font-size:large;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+
+}
+
+@media screen and (max-width: 400px) and (min-width: 0px) {
+  /* div.example {
+    font-size: 50px;
+    padding: 50px;
+    border: 8px solid black;
+    background: yellow;
+  } */
+  .Header img {
+    /* margin-left: auto; */
+  height: 70px;
+  object-fit: contain;
+}
+.Header .kk{
+  
+  justify-content: center;
+  align-self: center;
+  /* flex-direction: column; */
+  font-weight: 600;
+  font-size:large;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 
 }
 }

@@ -13562,6 +13562,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-fast-marquee@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-fast-marquee/-/react-fast-marquee-1.2.1.tgz#8a8ee91ec0cee04bcff7f1ea5c3fd5a2c4dc227d"
+  integrity sha512-rd9ZDhiUrrL2puZNlnb633df/1gjtknuIaf749LIgTLXa18fzPIdFBrz4VjERu1ECUdU9tniaF5FuosNt/GYKQ==
+
 react-focus-lock@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.5.0.tgz#12e3a3940e897c26e2c2a0408cd25ea3c99b3709"
