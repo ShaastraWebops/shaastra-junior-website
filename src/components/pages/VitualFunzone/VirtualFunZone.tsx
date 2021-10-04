@@ -12,6 +12,9 @@ import {Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHead
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import {Icon } from "@chakra-ui/react";
 import Footer from "../../shared/Footer";
+import LightsOut from '../../../images/Virtualfunzone/LightsOut.png';
+import  DodgeTheSword from '../../../images/Virtualfunzone/DodgeTheSword.png';
+
 interface game{
     image : string,
     description : string,
@@ -49,7 +52,19 @@ const data : game[] = [
         color : "rgb(70,200,70,0.8)",
         link : "https://sjvirtualzoneg2.s3.ap-south-1.amazonaws.com/MelonMince/index.html"
 
-    },
+    },{
+        image : DodgeTheSword,
+        description : "Zombies  with  swords  vs  you  (with  sword)!",
+        title  :"DodgeTheSword",
+        color : "rgba(255, 165, 0, 0.4)",
+        link : "https://sjvirtualzoneg6.s3.ap-south-1.amazonaws.com/Dodge+The+Sword/index.html"
+    },{
+        image : LightsOut,
+        description : "Get to the other end of the house. But beware, there are ghosts, and your only pal is a little flashlight.",
+        title  :"Lights Out",
+        color : "rgba(0,0,0,0.7)",
+        link : "https://sjvirtualzoneg7.s3.ap-south-1.amazonaws.com/Lights+Out/index.html"
+    }
 
 ]
 
@@ -114,7 +129,7 @@ const VirtualFunZone = () =>{
             }
         </SimpleGrid>
             </Center>
-            <Alert 
+            {/* <Alert 
                 aligncontents={'center'} 
                 justifyContent = {'center'}
                 textAlign= {'center'}
@@ -129,7 +144,7 @@ const VirtualFunZone = () =>{
                 </AlertDescription>
                 </Box>
                 </Center>
-            </Alert>
+            </Alert> */}
 
        </Container>
        </Flex>
