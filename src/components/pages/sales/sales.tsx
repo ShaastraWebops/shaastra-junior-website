@@ -70,7 +70,7 @@ function Sales() {
           <li>
             {/* <FaHandPointRight /> */}
             <p>
-            4.Sale close on 15th October, 6PM
+            4.Sale close on 15th October, 11:59 PM
             </p>
           </li>
           <li>
